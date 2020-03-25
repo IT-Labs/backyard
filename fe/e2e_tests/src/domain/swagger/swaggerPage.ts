@@ -4,18 +4,18 @@ export class SwaggerPage {
   elements = {
     info: ".info",
     version: "",
-    productsLink: "#operations-tag-product-controller",
-    productActionPrefix:'#operations-product-controller',
+    productsLink: "#operations-tag-item-controller",
+    productActionPrefix:'#operations-item-controller',
   };
   async navigateToSwagger() {
    
     const url = appConfig.url_api + "/swagger-ui.html";
-    console.log(`naigate to ${url}`)
+    console.log(`navigate to ${url}`)
     await client.url(url);
     return client.waitForElementVisible(this.elements.info, 500);
   }
 
-  openProductsTab() {
+  openItemTab() {
    return client.click(this.elements.productsLink);
   } 
 

@@ -6,8 +6,8 @@ When("I navigate to swagger", function() {
   return swaggerPage.navigateToSwagger();
 });
 
-When("I click on products swagger link", function() {
-  return swaggerPage.openProductsTab();
+When("I click on item swagger link", function() {
+  return swaggerPage.openItemTab();
 });
 
 Then(/^I should see (.*) action and method (.*)$/, function(action, method) {

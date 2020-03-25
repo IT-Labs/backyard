@@ -40,6 +40,9 @@ dependencies {
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
+	testCompile("com.github.javafaker:javafaker:1.0.2")
+	testCompile('org.testcontainers:testcontainers:1.12.4')
+	testCompile('org.testcontainers:postgresql:1.12.4')
 }
 
 test {
