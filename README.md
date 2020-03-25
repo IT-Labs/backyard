@@ -1,7 +1,7 @@
 # Introduction
 
 Purpose of this repository to give real working examples for development ,testing and deploying the code.
-This repository contains a full working local environment, where you can execute your use application with minimum installed tools [setup](#root-setup).
+This repository contains a full working local environment, where you can execute your application with minimum installed tools [setup](#root-setup).
 
 ## Stack
 
