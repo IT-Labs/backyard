@@ -1,0 +1,20 @@
+.Item {
+  text-align: left;
+}
+
+.Item-header {
+  background-color: #74bba9;
+  min-height: 20vh;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: left;
+  font-size: calc(8px + 2vmin);
+  color: white;
+}
+
+.Item-link {
+  color: #61dafb;
+}
+
+

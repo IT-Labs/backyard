@@ -1,0 +1,18 @@
+# To execute this docker-compose yml file use `docker-compose -f <file_name> up`
+# Add the `-d` flag at the end for detached execution
+version: "3.7"
+services:
+  sample-tests:
+    image: node:latest
+    container_name: sample-tests
+    volumes:
+      - .:/usr/src/myapp
+    working_dir: /usr/src/myapp
+    # command: sh -c "yarn test --tags "@swagger" --startSeleniumServer false --seleniumHost "selenium-hub" --seleniumPort "4444" --url "api-dev:5000""
+    command: ["sh", "docker_run.sh"]
+    networks:
+      - sample
+networks:
+  sample:
+    name: sample-network
+    driver: bridge

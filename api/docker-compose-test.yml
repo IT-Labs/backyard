@@ -1,0 +1,11 @@
+#docker-compose.yml (Base)
+version: '3.7'
+services:
+  tests:
+    image: "openjdk:13.0.2-slim"
+    container_name: test-api
+    volumes:
+      - //var/run/docker.sock:/var/run/docker.sock
+      - ./:/usr/src/myapp
+    working_dir: /usr/src/myapp    
+    command:  ./gradlew clean test
