@@ -21,7 +21,7 @@ Following section describe which action can be performed, more details about the
 
 - api [readme](api/README.md)
 - fe [readme](fe/app/README.md)
-- e2e tests [readme](fe/e2e_tests/README.md)
+- e2e tests [readme](fe/e2e_tests/Readme.md)
 - infrastructure TBD
 
 # Local environment
@@ -34,6 +34,10 @@ For local development please check the Readme section for each project and insta
 - Bash support for windows https://gitforwindows.org/
 - VNC viewer [RealVNC](https://www.realvnc.com/en/connect/download/viewer/) for accessing selenium grid node when test are executed.
 - Configure vnc: server-> localhost:5901, password-> secret, Name -> Chrome:5901
+### Linux 
+execute folowing commands to set correct permissions :
+- find -type f -iname "*.sh" -exec chmod +x {} \;
+- find -type f -iname "gradlew" -exec chmod +x {} \;
 
 ## Build
 
@@ -50,7 +54,7 @@ Following section present steps for running the test from scratch or repeating
 ### Visualize the test
 
 - open VNC before running test
-- open generated report [json](reports/cucumber.json) or generated HTML
+- open generated report json -> fe\e2e_tests\reports\cucumber.json or generated html fe\e2e_tests\reports\test_******.html 
 
 # Deploy
 
