@@ -34,6 +34,10 @@ For local development please check the Readme section for each project and insta
 - Bash support for windows https://gitforwindows.org/
 - VNC viewer [RealVNC](https://www.realvnc.com/en/connect/download/viewer/) for accessing selenium grid node when test are executed.
 - Configure vnc: server-> localhost:5901, password-> secret, Name -> Chrome:5901
+### Linux 
+execute folowing commands to set correct permissions :
+- find -type f -iname "*.sh" -exec chmod +x {} \;
+- find -type f -iname "gradlew" -exec chmod +x {} \;
 
 ## Build
 
