@@ -34,7 +34,7 @@ services:
     volumes:
       - api-postgres:/var/lib/postgresql/data:z
     ports:
-      - "5434:5432"
+      - "5444:5432"
     networks:
       - sample
 networks:
