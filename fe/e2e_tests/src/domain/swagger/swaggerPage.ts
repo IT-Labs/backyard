@@ -9,7 +9,7 @@ export class SwaggerPage {
   };
   async navigateToSwagger() {
    
-    const url = appConfig.url_api + "/swagger-ui.html";
+    const url = appConfig.urlApi + "/swagger-ui.html";
     console.log(`navigate to ${url}`)
     await client.url(url);
     return client.waitForElementVisible(this.elements.info, 500);

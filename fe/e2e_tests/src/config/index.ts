@@ -18,17 +18,15 @@ console.info("root config", rootDefaultConfig);
 import { IAppConfig } from "./config-interface";
 import { configSchema, schemaValidator } from "./config-schema";
 
-// get all config for current customer|environment
 var appConfig: IAppConfig = Object.assign(
   {},
   rootDefaultConfig,
   JSON.parse(JSON.stringify(config))
 );
 
-console.info("app config", appConfig);
-
 appConfig.url = process.env.test_runner_url || appConfig.url;
-appConfig.url_api = process.env.test_runner_url_api || appConfig.url_api;
+appConfig.urlApi = process.env.test_runner_apiUrl || appConfig.urlApi;
+console.info("app config", appConfig);
 // validate using json schema validator
 const validationResult = schemaValidator.validate(appConfig, configSchema);
 if (!validationResult.valid) {

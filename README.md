@@ -1,6 +1,6 @@
 # Introduction
 
-Purpose of this repository to give real working examples for development ,testing and deploying the code.
+Purpose of this repository to give real working examples for development and testing  the code.
 This repository contains a full working local environment, where you can execute your application with minimum installed tools [setup](#root-setup).
 
 ## Stack
@@ -22,7 +22,6 @@ Following section describe which action can be performed, more details about the
 - api [readme](api/README.md)
 - fe [readme](fe/app/README.md)
 - e2e tests [readme](fe/e2e_tests/Readme.md)
-- infrastructure TBD
 
 # Local environment
 
@@ -55,8 +54,4 @@ Following section present steps for running the test from scratch or repeating
 ### Visualize the test
 
 - open VNC before running test
-- open generated report json -> fe\e2e_tests\reports\cucumber.json or generated html fe\e2e_tests\reports\test_******.html 
-
-# Deploy
-
-TBD
+- open generated report json -> fe\e2e_tests\reports\cucumber.json or generated html fe\e2e_tests\reports\test_******.html
