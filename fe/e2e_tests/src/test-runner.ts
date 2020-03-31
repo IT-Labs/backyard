@@ -16,7 +16,6 @@ const argv = yargs
     default: "localhost:3000"
   })
   .option("apiUrl", {
-    alias: "url_api",
     describe: "Api URL against which swagger test will be run",
     type: "string",
     default: "localhost:5000"
@@ -44,17 +43,7 @@ const argv = yargs
     describe: "Output lots of debug messages",
     type: "boolean",
     default: false
-  })
-  .option("browserstack", {
-    describe: "Use browserstack selenium grid",
-    type: "boolean",
-    default: false
-  })
-  .option("saucelabs", {
-    describe: "Use saucelabs selenium grid",
-    type: "boolean",
-    default: false
-  })
+  }) 
   .option("parallel", {
     describe: "Running tests in parallel. Specify how many workers to run.",
     type: "number"
@@ -77,15 +66,10 @@ const argv = yargs
 
 process.env.test_environment = argv.environment;
 process.env.test_runner_url = argv.webUrl;
-process.env.test_runner_url_api = argv.apiUrl;
+process.env.test_runner_apiUrl = argv.apiUrl;
 process.env.test_cucumber_parallel = argv.parallel;
-process.env.test_nw_environment = argv.browserstack
-  ? "browserstack"
-  : argv.saucelabs
-  ? "saucelabs"
-  : "default";
-const startServer =
-  (argv.browserstack || argv.saucelabs) === false && argv.startSeleniumServer;
+process.env.test_nw_environment = "default";
+const startServer =argv.startSeleniumServer;
 
 if (argv.verbose) {
   process.env.test_VERBOSE = "1";

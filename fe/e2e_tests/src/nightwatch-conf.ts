@@ -18,12 +18,10 @@ export function getNightwatchConfiguration(
         "webdriver.chrome.driver": chromedriver.path
       }
     },
-
     test_workers: {
       enabled: true,
       workers: "auto"
     },
-
     test_settings: {
       default: {
         launch_url: appConfig.url,
@@ -40,37 +38,6 @@ export function getNightwatchConfiguration(
           browserName: "chrome",
           acceptSslCerts: true,
           javascriptEnabled: true
-        }
-      },
-      saucelabs: {
-        selenium_host: "ondemand.saucelabs.com",
-        username: appConfig.saucelabs.username,
-        access_key: appConfig.saucelabs.accessKey,
-        desiredCapabilities: {
-          name: "Nightwatch Skeleton - osx-chrome",
-          platform: "macOS 10.12",
-          browserName: "chrome",
-          version: "61"
-        },
-        globals: {
-          propertyData: {
-            environment: "os_x_10_12-chrome61"
-          }
-        },
-        selenium: {
-          start_process: false
-        }
-      },
-      browserstack: {
-        host: "hub-cloud.browserstack.com",
-        port: 80,
-        selenium: {
-          start_process: false
-        },
-        desiredCapabilities: {
-          "browserstack.user": appConfig.browserstack.username,
-          "browserstack.key": appConfig.browserstack.accessKey,
-          browser: "chrome"
         }
       }
     }
