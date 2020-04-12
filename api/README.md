@@ -17,7 +17,8 @@
 
 docker-compose up
 docker-compose down 
-
+ ## Check latest plugin dependencies 
+     gradlew dependencyUpdates
 ### Reference Documentation
 For further reference, please consider the following sections:
 
@@ -30,6 +31,7 @@ For further reference, please consider the following sections:
 * [Flyway Migration](https://docs.spring.io/spring-boot/docs/2.2.5.RELEASE/reference/htmlsingle/#howto-execute-flyway-database-migrations-on-startup)
 * [Spring Data Redis (Access+Driver)](https://docs.spring.io/spring-boot/docs/2.2.5.RELEASE/reference/htmlsingle/#boot-features-redis)
 * [Spring Data Elasticsearch (Access+Driver)](https://docs.spring.io/spring-boot/docs/2.2.5.RELEASE/reference/htmlsingle/#boot-features-elasticsearch)
+* [Gradle versions plugin](https://github.com/ben-manes/gradle-versions-plugin)
 
 ### Guidelines
 The following guidelines illustrate how to use some features specifically:
