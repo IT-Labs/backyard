@@ -1,11 +1,11 @@
 package com.itlabs.api.service;
 
-import com.itlabs.api.entity.Item;
+import com.itlabs.api.entity.Items;
 import java.time.ZoneOffset;
 
 public class ItemRangServiceImpl implements ItemRangService {
   @Override
-  public long getRang(Item item) {
+  public long getRang(Items item) {
     long result = 0;
     switch (item.getStatus()) {
       case DRAFT:

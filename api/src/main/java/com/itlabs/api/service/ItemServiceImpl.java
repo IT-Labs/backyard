@@ -1,9 +1,9 @@
 package com.itlabs.api.service;
 
-import com.itlabs.api.entity.Item;
+import com.itlabs.api.entity.Items;
 import com.itlabs.api.models.ItemEditModel;
 import com.itlabs.api.models.ItemModel;
-import com.itlabs.api.repository.ItemRepository;
+import com.itlabs.api.repository.ItemsRepository;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -11,11 +11,11 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ItemServiceImpl implements ItemService {
+public class ItemServiceImpl implements ItemsService {
 
-  private final ItemRepository itemRepository;
+  private final ItemsRepository itemRepository;
 
-  public ItemServiceImpl(ItemRepository itemRepository) {
+  public ItemServiceImpl(ItemsRepository itemRepository) {
 
     this.itemRepository = itemRepository;
   }
@@ -27,7 +27,7 @@ public class ItemServiceImpl implements ItemService {
    */
   @Override
   public ItemModel get(Integer id) {
-    Item item = getDatabaseItem(id);
+    Items item = getDatabaseItem(id);
     var result = getModel(item);
     return result;
   }
@@ -48,7 +48,7 @@ public class ItemServiceImpl implements ItemService {
    */
   @Override
   public ItemModel save(ItemEditModel model) {
-    var item = new Item();
+    var item = new Items();
     item.setName(model.getName());
     item.setStatus(model.getStatus());
     item.setType("PERSONAL");
@@ -77,7 +77,7 @@ public class ItemServiceImpl implements ItemService {
     itemRepository.deleteById(id);
   }
 
-  private Item getDatabaseItem(Integer id) {
+  private Items getDatabaseItem(Integer id) {
     return itemRepository
         .findById(id)
         .orElseThrow(
@@ -86,7 +86,7 @@ public class ItemServiceImpl implements ItemService {
                     String.format("Item with id %d not found", id), 1));
   }
 
-  private ItemModel getModel(Item item) {
+  private ItemModel getModel(Items item) {
     return ItemModel.builder()
         .id(item.getId())
         .name(item.getName())

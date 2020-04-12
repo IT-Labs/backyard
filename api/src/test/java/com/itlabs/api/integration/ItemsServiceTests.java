@@ -2,21 +2,21 @@ package com.itlabs.api.integration;
 
 import com.itlabs.api.models.ItemEditModel;
 import com.itlabs.api.models.ItemStatus;
-import com.itlabs.api.service.ItemService;
+import com.itlabs.api.service.ItemsService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 
-public class ItemServiceTests extends BaseIntegration {
-  @Autowired private ItemService itemService;
+public class ItemsServiceTests extends BaseIntegration {
+  @Autowired private ItemsService itemsService;
 
   @Test
   public void ItemGetTest() {
     final int itemsCount = 10;
     seedItemsInDatabase(itemsCount);
 
-    var result = itemService.get(Pageable.unpaged());
+    var result = itemsService.get(Pageable.unpaged());
 
     Assertions.assertNotNull(result);
     Assertions.assertTrue(result.size() >= itemsCount);
@@ -26,7 +26,7 @@ public class ItemServiceTests extends BaseIntegration {
   public void ItemSaveTest() {
 
     ItemEditModel item = getItemEditModel();
-    var result = itemService.save(item);
+    var result = itemsService.save(item);
 
     Assertions.assertNotNull(result);
     Assertions.assertTrue(result.getId() > 0);

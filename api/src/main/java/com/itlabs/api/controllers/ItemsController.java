@@ -2,7 +2,7 @@ package com.itlabs.api.controllers;
 
 import com.itlabs.api.models.ItemEditModel;
 import com.itlabs.api.models.ItemModel;
-import com.itlabs.api.service.ItemService;
+import com.itlabs.api.service.ItemsService;
 import io.swagger.annotations.Api;
 import java.util.List;
 import org.springframework.data.domain.Pageable;
@@ -21,40 +21,38 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @Api
 @CrossOrigin(maxAge = 3600)
-@RequestMapping("/api/v1/item/")
-public class ItemController {
-  private final ItemService itemService;
+@RequestMapping("/api/v1/items/")
+public class ItemsController {
+  private final ItemsService itemsService;
 
-  public ItemController(ItemService itemService) {
-    this.itemService = itemService;
+  public ItemsController(ItemsService itemsService) {
+    this.itemsService = itemsService;
   }
 
   @GetMapping()
   public List<ItemModel> get(Pageable pageable) {
-    return itemService.get(pageable);
+    return itemsService.get(pageable);
   }
 
   @PostMapping()
   public ResponseEntity<ItemModel> post(@RequestBody ItemEditModel model) {
-    return new ResponseEntity<>(itemService.save(model), HttpStatus.CREATED);
+    return new ResponseEntity<>(itemsService.save(model), HttpStatus.CREATED);
   }
 
   @GetMapping(path = "{id}")
   public ResponseEntity<ItemModel> getItem(@PathVariable("id") int id) {
-    return new ResponseEntity<>(itemService.get(id), HttpStatus.OK);
+    return new ResponseEntity<>(itemsService.get(id), HttpStatus.OK);
   }
 
   @PutMapping(path = "{id}")
   public ResponseEntity<ItemModel> put(
       @PathVariable("id") int id, @RequestBody ItemEditModel model) {
-
-    return new ResponseEntity<>(itemService.update(id, model), HttpStatus.CREATED);
+    return new ResponseEntity<>(itemsService.update(id, model), HttpStatus.CREATED);
   }
 
   @DeleteMapping(path = "{id}")
   public ResponseEntity<String> delete(@PathVariable("id") int id) {
-
-    itemService.delete(id);
+    itemsService.delete(id);
     return new ResponseEntity<>("deleted", HttpStatus.NO_CONTENT);
   }
 }

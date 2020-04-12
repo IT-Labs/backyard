@@ -1,8 +1,8 @@
 package com.itlabs.api.service;
 
-import com.itlabs.api.entity.Item;
+import com.itlabs.api.entity.Items;
 
 public interface ItemRangService {
 
-  long getRang(Item item);
+  long getRang(Items item);
 }

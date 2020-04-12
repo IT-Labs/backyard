@@ -3,14 +3,14 @@ import "./Item.css";
 import Table from "react-bootstrap/Table";
 import { Route, Link, Switch } from "react-router-dom";
 import ViewItem from "./ViewItem";
-import ItemService from "../service/ItemService";
+import ItemsService from "../service/ItemService";
 
 class Items extends React.Component {
   state = {
     items: [],   
     loading: true
   };
-  itemsService = new ItemService();
+  itemsService = new ItemsService();
   async componentDidMount() {     
      const data =await this.itemsService.get();
       this.setState({ items:data , loading: false });   

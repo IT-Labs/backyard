@@ -12,7 +12,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Table(name = "items")
-public class Item extends BaseEntity {
+public class Items extends BaseEntity {
   String name;
   String description;
 

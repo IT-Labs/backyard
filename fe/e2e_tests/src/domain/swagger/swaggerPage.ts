@@ -4,8 +4,8 @@ export class SwaggerPage {
   elements = {
     info: ".info",
     version: "",
-    productsLink: "#operations-tag-item-controller",
-    productActionPrefix:'#operations-item-controller',
+    productsLink: "#operations-tag-items-controller",
+    productActionPrefix:'#operations-items-controller',
   };
   async navigateToSwagger() {
    
