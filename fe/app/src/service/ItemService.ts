@@ -1,7 +1,7 @@
 const host = "http://localhost:5000/api/v1/";
 //TODO : get host and api version from configuration
-class ItemService {
-    private readonly itemUrl = host+"item/";
+class ItemsService {
+    private readonly itemUrl = host+"items/";
   async get(){
    
     try {     
@@ -17,4 +17,4 @@ class ItemService {
    
   }
   
-  export default ItemService;
+  export default ItemsService;

@@ -5,7 +5,7 @@ import com.itlabs.api.models.ItemModel;
 import java.util.List;
 import org.springframework.data.domain.Pageable;
 
-public interface ItemService {
+public interface ItemsService {
   ItemModel get(Integer id);
 
   List<ItemModel> get(Pageable pageable);

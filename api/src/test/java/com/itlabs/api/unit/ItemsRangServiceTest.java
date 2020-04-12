@@ -1,13 +1,13 @@
 package com.itlabs.api.unit;
 
-import com.itlabs.api.entity.Item;
+import com.itlabs.api.entity.Items;
 import com.itlabs.api.models.ItemStatus;
 import com.itlabs.api.service.ItemRangServiceImpl;
 import java.time.LocalDateTime;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class ItemRangServiceTest {
+public class ItemsRangServiceTest {
 
   @Test
   public void rangServiceForDraftTest() {
@@ -26,8 +26,8 @@ public class ItemRangServiceTest {
     Assertions.assertTrue(result > 2);
   }
 
-  private Item getItem() {
-    var item = new Item();
+  private Items getItem() {
+    var item = new Items();
     item.setStatus(ItemStatus.DRAFT);
     item.setCreated(LocalDateTime.now());
     return item;
