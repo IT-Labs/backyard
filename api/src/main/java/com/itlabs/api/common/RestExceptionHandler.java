@@ -1,5 +1,6 @@
 package com.itlabs.api.common;
 
+import java.util.Date;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
@@ -28,12 +29,6 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
     return buildResponseEntity(ex, HttpStatus.BAD_REQUEST);
   }
 
-  private ResponseEntity<Object> logAndBuildResponseEntity(
-      Exception exception, HttpStatus httpStatus) {
-    log.error(exception.getClass().getName(), exception);
-    return buildResponseEntity(exception, httpStatus);
-  }
-
   @ExceptionHandler(Exception.class)
   protected ResponseEntity<Object> handleException(Exception ex) {
     return logAndBuildResponseEntity(ex, HttpStatus.INTERNAL_SERVER_ERROR);
@@ -45,6 +40,11 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
   }
 
   private ResponseEntity<Object> buildResponseEntity(Exception exception, HttpStatus status) {
-    return new ResponseEntity<>(exception.getMessage(), status);
+    return new ResponseEntity<>(ErrorModel.builder().code(status).timestamp(new Date()).message(exception.getMessage()).build(), status);
+  }
+  private ResponseEntity<Object> logAndBuildResponseEntity(
+          Exception exception, HttpStatus httpStatus) {
+    log.error(exception.getClass().getName(), exception);
+    return buildResponseEntity(exception, httpStatus);
   }
 }

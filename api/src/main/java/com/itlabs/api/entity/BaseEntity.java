@@ -1,6 +1,7 @@
 package com.itlabs.api.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.itlabs.api.common.GlobalConstants;
 import java.time.LocalDateTime;
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
