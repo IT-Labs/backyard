@@ -4,22 +4,27 @@ import com.itlabs.api.models.ItemEditModel;
 import com.itlabs.api.models.ItemStatus;
 import com.itlabs.api.service.ItemsService;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.MethodOrderer.Alphanumeric;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 
+@TestMethodOrder(Alphanumeric.class)
 public class ItemsServiceTests extends BaseIntegration {
-  @Autowired private ItemsService itemsService;
-
+  private ItemsService itemsService;
+  @Autowired
+  public ItemsServiceTests(ItemsService itemsService){
+    this.itemsService = itemsService;
+  }
   @Test
   public void ItemGetTest() {
     final int itemsCount = 10;
     seedItemsInDatabase(itemsCount);
 
     var result = itemsService.get(Pageable.unpaged());
-
     Assertions.assertNotNull(result);
-    Assertions.assertTrue(result.size() >= itemsCount);
+    Assertions.assertTrue(result.getTotalElements() >= itemsCount);
   }
 
   @Test

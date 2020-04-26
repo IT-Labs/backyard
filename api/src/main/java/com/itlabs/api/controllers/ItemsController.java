@@ -1,13 +1,16 @@
 package com.itlabs.api.controllers;
 
+import com.itlabs.api.configuration.ApiPageable;
 import com.itlabs.api.models.ItemEditModel;
 import com.itlabs.api.models.ItemModel;
 import com.itlabs.api.service.ItemsService;
 import io.swagger.annotations.Api;
 import java.util.List;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,11 +20,12 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import springfox.documentation.annotations.ApiIgnore;
 
 @RestController
 @Api
 @CrossOrigin(maxAge = 3600)
-@RequestMapping("/api/v1/items/")
+@RequestMapping(Routes.ITEMS_ROUTE)
 public class ItemsController {
   private final ItemsService itemsService;
 
@@ -30,12 +34,13 @@ public class ItemsController {
   }
 
   @GetMapping()
-  public List<ItemModel> get(Pageable pageable) {
+  @ApiPageable
+  public Page<ItemModel> get(@ApiIgnore Pageable pageable) {
     return itemsService.get(pageable);
   }
 
   @PostMapping()
-  public ResponseEntity<ItemModel> post(@RequestBody ItemEditModel model) {
+  public ResponseEntity<ItemModel> post(@RequestBody @Validated ItemEditModel model) {
     return new ResponseEntity<>(itemsService.save(model), HttpStatus.CREATED);
   }
 

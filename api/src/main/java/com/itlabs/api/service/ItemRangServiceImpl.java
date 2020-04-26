@@ -2,7 +2,9 @@ package com.itlabs.api.service;
 
 import com.itlabs.api.entity.Items;
 import java.time.ZoneOffset;
+import org.springframework.stereotype.Service;
 
+@Service
 public class ItemRangServiceImpl implements ItemRangService {
   @Override
   public long getRang(Items item) {

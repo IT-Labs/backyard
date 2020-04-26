@@ -4,9 +4,10 @@ import com.itlabs.api.entity.Items;
 import com.itlabs.api.models.ItemEditModel;
 import com.itlabs.api.models.ItemModel;
 import com.itlabs.api.repository.ItemsRepository;
-import java.util.List;
 import java.util.stream.Collectors;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
@@ -34,13 +35,16 @@ public class ItemServiceImpl implements ItemsService {
 
   /**
    * @param pageable
-   * @return List<ItemModel>
+   * @return Page<ItemModel>
    */
   @Override
-  public List<ItemModel> get(Pageable pageable) {
-    return itemRepository.findAll(pageable).stream()
-        .map(this::getModel)
-        .collect(Collectors.toList());
+  public Page<ItemModel> get(Pageable pageable) {
+    final var all = itemRepository.findAll(pageable);
+    final var items = all.stream()
+            .map(this::getModel)
+            .collect(Collectors.toList());
+
+    return new PageImpl(items, pageable, all.getTotalElements());
   }
   /**
    * @param model

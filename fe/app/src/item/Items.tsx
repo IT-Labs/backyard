@@ -7,13 +7,13 @@ import ItemsService from "../service/ItemService";
 
 class Items extends React.Component {
   state = {
-    items: [],   
-    loading: true
+    items: [],
+    loading: true,
   };
   itemsService = new ItemsService();
-  async componentDidMount() {     
-     const data =await this.itemsService.get();
-      this.setState({ items:data , loading: false });   
+  async componentDidMount() {
+    const data = await this.itemsService.get();
+    this.setState({ items: data.content, loading: false });
   }
 
   renderTableData(items: Array<any>) {
@@ -33,7 +33,7 @@ class Items extends React.Component {
   }
   render() {
     const { items, loading } = this.state;
-    
+
     if (loading) {
       return <div>Loading Items</div>;
     }
