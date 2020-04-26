@@ -63,12 +63,7 @@ public class ItemsControllerTests extends BaseIntegration{
                         .contentType(MediaType.APPLICATION_JSON))
                 .andDo(print());
 
-        resultActions
-                .andExpect(status().isCreated())
-                .andExpect(jsonPath("$.id").exists())
-                .andExpect(jsonPath("$.name").value(model.getName()))
-                .andExpect(jsonPath("$.status").value(model.getStatus().toString()))
-                .andExpect(jsonPath("$.description").value(model.getDescription()));
+        validateItem(model, resultActions);
     }
 
     @Test
@@ -104,12 +99,7 @@ public class ItemsControllerTests extends BaseIntegration{
         validateBadRequest(resultActions);
     }
 
-    private void validateBadRequest(ResultActions resultActions) throws Exception {
-        resultActions
-                .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$.message").exists())
-                .andExpect(jsonPath("$.code").exists());
-    }
+
 
 
     @Test
@@ -126,12 +116,16 @@ public class ItemsControllerTests extends BaseIntegration{
                         .contentType(MediaType.APPLICATION_JSON))
                 .andDo(print());
 
+        validateItem(edit, resultActions);
+    }
+
+    private void validateItem(ItemEditModel model, ResultActions resultActions) throws Exception {
         resultActions
                 .andExpect(status().isCreated())
                 .andExpect(jsonPath("$.id").exists())
-                .andExpect(jsonPath("$.name").value(edit.getName()))
-                .andExpect(jsonPath("$.status").value(edit.getStatus().toString()))
-                .andExpect(jsonPath("$.description").value(edit.getDescription()));
+                .andExpect(jsonPath("$.name").value(model.getName()))
+                .andExpect(jsonPath("$.status").value(model.getStatus().toString()))
+                .andExpect(jsonPath("$.description").value(model.getDescription()));
     }
 
 }
