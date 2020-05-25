@@ -48,7 +48,8 @@ and can be performed by calling [build.sh](build.sh). This script stops all part
 
 Following section present steps for running the test from scratch or repeating
 
-- restart test environment: [restart.sh](restart.sh)
+- restart test environment: [restart.sh](restart.sh) path\to\repository
+    example : restart.sh D:/backyard
 - run test: [test.sh](test.sh) (If test(s) are not destructive (only read data from database) you can run them multiple times)
 
 ### Visualize the test

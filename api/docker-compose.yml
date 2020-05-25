@@ -1,5 +1,12 @@
 #docker-compose.yml (Base)
 version: "3.7"
+networks:
+  sample:
+    name: sample-network
+    driver: bridge
+volumes:
+  api-postgres:
+    external: true
 services:
   api-dev:
     image: "openjdk:13.0.2-slim"
@@ -25,22 +32,15 @@ services:
     depends_on:
       - api-postgres
   api-postgres:
-    image: postgres:12.2
+    image: postgres:12
     container_name: api-postgres
     environment:
-      - "POSTGRES_PASSWORD=dev123"
-      - "POSTGRES_USER=dev"
-      - "POSTGRES_DB=sample"
+      - POSTGRES_PASSWORD=dev123
+      - POSTGRES_USER=dev
+      - POSTGRES_DB=sample
     volumes:
       - api-postgres:/var/lib/postgresql/data:z
     ports:
       - "5444:5432"
     networks:
       - sample
-networks:
-  sample:
-    name: sample-network
-    driver: bridge
-volumes:
-  api-postgres:
-    external: true
