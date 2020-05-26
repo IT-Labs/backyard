@@ -1,8 +1,9 @@
 # my global config
 global:
-  scrape_interval:     15s # Set the scrape interval to every 15 seconds. Default is every 1 minute.
-  evaluation_interval: 15s # Evaluate rules every 15 seconds. The default is every 1 minute.
-  # scrape_timeout is set to the global default (10s).
+  scrape_interval:   1m # Default is every 1 minute.
+  scrape_timeout: 30s # default (10s).
+  evaluation_interval: 5m # E The default is every 1 minute.
+
 # Alertmanager configuration
 alerting:
   alertmanagers:
@@ -12,10 +13,12 @@ alerting:
 scrape_configs:
   - job_name: 'cadvisor'
     scrape_interval: 1m
+    metrics_path: '/metrics'
     static_configs:
       - targets: ['cadvisor-sample:8080']
   - job_name: 'node-exporter'
     scrape_interval: 1m
+    metrics_path: '/metrics'
     static_configs:
       - targets: ['node-exporter-sample:9100']
   - job_name: 'prometheus'
@@ -27,6 +30,11 @@ scrape_configs:
     metrics_path: '/v1/actuator/prometheus'
     static_configs:
       - targets: ['api-dev:5000']
+  - job_name: 'postgres-exporter-sample'
+    scrape_interval: 1m
+    metrics_path: '/metrics'
+    static_configs:
+      - targets: ['postgres-exported-sample:9187']
   - job_name: 'grafana-sample'
     scrape_interval: 1m
     metrics_path: '/metrics'
