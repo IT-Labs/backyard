@@ -63,6 +63,7 @@ services:
       - DATA_SOURCE_USER=dev
       - DATA_SOURCE_PASS=dev123
       - PG_EXPORTER_AUTO_DISCOVER_DATABASES=true
+      - PG_EXPORTER_EXCLUDE_DATABASES=rdsadmin
     ports:
     - 9095:9187
     networks:
