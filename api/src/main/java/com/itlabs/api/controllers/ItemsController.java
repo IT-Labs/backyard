@@ -44,18 +44,18 @@ public class ItemsController {
     return new ResponseEntity<>(itemsService.save(model), HttpStatus.CREATED);
   }
 
-  @GetMapping(path = "{id}")
+  @GetMapping(path = "/{id}")
   public ResponseEntity<ItemModel> getItem(@PathVariable("id") int id) {
     return new ResponseEntity<>(itemsService.get(id), HttpStatus.OK);
   }
 
-  @PutMapping(path = "{id}")
+  @PutMapping(path = "/{id}")
   public ResponseEntity<ItemModel> put(
       @PathVariable("id") int id, @RequestBody ItemEditModel model) {
     return new ResponseEntity<>(itemsService.update(id, model), HttpStatus.CREATED);
   }
 
-  @DeleteMapping(path = "{id}")
+  @DeleteMapping(path = "/{id}")
   public ResponseEntity<String> delete(@PathVariable("id") int id) {
     itemsService.delete(id);
     return new ResponseEntity<>("deleted", HttpStatus.NO_CONTENT);

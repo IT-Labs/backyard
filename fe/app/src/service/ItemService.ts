@@ -1,7 +1,7 @@
 const host = "http://localhost:5000/api/v1/";
 //TODO : get host and api version from configuration
 class ItemsService {
-    private readonly itemUrl = host+"items/";
+    private readonly itemUrl = host+"items";
   async get(){
    
     try {     
