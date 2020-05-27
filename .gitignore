@@ -1,2 +1,4 @@
 /fe/app/yarn.lock
 bin/
+*/.sonar/
+*/.scannerwork

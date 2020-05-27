@@ -1,6 +1,6 @@
 # Introduction
 
-Purpose of this repository to give real working examples for development and testing  the code.
+Purpose of this repository to give real working examples for development and testing the code.
 This repository contains a full working local environment, where you can execute your application with minimum installed tools [setup](#root-setup).
 
 ## Stack
@@ -11,9 +11,13 @@ This repository contains a full working local environment, where you can execute
 - React
 - Typescript
 - Nightwatch
+- Postgres
 - Docker
 - Docker compose
 - Selenium grid
+- Sonar
+- Grafana
+- Prometheus
 
 # Readme
 
@@ -30,13 +34,16 @@ For local development please check the Readme section for each project and insta
 ## Root setup
 
 - Docker https://docs.docker.com/install/ and Docker compose https://docs.docker.com/compose/install/
-- Ensure you are sharing the drive where you clone the project https://docs.docker.com/docker-for-windows/#resources 
+- Ensure you are sharing the drive where you clone the project https://docs.docker.com/docker-for-windows/#resources
 - Bash support for windows https://gitforwindows.org/
 - VNC viewer [RealVNC](https://www.realvnc.com/en/connect/download/viewer/) for accessing selenium grid node when test are executed.
 - Configure vnc: server-> localhost:5901, password-> secret, Name -> Chrome:5901
-### Linux 
+
+### Linux
+
 execute following commands to set correct permissions :
-- find -type f -iname "*.sh" -exec chmod +x {} \;
+
+- find -type f -iname "\*.sh" -exec chmod +x {} \;
 - find -type f -iname "gradlew" -exec chmod +x {} \;
 
 ## Build
@@ -49,10 +56,24 @@ and can be performed by calling [build.sh](build.sh). This script stops all part
 Following section present steps for running the test from scratch or repeating
 
 - restart test environment: [restart.sh](restart.sh) path\to\repository
-    example : restart.sh D:/backyard
+  example : restart.sh D:/backyard
 - run test: [test.sh](test.sh) (If test(s) are not destructive (only read data from database) you can run them multiple times)
 
 ### Visualize the test
 
 - open VNC before running test
-- open generated report json -> fe\e2e_tests\reports\cucumber.json or generated html fe\e2e_tests\reports\test_******.html
+- open generated report json -> fe\e2e*tests\reports\cucumber.json or generated html fe\e2e_tests\reports\test***\*\***.html
+
+## Sonar
+
+### Setup
+
+run `docker-compose -f docker-compose-sonar.yml up -d sonarqube-sample`
+navigate to sonar [admin](http://localhost:9001)
+login admin/admin
+create sample-api for java , generate token i paste in docker-compose-sonar.yml
+create sample-fe for fe , generate token i paste in docker-compose-sonar.yml
+
+run `docker-compose -f docker-compose-sonar.yml up -d sonar-fe` for FE analysis
+run `docker-compose -f docker-compose-sonar.yml up -d sonar-api` for API analysis
+remove all containers : `docker-compose -f docker-compose-sonar.yml down`
