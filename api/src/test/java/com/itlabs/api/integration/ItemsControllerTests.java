@@ -1,11 +1,10 @@
 package com.itlabs.api.integration;
 
-import com.itlabs.api.common.Utill;
+import com.itlabs.api.common.Utils;
 import com.itlabs.api.controllers.Routes;
 import com.itlabs.api.models.ItemEditModel;
 import com.itlabs.api.models.ItemStatus;
 import com.itlabs.api.service.ItemsService;
-import io.swagger.models.auth.In;
 import org.junit.jupiter.api.MethodOrderer.Alphanumeric;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
@@ -59,7 +58,7 @@ public class ItemsControllerTests extends BaseIntegration{
 
         final var resultActions = mvc.perform(
                 post(Routes.ITEMS_ROUTE)
-                        .content(Utill.asJsonString(model))
+                        .content(Utils.asJsonString(model))
                         .contentType(MediaType.APPLICATION_JSON))
                 .andDo(print());
 
@@ -72,7 +71,7 @@ public class ItemsControllerTests extends BaseIntegration{
                 new ItemEditModel("testPost", ItemStatus.DRAFT, "test description");
         final var resultActions = mvc.perform(
                 post(Routes.ITEMS_ROUTE)
-                        .content(Utill.asJsonString(model).toLowerCase())
+                        .content(Utils.asJsonString(model).toLowerCase())
                         .contentType(MediaType.APPLICATION_JSON))
                 .andDo(print());
 
@@ -112,7 +111,7 @@ public class ItemsControllerTests extends BaseIntegration{
 
         final var resultActions = mvc.perform(
                 put(Routes.ITEMS_ROUTE + "/" + saved.getId())
-                        .content(Utill.asJsonString(edit))
+                        .content(Utils.asJsonString(edit))
                         .contentType(MediaType.APPLICATION_JSON))
                 .andDo(print());
 

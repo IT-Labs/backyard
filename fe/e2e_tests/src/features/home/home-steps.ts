@@ -1,6 +1,5 @@
 import { When, Then } from "cucumber";
 import { HomePage } from "../../domain/home/homePage";
-import { ItLabsPage } from "../../domain/home/itLabsPage";
 
 const page = new HomePage();
 When("I navigate to home", function() {

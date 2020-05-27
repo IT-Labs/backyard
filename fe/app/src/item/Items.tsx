@@ -3,7 +3,7 @@ import "./Item.css";
 import Table from "react-bootstrap/Table";
 import { Route, Link, Switch } from "react-router-dom";
 import ViewItem from "./ViewItem";
-import ItemsService from "../service/ItemService";
+import ItemsService from "../service/ItemsService";
 
 class Items extends React.Component {
   state = {

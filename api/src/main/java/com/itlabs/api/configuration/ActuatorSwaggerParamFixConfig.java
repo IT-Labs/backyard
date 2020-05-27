@@ -1,6 +1,7 @@
 package com.itlabs.api.configuration;
 
 import com.fasterxml.classmate.TypeResolver;
+import com.itlabs.api.common.GeneralRuntimeException;
 import java.lang.reflect.Field;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -111,7 +112,7 @@ public class ActuatorSwaggerParamFixConfig {
         paramField.setAccessible(true);
         return (List<Parameter>) paramField.get(operationBuilder);
       } catch (NoSuchFieldException | IllegalAccessException e) {
-        throw new RuntimeException("Unable to modify parameter field!", e);
+        throw new GeneralRuntimeException("Unable to modify parameter field!", e);
       }
     }
   }

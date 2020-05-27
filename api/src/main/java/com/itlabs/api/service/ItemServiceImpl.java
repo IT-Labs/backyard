@@ -28,9 +28,7 @@ public class ItemServiceImpl implements ItemsService {
    */
   @Override
   public ItemModel get(Integer id) {
-    Items item = getDatabaseItem(id);
-    var result = getModel(item);
-    return result;
+     return  getModel(getDatabaseItem(id));
   }
 
   /**
@@ -44,7 +42,7 @@ public class ItemServiceImpl implements ItemsService {
             .map(this::getModel)
             .collect(Collectors.toList());
 
-    return new PageImpl(items, pageable, all.getTotalElements());
+    return new PageImpl<>(items, pageable, all.getTotalElements());
   }
   /**
    * @param model

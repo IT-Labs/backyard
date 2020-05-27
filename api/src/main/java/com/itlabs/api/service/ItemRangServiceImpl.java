@@ -17,9 +17,7 @@ public class ItemRangServiceImpl implements ItemRangService {
         result = 1;
         break;
       case IN_PROGRESS:
-        {
-          result = item.getCreated().toEpochSecond(ZoneOffset.UTC);
-        }
+        result = item.getCreated().toEpochSecond(ZoneOffset.UTC);
         break;
       case CANCEL:
         result = -1;

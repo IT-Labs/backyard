@@ -5,7 +5,6 @@ import com.itlabs.api.models.ItemEditModel;
 import com.itlabs.api.models.ItemModel;
 import com.itlabs.api.service.ItemsService;
 import io.swagger.annotations.Api;
-import java.util.List;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
