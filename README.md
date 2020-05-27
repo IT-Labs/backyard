@@ -62,18 +62,18 @@ Following section present steps for running the test from scratch or repeating
 ### Visualize the test
 
 - open VNC before running test
-- open generated report json -> fe\e2e*tests\reports\cucumber.json or generated html fe\e2e_tests\reports\test***\*\***.html
+- open generated report json -> fe\e2e\*tests\reports\cucumber.json or generated html fe\e2e_tests\reports\test**\*\*\***.html
 
 ## Sonar
 
 ### Setup
 
-run `docker-compose -f docker-compose-sonar.yml up -d sonarqube-sample`
-navigate to sonar [admin](http://localhost:9001)
-login admin/admin
-create sample-api for java , generate token i paste in docker-compose-sonar.yml
-create sample-fe for fe , generate token i paste in docker-compose-sonar.yml
+- run `docker-compose -f docker-compose-sonar.yml up -d sonarqube-sample`
+- navigate to sonar [admin](http://localhost:9001)
+- login admin/admin
+- create sample-api for java , generate token i paste in docker-compose-sonar.yml
+- create sample-fe for fe , generate token i paste in docker-compose-sonar.yml
 
-run `docker-compose -f docker-compose-sonar.yml up -d sonar-fe` for FE analysis
-run `docker-compose -f docker-compose-sonar.yml up -d sonar-api` for API analysis
-remove all containers : `docker-compose -f docker-compose-sonar.yml down`
+- run `docker-compose -f docker-compose-sonar.yml up -d sonar-fe` for FE analysis
+- run `docker-compose -f docker-compose-sonar.yml up -d sonar-api` for API analysis
+- remove all containers : `docker-compose -f docker-compose-sonar.yml down`
