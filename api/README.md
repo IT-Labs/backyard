@@ -17,7 +17,8 @@
 
 docker-compose up
 docker-compose down 
-
+ ## Check latest plugin dependencies 
+     gradlew dependencyUpdates
 ### Reference Documentation
 For further reference, please consider the following sections:
 
@@ -30,6 +31,9 @@ For further reference, please consider the following sections:
 * [Flyway Migration](https://docs.spring.io/spring-boot/docs/2.2.5.RELEASE/reference/htmlsingle/#howto-execute-flyway-database-migrations-on-startup)
 * [Spring Data Redis (Access+Driver)](https://docs.spring.io/spring-boot/docs/2.2.5.RELEASE/reference/htmlsingle/#boot-features-redis)
 * [Spring Data Elasticsearch (Access+Driver)](https://docs.spring.io/spring-boot/docs/2.2.5.RELEASE/reference/htmlsingle/#boot-features-elasticsearch)
+* [Gradle versions plugin](https://github.com/ben-manes/gradle-versions-plugin)
+* [Grafana and Prometheus](https://prometheus.io/docs/visualization/grafana/)
+* [Grafana and Prometheus Docker DasHboard ](https://grafana.com/grafana/dashboards/893)
 
 ### Guidelines
 The following guidelines illustrate how to use some features specifically:
@@ -40,6 +44,8 @@ The following guidelines illustrate how to use some features specifically:
 * [Building REST services with Spring](https://spring.io/guides/tutorials/bookmarks/)
 * [Building a RESTful Web Service with Spring Boot Actuator](https://spring.io/guides/gs/actuator-service/)
 * [Messaging with Redis](https://spring.io/guides/gs/messaging-redis/)
+* [JVM (Micrometer)](https://grafana.com/grafana/dashboards/4701)
+* [Grafana Docker stats](https://grafana.com/grafana/dashboards/893)
 
 ### Additional Links
 These additional references should also help you:

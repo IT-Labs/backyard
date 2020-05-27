@@ -1,11 +1,13 @@
 package com.itlabs.api.service;
 
-import com.itlabs.api.entity.Item;
+import com.itlabs.api.entity.Items;
 import java.time.ZoneOffset;
+import org.springframework.stereotype.Service;
 
+@Service
 public class ItemRangServiceImpl implements ItemRangService {
   @Override
-  public long getRang(Item item) {
+  public long getRang(Items item) {
     long result = 0;
     switch (item.getStatus()) {
       case DRAFT:
@@ -15,9 +17,7 @@ public class ItemRangServiceImpl implements ItemRangService {
         result = 1;
         break;
       case IN_PROGRESS:
-        {
-          result = item.getCreated().toEpochSecond(ZoneOffset.UTC);
-        }
+        result = item.getCreated().toEpochSecond(ZoneOffset.UTC);
         break;
       case CANCEL:
         result = -1;

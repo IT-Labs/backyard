@@ -3,17 +3,17 @@ import "./Item.css";
 import Table from "react-bootstrap/Table";
 import { Route, Link, Switch } from "react-router-dom";
 import ViewItem from "./ViewItem";
-import ItemService from "../service/ItemService";
+import ItemsService from "../service/ItemsService";
 
 class Items extends React.Component {
   state = {
-    items: [],   
-    loading: true
+    items: [],
+    loading: true,
   };
-  itemsService = new ItemService();
-  async componentDidMount() {     
-     const data =await this.itemsService.get();
-      this.setState({ items:data , loading: false });   
+  itemsService = new ItemsService();
+  async componentDidMount() {
+    const data = await this.itemsService.get();
+    this.setState({ items: data.content, loading: false });
   }
 
   renderTableData(items: Array<any>) {
@@ -33,7 +33,7 @@ class Items extends React.Component {
   }
   render() {
     const { items, loading } = this.state;
-    
+
     if (loading) {
       return <div>Loading Items</div>;
     }
