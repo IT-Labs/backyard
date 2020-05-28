@@ -21,7 +21,7 @@ services:
       - sample
     depends_on:
       - sonarqube-sample
-    command: sonar-scanner  -Dsonar.login=7fdb399cd4e4c39d549f14fd7634524fe026bf8e -Dsonar.projectKey=sample-fe -Dsonar.sources=. -Dsonar.exclusions=e2e_tests/reports/** -Dsonar.host.url=http://sonarqube-sample:9000   -Dsonar.scm.disabled=True 
+    command: sonar-scanner  -Dsonar.login=7fdb399cd4e4c39d549f14fd7634524fe026bf8e -Dsonar.projectKey=sample-fe -Dsonar.sources=. -Dsonar.exclusions=e2e_tests/reports/** -Dsonar.host.url=http://sonarqube-sample:9000   -Dsonar.scm.disabled=True
   sonar-api:
     image: openjdk:13.0.2-slim
     container_name: sonar-api
@@ -36,9 +36,6 @@ services:
   sonarqube-sample:
     image: sonarqube:8.3-community
     container_name: sonarqube-sample
-    expose:
-      - 9000
-    user: "999"
     ports:
       - 9001:9000
     networks:
