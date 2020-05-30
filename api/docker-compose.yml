@@ -30,7 +30,17 @@ services:
     ports:
       - 5000:5000
     depends_on:
+      - flyway-sample
+  flyway-sample:
+    image: flyway/flyway:6.4.3
+    container_name: flyway-sample
+    command: -url=jdbc:postgresql://api-postgres/sample -schemas=public -user=dev -password=dev123 migrate
+    volumes:
+      - ./build/resources/main/db/migration:/flyway/sql
+    depends_on:
       - api-postgres
+    networks:
+      - sample
   api-postgres:
     image: postgres:12
     container_name: api-postgres
