@@ -55,9 +55,21 @@ and can be performed by calling [build.sh](build.sh). This script stops all part
 
 Following section present steps for running the test from scratch or repeating
 
-- restart test environment: [restart.sh](restart.sh) path\to\repository
-  example : restart.sh D:/backyard
+- restart test environment: [restart.sh](restart.sh) path\to\repository; example : C:/Projects/IT-Labs/backyard
+  example : restart.sh C:/Projects/IT-Labs/backyard
 - run test: [test.sh](test.sh) (If test(s) are not destructive (only read data from database) you can run them multiple times)
+
+## SiteSpeed test
+### Run
+ restart test environment: [performance_test.sh](performance_test.sh) path\to\repository\metrics (NOTE : this path is required because is volume for results and contains urls for running) 
+  example : performance_test.sh C:/Projects/IT-Labs/backyard/metrics
+### Links
+- https://www.sitespeed.io/documentation/sitespeed.io/configuration/
+- https://www.sitespeed.io/documentation/sitespeed.io/lighthouse/ 
+- https://www.sitespeed.io/documentation/sitespeed.io/performance-dashboard/#up-and-running-in-almost-5-minutes 
+- https://grafana.com/grafana/dashboards/10288
+- https://github.com/sitespeedio/grafana-bootstrap-docker/tree/main/dashboards/graphite
+
 
 ### Visualize the test
 

@@ -1,0 +1,3 @@
+http://fe-dev:3000/ SampleApp
+http://api-dev:5000/swagger-ui.html SampleSwagger
+https://www.it-labs.com/ It_Labs_site 

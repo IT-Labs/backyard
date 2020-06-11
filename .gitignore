@@ -2,3 +2,4 @@
 bin/
 */.sonar/
 */.scannerwork
+/metrics/sitespeed-result/

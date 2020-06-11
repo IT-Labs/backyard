@@ -1,0 +1,95 @@
+#docker-compose.yml (Base)
+#https://github.com/wrouesnel/postgres_exporter
+version: "3.7"
+volumes:
+  grafana-sample:
+  prometheus-sample:
+  whisper-sample:
+services:
+  grafana-sample:
+    container_name: grafana-sample
+    image: grafana/grafana:latest
+    ports:
+      - 9092:3000
+    volumes:
+      - grafana-sample:/var/lib/grafana
+      - ./config/monitoring/grafana/provisioning/:/etc/grafana/provisioning/
+    env_file:
+      - ./config/monitoring/grafana/env-docker
+    networks:
+      - sample
+    depends_on:
+      - prometheus-sample
+  prometheus-sample:
+    container_name: prometheus-sample
+    image: prom/prometheus:latest
+    ports:
+      - 9091:9090
+    volumes:
+      - ./config/monitoring/prometheus/:/etc/prometheus/
+      - prometheus-sample:/prometheus
+    networks:
+      - sample
+  cadvisor-sample:
+    image: google/cadvisor:latest
+    container_name: cadvisor-sample
+    volumes:
+      - /var/run:/var/run:rw
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+    ports:
+      - 9093:8080
+    networks:
+      - sample
+  node-exporter-sample:
+    image: prom/node-exporter
+    container_name: node-exporter-sample
+    volumes:
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+    command:
+      - "--path.procfs=/host/proc"
+      - "--path.sysfs=/host/sys"
+      - --collector.filesystem.ignored-mount-points
+      - "^/(sys|proc|dev|host|etc|rootfs/var/lib/docker/containers|rootfs/var/lib/docker/overlay2|rootfs/run/docker/netns|rootfs/var/lib/docker/aufs)($$|/)"
+    ports:
+      - 9094:9100
+    networks:
+      - sample
+  postgres-exported-sample:
+    image: wrouesnel/postgres_exporter
+    container_name: postgres-exported-sample
+    environment:
+      - DATA_SOURCE_URI=api-postgres:5432/postgres?sslmode=disable
+      - DATA_SOURCE_USER=dev
+      - DATA_SOURCE_PASS=dev123
+      - PG_EXPORTER_AUTO_DISCOVER_DATABASES=true
+      - PG_EXPORTER_EXCLUDE_DATABASES=rdsadmin
+    ports:
+      - 9095:9187
+    networks:
+      - sample
+  graphite-sample:
+    image: sitespeedio/graphite:1.1.5-12
+    container_name: graphite-sample
+    ports:
+      - "2003:2003"
+      - "4080:80"
+    restart: always
+    networks:
+      - sample
+    volumes:
+      - whisper-sample:/opt/graphite/storage/whisper
+  # grafana-setup-sample:
+  #   image: sitespeedio/grafana-bootstrap:13.1.0
+  #   container_name: grafana-setup-sample
+  #   networks:
+  #     - sample
+  #   environment:
+  #     - GF_PASSWORD=*****
+  #     - GF_USER=admin
+  #     - GF_API=http://grafana-sample:3000/api
+networks:
+  sample:
+    name: sample-network
+    driver: bridge
