@@ -2,7 +2,7 @@
 version: '3.7'
 services:
   build:
-    image: "openjdk:13.0.2-slim"
+    image: "openjdk:14.0.1-slim"
     container_name: build-api
     volumes:
       - ./:/usr/src/myapp

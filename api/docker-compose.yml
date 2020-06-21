@@ -9,7 +9,7 @@ volumes:
     external: true
 services:
   api-dev:
-    image: "openjdk:13.0.2-slim"
+    image: "openjdk:14.0.1-slim"
     container_name: api-dev
     volumes:
       - ./build/libs:/usr/src/myapp
@@ -32,7 +32,7 @@ services:
     depends_on:
       - flyway-sample
   flyway-sample:
-    image: flyway/flyway:6.4.3
+    image: flyway/flyway:6.4.4-alpine
     container_name: flyway-sample
     command: -url=jdbc:postgresql://api-postgres/sample -schemas=public -user=dev -password=dev123 migrate
     volumes:
@@ -42,7 +42,7 @@ services:
     networks:
       - sample
   api-postgres:
-    image: postgres:12
+    image: library/postgres:12-alpine
     container_name: api-postgres
     environment:
       - POSTGRES_PASSWORD=dev123
