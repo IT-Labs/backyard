@@ -1,34 +1,31 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { Route, Switch, Link, BrowserRouter as Router } from "react-router-dom";
+import { Route, Switch, BrowserRouter as Router } from "react-router-dom";
 import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Items from "./item/Items";
 import Notfound from "./NotFound";
+
 import About from "./about/About";
+import Footer from "./common/footer";
+import Header from "./common/header";
 const routing = (
   <Router>
     <div>
-      <Link to="/" id="home_nav" className="nav-link">
-        Home
-      </Link>
+     
 
-      <Link to="/items" id="items_nav" className="nav-link">
-        Items
-      </Link>
-
-      <Link to="/about" id="items_about" className="nav-link">
-        About
-      </Link>
-
+      <Header />
+      <hr />
       <Switch>
         <Route path="/" exact component={App} />
         <Route path="/items" component={Items} />
         <Route path="/about" component={About} />
         <Route component={Notfound} />
       </Switch>
+      <Footer />
+      
     </div>
   </Router>
 );

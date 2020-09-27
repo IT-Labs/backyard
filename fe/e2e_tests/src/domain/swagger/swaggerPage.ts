@@ -4,23 +4,25 @@ export class SwaggerPage {
   elements = {
     info: ".info",
     version: "",
-    productsLink: "#operations-tag-items-controller",
-    productActionPrefix: "#operations-items-controller",
+    link: "#operations-tag-gateway-controller-endpoint",
+    actionPrefix: "#operations-gateway-controller-endpoint-globalfilters",
   };
   async navigateToSwagger() {
-    const url = appConfig.urlApi + "/swagger-ui.html";
+    const url = appConfig.urlApi + "/swagger-ui/";
     console.log(`navigate to ${url}`);
-    await client.url(url);
-    return client.waitForElementVisible(this.elements.info, 500);
+    return client.url(url);
   }
+  async  verifyInfo(){
+  return client.waitForElementVisible(this.elements.info, 500);
+ }
 
-  openItemTab() {
-    return client.click(this.elements.productsLink);
+ async openItemTab() {
+    return client.click(this.elements.link);
   }
 
   async verify(action: string, method: string) {
     let element = this.getSwaggerLink(
-      this.elements.productActionPrefix,
+      this.elements.actionPrefix,
       action,
       method
     );

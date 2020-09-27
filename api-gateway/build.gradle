@@ -1,13 +1,24 @@
-plugins {
-	id 'org.springframework.boot' version '2.3.1.RELEASE'
-	id 'io.spring.dependency-management' version '1.0.9.RELEASE'
-	id "com.github.ben-manes.versions" version "0.28.0"
-	id 'java'
-	id "org.sonarqube" version "3.0"
+buildscript {
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("io.spring.javaformat:spring-javaformat-gradle-plugin:0.0.25")
+	}
 }
 
+plugins {
+	id 'org.springframework.boot' version '2.3.5.RELEASE'
+	id 'io.spring.dependency-management' version '1.0.10.RELEASE'
+	id "com.github.ben-manes.versions" version "0.33.0"
+	id 'java'
+	id "org.sonarqube" version "3.0"
+	id "jacoco"
+}
+apply plugin: 'io.spring.javaformat'
 group = 'com.it-labs'
 sourceCompatibility = '14'
+targetCompatibility ='14'
 version ='version 1'
 configurations {
 	developmentOnly
@@ -27,20 +38,21 @@ bootJar {
 repositories {
 	mavenCentral()
 	jcenter()
-
 }
-
 ext {
-	set('springCloudVersion', "Hoxton.SR6")
+	set('springCloudVersion', "Hoxton.SR8")
 }
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-hystrix'
+	implementation  'org.springframework.boot:spring-boot-starter-data-redis'
 	implementation 'org.springframework.cloud:spring-cloud-starter-gateway'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	compile 'io.micrometer:micrometer-registry-prometheus'
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
+	implementation "io.springfox:springfox-boot-starter:3.0.0"
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
@@ -54,4 +66,9 @@ dependencyManagement {
 
 test {
 	useJUnitPlatform()
+}
+jacocoTestReport {
+    reports {
+        xml.enabled true
+		}
 }

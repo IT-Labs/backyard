@@ -4,7 +4,7 @@ Feature: Home Page
         Given I navigate to home
 
     @smoketest
-    Scenario: verify home logo
+    Scenario: verify footer logo
         Then I should see it labs link
         Then I should see logo
      

@@ -8,6 +8,9 @@ import lombok.Value;
 @Value
 @AllArgsConstructor
 public class ProductModel {
-  private String name;
-  private int id;
+
+	private String name;
+
+	private int id;
+
 }

@@ -1,6 +1,6 @@
 import React from "react";
 import "./Item.css";
-import { Route, Link, Switch } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 class EditItem extends React.Component {
   render() {
