@@ -17,8 +17,8 @@ services:
       NODE_MAX_INSTANCES: 3
     ports:
       - "5901:5900"
-    volumes:
-      - /dev/shm:/dev/shm
+    # volumes:
+    #   - /dev/shm:/dev/shm
     depends_on:
       - selenium-hub
     environment:
