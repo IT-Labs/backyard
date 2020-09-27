@@ -3,3 +3,4 @@ bin/
 */.sonar/
 */.scannerwork
 /metrics/sitespeed-result/
+/.idea/
