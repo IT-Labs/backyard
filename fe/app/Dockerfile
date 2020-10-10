@@ -1,10 +1,10 @@
-FROM node:12.18.0-alpine3.11 as builder
+FROM node:14.13.1-alpine3.11 as builder
 
 # Install dependencies
 COPY package.json .
 RUN yarn install
 
-FROM node:12.18.0-alpine3.11
+FROM node:14.13.1-alpine3.11
 
 WORKDIR /usr/src/app
 
