@@ -1,26 +1,14 @@
 import React from "react";
-import logo from "./logo.svg";
+import "./common/common.css";
 import "./App.css";
+
+import ComingSoon from "./common/comingSoon";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <p>Home Page</p>
-        <a
-          className="App-link"
-          href="https://www.it-labs.com/"
-          target="_blank"
-          id="itLabs"
-          rel="noopener noreferrer"
-          data-testid="itLabs"
-        >
-          It Labs
-        </a>
-      </header>
-      <div id="logo_section" className="logo-section">
-        <img id="logo" src={logo} className="App-logo" alt="logo" />
-      </div>
+      <p> Demo page</p>
+      <ComingSoon />
     </div>
   );
 }
