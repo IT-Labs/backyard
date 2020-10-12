@@ -1,12 +1,12 @@
 import { client } from "nightwatch-api";
 import { appConfig } from "../../config";
 
-export class HomePage {
+export class AboutPage {
   elements = {  
-    link: appConfig.url + "/",
+    link: appConfig.url + "/about",
     content:"#comingSoon"
   };
-  async navigateToHome() {   
+  async navigateToAbout() {   
     await client.url(this.elements.link);
     return client.waitForElementVisible(this.elements.content, 500);
   }
