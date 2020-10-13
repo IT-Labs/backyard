@@ -1,7 +1,7 @@
-const host = "http://localhost:5000/api/v1/";
-//TODO : get host and api version from configuration
+import { appConfig } from "./config";
+
 class ItemsService {
-    private readonly itemUrl = host+"items";
+    private readonly itemUrl = appConfig.urlApi+"items";
   async get(){
    
     try {     

@@ -3,8 +3,7 @@
 version: "3.7"
 services:
   fe-dev:
-    build:
-      context: .
+    image: fe-sample
     container_name: fe-dev
     ports:
       - "5010:3000"

@@ -1,3 +1,4 @@
 #!/bin/sh
 docker-compose down
-docker-compose build
+docker build --tag fe-sample .
+docker-compose  up -d
