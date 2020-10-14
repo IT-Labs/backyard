@@ -4,3 +4,4 @@ bin/
 */.scannerwork
 /metrics/sitespeed-result/
 /.idea/
+*.orig
