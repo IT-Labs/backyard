@@ -1,14 +1,14 @@
 plugins {
-	id 'org.springframework.boot' version '2.3.0.RELEASE'
-	id 'io.spring.dependency-management' version '1.0.9.RELEASE'
-	id "com.github.ben-manes.versions" version "0.28.0"
+	id 'org.springframework.boot' version '2.3.4.RELEASE'
+	id 'io.spring.dependency-management' version '1.0.10.RELEASE'
+	id "com.github.ben-manes.versions" version "0.33.0"
 	id 'java'
-	id "org.sonarqube" version "2.7"
+	id "org.sonarqube" version "3.0"
 }
 
 group = 'com.it-labs'
-sourceCompatibility = '13'
-
+sourceCompatibility = '14'
+version ='version 1'
 configurations {
 	developmentOnly
 	runtimeClasspath {
@@ -18,7 +18,12 @@ configurations {
 		extendsFrom annotationProcessor
 	}
 }
-
+springBoot {
+	buildInfo()
+}
+bootJar {
+	archiveFileName="service.jar"
+}
 repositories {
 	mavenCentral()
 	jcenter()
@@ -29,22 +34,25 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
-	implementation 'org.flywaydb:flyway-core:6.4.2'
+	implementation 'org.flywaydb:flyway-core:6.5.7'
+
 
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
-	runtimeOnly 'org.postgresql:postgresql:42.2.12'
+	runtimeOnly 'org.postgresql:postgresql:42.2.16'
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
-	compile 'io.springfox:springfox-swagger2:2.9.2'
-	compile 'io.springfox:springfox-swagger-ui:2.9.2'
+//	compile 'io.springfox:springfox-swagger2:3.0.0'
+//	compile 'io.springfox:springfox-swagger-ui:3.0.0'
+	implementation "io.springfox:springfox-boot-starter:3.0.0"
 	compile 'io.micrometer:micrometer-registry-prometheus'
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
 	testCompile("com.github.javafaker:javafaker:1.0.2")
-	testCompile('org.testcontainers:testcontainers:1.14.2')
-	testCompile('org.testcontainers:postgresql:1.14.2')
+	testCompile('org.testcontainers:testcontainers:1.14.3')
+	testCompile('org.testcontainers:postgresql:1.14.3')
 }
 
 test {

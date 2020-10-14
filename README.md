@@ -18,6 +18,7 @@ This repository contains a full working local environment, where you can execute
 - Sonar
 - Grafana
 - Prometheus
+- sitespeed.io
 
 # Readme
 
@@ -55,19 +56,55 @@ and can be performed by calling [build.sh](build.sh). This script stops all part
 
 Following section present steps for running the test from scratch or repeating
 
-- restart test environment: [restart.sh](restart.sh) path\to\repository
-  example : restart.sh D:/backyard
+- restart test environment: [restart.sh](restart.sh) path\to\repository; example : C:/Projects/IT-Labs/backyard
+  example :`restart.sh C:/Projects/IT-Labs/backyard`
 - run test: [test.sh](test.sh) (If test(s) are not destructive (only read data from database) you can run them multiple times)
+
+## Volume backup
+
+If you want to backup volume,because [restart.sh](restart.sh) is restoring your volume on each run
+you should run the [backup script](volume_backup.sh)
+example : `volume_backup.sh C:/Projects/IT-Labs/backyard`
+
+## Performance test
+
+### Dashboard and storage setup
+
+- ensure api-postgres container is running (it is used by grafana to store credentials and dashboards)
+- run [monitoring docker compose](docker-compose-monitoring.yml) `docker-compose -f "docker-compose-monitoring.yml" up -d`
+- navigate to http://localhost:9092/ , credentials admin/admin
+
+### SiteSpeed Run
+
+restart test environment: [performance_test.sh](performance_test.sh) path\to\repository\metrics (NOTE : this path is required because is volume for results and contains urls for running)
+example : `performance_test.sh C:/Projects/IT-Labs/backyard/metrics`
 
 ### Visualize the test
 
 - open VNC before running test
 - open generated report json -> fe\e2e\*tests\reports\cucumber.json or generated html fe\e2e_tests\reports\test**\*\*\***.html
+- open exported sitespeed.io [folder](metrics)
+- open http://localhost:9092/dashboards
+
+### Links
+
+- https://www.sitespeed.io/documentation/sitespeed.io/configuration/
+- https://www.sitespeed.io/documentation/sitespeed.io/lighthouse/
+- https://www.sitespeed.io/documentation/sitespeed.io/performance-dashboard/#up-and-running-in-almost-5-minutes
+- https://grafana.com/grafana/dashboards/10288
+- https://github.com/sitespeedio/grafana-bootstrap-docker/tree/main/dashboards/graphite
 
 ## Sonar
 
 ### Setup
+#### WSL 2 setup :
+this is solving the production elastic search setup : https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html#_set_vm_max_map_count_to_at_least_262144
 
+- open powershell wsl -d docker-desktop
+- sysctl -w vm.max_map_count=262144
+NOTE: for now this command must be run after each windows system restart 
+
+#### Run Sonar
 - run `docker-compose -f docker-compose-sonar.yml up -d sonarqube-sample`
 - navigate to sonar [admin](http://localhost:9001)
 - login admin/admin

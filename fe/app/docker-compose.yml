@@ -3,11 +3,13 @@
 version: "3.7"
 services:
   fe-dev:
-    build:
-      context: .
+    image: fe-sample
     container_name: fe-dev
+    environment: 
+      - REACT_APP_API_URL=http://api-dev:5000/
     ports:
       - "5010:3000"
+    command: sh -c "yarn run start"
     networks:
       - sample
 networks:
