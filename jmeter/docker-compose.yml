@@ -1,0 +1,18 @@
+#https://github.com/justb4/docker-jmeter
+#docker-compose.yml (Base)
+version: "3.7"
+networks:
+  sample:
+    name: sample-network
+    driver: bridge
+services:
+  jmeter-sample:
+    container_name: jmeter-sample
+    build:
+      context: .
+    networks:
+      - sample
+    volumes:
+      - ./:/usr/src/myapp
+    working_dir: /usr/src/myapp
+    command:  ["sh", "docker_run.sh"]

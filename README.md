@@ -19,6 +19,7 @@ This repository contains a full working local environment, where you can execute
 - Grafana
 - Prometheus
 - sitespeed.io
+- Jmeter 
 
 # Readme
 
@@ -66,6 +67,26 @@ If you want to backup volume,because [restart.sh](restart.sh) is restoring your 
 you should run the [backup script](volume_backup.sh)
 example : `volume_backup.sh C:/Projects/IT-Labs/backyard`
 
+## Jmeter test
+
+- download [jmeter](https://jmeter.apache.org/download_jmeter.cgi)
+
+### Development (GUI mode)
+
+- extract and run jmeter.(bat,sh)
+- open existing .jmx files or create a new one in the following [location](jmeter/tests)
+
+### Non-GUI mode run
+
+this mode is using docker to run test, outputs can be found [location](jmeter)
+
+- tune the test J parameters in jmeter.sh(jmeter.sh)
+- jmeter.sh(jmeter.sh)
+### Reports results 
+ - html reports can be found  [location](jmeter/reports) 
+ - stats are send to graphite by using Backend Listener to Graphite
+ - Grafana (Coming soon)  
+
 ## Performance test
 
 ### Dashboard and storage setup
@@ -97,14 +118,17 @@ example : `performance_test.sh C:/Projects/IT-Labs/backyard/metrics`
 ## Sonar
 
 ### Setup
+
 #### WSL 2 setup :
+
 this is solving the production elastic search setup : https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html#_set_vm_max_map_count_to_at_least_262144
 
 - open powershell wsl -d docker-desktop
 - sysctl -w vm.max_map_count=262144
-NOTE: for now this command must be run after each windows system restart 
+  NOTE: for now this command must be run after each windows system restart
 
 #### Run Sonar
+
 - run `docker-compose -f docker-compose-sonar.yml up -d sonarqube-sample`
 - navigate to sonar [admin](http://localhost:9001)
 - login admin/admin
