@@ -2,17 +2,18 @@ package com.itlabs.api.service;
 
 import com.itlabs.api.models.ItemEditModel;
 import com.itlabs.api.models.ItemModel;
+import java.util.UUID;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 public interface ItemsService {
-  ItemModel get(Integer id);
+  ItemModel get(UUID uuid);
 
   Page<ItemModel> get(Pageable pageable);
 
   ItemModel save(ItemEditModel model);
 
-  ItemModel update(int id, ItemEditModel model);
+  ItemModel update(UUID uuid, ItemEditModel model);
 
-  void delete(int id);
+  void delete(UUID uuid);
 }
