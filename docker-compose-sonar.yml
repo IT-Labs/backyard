@@ -21,7 +21,7 @@ services:
       - sample
     depends_on:
       - sonarqube-sample
-    command: sonar-scanner  -Dsonar.login=7fdb399cd4e4c39d549f14fd7634524fe026bf8e -Dsonar.projectKey=sample-fe -Dsonar.sources=. -Dsonar.exclusions=e2e_tests/reports/** -Dsonar.host.url=http://sonarqube-sample:9000   -Dsonar.scm.disabled=True
+    command: sonar-scanner  -Dsonar.login=bf9653e42321198573e4e5c6cc02a069caae908e -Dsonar.projectKey=sample-fe -Dsonar.sources=. -Dsonar.exclusions=e2e_tests/reports/** -Dsonar.host.url=http://sonarqube-sample:9000   -Dsonar.scm.disabled=True
   sonar-api:
     image: openjdk:14.0.1-slim
     container_name: sonar-api
@@ -32,9 +32,9 @@ services:
       - sample
     depends_on:
       - sonarqube-sample
-    command: ./gradlew sonarqube -x test -Dsonar.login=2cae8034a9a8d1fc5476409b7da18d386988ee7c -Dsonar.projectKey=sample-api -Dsonar.host.url=http://sonarqube-sample:9000   -Dsonar.scm.disabled=True
+    command: ./gradlew sonarqube -x test -Dsonar.login=0da6ee6496451673b93e56e3b4408afccefd37ff -Dsonar.projectKey=sample-api -Dsonar.host.url=http://sonarqube-sample:9000   -Dsonar.scm.disabled=True
   sonarqube-sample:
-    image: sonarqube:8.3-community
+    image: sonarqube:8.5-community
     container_name: sonarqube-sample
     ports:
       - 9001:9000

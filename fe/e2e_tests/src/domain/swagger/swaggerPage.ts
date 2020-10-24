@@ -8,7 +8,7 @@ export class SwaggerPage {
     productActionPrefix: "#operations-items-controller",
   };
   async navigateToSwagger() {
-    const url = appConfig.urlApi + "/swagger-ui.html";
+    const url = appConfig.urlApi + "/swagger-ui/";
     console.log(`navigate to ${url}`);
     await client.url(url);
     return client.waitForElementVisible(this.elements.info, 500);

@@ -4,7 +4,9 @@ import com.itlabs.api.entity.Items;
 import com.itlabs.api.models.ItemEditModel;
 import com.itlabs.api.models.ItemModel;
 import com.itlabs.api.repository.ItemsRepository;
+import java.util.UUID;
 import java.util.stream.Collectors;
+import javax.transaction.Transactional;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -22,13 +24,13 @@ public class ItemServiceImpl implements ItemsService {
   }
 
   /**
-   * @param id
+   * @param uuid
    * @return ItemModel
    * @throws EmptyResultDataAccessException
    */
   @Override
-  public ItemModel get(Integer id) {
-     return  getModel(getDatabaseItem(id));
+  public ItemModel get(UUID uuid) {
+     return  getModel(getDatabaseItem(uuid));
   }
 
   /**
@@ -49,48 +51,53 @@ public class ItemServiceImpl implements ItemsService {
    * @return ItemModel
    */
   @Override
+  @Transactional
   public ItemModel save(ItemEditModel model) {
     var item = new Items();
     item.setName(model.getName());
     item.setStatus(model.getStatus());
     item.setType("PERSONAL");
+    item.setGuid(UUID.randomUUID());
     item.setDescription(model.getDescription());
-    return getModel(itemRepository.save(item));
+    item = itemRepository.save(item);
+    return getModel(item);
   }
 
   /**
-   * @param id
+   * @param uuid
    * @param editModel
    * @return ItemModel
    * @throws EmptyResultDataAccessException
    */
   @Override
-  public ItemModel update(int id, ItemEditModel editModel) {
-    var item = getDatabaseItem(id);
+  @Transactional
+  public ItemModel update(UUID uuid, ItemEditModel editModel) {
+    var item = getDatabaseItem(uuid);
     item.setName(editModel.getName());
     item.setStatus(editModel.getStatus());
     item.setDescription(editModel.getDescription());
     return getModel(itemRepository.save(item));
   }
 
-  /** @param id */
+  /** @param uuid */
   @Override
-  public void delete(int id) {
-    itemRepository.deleteById(id);
+  @Transactional
+  public void delete(UUID uuid) {
+    itemRepository.deleteByGuid(uuid);
   }
 
-  private Items getDatabaseItem(Integer id) {
+  private Items getDatabaseItem(UUID uuid) {
     return itemRepository
-        .findById(id)
+        .findByGuid(uuid)
         .orElseThrow(
             () ->
                 new EmptyResultDataAccessException(
-                    String.format("Item with id %d not found", id), 1));
+                    String.format("Item with id %d not found", uuid), 1));
   }
 
   private ItemModel getModel(Items item) {
     return ItemModel.builder()
-        .id(item.getId())
+        .id(item.getGuid().toString())
         .name(item.getName())
         .description(item.getDescription())
         .status(item.getStatus())

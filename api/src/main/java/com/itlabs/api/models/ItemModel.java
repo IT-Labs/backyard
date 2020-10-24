@@ -11,5 +11,5 @@ public class ItemModel {
   private String name;
   private ItemStatus status;
   private String description;
-  private int id;
+  private String id;
 }

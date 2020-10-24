@@ -5,6 +5,7 @@ import com.itlabs.api.models.ItemEditModel;
 import com.itlabs.api.models.ItemModel;
 import com.itlabs.api.service.ItemsService;
 import io.swagger.annotations.Api;
+import java.util.UUID;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
@@ -44,18 +45,18 @@ public class ItemsController {
   }
 
   @GetMapping(path = "/{id}")
-  public ResponseEntity<ItemModel> getItem(@PathVariable("id") int id) {
+  public ResponseEntity<ItemModel> getItem(@PathVariable("id") UUID id) {
     return new ResponseEntity<>(itemsService.get(id), HttpStatus.OK);
   }
 
   @PutMapping(path = "/{id}")
   public ResponseEntity<ItemModel> put(
-      @PathVariable("id") int id, @RequestBody ItemEditModel model) {
+          @PathVariable("id") UUID id, @RequestBody ItemEditModel model) {
     return new ResponseEntity<>(itemsService.update(id, model), HttpStatus.CREATED);
   }
 
   @DeleteMapping(path = "/{id}")
-  public ResponseEntity<String> delete(@PathVariable("id") int id) {
+  public ResponseEntity<String> delete(@PathVariable("id") UUID id) {
     itemsService.delete(id);
     return new ResponseEntity<>("deleted", HttpStatus.NO_CONTENT);
   }
