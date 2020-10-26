@@ -8,9 +8,9 @@ volumes:
   api-postgres:
     external: true
 services:
-  api-dev:
+  api-internal-sample:
     image: "openjdk:14.0.1-slim"
-    container_name: api-dev
+    container_name: api-internal-sample
     volumes:
       - ./build/libs:/usr/src/myapp
     working_dir: /usr/src/myapp
@@ -26,9 +26,9 @@ services:
     networks:
       - sample
     expose:
-      - "5000"
+      - "5001"
     ports:
-      - 5000:5000
+      - 5001:5001
     depends_on:
       - flyway-sample
   flyway-sample:

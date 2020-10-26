@@ -4,8 +4,8 @@ export class SwaggerPage {
   elements = {
     info: ".info",
     version: "",
-    productsLink: "#operations-tag-items-controller",
-    productActionPrefix: "#operations-items-controller",
+    link: "#operations-tag-gateway-controller-endpoint",
+    actionPrefix: "#operations-gateway-controller-endpoint-globalfilters",
   };
   async navigateToSwagger() {
     const url = appConfig.urlApi + "/swagger-ui/";
@@ -15,12 +15,12 @@ export class SwaggerPage {
   }
 
   openItemTab() {
-    return client.click(this.elements.productsLink);
+    return client.click(this.elements.link);
   }
 
   async verify(action: string, method: string) {
     let element = this.getSwaggerLink(
-      this.elements.productActionPrefix,
+      this.elements.actionPrefix,
       action,
       method
     );

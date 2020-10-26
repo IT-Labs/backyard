@@ -8,17 +8,17 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class GatewayConfig {
 
+
+
   @Bean
-  public RouteLocator microserviceRoutes(RouteLocatorBuilder builder) {
+  public RouteLocator internalRoutesLocator(RouteLocatorBuilder builder,
+                                            InternalServiceConfiguration internalServiceConfiguration) {
     return builder
         .routes()
-        .route(
-            mailer ->
-                mailer
-                    .path("/internal-api/**")
-                    .filters(f -> f.rewritePath("/internal-api/(?<remains>.*)", "/${remains}"))
-                    .uri("http://localhost:5000/")
-                    .id("api"))
-        .build();
+            .route(r -> r.path("/items/**")
+                    .filters(f -> f.rewritePath("/items", "/api/v1/items"))
+                    .uri(internalServiceConfiguration.getInternalApiUrl())
+                    .id("itemsModule"))
+                    .build();
   }
 }

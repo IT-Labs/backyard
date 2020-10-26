@@ -1,14 +1,13 @@
 import { IAppConfig } from "./IAppConfig";
 
 const host = "http://localhost:5000/";
-const apiVersion = "api/v1/";
  
-  var appConfig: IAppConfig = Object.assign({});
-  
+  var appConfig: IAppConfig = Object.assign({});  
   if(process.env.REACT_APP_API_URL){
-    appConfig.urlApi= process.env.REACT_APP_API_URL +apiVersion;
-}  else{  
-appConfig.urlApi= host +apiVersion;
+    appConfig.urlApi= process.env.REACT_APP_API_URL;
+} 
+ else{  
+appConfig.urlApi= host;
 }
 console.info("env", process.env);
 console.info("env.REACT_APP_API_URL", process.env.REACT_APP_API_URL);
