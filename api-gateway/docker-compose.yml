@@ -9,7 +9,7 @@ volumes:
     external: true
 services:
   api-dev:
-    image: "openjdk:14.0.1-slim"
+    image: "openjdk:15-alpine"
     container_name: api-dev
     volumes:
       - ./build/libs:/usr/src/myapp

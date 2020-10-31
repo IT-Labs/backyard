@@ -9,7 +9,7 @@ volumes:
     external: true
 services:
   api-internal-sample:
-    image: "openjdk:14.0.1-slim"
+    image: "openjdk:15-alpine"
     container_name: api-internal-sample
     volumes:
       - ./build/libs:/usr/src/myapp

@@ -10,11 +10,13 @@ export class SwaggerPage {
   async navigateToSwagger() {
     const url = appConfig.urlApi + "/swagger-ui/";
     console.log(`navigate to ${url}`);
-    await client.url(url);
-    return client.waitForElementVisible(this.elements.info, 500);
+    return client.url(url);
   }
+  async  verifyInfo(){
+  return client.waitForElementVisible(this.elements.info, 500);
+ }
 
-  openItemTab() {
+ async openItemTab() {
     return client.click(this.elements.link);
   }
 

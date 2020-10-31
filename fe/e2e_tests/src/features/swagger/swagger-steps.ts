@@ -9,7 +9,9 @@ When("I navigate to swagger", function () {
 When("I click on items swagger link", function () {
   return swaggerPage.openItemTab();
 });
-
+Then("I should see swagger info",function(){
+  return swaggerPage.verifyInfo();
+})
 Then(/^I should see (.*) action and method (.*)$/, function (action, method) {
   return swaggerPage.verify(action, method);
 });
