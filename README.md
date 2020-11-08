@@ -19,13 +19,14 @@ This repository contains a full working local environment, where you can execute
 - Grafana
 - Prometheus
 - sitespeed.io
-- Jmeter 
+- Jmeter
 
 # Readme
 
 Following section describe which action can be performed, more details about the project can be found in
 
 - api [readme](api/README.md)
+- api gateway [readme](api-gateway/README.md)
 - fe [readme](fe/app/README.md)
 - e2e tests [readme](fe/e2e_tests/Readme.md)
 
@@ -61,6 +62,11 @@ Following section present steps for running the test from scratch or repeating
   example :`restart.sh C:/Projects/IT-Labs/backyard`
 - run test: [test.sh](test.sh) (If test(s) are not destructive (only read data from database) you can run them multiple times)
 
+## Connect redis insight with redis
+
+host: redis-sample
+port :6379
+
 ## Volume backup
 
 If you want to backup volume,because [restart.sh](restart.sh) is restoring your volume on each run
@@ -82,10 +88,12 @@ this mode is using docker to run test, outputs can be found [location](jmeter)
 
 - tune the test J parameters in jmeter.sh(jmeter.sh)
 - jmeter.sh(jmeter.sh)
-### Reports results 
- - html reports can be found  [location](jmeter/reports) 
- - stats are send to graphite by using Backend Listener to Graphite
- - Grafana (Coming soon)  
+
+### Reports results
+
+- html reports can be found [location](jmeter/reports)
+- stats are send to graphite by using Backend Listener to Graphite
+- Grafana (Coming soon)
 
 ## Performance test
 
@@ -114,6 +122,7 @@ example : `performance_test.sh C:/Projects/IT-Labs/backyard/metrics`
 - https://www.sitespeed.io/documentation/sitespeed.io/performance-dashboard/#up-and-running-in-almost-5-minutes
 - https://grafana.com/grafana/dashboards/10288
 - https://github.com/sitespeedio/grafana-bootstrap-docker/tree/main/dashboards/graphite
+- [Configure redis insight](https://docs.redislabs.com/latest/ri/using-redisinsight/)
 
 ## Sonar
 

@@ -7,3 +7,4 @@ docker-compose -f "fe/app/docker-compose.yml" down
 docker-compose -f "jmeter/docker-compose.yml"  down
 docker-compose -f "docker-compose-sonar.yml"  down
 docker-compose -f "docker-compose-monitoring.yml"  down
+docker-compose -f "docker-compose-infrastructure.yml" down

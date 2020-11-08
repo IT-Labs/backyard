@@ -1,0 +1,46 @@
+#docker-compose.yml (Base)
+#https://github.com/wrouesnel/postgres_exporter
+version: "3.7"
+networks:
+  sample:
+    name: sample-network
+    driver: bridge
+volumes:
+  api-postgres:
+    external: true
+  redisinsight-sample:
+  redis-sample:
+services:
+  api-postgres:
+    image: library/postgres:12-alpine
+    container_name: api-postgres
+    environment:
+      - POSTGRES_PASSWORD=dev123
+      - POSTGRES_USER=dev
+      - POSTGRES_DB=sample
+    volumes:
+      - api-postgres:/var/lib/postgresql/data:z
+    ports:
+      - "5444:5432"
+    networks:
+      - sample
+  redis-sample:
+    image: redis:6.0.0-alpine
+    container_name: redis-sample
+    networks:
+      - sample
+    volumes:
+      - redis-sample:/data:z
+    ports:
+      - "6378:6379"
+  redis-insight:
+    container_name: redis-insight-sample
+    image: redislabs/redisinsight:latest
+    ports:
+      - "8002:8001"
+    volumes:
+      - redisinsight-sample:/db
+    networks:
+      - sample
+    depends_on:
+      - redis-sample

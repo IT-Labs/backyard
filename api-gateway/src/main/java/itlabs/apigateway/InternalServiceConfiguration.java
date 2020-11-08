@@ -11,4 +11,5 @@ public class InternalServiceConfiguration {
 
     @Value("${sample.internal-api}")
     private String internalApiUrl;
+
 }

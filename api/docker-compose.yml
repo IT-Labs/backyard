@@ -4,9 +4,6 @@ networks:
   sample:
     name: sample-network
     driver: bridge
-volumes:
-  api-postgres:
-    external: true
 services:
   api-internal-sample:
     image: "openjdk:15-alpine"
@@ -37,20 +34,5 @@ services:
     command: -url=jdbc:postgresql://api-postgres/sample -schemas=public -user=dev -password=dev123 migrate
     volumes:
       - ./build/resources/main/db/migration:/flyway/sql
-    depends_on:
-      - api-postgres
-    networks:
-      - sample
-  api-postgres:
-    image: library/postgres:12-alpine
-    container_name: api-postgres
-    environment:
-      - POSTGRES_PASSWORD=dev123
-      - POSTGRES_USER=dev
-      - POSTGRES_DB=sample
-    volumes:
-      - api-postgres:/var/lib/postgresql/data:z
-    ports:
-      - "5444:5432"
     networks:
       - sample

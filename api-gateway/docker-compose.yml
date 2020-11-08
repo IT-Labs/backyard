@@ -4,9 +4,6 @@ networks:
   sample:
     name: sample-network
     driver: bridge
-volumes:
-  api-postgres:
-    external: true
 services:
   api-dev:
     image: "openjdk:15-alpine"
