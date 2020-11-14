@@ -1,5 +1,5 @@
 #!/bin/sh
-apps=(api api-gateway fe/app)
+apps=(jmeter api api-gateway fe/app)
 for app in "${apps[@]}"
 do
     echo "----Start building  $app ----"

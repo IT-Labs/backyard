@@ -2,27 +2,25 @@
 # Add the `-d` flag at the end for detached execution
 version: "3.7"
 services:
-  selenium-hub:
+  selenium-hub-sample:
     image: selenium/hub:3.12.0
-    container_name: selenium-hub
+    container_name: selenium-hub-sample
     ports:
       - "4445:4444"
     networks:
       - sample
-  chrome:
+  chrome-sample:
     image: selenium/node-chrome-debug:3.12.0
-    container_name: node-chrome
+    container_name: node-chrome-sample
     environment: 
       NODE_MAX_SESSIONS: 5
       NODE_MAX_INSTANCES: 3
     ports:
       - "5901:5900"
-    # volumes:
-    #   - /dev/shm:/dev/shm
     depends_on:
-      - selenium-hub
+      - selenium-hub-sample
     environment:
-      - HUB_HOST=selenium-hub
+      - HUB_HOST=selenium-hub-sample
       - HUB_PORT=4444
     networks:
       - sample

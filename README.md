@@ -59,7 +59,7 @@ and can be performed by calling [build.sh](build.sh). This script stops all part
 Following section present steps for running the test from scratch or repeating
 
 - restart test environment: [restart.sh](restart.sh) path\to\repository; example : C:/Projects/IT-Labs/backyard
-  example :`restart.sh C:/Projects/IT-Labs/backyard`
+  example :`./restart.sh C:/Projects/IT-Labs/backyard`
 - run test: [test.sh](test.sh) (If test(s) are not destructive (only read data from database) you can run them multiple times)
 
 ## Connect redis insight with redis
@@ -106,7 +106,7 @@ this mode is using docker to run test, outputs can be found [location](jmeter)
 ### SiteSpeed Run
 
 restart test environment: [performance_test.sh](performance_test.sh) path\to\repository\metrics (NOTE : this path is required because is volume for results and contains urls for running)
-example : `performance_test.sh C:/Projects/IT-Labs/backyard/metrics`
+example : `./performance_test.sh C:/Projects/IT-Labs/backyard/metrics`
 
 ### Visualize the test
 
