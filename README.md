@@ -71,7 +71,7 @@ port :6379
 
 If you want to backup volume,because [restart.sh](restart.sh) is restoring your volume on each run
 you should run the [backup script](volume_backup.sh)
-example : `volume_backup.sh C:/Projects/IT-Labs/backyard`
+example : `./volume_backup.sh C:/Projects/IT-Labs/backyard`
 
 ## Jmeter test
 

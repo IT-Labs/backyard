@@ -24,6 +24,28 @@ services:
       - "5444:5432"
     networks:
       - sample
+  keycloak-sample:
+    image: jboss/keycloak:11.0.3
+    container_name: keycloak-sample
+    environment:
+      - KEYCLOAK_USER=admin
+      - KEYCLOAK_PASSWORD=admin
+      - DB_VENDOR=postgres
+      - DB_SCHEMA=keycloak
+      - DB_DATABASE=sample
+      - DB_ADDR=api-postgres
+      - DB_USER=dev
+      - DB_PASSWORD=dev123
+      - JDBC_PARAMS=useSSL=false
+    ports:
+      - "6180:8080"
+    depends_on:
+      - api-postgres
+    networks:
+      - sample
+    # healthcheck:
+    #   test: "curl -f http://localhost:8080/auth || exit 1"
+    #   start_period: 20s
   redis-sample:
     image: redis:6.0.0-alpine
     container_name: redis-sample
