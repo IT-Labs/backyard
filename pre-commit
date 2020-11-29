@@ -1,0 +1,13 @@
+#!/bin/sh
+
+set -e
+
+REPO_ROOT_DIR="$(git rev-parse --show-toplevel)"
+
+apps=(api)
+for app in "${apps[@]}"
+do
+a="${REPO_ROOT_DIR}/${app}"
+    echo "----Start formating  $a ----"
+    "${a}/gradlew" format  
+done 
