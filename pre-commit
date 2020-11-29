@@ -4,7 +4,7 @@ set -e
 
 REPO_ROOT_DIR="$(git rev-parse --show-toplevel)"
 
-apps=(api)
+apps=(api api-gateway)
 for app in "${apps[@]}"
 do
 a="${REPO_ROOT_DIR}/${app}"
