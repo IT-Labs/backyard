@@ -4,17 +4,17 @@ set -e
 
 REPO_ROOT_DIR="$(git rev-parse --show-toplevel)"
 
-apps=(api)
+apps=(api api-gateway)
 for app in "${apps[@]}"
 do
 a="${REPO_ROOT_DIR}/${app}"
-if [ -d "$a" ] 
+if [ -d "$a" && -f "$a/gradlew" ] 
 then
    cd "$a"
     echo "----Start formating $a ----"
     sh "gradlew" format  
 else
-    echo "Error: Directory $a does not exists."
+    echo "Error: FILE $a/gradlew does not exists."
 fi
 
 done 
