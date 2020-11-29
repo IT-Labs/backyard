@@ -7,5 +7,7 @@ import lombok.Data;
 @Data
 @Builder
 public class FallbackModel {
-    private  String message;
+
+	private String message;
+
 }

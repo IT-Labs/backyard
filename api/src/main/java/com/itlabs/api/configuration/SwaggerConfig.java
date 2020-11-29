@@ -15,47 +15,35 @@ import static springfox.documentation.spi.DocumentationType.SWAGGER_2;
 
 @Configuration
 public class SwaggerConfig {
-  private final BuildProperties buildProperties;
-  static final String ACTUATOR = ".*/actuator.*";
 
-  public SwaggerConfig(BuildProperties buildProperties) {
-    this.buildProperties = buildProperties;
-  }
+	private final BuildProperties buildProperties;
+	static final String ACTUATOR = ".*/actuator.*";
 
-  @Bean
-  public Docket api() {
-    return new Docket(SWAGGER_2)
-        .groupName("api")
-        .select()
-        .apis(RequestHandlerSelectors.any())
-        .paths(regex(String.format(".*%s.*", API_ROOT_ROUTE)))
-        .build()
-        .apiInfo(apiInfo(buildProperties.getName()));
-  }
+	public SwaggerConfig(BuildProperties buildProperties) {
+		this.buildProperties = buildProperties;
+	}
 
-  @Bean
-  public Docket actuatorApi() {
-    return new Docket(SWAGGER_2)
-        .groupName("monitoring-api")
-        .select()
-        .apis(RequestHandlerSelectors.any())
-        .paths(regex(ACTUATOR))
-        .build()
-        .apiInfo(apiInfo("Actuator"));
-  }
+	@Bean
+	public Docket api() {
+		return new Docket(SWAGGER_2).groupName("api").select().apis(RequestHandlerSelectors.any())
+				.paths(regex(String.format(".*%s.*", API_ROOT_ROUTE))).build()
+				.apiInfo(apiInfo(buildProperties.getName()));
+	}
 
-  private ApiInfo apiInfo(String name) {
+	@Bean
+	public Docket actuatorApi() {
+		return new Docket(SWAGGER_2).groupName("monitoring-api").select().apis(RequestHandlerSelectors.any())
+				.paths(regex(ACTUATOR)).build().apiInfo(apiInfo("Actuator"));
+	}
 
-    return new ApiInfo(
-        name,
-        String.format(
-            " Application Build at %s and Started at %s",
-            buildProperties.getTime(), new Date().toInstant()),
-        buildProperties.getVersion(),
-        "",
-        new Contact("Jovica Krstevski", "http://it-labs.com", "jovica.krstevski@it-labs.com"),
-        "MIT",
-        "https://github.com/IT-Labs/backyard/blob/master/LICENSE",
-        Collections.emptyList());
-  }
+	private ApiInfo apiInfo(String name) {
+
+		return new ApiInfo(name,
+				String.format(" Application Build at %s and Started at %s", buildProperties.getTime(),
+						new Date().toInstant()),
+				buildProperties.getVersion(), "",
+				new Contact("Jovica Krstevski", "http://it-labs.com", "jovica.krstevski@it-labs.com"), "MIT",
+				"https://github.com/IT-Labs/backyard/blob/master/LICENSE", Collections.emptyList());
+	}
+
 }

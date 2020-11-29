@@ -1,3 +1,12 @@
+buildscript {
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("io.spring.javaformat:spring-javaformat-gradle-plugin:0.0.25")
+	}
+}
+
 plugins {
 	id 'org.springframework.boot' version '2.3.5.RELEASE'
 	id 'io.spring.dependency-management' version '1.0.10.RELEASE'
@@ -5,7 +14,7 @@ plugins {
 	id 'java'
 	id "org.sonarqube" version "3.0"
 }
-
+apply plugin: 'io.spring.javaformat'
 group = 'com.it-labs'
 sourceCompatibility = '15'
 targetCompatibility ='15'

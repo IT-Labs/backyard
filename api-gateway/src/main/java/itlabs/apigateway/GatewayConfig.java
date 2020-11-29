@@ -10,43 +10,36 @@ import reactor.core.publisher.Mono;
 
 @Configuration
 public class GatewayConfig {
-    @Bean
-    KeyResolver ipKeyResolver() {
-        return exchange -> {
-            final String host = exchange.getRequest().getURI().getHost();
-            return Mono.just(host);
-        };
-    }
-  @Bean
-  public RouteLocator internalRoutesLocator(
-      RouteLocatorBuilder builder, InternalServiceConfiguration internalServiceConfiguration) {
-    final RouteLocator itemsModule =
-        builder
-            .routes()
-            .route(
-                r ->
-                    r.path("/items/**")
-                        .filters(
-                            f ->
-                                f.rewritePath("/items", "/api/v1/items")
 
-                                    .requestRateLimiter((c) ->
-                                            c.setRateLimiter(getRateLimiter())
-                                                   .setKeyResolver(ipKeyResolver())
-                                            )
-                                        .hystrix(
-                                                x -> x.setName("Hystrix")
-                                                        .setFallbackUri("forward:/fallback/message") // forward is not performed due cors issues
-                                        )
-                        )
-                        .uri(internalServiceConfiguration.getInternalApiUrl())
-                        .id("itemsModule"))
-            .build();
-    return itemsModule;
-  }
+	@Bean
+	KeyResolver ipKeyResolver() {
+		return exchange -> {
+			final String host = exchange.getRequest().getURI().getHost();
+			return Mono.just(host);
+		};
+	}
 
-  @Bean
-    public RedisRateLimiter getRateLimiter() {
-        return new RedisRateLimiter(1, 1);
-    }
+	@Bean
+	public RouteLocator internalRoutesLocator(RouteLocatorBuilder builder,
+			InternalServiceConfiguration internalServiceConfiguration) {
+		final RouteLocator itemsModule = builder.routes()
+				.route(r -> r.path("/items/**").filters(f -> f.rewritePath("/items", "/api/v1/items")
+
+						.requestRateLimiter((c) -> c.setRateLimiter(getRateLimiter()).setKeyResolver(ipKeyResolver()))
+						.hystrix(x -> x.setName("Hystrix").setFallbackUri("forward:/fallback/message") // forward
+																										// is
+																										// not
+																										// performed
+																										// due
+																										// cors
+																										// issues
+						)).uri(internalServiceConfiguration.getInternalApiUrl()).id("itemsModule")).build();
+		return itemsModule;
+	}
+
+	@Bean
+	public RedisRateLimiter getRateLimiter() {
+		return new RedisRateLimiter(1, 1);
+	}
+
 }

@@ -7,8 +7,12 @@ import lombok.Value;
 @Value
 @AllArgsConstructor
 public class ItemEditModel {
-  @NotEmpty
-  private String name;
-  private ItemStatus status;
-  private String description;
+
+	@NotEmpty
+	private String name;
+
+	private ItemStatus status;
+
+	private String description;
+
 }
