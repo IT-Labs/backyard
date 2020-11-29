@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 @Getter
 public class InternalServiceConfiguration {
 
-    @Value("${sample.internal-api}")
-    private String internalApiUrl;
+	@Value("${sample.internal-api}")
+	private String internalApiUrl;
 
 }
