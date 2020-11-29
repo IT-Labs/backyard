@@ -8,3 +8,4 @@ bin/
 /jmeter/jtl/*
 /jmeter/reports/*
 /jmeter/logs/*
+/.gradle/

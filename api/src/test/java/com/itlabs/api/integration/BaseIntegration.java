@@ -19,37 +19,32 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @ExtendWith(SpringExtension.class)
-@SpringBootTest(
-    webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT,
-    classes = {ApiApplication.class, TestContainerConfiguration.class})
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT,
+		classes = { ApiApplication.class, TestContainerConfiguration.class })
 @AutoConfigureMockMvc
 class BaseIntegration {
 
-  @Autowired  ItemsRepository itemRepository;
-  private final Faker faker = new Faker();
+	@Autowired
+	ItemsRepository itemRepository;
 
-  protected void seedItemsInDatabase(int itemsCount) {
-    List<Items> items =
-        IntStream.range(0, itemsCount)
-            .boxed()
-            .map(
-                x -> {
-                  var item = new Items();
-                  item.setName(faker.funnyName().name());
-                  item.setDescription(faker.lorem().sentence(x * 2));
-                  item.setStatus(ItemStatus.DRAFT);
-                  item.setGuid(UUID.randomUUID());
-                  item.setType(faker.animal().name());
-                  return item;
-                })
-            .collect(Collectors.toList());
-    itemRepository.saveAll(items);
-  }
+	private final Faker faker = new Faker();
 
-    protected  void validateBadRequest(ResultActions resultActions) throws Exception {
-        resultActions
-                .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$.message").exists())
-                .andExpect(jsonPath("$.code").exists());
-    }
+	protected void seedItemsInDatabase(int itemsCount) {
+		List<Items> items = IntStream.range(0, itemsCount).boxed().map(x -> {
+			var item = new Items();
+			item.setName(faker.funnyName().name());
+			item.setDescription(faker.lorem().sentence(x * 2));
+			item.setStatus(ItemStatus.DRAFT);
+			item.setGuid(UUID.randomUUID());
+			item.setType(faker.animal().name());
+			return item;
+		}).collect(Collectors.toList());
+		itemRepository.saveAll(items);
+	}
+
+	protected void validateBadRequest(ResultActions resultActions) throws Exception {
+		resultActions.andExpect(status().isBadRequest()).andExpect(jsonPath("$.message").exists())
+				.andExpect(jsonPath("$.code").exists());
+	}
+
 }

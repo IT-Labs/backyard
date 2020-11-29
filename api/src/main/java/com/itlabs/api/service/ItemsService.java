@@ -7,13 +7,15 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 public interface ItemsService {
-  ItemModel get(UUID uuid);
 
-  Page<ItemModel> get(Pageable pageable);
+	ItemModel get(UUID uuid);
 
-  ItemModel save(ItemEditModel model);
+	Page<ItemModel> get(Pageable pageable);
 
-  ItemModel update(UUID uuid, ItemEditModel model);
+	ItemModel save(ItemEditModel model);
 
-  void delete(UUID uuid);
+	ItemModel update(UUID uuid, ItemEditModel model);
+
+	void delete(UUID uuid);
+
 }

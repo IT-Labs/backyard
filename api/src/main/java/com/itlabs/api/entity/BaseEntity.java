@@ -19,30 +19,32 @@ import org.hibernate.annotations.Type;
 @Setter
 @MappedSuperclass
 public class BaseEntity {
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Integer id;
 
-  @Column(nullable = false)
-  @Type(type = "pg-uuid")
-  private UUID guid;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
 
-  @JsonFormat(pattern = GlobalConstants.DATE_FORMAT)
-  @Column(nullable = false)
-  private LocalDateTime updated;
+	@Column(nullable = false)
+	@Type(type = "pg-uuid")
+	private UUID guid;
 
-  @JsonFormat(pattern = GlobalConstants.DATE_FORMAT)
-  @Column(nullable = false)
-  private LocalDateTime created;
+	@JsonFormat(pattern = GlobalConstants.DATE_FORMAT)
+	@Column(nullable = false)
+	private LocalDateTime updated;
 
-  @PrePersist
-  protected void onCreate() {
-    setCreated(LocalDateTime.now());
-    setUpdated(LocalDateTime.now());
-  }
+	@JsonFormat(pattern = GlobalConstants.DATE_FORMAT)
+	@Column(nullable = false)
+	private LocalDateTime created;
 
-  @PreUpdate
-  protected void onUpdate() {
-    setUpdated(LocalDateTime.now());
-  }
+	@PrePersist
+	protected void onCreate() {
+		setCreated(LocalDateTime.now());
+		setUpdated(LocalDateTime.now());
+	}
+
+	@PreUpdate
+	protected void onUpdate() {
+		setUpdated(LocalDateTime.now());
+	}
+
 }
