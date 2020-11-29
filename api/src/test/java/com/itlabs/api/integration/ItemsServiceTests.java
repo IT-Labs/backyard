@@ -14,37 +14,39 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @TestMethodOrder(Alphanumeric.class)
 public class ItemsServiceTests extends BaseIntegration {
-  private final ItemsService itemsService;
 
-  @Autowired
-  ItemsServiceTests(ItemsService itemsService) {
-    this.itemsService = itemsService;
-  }
+	private final ItemsService itemsService;
 
-  @Test
-  public void ItemGetTest() {
-    final int itemsCount = 10;
-    seedItemsInDatabase(itemsCount);
+	@Autowired
+	ItemsServiceTests(ItemsService itemsService) {
+		this.itemsService = itemsService;
+	}
 
-    var result = itemsService.get(Pageable.unpaged());
-    assertNotNull(result);
-    assertTrue(result.getTotalElements() >= itemsCount);
-  }
+	@Test
+	public void ItemGetTest() {
+		final int itemsCount = 10;
+		seedItemsInDatabase(itemsCount);
 
-  @Test
-  void ItemSaveTest() {
+		var result = itemsService.get(Pageable.unpaged());
+		assertNotNull(result);
+		assertTrue(result.getTotalElements() >= itemsCount);
+	}
 
-    ItemEditModel item = getItemEditModel();
-    var result = itemsService.save(item);
+	@Test
+	void ItemSaveTest() {
 
-    assertNotNull(result);
-    assertNotNull(result.getId());
-    assertEquals(item.getDescription(), result.getDescription());
-    assertEquals(item.getName(), result.getName());
-    assertEquals(item.getStatus(), result.getStatus());
-  }
+		ItemEditModel item = getItemEditModel();
+		var result = itemsService.save(item);
 
-  private ItemEditModel getItemEditModel() {
-    return new ItemEditModel("Test", ItemStatus.DRAFT, "description");
-  }
+		assertNotNull(result);
+		assertNotNull(result.getId());
+		assertEquals(item.getDescription(), result.getDescription());
+		assertEquals(item.getName(), result.getName());
+		assertEquals(item.getStatus(), result.getStatus());
+	}
+
+	private ItemEditModel getItemEditModel() {
+		return new ItemEditModel("Test", ItemStatus.DRAFT, "description");
+	}
+
 }
