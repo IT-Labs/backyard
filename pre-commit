@@ -8,6 +8,10 @@ apps=(api)
 for app in "${apps[@]}"
 do
 a="${REPO_ROOT_DIR}/${app}"
-    echo "----Start formating  $a ----"
-    "${a}/gradlew" format  
+cd "$a"
+    echo "----Start formating $a ----"
+    sh "gradlew" format  
+	echo $PWD
+	cd $OLDPWD
+	echo $PWD
 done 
