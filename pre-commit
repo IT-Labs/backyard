@@ -8,7 +8,7 @@ apps=(api api-gateway)
 for app in "${apps[@]}"
 do
 a="${REPO_ROOT_DIR}/${app}"
-if [ -d "$a" && -f "$a/gradlew" ] 
+if [  -f "$a/gradlew" ] 
 then
    cd "$a"
     echo "----Start formating $a ----"
