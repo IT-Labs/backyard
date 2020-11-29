@@ -8,11 +8,14 @@ apps=(api)
 for app in "${apps[@]}"
 do
 a="${REPO_ROOT_DIR}/${app}"
-cd "$a"
+if [ -d "$a" ] 
+then
+   cd "$a"
     echo "----Start formating $a ----"
     sh "gradlew" format  
-	echo $PWD
-	cd $OLDPWD
-	echo $PWD
+else
+    echo "Error: Directory $a does not exists."
+fi
+
 done 
 git add . 
