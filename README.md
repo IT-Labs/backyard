@@ -132,8 +132,8 @@ example : `./performance_test.sh C:/Projects/IT-Labs/backyard/metrics`
 
 this is solving the production elastic search setup : https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html#_set_vm_max_map_count_to_at_least_262144
 
-- open powershell wsl -d docker-desktop
-- sysctl -w vm.max_map_count=262144
+- open powershell `wsl -d docker-desktop`
+- `sysctl -w vm.max_map_count=262144`
   NOTE: for now this command must be run after each windows system restart
 
 #### Run Sonar
@@ -146,4 +146,5 @@ this is solving the production elastic search setup : https://www.elastic.co/gui
 
 - run `docker-compose -f docker-compose-sonar.yml up -d sonar-fe` for FE analysis
 - run `docker-compose -f docker-compose-sonar.yml up -d sonar-api` for API analysis
+- run `docker-compose -f docker-compose-sonar.yml up -d sonar-api-gateway` for API gateway analysis
 - remove all containers : `docker-compose -f docker-compose-sonar.yml down`

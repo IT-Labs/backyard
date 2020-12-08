@@ -6,7 +6,7 @@ networks:
     driver: bridge
 services:
   api-dev:
-    image: "openjdk:15-alpine"
+    image: "openjdk:14-alpine"
     container_name: api-dev
     volumes:
       - ./build/libs:/usr/src/myapp

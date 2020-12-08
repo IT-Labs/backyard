@@ -2,9 +2,9 @@
 version: '3.7'
 services:
   build:
-    image: "openjdk:15-alpine"
+    image: "openjdk:14-alpine"
     container_name: build-api
     volumes:
       - ./:/usr/src/myapp
     working_dir: /usr/src/myapp    
-    command:  ./gradlew clean build -x test
+    command:  ./gradlew clean format build -x test
