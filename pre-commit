@@ -1,0 +1,21 @@
+#!/bin/sh
+
+set -e
+
+REPO_ROOT_DIR="$(git rev-parse --show-toplevel)"
+
+apps=(api api-gateway)
+for app in "${apps[@]}"
+do
+a="${REPO_ROOT_DIR}/${app}"
+if [  -f "$a/gradlew" ] 
+then
+   cd "$a"
+    echo "----Start formating  $a ----"
+    sh "gradlew" format  
+else
+    echo "Error: FILE $a/gradlew does not exists."
+fi
+
+done 
+git add . 

@@ -4,3 +4,8 @@ bin/
 */.scannerwork
 /metrics/sitespeed-result/
 /.idea/
+*.orig
+/jmeter/jtl/*
+/jmeter/reports/*
+/jmeter/logs/*
+/.gradle/

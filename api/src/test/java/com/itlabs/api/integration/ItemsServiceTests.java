@@ -3,44 +3,50 @@ package com.itlabs.api.integration;
 import com.itlabs.api.models.ItemEditModel;
 import com.itlabs.api.models.ItemStatus;
 import com.itlabs.api.service.ItemsService;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.MethodOrderer.Alphanumeric;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @TestMethodOrder(Alphanumeric.class)
 public class ItemsServiceTests extends BaseIntegration {
-  private ItemsService itemsService;
-  @Autowired
-  public ItemsServiceTests(ItemsService itemsService){
-    this.itemsService = itemsService;
-  }
-  @Test
-  public void ItemGetTest() {
-    final int itemsCount = 10;
-    seedItemsInDatabase(itemsCount);
 
-    var result = itemsService.get(Pageable.unpaged());
-    Assertions.assertNotNull(result);
-    Assertions.assertTrue(result.getTotalElements() >= itemsCount);
-  }
+	private final ItemsService itemsService;
 
-  @Test
-  public void ItemSaveTest() {
+	@Autowired
+	ItemsServiceTests(ItemsService itemsService) {
+		this.itemsService = itemsService;
+	}
 
-    ItemEditModel item = getItemEditModel();
-    var result = itemsService.save(item);
+	@Test
+	public void ItemGetTest() {
+		final int itemsCount = 10;
+		seedItemsInDatabase(itemsCount);
 
-    Assertions.assertNotNull(result);
-    Assertions.assertTrue(result.getId() > 0);
-    Assertions.assertEquals(item.getDescription(), result.getDescription());
-    Assertions.assertEquals(item.getName(), result.getName());
-    Assertions.assertEquals(item.getStatus(), result.getStatus());
-  }
+		var result = itemsService.get(Pageable.unpaged());
+		assertNotNull(result);
+		assertTrue(result.getTotalElements() >= itemsCount);
+	}
 
-  private ItemEditModel getItemEditModel() {
-    return new ItemEditModel("Test", ItemStatus.DRAFT, "description");
-  }
+	@Test
+	void ItemSaveTest() {
+
+		ItemEditModel item = getItemEditModel();
+		var result = itemsService.save(item);
+
+		assertNotNull(result);
+		assertNotNull(result.getId());
+		assertEquals(item.getDescription(), result.getDescription());
+		assertEquals(item.getName(), result.getName());
+		assertEquals(item.getStatus(), result.getStatus());
+	}
+
+	private ItemEditModel getItemEditModel() {
+		return new ItemEditModel("Test", ItemStatus.DRAFT, "description");
+	}
+
 }

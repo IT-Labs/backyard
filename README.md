@@ -19,12 +19,14 @@ This repository contains a full working local environment, where you can execute
 - Grafana
 - Prometheus
 - sitespeed.io
+- Jmeter
 
 # Readme
 
 Following section describe which action can be performed, more details about the project can be found in
 
 - api [readme](api/README.md)
+- api gateway [readme](api-gateway/README.md)
 - fe [readme](fe/app/README.md)
 - e2e tests [readme](fe/e2e_tests/Readme.md)
 
@@ -57,14 +59,41 @@ and can be performed by calling [build.sh](build.sh). This script stops all part
 Following section present steps for running the test from scratch or repeating
 
 - restart test environment: [restart.sh](restart.sh) path\to\repository; example : C:/Projects/IT-Labs/backyard
-  example :`restart.sh C:/Projects/IT-Labs/backyard`
+  example :`./restart.sh C:/Projects/IT-Labs/backyard`
 - run test: [test.sh](test.sh) (If test(s) are not destructive (only read data from database) you can run them multiple times)
+
+## Connect redis insight with redis
+
+host: redis-sample
+port :6379
 
 ## Volume backup
 
 If you want to backup volume,because [restart.sh](restart.sh) is restoring your volume on each run
 you should run the [backup script](volume_backup.sh)
-example : `volume_backup.sh C:/Projects/IT-Labs/backyard`
+example : `./volume_backup.sh C:/Projects/IT-Labs/backyard`
+
+## Jmeter test
+
+- download [jmeter](https://jmeter.apache.org/download_jmeter.cgi)
+
+### Development (GUI mode)
+
+- extract and run jmeter.(bat,sh)
+- open existing .jmx files or create a new one in the following [location](jmeter/tests)
+
+### Non-GUI mode run
+
+this mode is using docker to run test, outputs can be found [location](jmeter)
+
+- tune the test J parameters in jmeter.sh(jmeter.sh)
+- jmeter.sh(jmeter.sh)
+
+### Reports results
+
+- html reports can be found [location](jmeter/reports)
+- stats are send to graphite by using Backend Listener to Graphite
+- Grafana (Coming soon)
 
 ## Performance test
 
@@ -77,7 +106,7 @@ example : `volume_backup.sh C:/Projects/IT-Labs/backyard`
 ### SiteSpeed Run
 
 restart test environment: [performance_test.sh](performance_test.sh) path\to\repository\metrics (NOTE : this path is required because is volume for results and contains urls for running)
-example : `performance_test.sh C:/Projects/IT-Labs/backyard/metrics`
+example : `./performance_test.sh C:/Projects/IT-Labs/backyard/metrics`
 
 ### Visualize the test
 
@@ -93,18 +122,22 @@ example : `performance_test.sh C:/Projects/IT-Labs/backyard/metrics`
 - https://www.sitespeed.io/documentation/sitespeed.io/performance-dashboard/#up-and-running-in-almost-5-minutes
 - https://grafana.com/grafana/dashboards/10288
 - https://github.com/sitespeedio/grafana-bootstrap-docker/tree/main/dashboards/graphite
+- [Configure redis insight](https://docs.redislabs.com/latest/ri/using-redisinsight/)
 
 ## Sonar
 
 ### Setup
+
 #### WSL 2 setup :
+
 this is solving the production elastic search setup : https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html#_set_vm_max_map_count_to_at_least_262144
 
-- open powershell wsl -d docker-desktop
-- sysctl -w vm.max_map_count=262144
-NOTE: for now this command must be run after each windows system restart 
+- open powershell `wsl -d docker-desktop`
+- `sysctl -w vm.max_map_count=262144`
+  NOTE: for now this command must be run after each windows system restart
 
 #### Run Sonar
+
 - run `docker-compose -f docker-compose-sonar.yml up -d sonarqube-sample`
 - navigate to sonar [admin](http://localhost:9001)
 - login admin/admin
@@ -113,4 +146,5 @@ NOTE: for now this command must be run after each windows system restart
 
 - run `docker-compose -f docker-compose-sonar.yml up -d sonar-fe` for FE analysis
 - run `docker-compose -f docker-compose-sonar.yml up -d sonar-api` for API analysis
+- run `docker-compose -f docker-compose-sonar.yml up -d sonar-api-gateway` for API gateway analysis
 - remove all containers : `docker-compose -f docker-compose-sonar.yml down`

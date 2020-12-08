@@ -5,6 +5,7 @@ import com.itlabs.api.models.ItemEditModel;
 import com.itlabs.api.models.ItemModel;
 import com.itlabs.api.service.ItemsService;
 import io.swagger.annotations.Api;
+import java.util.UUID;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
@@ -26,37 +27,38 @@ import springfox.documentation.annotations.ApiIgnore;
 @CrossOrigin(maxAge = 3600)
 @RequestMapping(Routes.ITEMS_ROUTE)
 public class ItemsController {
-  private final ItemsService itemsService;
 
-  public ItemsController(ItemsService itemsService) {
-    this.itemsService = itemsService;
-  }
+	private final ItemsService itemsService;
 
-  @GetMapping()
-  @ApiPageable
-  public Page<ItemModel> get(@ApiIgnore Pageable pageable) {
-    return itemsService.get(pageable);
-  }
+	public ItemsController(ItemsService itemsService) {
+		this.itemsService = itemsService;
+	}
 
-  @PostMapping()
-  public ResponseEntity<ItemModel> post(@RequestBody @Validated ItemEditModel model) {
-    return new ResponseEntity<>(itemsService.save(model), HttpStatus.CREATED);
-  }
+	@GetMapping()
+	@ApiPageable
+	public Page<ItemModel> get(@ApiIgnore Pageable pageable) {
+		return itemsService.get(pageable);
+	}
 
-  @GetMapping(path = "/{id}")
-  public ResponseEntity<ItemModel> getItem(@PathVariable("id") int id) {
-    return new ResponseEntity<>(itemsService.get(id), HttpStatus.OK);
-  }
+	@PostMapping()
+	public ResponseEntity<ItemModel> post(@RequestBody @Validated ItemEditModel model) {
+		return new ResponseEntity<>(itemsService.save(model), HttpStatus.CREATED);
+	}
 
-  @PutMapping(path = "/{id}")
-  public ResponseEntity<ItemModel> put(
-      @PathVariable("id") int id, @RequestBody ItemEditModel model) {
-    return new ResponseEntity<>(itemsService.update(id, model), HttpStatus.CREATED);
-  }
+	@GetMapping(path = "/{id}")
+	public ResponseEntity<ItemModel> getItem(@PathVariable("id") UUID id) {
+		return new ResponseEntity<>(itemsService.get(id), HttpStatus.OK);
+	}
 
-  @DeleteMapping(path = "/{id}")
-  public ResponseEntity<String> delete(@PathVariable("id") int id) {
-    itemsService.delete(id);
-    return new ResponseEntity<>("deleted", HttpStatus.NO_CONTENT);
-  }
+	@PutMapping(path = "/{id}")
+	public ResponseEntity<ItemModel> put(@PathVariable("id") UUID id, @RequestBody ItemEditModel model) {
+		return new ResponseEntity<>(itemsService.update(id, model), HttpStatus.CREATED);
+	}
+
+	@DeleteMapping(path = "/{id}")
+	public ResponseEntity<String> delete(@PathVariable("id") UUID id) {
+		itemsService.delete(id);
+		return new ResponseEntity<>("deleted", HttpStatus.NO_CONTENT);
+	}
+
 }

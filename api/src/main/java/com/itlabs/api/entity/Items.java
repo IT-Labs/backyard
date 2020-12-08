@@ -13,11 +13,14 @@ import lombok.Setter;
 @Setter
 @Table(name = "items")
 public class Items extends BaseEntity {
-  String name;
-  String description;
 
-  @Enumerated(EnumType.STRING)
-  ItemStatus status;
+	String name;
 
-  String type;
+	String description;
+
+	@Enumerated(EnumType.STRING)
+	ItemStatus status;
+
+	String type;
+
 }
