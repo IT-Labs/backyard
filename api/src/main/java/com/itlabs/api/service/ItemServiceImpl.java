@@ -89,7 +89,7 @@ public class ItemServiceImpl implements ItemsService {
 
 	private Items getDatabaseItem(UUID uuid) {
 		return itemRepository.findByGuid(uuid).orElseThrow(
-				() -> new EmptyResultDataAccessException(String.format("Item with id %d not found", uuid), 1));
+				() -> new EmptyResultDataAccessException(String.format("Item with id %s not found", uuid), 1));
 	}
 
 	private ItemModel getModel(Items item) {

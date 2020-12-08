@@ -26,13 +26,26 @@ services:
     image: openjdk:14.0.1-slim
     container_name: sonar-api
     volumes:
+      - //var/run/docker.sock:/var/run/docker.sock
       - ./api/:/usr/src/myapp
     working_dir: /usr/src/myapp
     networks:
       - sample
     depends_on:
       - sonarqube-sample
-    command: ./gradlew sonarqube -x test -Dsonar.login=0da6ee6496451673b93e56e3b4408afccefd37ff -Dsonar.projectKey=sample-api -Dsonar.host.url=http://sonarqube-sample:9000   -Dsonar.scm.disabled=True
+    command: ./gradlew clean format test jacocoTestReport  sonarqube -Dsonar.login=0da6ee6496451673b93e56e3b4408afccefd37ff -Dsonar.projectKey=sample-api -Dsonar.host.url=http://sonarqube-sample:9000   -Dsonar.scm.disabled=True
+  sonar-api-gateway:
+    image: openjdk:14.0.1-slim
+    container_name: sonar-api-gateway
+    volumes:
+      - //var/run/docker.sock:/var/run/docker.sock
+      - ./api-gateway/:/usr/src/myapp
+    working_dir: /usr/src/myapp
+    networks:
+      - sample
+    depends_on:
+      - sonarqube-sample
+    command: ./gradlew clean format test jacocoTestReport  sonarqube  -Dsonar.login=03f19ea1eb7ccb34633498cadd3ee1d9233d8ab2 -Dsonar.projectKey=api-gateway -Dsonar.host.url=http://sonarqube-sample:9000   -Dsonar.scm.disabled=True  
   sonarqube-sample:
     image: sonarqube:8.5-community
     container_name: sonarqube-sample

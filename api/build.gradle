@@ -17,8 +17,8 @@ plugins {
 }
 apply plugin: 'io.spring.javaformat'
 group = 'com.it-labs'
-sourceCompatibility = '15'
-targetCompatibility ='15'
+sourceCompatibility = '14'
+targetCompatibility ='14'
 version ='version 1'
 configurations {
 	developmentOnly
@@ -66,4 +66,9 @@ dependencies {
 
 test {
 	useJUnitPlatform()
+}
+jacocoTestReport {
+    reports {
+        xml.enabled true
+		}
 }

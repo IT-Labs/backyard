@@ -13,11 +13,12 @@ plugins {
 	id "com.github.ben-manes.versions" version "0.33.0"
 	id 'java'
 	id "org.sonarqube" version "3.0"
+	id "jacoco"
 }
 apply plugin: 'io.spring.javaformat'
 group = 'com.it-labs'
-sourceCompatibility = '15'
-targetCompatibility ='15'
+sourceCompatibility = '14'
+targetCompatibility ='14'
 version ='version 1'
 configurations {
 	developmentOnly
@@ -69,4 +70,9 @@ dependencyManagement {
 
 test {
 	useJUnitPlatform()
+}
+jacocoTestReport {
+    reports {
+        xml.enabled true
+		}
 }
