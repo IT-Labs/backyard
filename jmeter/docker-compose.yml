@@ -6,13 +6,21 @@ networks:
     name: sample-network
     driver: bridge
 services:
-  jmeter-sample:
-    container_name: jmeter-sample
-    build:
-      context: .
+  jmeter-load-sample:
+    container_name: jmeter-load-sample
+    image: jmeter-sample
     networks:
       - sample
     volumes:
       - ./:/usr/src/myapp
     working_dir: /usr/src/myapp
-    command:  ["sh", "docker_run.sh"]
+    command: ["sh", "load_run.sh"]
+  jmeter-page-sample:
+    container_name: jmeter-page-sample
+    image: jmeter-sample
+    networks:
+      - sample
+    volumes:
+      - ./:/usr/src/myapp
+    working_dir: /usr/src/myapp
+    command: ["sh", "page_run.sh"]

@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.3">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Page traversing Test Plan" enabled="true">
+      <stringProp name="TestPlan.comments"></stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.tearDown_on_shutdown">true</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+    </TestPlan>
+    <hashTree>
+      <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname=" Defined Variables " enabled="true">
+        <collectionProp name="Arguments.arguments">
+          <elementProp name="GRID_URL" elementType="Argument">
+            <stringProp name="Argument.name">GRID_URL</stringProp>
+            <stringProp name="Argument.value">${__P(GRID_URL,http://localhost:4445/wd/hub)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="THREADS" elementType="Argument">
+            <stringProp name="Argument.name">THREADS</stringProp>
+            <stringProp name="Argument.value">${__P(THREADS,1)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="RAMP_UP" elementType="Argument">
+            <stringProp name="Argument.name">RAMP_UP</stringProp>
+            <stringProp name="Argument.value">${__P(RAMP_UP,5)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="LOOPS" elementType="Argument">
+            <stringProp name="Argument.name">LOOPS</stringProp>
+            <stringProp name="Argument.value">${__P(LOOPS,3)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="SITE_URL" elementType="Argument">
+            <stringProp name="Argument.name">SITE_URL</stringProp>
+            <stringProp name="Argument.value">${__P(SITE_URL,http://fe-dev:3000 )}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+            <stringProp name="Argument.desc">site url for navigating , without  / </stringProp>
+          </elementProp>
+          <elementProp name="TIME_ON_PAGE" elementType="Argument">
+            <stringProp name="Argument.name">TIME_ON_PAGE</stringProp>
+            <stringProp name="Argument.value">${__P(TIME_ON_PAGE,3000)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+            <stringProp name="Argument.desc">time between visinting next url</stringProp>
+          </elementProp>
+          <elementProp name="PAGES" elementType="Argument">
+            <stringProp name="Argument.name">PAGES</stringProp>
+            <stringProp name="Argument.value">${__P(PAGES,/;/items;/about)}</stringProp>
+            <stringProp name="Argument.desc">pages seperated by ; </stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="DATA_CSV" elementType="Argument">
+            <stringProp name="Argument.name">DATA_CSV</stringProp>
+            <stringProp name="Argument.value">${__P(DATA_CSV,C:\Projects\IT-Labs\backyard\jmeter/tests/PageTraversing.csv)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+        </collectionProp>
+        <stringProp name="TestPlan.comments">variables ready for local testing </stringProp>
+      </Arguments>
+      <hashTree/>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Load Group" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">${LOOPS}</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">${THREADS}</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">${RAMP_UP}</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">false</boolProp>
+      </ThreadGroup>
+      <hashTree>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Page  CSV Data Set Config" enabled="true">
+          <stringProp name="delimiter">,</stringProp>
+          <stringProp name="fileEncoding"></stringProp>
+          <stringProp name="filename">${DATA_CSV}</stringProp>
+          <boolProp name="ignoreFirstLine">false</boolProp>
+          <boolProp name="quotedData">true</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+          <boolProp name="stopThread">false</boolProp>
+          <stringProp name="variableNames">arg,key</stringProp>
+        </CSVDataSet>
+        <hashTree/>
+        <com.googlecode.jmeter.plugins.webdriver.config.RemoteDriverConfig guiclass="com.googlecode.jmeter.plugins.webdriver.config.gui.RemoteDriverConfigGui" testclass="com.googlecode.jmeter.plugins.webdriver.config.RemoteDriverConfig" testname="Selenium  Remote Driver Config" enabled="true">
+          <stringProp name="RemoteDriverConfig.general.selenium.grid.url">${GRID_URL}</stringProp>
+          <stringProp name="RemoteDriverConfig.general.selenium.capability">CHROME</stringProp>
+          <stringProp name="RemoteDriverConfig.general.selenium.file.detector">USELESS</stringProp>
+        </com.googlecode.jmeter.plugins.webdriver.config.RemoteDriverConfig>
+        <hashTree/>
+        <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="Site visit page  Sampler" enabled="true">
+          <stringProp name="TestPlan.comments">sampler which login to alumni , navigate to list of  urls and  logout </stringProp>
+          <stringProp name="WebDriverSampler.script">import org.openqa.selenium.*;
+import org.openqa.selenium.support.ui.*;
+var driver= WDS.browser; // this should be outside the sampleResult.sampleStart() sampleEnd() block 
+var wait = new  WebDriverWait(driver, 5);// waith in seconds
+WDS.sampleResult.sampleStart();
+WDS.sampleResult.getLatency();
+
+// variables from CSV file
+var  arg = WDS.vars.get(&quot;arg&quot;);
+var  key = WDS.vars.get(&quot;key&quot;);
+WDS.log.info(arg +&quot;:&quot;+key );
+// args order is defined in parameters section
+var  url = WDS.args[0];
+var  timeBetteenUrls =Integer.parseInt(WDS.args[1]);
+var pages = WDS.args[2].split(&quot;;&quot;);
+//var profileLogoutElement=By.className(&quot;logo&quot;);
+ //    wait.until(ExpectedConditions.visibilityOfElementLocated(profileLogoutElement));
+
+//navigate to all passed pages
+for (int i = 0; i &lt; pages.length; i++) {	
+ var navigate =url+pages[i];
+	WDS.log.info(&quot;navigate to : &quot;+navigate);
+	driver.get(navigate);     
+	java.lang.Thread.sleep(timeBetteenUrls);
+}
+
+WDS.sampleResult.sampleEnd();
+</stringProp>
+          <stringProp name="WebDriverSampler.parameters"> ${SITE_URL}  ${TIME_ON_PAGE} ${PAGES}</stringProp>
+          <stringProp name="WebDriverSampler.language">java</stringProp>
+        </com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler>
+        <hashTree/>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="false">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+      </hashTree>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>

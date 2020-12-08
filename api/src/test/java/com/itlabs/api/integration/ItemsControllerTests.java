@@ -116,7 +116,6 @@ public class ItemsControllerTests extends BaseIntegration {
 		final var resultActions = mvc
 				.perform(delete(getEditUrl(UUID.randomUUID().toString())).contentType(MediaType.APPLICATION_JSON))
 				.andDo(print());
-
 		resultActions.andExpect(status().isNoContent());
 	}
 

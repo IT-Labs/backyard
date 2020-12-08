@@ -9,11 +9,16 @@ class Items extends React.Component {
   state = {
     items: [],
     loading: true,
+    message: "",
   };
   itemsService = new ItemsService();
   async componentDidMount() {
-    const data = await this.itemsService.get();
-    this.setState({ items: data.content, loading: false });
+    try {
+      const data = await this.itemsService.get();
+      this.setState({ items: data.content, loading: false });
+    } catch (error) {
+      this.setState({ loading: false, message: error.message });
+    }
   }
 
   renderTableData(items: Array<any>) {
@@ -32,10 +37,13 @@ class Items extends React.Component {
     });
   }
   render() {
-    const { items, loading } = this.state;
+    const { items } = this.state;
 
-    if (loading) {
+    if (this.state.loading) {
       return <div>Loading Items</div>;
+    }
+    if (this.state.message) {
+    return <div>{this.state.message}</div>;
     }
     return (
       <div className="item">
