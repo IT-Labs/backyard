@@ -79,7 +79,7 @@ function Navbar(props: any) {
               </Dropdown.Menu>
             </Dropdown>
           )}
-          <Menu.Item as={NavLink} exact to="/login" onClick={handleLogInOut}>
+          <Menu.Item as={NavLink}  id="login" exact to="/login" onClick={handleLogInOut}>
             {getLogInOutText()}
           </Menu.Item>
         </Menu.Menu>
