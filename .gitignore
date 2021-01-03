@@ -9,3 +9,5 @@ bin/
 /jmeter/reports/*
 /jmeter/logs/*
 /.gradle/
+/fe/app/.eslintcache
+*.log

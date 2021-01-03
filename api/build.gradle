@@ -17,8 +17,9 @@ plugins {
 }
 apply plugin: 'io.spring.javaformat'
 group = 'com.it-labs'
-sourceCompatibility = '14'
-targetCompatibility ='14'
+sourceCompatibility = '11'
+targetCompatibility ='11'
+//downgraded to java due keycloak 12 supports only java 11
 version ='version 1'
 configurations {
 	developmentOnly
@@ -47,6 +48,11 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+//	implementation 'org.springframework.security:spring-security-oauth2-resource-server'
+//	implementation 'org.springframework.security:spring-security-oauth2-jose'
+	implementation 'org.keycloak:keycloak-spring-boot-starter:12.0.1'
+	implementation 'org.keycloak:keycloak-admin-client:12.0.1'
 	implementation 'org.flywaydb:flyway-core:6.5.7'
 
 

@@ -20,22 +20,22 @@ spring:
         gateway:
             httpclient:
                 connect-timeout: 20
-    security:
-        oauth2:
-            client:
-                provider:
-                    keycloak:
-                        token-uri: http://localhost:5000/auth/realms/master/protocol/openid-connect/token
-                        authorization-uri: http://localhost:5000/auth/realms/master/protocol/openid-connect/auth
-                        userinfo-uri: http://localhost:5000/auth/realms/master/protocol/openid-connect/userinfo
-                        user-name-attribute: preferred_username
-                registration:
-                    keycloak-with-test-scope:
-                        provider: keycloak
-                        client-id: spring-with-test-scope
-                        client-secret: c6480137-1526-4c3e-aed3-295aabcb7609
-                        authorization-grant-type: authorization_code
-                        redirect-uri: "{baseUrl}/login/oauth2/code/keycloak"
+#    security:
+#        oauth2:
+#            client:
+#                provider:
+#                    keycloak:
+#                        token-uri: http://localhost:6180/auth/realms/master/protocol/openid-connect/token
+#                        authorization-uri: http://localhost:6180/auth/realms/master/protocol/openid-connect/auth
+#                        userinfo-uri: http://localhost:6180/auth/realms/master/protocol/openid-connect/userinfo
+#                        user-name-attribute: preferred_username
+#                registration:
+#                    keycloak-sample:
+#                        provider: keycloak
+#                        client-id: keycloak-sample-client
+#                        client-secret: c6480137-1526-4c3e-aed3-295aabcb7609
+#                        authorization-grant-type: authorization_code
+#                        redirect-uri: "{baseUrl}/login/oauth2/code/keycloak"
 management:
     endpoint:
         health:
@@ -47,4 +47,3 @@ management:
             base-path: /v1/actuator
             exposure:
                 include: '*'
-#https://piotrminkowski.com/2020/10/09/spring-cloud-gateway-oauth2-with-keycloak/

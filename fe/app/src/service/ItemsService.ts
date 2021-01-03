@@ -2,8 +2,14 @@ import { appConfig } from "./config";
 
 class ItemsService {
   private readonly itemUrl = appConfig.urlApi + "items";
-  async get() {
-    const itemApiCall = await fetch(this.itemUrl);
+
+  async get(token:string) {
+       const itemApiCall = await fetch(this.itemUrl,{
+      headers:{
+        'Accept': 'application/json',
+        'Authorization': 'bearer ' + token,
+      }
+    });
     if (!itemApiCall.ok) {
       throw Error("something went wrong");
     }
