@@ -16,6 +16,7 @@ import { appConfig } from "./service/config";
 
 import { handleLogError } from "./common/Helpers";
 import Items from "./item/Items";
+import Footer from "./common/footer";
 
 function App() {
   const keycloakConfig: KeycloakConfig = {
@@ -57,12 +58,14 @@ function App() {
   );
 
   return (
+    
     <ReactKeycloakProvider
       authClient={keycloak}
       initOptions={initOptions}
       LoadingComponent={loadingComponent}
       onEvent={(event, error) => handleOnEvent(event, error)}
     >
+      <Header />
       <Router>
         <Navbar />
         <Switch>
@@ -75,7 +78,9 @@ function App() {
           <Route component={Notfound} />
         </Switch>
       </Router>
+      <Footer />
     </ReactKeycloakProvider>
+    
   );
 }
 
