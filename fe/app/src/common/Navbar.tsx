@@ -55,10 +55,10 @@ function Navbar(props: any) {
   return (
     <Menu stackable>
       <Container>
-        <Menu.Item header>Sample</Menu.Item>
-        <Menu.Item as={NavLink} exact to="/home">
+       <Menu.Item as={NavLink} exact to="/home">
           Home
         </Menu.Item>
+        
         <Dropdown item text="Admin" style={getAdminMenuStyle()}>
           <Dropdown.Menu>
             <Dropdown.Item
@@ -70,7 +70,11 @@ function Navbar(props: any) {
               items
             </Dropdown.Item>
           </Dropdown.Menu>
+       
         </Dropdown>
+        <Menu.Item as={NavLink} exact to="/about">
+          About
+        </Menu.Item>
         <Menu.Menu position="right">
           {keycloak.authenticated && (
             <Dropdown

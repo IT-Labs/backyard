@@ -23,10 +23,10 @@ function App() {
     clientId: appConfig.authClientId,
   };
   const keycloak = Keycloak(keycloakConfig);
-  const initOptions = { pkceMethod: "S256" };
+
 
   const handleOnEvent = async (event: string, error: any) => {
-    console.info("Event: " + event);
+    handleLog("Event: " + event);
     if (event !== "onAuthSuccess") {
       handleLog(error);
       return;
@@ -42,18 +42,15 @@ function App() {
 
   const loadingComponent = (
     <Dimmer inverted active={true} page>
-      <Header style={{ color: "#4d4d4d" }} as="h2" icon inverted>
+      <Header style={{ color: "#4d5c4d" }} as="h1" icon inverted>
         <Icon loading name="cog" />
         <Header.Content>
-          Keycloak is loading
-          <Header.Subheader style={{ color: "#4d4d4d" }}>
-            or running authorization code flow with PKCE
-          </Header.Subheader>
-        </Header.Content>
+          Auth is loading
+         </Header.Content>
       </Header>
     </Dimmer>
   );
-
+  const initOptions = { pkceMethod: "S256" };
   return (
     <ReactKeycloakProvider
       authClient={keycloak}
@@ -69,7 +66,6 @@ function App() {
           <Route path="/about" component={About} />
           <PrivateRoute path="/items" component={Items} />
           <PrivateRoute path="/items/:id" component={EditItem} />
-
           <Route component={Notfound} />
         </Switch>
       </Router>
