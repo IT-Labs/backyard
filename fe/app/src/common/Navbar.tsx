@@ -3,10 +3,11 @@ import { useKeycloak } from "@react-keycloak/web";
 import { NavLink, withRouter } from "react-router-dom";
 import { Container, Dropdown, Menu } from "semantic-ui-react";
 import { isAdmin } from "./Helpers";
-
+import { useState, useEffect } from "react";
+import { KeycloakProfile } from "keycloak-js";
 function Navbar(props: any) {
   const { keycloak } = useKeycloak();
-
+  const [profile, setProfile] = useState<KeycloakProfile>({});
   const handleLogInOut = () => {
     if (keycloak.authenticated) {
       props.history.push("/");
@@ -23,18 +24,23 @@ function Navbar(props: any) {
   };
 
   const getUsername =  () => {
-    if (!keycloak.profile) {
-        keycloak.loadUserProfile()
-        .then(x=>{ 
-          console.log("Profile loaded"+x);
-          keycloak.profile= x;});     
-    }
-    console.log("Profile: " + keycloak.profile);
+
     //TODO: extend d.ts to get from token the preferred_username
     return (
-      keycloak.authenticated && keycloak.profile && keycloak.profile.username
+      keycloak.authenticated && profile.username
     );
   };
+
+  useEffect(() => {
+    if (!keycloak.profile) {
+      keycloak.loadUserProfile()
+      .then(profile=>{ 
+        console.log("Profile loaded"+profile);
+        keycloak.profile= profile;
+        setProfile(profile);
+      });     
+  }
+  }, [keycloak]);  
 
   const getLogInOutText = () => {
     return keycloak.authenticated ? "Logout" : "Login";
@@ -49,7 +55,7 @@ function Navbar(props: any) {
   return (
     <Menu stackable>
       <Container>
-        <Menu.Item header>Sample Home</Menu.Item>
+        <Menu.Item header>Sample</Menu.Item>
         <Menu.Item as={NavLink} exact to="/home">
           Home
         </Menu.Item>

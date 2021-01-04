@@ -1,27 +1,35 @@
 import { appConfig } from "../service/config";
 
+export const getAvatarUrl = (text: string) => {
+  return `${appConfig.avatarUrl}/avataaars/${text}.svg`;
+};
 
-export const getAvatarUrl = (text:string) => {
-  return `${appConfig.avatarUrl}/avataaars/${text}.svg`
-}
-
-export const isAdmin = (keycloak:any) => {
+export const isAdmin = (keycloak: any) => {
   return (
-    keycloak &&
-    keycloak.tokenParsed 
+    keycloak && keycloak.tokenParsed
     // &&
     // keycloak.tokenParsed.resource_access["sample-client"].roles.includes(
-    //   "ADMIN"
+    //   "USER"
     // )
   );
 };
 
-export const handleLogError = (error:any) => {
-  if(error){  if (error.response) {
-    console.log(error.response.data);
-  } else if (error.request) {
-    console.log(error.request);
-  } else {
-    console.log(error.message);
-  }}else{ console.log("Noting")}
+export const handleLog = (data: any) => {
+  if (!data) {
+    console.log("Noting");
+    return;
+  }
+  if (data.response) {
+    console.log(data.response.data);
+    return;
+  }
+  if (data.request) {
+    console.log(data.request);
+    return;
+  }
+  if (data.message) {
+    console.log(data.message);
+    return;
+  }
+  console.log(data);
 };
