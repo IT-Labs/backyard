@@ -1,12 +1,11 @@
-import { Component, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import ComingSoon from "../common/comingSoon";
-import { handleLog } from "../common/Helpers";
 
 const Home: React.FunctionComponent = () => {
-  const [data, setData] = useState([]);
+  const [, setData] = useState([]);
 
-  const [loading, setLoading] = useState(true);
-  const [message, setMessage] = useState("");
+  const [, setLoading] = useState(true);
+  const [, setMessage] = useState("");
   useEffect(() => {
     setData([]);
     setLoading(false);
