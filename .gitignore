@@ -11,3 +11,4 @@ bin/
 /.gradle/
 /fe/app/.eslintcache
 *.log
+/.vscode/settings.json

@@ -1,6 +1,5 @@
 package itlabs.apigateway;
 
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 
