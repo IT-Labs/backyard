@@ -20,7 +20,7 @@ This repository contains a full working local environment, where you can execute
 - Prometheus
 - sitespeed.io
 - Jmeter
-
+- Keycloak
 # Readme
 
 Following section describe which action can be performed, more details about the project can be found in
@@ -30,6 +30,8 @@ Following section describe which action can be performed, more details about the
 - fe [readme](fe/app/README.md)
 - e2e tests [readme](fe/e2e_tests/Readme.md)
 
+
+![diagram](doc/Backyard arch.jpg)
 # Local environment
 
 For local development please check the Readme section for each project and install appropriate requirements
