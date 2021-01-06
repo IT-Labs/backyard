@@ -30,8 +30,8 @@ Following section describe which action can be performed, more details about the
 - fe [readme](fe/app/README.md)
 - e2e tests [readme](fe/e2e_tests/Readme.md)
 
-
-![diagram](doc/Backyard arch.jpg)
+## Component Diagram 
+![diagram](doc/Backyard%20arch.jpg)
 # Local environment
 
 For local development please check the Readme section for each project and install appropriate requirements
