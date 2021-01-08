@@ -15,6 +15,7 @@ import springfox.documentation.service.SecurityReference;
 import springfox.documentation.spi.service.contexts.SecurityContext;
 import springfox.documentation.spring.web.plugins.Docket;
 import static com.itlabs.api.controllers.Routes.API_ROOT_ROUTE;
+import static com.itlabs.api.controllers.Routes.HOME_ROUTE;
 import static springfox.documentation.builders.PathSelectors.regex;
 import static springfox.documentation.spi.DocumentationType.SWAGGER_2;
 
@@ -34,6 +35,12 @@ public class SwaggerConfig {
 				.paths(regex(String.format(".*%s.*", API_ROOT_ROUTE))).build()
 				.apiInfo(apiInfo(buildProperties.getName())).securitySchemes(Collections.singletonList(apiKey()))
 				.securityContexts(Collections.singletonList(securityContext()));
+	}
+
+	@Bean
+	public Docket publicApi() {
+		return new Docket(SWAGGER_2).groupName("public api").select().apis(RequestHandlerSelectors.any())
+				.paths(regex(String.format(".*%s.*", HOME_ROUTE))).build().apiInfo(apiInfo(buildProperties.getName()));
 	}
 
 	@Bean

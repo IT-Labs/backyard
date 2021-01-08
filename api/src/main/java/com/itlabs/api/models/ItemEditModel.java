@@ -2,6 +2,8 @@ package com.itlabs.api.models;
 
 import javax.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.Setter;
 import lombok.Value;
 
 @Value
@@ -14,5 +16,7 @@ public class ItemEditModel {
 	private ItemStatus status;
 
 	private String description;
+
+	private Boolean isPublic;
 
 }

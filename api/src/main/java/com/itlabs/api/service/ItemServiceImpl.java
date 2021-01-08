@@ -3,7 +3,10 @@ package com.itlabs.api.service;
 import com.itlabs.api.entity.Items;
 import com.itlabs.api.models.ItemEditModel;
 import com.itlabs.api.models.ItemModel;
+import com.itlabs.api.models.ItemStatus;
 import com.itlabs.api.repository.ItemsRepository;
+import java.time.LocalDateTime;
+import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
 import javax.transaction.Transactional;
@@ -73,6 +76,19 @@ public class ItemServiceImpl implements ItemsService {
 	public ItemModel update(UUID uuid, ItemEditModel editModel) {
 		var item = getDatabaseItem(uuid);
 		item.setName(editModel.getName());
+
+		if (editModel.getStatus() == ItemStatus.DONE) {
+			item.setPublished(LocalDateTime.now());
+
+		}
+		else {
+			item.setPublished(null);
+		}
+
+		if (editModel.getIsPublic() != null) {
+			item.setPublic(editModel.getIsPublic());
+		}
+
 		item.setStatus(editModel.getStatus());
 		item.setDescription(editModel.getDescription());
 		return getModel(itemRepository.save(item));
@@ -87,6 +103,12 @@ public class ItemServiceImpl implements ItemsService {
 		itemRepository.deleteByGuid(uuid);
 	}
 
+	@Override
+	public List<ItemModel> getPublicPublishedItems(Pageable pageable) {
+		return itemRepository.findByIsPublicTrueAndStatus(pageable, ItemStatus.DONE).stream().map(this::getModel)
+				.collect(Collectors.toList());
+	}
+
 	private Items getDatabaseItem(UUID uuid) {
 		return itemRepository.findByGuid(uuid).orElseThrow(
 				() -> new EmptyResultDataAccessException(String.format("Item with id %s not found", uuid), 1));
@@ -94,7 +116,7 @@ public class ItemServiceImpl implements ItemsService {
 
 	private ItemModel getModel(Items item) {
 		return ItemModel.builder().id(item.getGuid().toString()).name(item.getName()).description(item.getDescription())
-				.status(item.getStatus()).build();
+				.published(item.getPublished()).isPublic(item.isPublic()).status(item.getStatus()).build();
 	}
 
 }
