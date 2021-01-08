@@ -1,11 +1,12 @@
 import { appConfig } from "./config";
- export    interface Item {
-   public: boolean;
-   id: string;
-   name: string;
-   description: string;
-   published: Date;
- }
+export interface Item {
+  public: boolean;
+  id: string;
+  name: string;
+  description: string;
+  status: string;
+  published: Date;
+}
 class ItemsService {
   private readonly itemUrl = appConfig.urlApi + "items";
   private readonly itemPublicUrl = appConfig.urlApi + "home/items";

@@ -6,7 +6,7 @@ import { Route, Link, Switch } from "react-router-dom";
 import ViewItem from "./ViewItem";
 import ItemsService, { Item } from "../service/ItemsService";
 import { useKeycloak } from "@react-keycloak/web";
-import { Button, Image, Table } from "semantic-ui-react";
+import { Button, Checkbox, Image, Table } from "semantic-ui-react";
 
 const Items: React.FunctionComponent = () => {
   const [items, setData] = useState<Item[]>([]);
@@ -18,7 +18,7 @@ const Items: React.FunctionComponent = () => {
       try {
         let itemsService = new ItemsService();
         const data = await itemsService.get(
-          keycloak.token ? keycloak.token : "token missing "
+          keycloak.token ? keycloak.token : "token is missing "
         );
         setData(data.content);
         setLoading(false);
@@ -115,8 +115,13 @@ const Items: React.FunctionComponent = () => {
           <Table.Cell>{item.id}</Table.Cell>
           <Table.Cell>{item.name}</Table.Cell>
           <Table.Cell>{item.description}</Table.Cell>
-          <Table.Cell>{item.published}</Table.Cell>
-          <Table.Cell>{item.public}</Table.Cell>
+          <Table.Cell>
+            {item.published
+              ? new Date(item.published).toLocaleDateString()
+              : "NA"}
+          </Table.Cell>
+          <Table.Cell>{item.status}</Table.Cell>
+          <Table.Cell>{item.public?"True":"False"}</Table.Cell>
           <Table.Cell>
             <Image
               size="tiny"
@@ -136,11 +141,12 @@ const Items: React.FunctionComponent = () => {
           <Table.Row>
             <Table.HeaderCell width={2} />
             <Table.HeaderCell width={2}>ID</Table.HeaderCell>
-            <Table.HeaderCell width={4}>Title</Table.HeaderCell>
-            <Table.HeaderCell width={3}>Director</Table.HeaderCell>
-            <Table.HeaderCell width={2}>Year</Table.HeaderCell>
-            <Table.HeaderCell width={2}>Year</Table.HeaderCell>
-            <Table.HeaderCell width={3}>Poster</Table.HeaderCell>
+            <Table.HeaderCell width={4}>Name</Table.HeaderCell>
+            <Table.HeaderCell width={3}>Description</Table.HeaderCell>
+            <Table.HeaderCell width={2}>Published</Table.HeaderCell>
+            <Table.HeaderCell width={1}>Status</Table.HeaderCell>
+            <Table.HeaderCell width={1}>Is public</Table.HeaderCell>
+            <Table.HeaderCell width={1}>Poster</Table.HeaderCell>
           </Table.Row>
         </Table.Header>
         <Table.Body>{itemsList}</Table.Body>
