@@ -7,7 +7,13 @@ import ViewItem from "./ViewItem";
 import ItemsService, { Item } from "../service/ItemsService";
 import { useKeycloak } from "@react-keycloak/web";
 import { Button, Checkbox, Image, Table } from "semantic-ui-react";
-
+export interface EditItemModel {
+  public: boolean;
+  id: string;
+  name: string;
+  description: string;
+  status: string;
+}
 const Items: React.FunctionComponent = () => {
   const [items, setData] = useState<Item[]>([]);
   const [loading, setLoading] = useState(true);
@@ -54,6 +60,7 @@ const Items: React.FunctionComponent = () => {
   if (message) {
     return <div>{message}</div>;
   }
+
   //  return (
   //     <div className="item">
   //       <header className="item-header">Items</header>
@@ -82,7 +89,13 @@ const Items: React.FunctionComponent = () => {
   //       </Switch>
   //     </div>
   //  );
+const handleDeleteItem =(item:Item)=>{
 
+}
+
+const handleEditItem = (item: Item) => {
+  
+};
   const height = window.innerHeight - 100;
   const style = {
     height: height,
@@ -102,14 +115,14 @@ const Items: React.FunctionComponent = () => {
               color="red"
               size="small"
               icon="trash"
-              //   onClick={() => handleDeleteMovie(movie)}
+                 onClick={() => handleDeleteItem(item)}
             />
             <Button
               circular
               color="orange"
               size="small"
               icon="edit"
-              //  onClick={() => handleEditMovie(movie)}
+                onClick={() => handleEditItem(item)}
             />
           </Table.Cell>
           <Table.Cell>{item.id}</Table.Cell>

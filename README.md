@@ -44,7 +44,14 @@ For local development please check the Readme section for each project and insta
 - VNC viewer [RealVNC](https://www.realvnc.com/en/connect/download/viewer/) for accessing selenium grid node when test are executed.
 - Configure vnc: server-> localhost:5901, password-> secret, Name -> Chrome:5901
 ## keycloak 
- ### create the scopes and application
+ 
+
+ ### Manual create the scopes and application
+ 
+ #### import realm json 
+
+[sample-realm](api/src/test/resources/sample-realm.json)  json  file 
+ ####Shell 
 Navigate to instance shell and execute 
 setup realm and   client
 `
@@ -54,7 +61,10 @@ cd /opt/jboss/keycloak/bin \
 && ./kcadm.sh create  -x "client-scopes" -r realm-sample -s name=user -s protocol=openid-connect \
 && ./kcadm.sh create  clients -r realm-sample -s clientId=sample-client -s enabled=true -s publicClient="true" -s directAccessGrantsEnabled="true" -s 'webOrigins=["*"]' -s 'redirectUris=["*"]' -s 'defaultClientScopes=["user", "web-origins", "profile", "roles", "email"]'`
 
-add  sample user 
+Add manual client mapper for id to user_id from 
+![mapper](doc/userIdMapper.jpg
+
+### add  sample user 
 `
  ./kcadm.sh create users -s username=sample -s enabled=true -r realm-sample && ./kcadm.sh create roles -r realm-sample -s name=sample-role && ./kcadm.sh add-roles --uusername sample --rolename sample-role -r realm-sample && ./kcadm.sh set-password -r realm-sample --username sample --new-password sample
 `
