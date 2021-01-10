@@ -7,7 +7,6 @@ import PrivateRoute from "./common/PrivateRoute";
 import Navbar from "./common/Navbar";
 import { handleLog } from "./common/Helpers";
 import Home from "./home/Home";
-import EditItem from "./item/Item";
 import { appConfig } from "./service/config";
 import About from "./about/About";
 import Items from "./item/Items";
@@ -15,6 +14,7 @@ import Footer from "./common/footer";
 import Notfound from "./NotFound";
 import "./common/common.css";
 import "./App.css";
+import ItemForm from "./item/ItemForm";
 
 function App() {
   const keycloakConfig: KeycloakConfig = {
@@ -65,7 +65,8 @@ function App() {
           <Route path="/home" component={Home} />
           <Route path="/about" component={About} />
           <PrivateRoute path="/items" component={Items} />
-          <PrivateRoute path="/items/:id" component={EditItem} />
+          <PrivateRoute path="/item/:id" component={ItemForm} />
+          <PrivateRoute path="/item/" component={ItemForm} />
           <Route component={Notfound} />
         </Switch>
       </Router>

@@ -34,7 +34,7 @@ public class CustomCoresFilter implements Filter {
 
 	public static void setHeaders(HttpServletResponse response) {
 		response.setHeader("Access-Control-Allow-Origin", "*");
-		response.setHeader("Access-Control-Allow-Methods", "*");
+		response.setHeader("Access-Control-Allow-Methods", "POST,PUT,DELETE,GET,OPTIONS,PATCH");
 		response.setHeader("Access-Control-Max-Age", "3000");
 		response.setHeader("Access-Control-Allow-Headers", "*");
 	}

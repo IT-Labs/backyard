@@ -1,13 +1,16 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { useState, useEffect } from "react";
 import "./Item.css";
 
-import { Route, Link, Switch } from "react-router-dom";
-import ViewItem from "./ViewItem";
+import { Link } from "react-router-dom";
 import ItemsService, { Item } from "../service/ItemsService";
 import { useKeycloak } from "@react-keycloak/web";
-import { Button, Checkbox, Image, Table } from "semantic-ui-react";
+import { Button, Image, Table } from "semantic-ui-react";
 export interface EditItemModel {
+  nameError: string;
+  descriptionError: string;
+  statusError: string;
+  publicError: string;
   public: boolean;
   id: string;
   name: string;
@@ -15,44 +18,29 @@ export interface EditItemModel {
   status: string;
 }
 const Items: React.FunctionComponent = () => {
+  const itemsService = useMemo<ItemsService>(() => new ItemsService(), []);
   const [items, setData] = useState<Item[]>([]);
   const [loading, setLoading] = useState(true);
   const [message, setMessage] = useState("");
   const { keycloak } = useKeycloak();
-  useEffect(() => {
-    const getItems = async () => {
-      try {
-        let itemsService = new ItemsService();
-        const data = await itemsService.get(
-          keycloak.token ? keycloak.token : "token is missing "
-        );
-        setData(data.content);
-        setLoading(false);
-      } catch (error) {
-        setData([]);
-        setLoading(false);
-        setMessage(error.message);
-      }
-    };
+   const getItems = async () => {
+     try {
+       let itemsService = new ItemsService();
+       const data = await itemsService.get(
+         keycloak.token ? keycloak.token : "token is missing "
+       );
+       setData(data.content);
+       setLoading(false);
+     } catch (error) {
+       setData([]);
+       setLoading(false);
+       setMessage(error.message);
+     }
+   };
+  useEffect(() => {   
     getItems();
   }, [keycloak]);
 
-  // const renderTableData = (items: Array<any>) => {
-  //   return items.map((item, index) => {
-  //     return (
-  //       <tr key={item.id}>
-
-  //         <td>
-  //           {" "}
-  //           <Link to={{ pathname: `/items/${item.id}` }}>{item.id}</Link>{" "}
-  //         </td>
-  //         <td>{item.name}</td>
-  //         <td>{item.status}</td>
-  //         <td>{item.description}</td>
-  //       </tr>
-  //     );
-  //   });
-  // };
 
   if (loading) {
     return <div>Loading Items</div>;
@@ -61,53 +49,20 @@ const Items: React.FunctionComponent = () => {
     return <div>{message}</div>;
   }
 
-  //  return (
-  //     <div className="item">
-  //       <header className="item-header">Items</header>
-  //       <div>
-  //         <Table
-  //           striped
-  //           bordered
-  //           hover
-  //           variant="dark"
-  //           id="items_table"
-  //           data-testid="items_table"
-  //         >
-  //           <thead>
-  //             <tr>
-  //               <th>#</th>
-  //               <th> Name</th>
-  //               <th>Status</th>
-  //               <th>Description</th>
-  //             </tr>
-  //           </thead>
-  //           <tbody>{renderTableData(items)}</tbody>
-  //         </Table>
-  //       </div>
-  //       <Switch>
-  //         <Route path="/items/:id" exact component={ViewItem} />
-  //       </Switch>
-  //     </div>
-  //  );
+  
+  
 const handleDeleteItem =(item:Item)=>{
-
+itemsService.deleteById(item.id,keycloak.token?keycloak.token:"");
+getItems();
 }
 
-const handleEditItem = (item: Item) => {
-  
-};
+
   const height = window.innerHeight - 100;
-  const style = {
-    height: height,
-    maxHeight: height,
-    overflowY: "auto",
-    overflowX: "hidden",
-  };
 
   const itemsList =
     items &&
     items.map((item) => {
-      return (
+      return (      
         <Table.Row key={item.id}>
           <Table.Cell collapsing>
             <Button
@@ -115,15 +70,9 @@ const handleEditItem = (item: Item) => {
               color="red"
               size="small"
               icon="trash"
-                 onClick={() => handleDeleteItem(item)}
+              onClick={() => handleDeleteItem(item)}
             />
-            <Button
-              circular
-              color="orange"
-              size="small"
-              icon="edit"
-                onClick={() => handleEditItem(item)}
-            />
+            <Link to={{ pathname: `/item/${item.id}` }}>{item.id}</Link>           
           </Table.Cell>
           <Table.Cell>{item.id}</Table.Cell>
           <Table.Cell>{item.name}</Table.Cell>
@@ -134,7 +83,7 @@ const handleEditItem = (item: Item) => {
               : "NA"}
           </Table.Cell>
           <Table.Cell>{item.status}</Table.Cell>
-          <Table.Cell>{item.public?"True":"False"}</Table.Cell>
+          <Table.Cell>{item.public ? "True" : "False"}</Table.Cell>
           <Table.Cell>
             <Image
               size="tiny"
@@ -149,6 +98,7 @@ const handleEditItem = (item: Item) => {
   return (
     <div //style={style}
     >
+      <Link to={{ pathname: `/item/` }}>Add</Link>
       <Table compact striped>
         <Table.Header>
           <Table.Row>

@@ -9,11 +9,3 @@ spring:
     redis:
         host: redis-sample
         port: 6379
-    security:
-        oauth2:
-            client:
-                provider:
-                    keycloak:
-                        token-uri: http://keycloak-sample:6180/auth/realms/master/protocol/openid-connect/token
-                        authorization-uri: http://keycloak-sample:6180/auth/realms/master/protocol/openid-connect/auth
-                        userinfo-uri: http://keycloak-sample:6180/auth/realms/master/protocol/openid-connect/userinfo
