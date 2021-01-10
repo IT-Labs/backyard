@@ -1,3 +1,4 @@
+import { useKeycloak } from '@react-keycloak/web';
 import React from 'react'
 import { Card, Header, Segment } from 'semantic-ui-react'
 import { Item } from "../service/Item";
@@ -6,8 +7,9 @@ interface ItemsListProps {
   items: Array<Item>;
 }
 function ItemsList(props: ItemsListProps) {
+   const { keycloak } = useKeycloak();
   const items = props.items.map((i) => (
-    <ItemCard key={i.id} item={i} link={false} />
+    <ItemCard key={i.id} item={i} link={!!keycloak.authenticated} />
   ));
 
   return props.items.length > 0 ? (

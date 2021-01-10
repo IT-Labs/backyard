@@ -10,7 +10,7 @@ function ItemCard(props: ItemProps) {
   const content = (
     <>
       <Image
-        src={`https://picsum.photos/seed/${props.item.id}/200/300`}
+        src={`https://picsum.photos/seed/${props.item.id}/100/100`}
         wrapped
         ui={false}
       />
@@ -33,7 +33,7 @@ function ItemCard(props: ItemProps) {
   return !props.link ? (
     <Card>{content}</Card>
   ) : (
-    <Card as={Link} to={`/items/${props.item.id}`}>
+    <Card as={Link} to={`/item/${props.item.id}`}>
       {content}
     </Card>
   );

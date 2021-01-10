@@ -53,7 +53,7 @@ const Items: React.FunctionComponent = () => {
   const handleDeleteItem = (item: Item) => {
     ItemsService.deleteById(item.id, keycloak.token ? keycloak.token : "")
       .then((response) => {
-         toast("Item deleted");
+        toast("Item deleted");
         getItems();
       })
       .catch((error) => {
@@ -74,10 +74,10 @@ const Items: React.FunctionComponent = () => {
               icon="trash"
               onClick={() => handleDeleteItem(item)}
             />
-            <Link to={{ pathname: `/item/${item.id}` }}>{item.id}</Link>
           </Table.Cell>
-          <Table.Cell>{item.id}</Table.Cell>
-          <Table.Cell>{item.name}</Table.Cell>
+          <Table.Cell>
+            <Link to={{ pathname: `/item/${item.id}` }}>{item.name} </Link>
+          </Table.Cell>
           <Table.Cell>{item.description}</Table.Cell>
           <Table.Cell>
             {item.published
@@ -105,7 +105,6 @@ const Items: React.FunctionComponent = () => {
         <Table.Header>
           <Table.Row>
             <Table.HeaderCell width={2} />
-            <Table.HeaderCell width={2}>ID</Table.HeaderCell>
             <Table.HeaderCell width={4}>Name</Table.HeaderCell>
             <Table.HeaderCell width={3}>Description</Table.HeaderCell>
             <Table.HeaderCell width={2}>Published</Table.HeaderCell>
