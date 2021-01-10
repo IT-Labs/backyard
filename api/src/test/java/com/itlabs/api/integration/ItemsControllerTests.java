@@ -173,7 +173,7 @@ public class ItemsControllerTests extends BaseIntegration {
 		resultActions.andExpect(status().isCreated()).andExpect(jsonPath("$.id").exists())
 				.andExpect(jsonPath("$.name").value(model.getName()))
 				.andExpect(jsonPath("$.status").value(model.getStatus().toString()))
-				.andExpect(jsonPath("$.public").value(model.getIsPublic().toString()))
+				.andExpect(jsonPath("$.publiclyAvailable").value(model.getPubliclyAvailable().toString()))
 				.andExpect(jsonPath("$.description").value(model.getDescription()));
 	}
 

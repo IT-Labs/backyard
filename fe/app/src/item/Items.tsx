@@ -1,46 +1,47 @@
-import React, { useMemo } from "react";
+import React from "react";
 import { useState, useEffect } from "react";
 import "./Item.css";
 
 import { Link } from "react-router-dom";
-import ItemsService, { Item } from "../service/ItemsService";
+
+import { Item } from "../service/Item";
 import { useKeycloak } from "@react-keycloak/web";
 import { Button, Image, Table } from "semantic-ui-react";
+import { ItemsService } from "../service/ItemsService";
+import { toast } from "react-toastify";
 export interface EditItemModel {
   nameError: string;
   descriptionError: string;
   statusError: string;
   publicError: string;
-  public: boolean;
+  publiclyAvailable: boolean;
   id: string;
   name: string;
   description: string;
   status: string;
 }
 const Items: React.FunctionComponent = () => {
-  const itemsService = useMemo<ItemsService>(() => new ItemsService(), []);
   const [items, setData] = useState<Item[]>([]);
   const [loading, setLoading] = useState(true);
   const [message, setMessage] = useState("");
   const { keycloak } = useKeycloak();
-   const getItems = async () => {
-     try {
-       let itemsService = new ItemsService();
-       const data = await itemsService.get(
-         keycloak.token ? keycloak.token : "token is missing "
-       );
-       setData(data.content);
-       setLoading(false);
-     } catch (error) {
-       setData([]);
-       setLoading(false);
-       setMessage(error.message);
-     }
-   };
-  useEffect(() => {   
+  const getItems = async () => {
+    try {
+      ItemsService.get(
+        keycloak.token ? keycloak.token : "token is missing "
+      ).then((response) => {
+        setData(response.data.content);
+        setLoading(false);
+      });
+    } catch (error) {
+      setData([]);
+      setLoading(false);
+      setMessage(error.message);
+    }
+  };
+  useEffect(() => {
     getItems();
   }, [keycloak]);
-
 
   if (loading) {
     return <div>Loading Items</div>;
@@ -49,20 +50,21 @@ const Items: React.FunctionComponent = () => {
     return <div>{message}</div>;
   }
 
-  
-  
-const handleDeleteItem =(item:Item)=>{
-itemsService.deleteById(item.id,keycloak.token?keycloak.token:"");
-getItems();
-}
-
-
-  const height = window.innerHeight - 100;
+  const handleDeleteItem = (item: Item) => {
+    ItemsService.deleteById(item.id, keycloak.token ? keycloak.token : "")
+      .then((response) => {
+         toast("Item deleted");
+        getItems();
+      })
+      .catch((error) => {
+        toast("error deleting item");
+      });
+  };
 
   const itemsList =
     items &&
     items.map((item) => {
-      return (      
+      return (
         <Table.Row key={item.id}>
           <Table.Cell collapsing>
             <Button
@@ -72,7 +74,7 @@ getItems();
               icon="trash"
               onClick={() => handleDeleteItem(item)}
             />
-            <Link to={{ pathname: `/item/${item.id}` }}>{item.id}</Link>           
+            <Link to={{ pathname: `/item/${item.id}` }}>{item.id}</Link>
           </Table.Cell>
           <Table.Cell>{item.id}</Table.Cell>
           <Table.Cell>{item.name}</Table.Cell>
@@ -83,7 +85,7 @@ getItems();
               : "NA"}
           </Table.Cell>
           <Table.Cell>{item.status}</Table.Cell>
-          <Table.Cell>{item.public ? "True" : "False"}</Table.Cell>
+          <Table.Cell>{item.publiclyAvailable ? "True" : "False"}</Table.Cell>
           <Table.Cell>
             <Image
               size="tiny"

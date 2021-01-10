@@ -18,7 +18,7 @@ public class ItemModel {
 
 	private String id;
 
-	private boolean isPublic;
+	private boolean publiclyAvailable;
 
 	private LocalDateTime published;
 

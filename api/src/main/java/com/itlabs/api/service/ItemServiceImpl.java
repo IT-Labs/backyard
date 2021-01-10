@@ -85,8 +85,8 @@ public class ItemServiceImpl implements ItemsService {
 			item.setPublished(null);
 		}
 
-		if (editModel.getIsPublic() != null) {
-			item.setPublic(editModel.getIsPublic());
+		if (editModel.getPubliclyAvailable() != null) {
+			item.setPublic(editModel.getPubliclyAvailable());
 		}
 
 		item.setStatus(editModel.getStatus());
@@ -116,7 +116,7 @@ public class ItemServiceImpl implements ItemsService {
 
 	private ItemModel getModel(Items item) {
 		return ItemModel.builder().id(item.getGuid().toString()).name(item.getName()).description(item.getDescription())
-				.published(item.getPublished()).isPublic(item.isPublic()).status(item.getStatus()).build();
+				.published(item.getPublished()).publiclyAvailable(item.isPublic()).status(item.getStatus()).build();
 	}
 
 }

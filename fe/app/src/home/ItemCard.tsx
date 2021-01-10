@@ -1,7 +1,7 @@
 import React from 'react'
 import { Card, Image } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
-import { Item } from '../service/ItemsService'
+import { Item } from "../service/Item";
 interface ItemProps {
   item: Item;
   link:boolean;

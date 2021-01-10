@@ -5,6 +5,8 @@ import { Container, Dropdown, Menu } from "semantic-ui-react";
 import { isAdmin } from "./Helpers";
 import { useState, useEffect } from "react";
 import { KeycloakProfile } from "keycloak-js";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 function Navbar(props: any) {
   const { keycloak } = useKeycloak();
   const [profile, setProfile] = useState<KeycloakProfile>({});
@@ -55,10 +57,10 @@ function Navbar(props: any) {
   return (
     <Menu stackable>
       <Container>
-       <Menu.Item  id ="home" as={NavLink} exact to="/home">
+        <Menu.Item id="home" as={NavLink} exact to="/home">
           Home
         </Menu.Item>
-        
+
         <Dropdown item text="Admin" style={getAdminMenuStyle()}>
           <Dropdown.Menu>
             <Dropdown.Item
@@ -71,7 +73,6 @@ function Navbar(props: any) {
               items
             </Dropdown.Item>
           </Dropdown.Menu>
-       
         </Dropdown>
         <Menu.Item id="about" as={NavLink} exact to="/about">
           About
@@ -90,10 +91,17 @@ function Navbar(props: any) {
               </Dropdown.Menu>
             </Dropdown>
           )}
-          <Menu.Item as={NavLink}  id="login" exact to="/login" onClick={handleLogInOut}>
+          <Menu.Item
+            as={NavLink}
+            id="login"
+            exact
+            to="/login"
+            onClick={handleLogInOut}
+          >
             {getLogInOutText()}
           </Menu.Item>
         </Menu.Menu>
+        <ToastContainer />
       </Container>
     </Menu>
   );

@@ -17,6 +17,6 @@ public class ItemEditModel {
 
 	private String description;
 
-	private Boolean isPublic;
+	private Boolean publiclyAvailable;
 
 }

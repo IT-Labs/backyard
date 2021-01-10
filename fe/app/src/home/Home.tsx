@@ -1,24 +1,27 @@
 import React, { useEffect, useState } from "react";
 import { Container } from "semantic-ui-react";
-import ItemsService, { Item } from "../service/ItemsService";
+import { ItemsService } from "../service/ItemsService";
+import { Item } from "../service/Item";
 import ItemsList from "./ItemsList";
+import { toast } from "react-toastify";
 
 const Home: React.FunctionComponent = () => {
   const [data, setData] = useState<Item[]>([]);
 
   const [loading, setLoading] = useState(true);
-  const [message, setMessage] = useState("");
+ 
   useEffect(() => {
     const getItems = async () => {
       try {
-        let itemsService = new ItemsService();
-        const data = await itemsService.getPublic();
-        setData(data);
-        setLoading(false);
+         ItemsService.getPublic().then((response) => {
+          setData(response.data);
+          setLoading(false);
+        });
       } catch (error) {
         setData([]);
         setLoading(false);
-        setMessage(error.message);
+        toast(error.message);
+       
       }
     };
     getItems();
@@ -27,9 +30,7 @@ const Home: React.FunctionComponent = () => {
   if (loading) {
     return <div>Loading Items</div>;
   }
-  if (message) {
-    return <div>{message}</div>;
-  }
+ 
 
   return (
     <Container>

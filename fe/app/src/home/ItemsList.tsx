@@ -1,6 +1,6 @@
 import React from 'react'
 import { Card, Header, Segment } from 'semantic-ui-react'
-import { Item } from '../service/ItemsService';
+import { Item } from "../service/Item";
 import ItemCard from "./ItemCard";
 interface ItemsListProps {
   items: Array<Item>;

@@ -1,97 +1,73 @@
+import axios from "axios";
 import { EditItemModel } from "../item/Items";
 import { appConfig } from "./config";
-export interface Item {
-  public: boolean;
-  id: string;
-  name: string;
-  description: string;
-  status: string;
-  published: Date;
-}
-class ItemsService {
-  private readonly itemUrl = appConfig.urlApi + "items";
-  private readonly itemPublicUrl = appConfig.urlApi + "home/items";
-  async saveItem(id: string, data: EditItemModel, token: string) {
-    let method = id ? "PUT" : "POST";
-    let route = id ? this.itemUrl + "/" + id : this.itemUrl;
-    const itemApiCall = await fetch(route, {
-      headers: {
-        Accept: "application/json",
-       "Content-Type": "application/json",
-        Authorization: "bearer " + token,
-      },
-      body: JSON.stringify(data),
-      method: method,
-    });
-    if (!itemApiCall.ok) {
-      throw Error("something went wrong saving items");
-    }
+export  const  ItemsService = {
+  get,
+  getPublic,
+  saveItem,
+  deleteById,
+  getById,
+ 
+};
 
-    if (itemApiCall.headers.has("fallback")) {
-      throw Error(await itemApiCall.json().then((res) => res.message));
-    }
-    return itemApiCall.json();
-  }
-  async deleteById(id: string, token: string) {
-    const itemApiCall = await fetch(this.itemUrl + "/" + id, {
-      headers: {
-        Accept: "application/json",
-        Authorization: "bearer " + token,
-      },
-      method:'DELETE'
-    });
-    if (!itemApiCall.ok) {
-      throw Error("something went wrong deleting items");
-    }
+ const instance = axios.create({
+    baseURL: appConfig.urlApi,
+  });
 
-    if (itemApiCall.headers.has("fallback")) {
-      throw Error(await itemApiCall.json().then((res) => res.message));
-    }
-    return itemApiCall.json();
+ 
+  function saveItem(id: string, data: EditItemModel, token: string) {
+    let action = id
+      ? instance.put("items/" + id, data, {
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: "bearer " + token,
+          },
+        })
+      : instance.post("items", data, {
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: "bearer " + token,
+          },
+        });
+  return action;
   }
-  async getById(id: string, token: string) {
-    const itemApiCall = await fetch(this.itemUrl + "/" + id, {
+ 
+ function getById(id: string, token: string) {
+    return instance.get(`/items/${id}`, {
+      headers: { Authorization: "bearer " + token },
+    });
+  }
+function  deleteById(id: string, token: string) {
+    return instance.delete(`/items/${id}`, {
       headers: {
-        Accept: "application/json",
+        Authorization: "bearer " + token
+      },
+    });
+  }
+ 
+  function get(token: string) {
+    return instance.get(`/items`, {
+      headers: {
         Authorization: "bearer " + token,
       },
     });
-    if (!itemApiCall.ok) {
-      throw Error("something went wrong getting items");
-    }
-
-    if (itemApiCall.headers.has("fallback")) {
-      throw Error(await itemApiCall.json().then((res) => res.message));
-    }
-    return itemApiCall.json();
   }
-  async get(token: string) {
-    const itemApiCall = await fetch(this.itemUrl, {
-      headers: {
-        Accept: "application/json",
-        Authorization: "bearer " + token,
-      },
-    });
-    if (!itemApiCall.ok) {
-      throw Error("something went wrong getting items");
-    }
-
-    if (itemApiCall.headers.has("fallback")) {
-      throw Error(await itemApiCall.json().then((res) => res.message));
-    }
-    return itemApiCall.json();
+  function getPublic() {
+   return instance.get("/home/items" );
   }
-  async getPublic() {
-    const itemApiCall = await fetch(this.itemPublicUrl);
-    if (!itemApiCall.ok) {
-      throw Error("something went wrong getting public items");
+instance.interceptors.response.use(
+  (response) => {
+    return response;
+  },
+  function (error) {
+    if (error.response && error.response.status === 404) {
+      return { status: error.response.status };
     }
-
-    if (itemApiCall.headers.has("fallback")) {
-      throw Error(await itemApiCall.json().then((res) => res.message));
-    }
-    return itemApiCall.json();
+    return Promise.reject(error.response);
   }
-}
+);
 
-export default ItemsService;
+
+export default {}

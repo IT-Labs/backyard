@@ -1,8 +1,9 @@
 import { useKeycloak } from "@react-keycloak/web";
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { RouteComponentProps, useHistory } from "react-router-dom";
+import { toast } from "react-toastify";
 import { Button, Form } from "semantic-ui-react";
-import ItemsService from "../service/ItemsService";
+import { ItemsService } from "../service/ItemsService";
 import { EditItemModel } from "./Items";
 interface IFormProps extends RouteComponentProps<{ id: string }> {}
 const ItemForm: React.FunctionComponent<IFormProps> = ({
@@ -10,68 +11,63 @@ const ItemForm: React.FunctionComponent<IFormProps> = ({
     params: { id },
   },
 }) => {
-  const [item, setData] = useState<EditItemModel>({nameError: '',
-  descriptionError:'',
-  statusError:'',
-  publicError:'',
-  public: false,
-  id:'',
-  name: '',
-  description: '',
-  status: 'DRAFT',});
+  const [item, setData] = useState<EditItemModel>({
+    nameError: "",
+    descriptionError: "",
+    statusError: "",
+    publicError: "",
+    publiclyAvailable: false,
+    id: "",
+    name: "",
+    description: "",
+    status: "DRAFT",
+  });
   const history = useHistory();
   const { keycloak } = useKeycloak();
-  const itemsService = useMemo<ItemsService>(() => new ItemsService(), []);
   useEffect(() => {
     const newLocal = Object.assign({});
     newLocal.status = "DRAFT";
     const getItem = async () => {
       try {
-        
-        const data = id
-          ? await itemsService.getById(
+        id
+          ? await ItemsService.getById(
               id,
               keycloak.token ? keycloak.token : "token is missing "
-            )
-          : newLocal;
-        setData(data);
-        //   setLoading(false);
+            ).then((response) => setData(response.data)).catch(error=>{
+                toast("error loading item");
+            })
+          : setData(newLocal);       
       } catch (error) {
         setData(newLocal);
-        //   setLoading(false);
-        //   setMessage(error.message);
+         toast(error.message);
+       
       }
     };
     getItem();
-  }, [keycloak,itemsService, id]);
-  const handleCheckBoxChange = (event: any, data: any) => {
-    const { id, checked } = event.target;   
-    item.public = checked;
-    setData(item);
+  }, [keycloak, id]);
+  const handleCheckBoxChange = (event: any) => {
+    const { id, checked } = event.target;
+    setData({ ...item, [id]: checked });
   };
   const handleChange = (event: any, data: any) => {
-    const { id, value } = event.target;
-    const form = { ...data };
-    form[id] = value; 
-
-    if (id === 'name') {
-      item.name = value;
-    } else if (id === 'description') {
-      item.description = value;
-    } else if (id === 'status') {
-      item.status = value;
-    }  
-    setData(item);
+    const { id, value } = data;
+    setData({ ...item, [id]: value });
   };
 
-  const handleSave = (item:EditItemModel) => {    
-    itemsService.saveItem(id, item, keycloak.token ? keycloak.token : "");
-    history.goBack();
+  const handleSave = (item: EditItemModel) => {
+    ItemsService.saveItem(id, item, keycloak.token ? keycloak.token : "")
+      .then((response) => {
+        toast("Success save");
+
+        history.goBack();
+      })
+      .catch((error) => {
+        toast("error saving item");
+      });
   };
   return (
     <Form>
       <Form.Input
-        
         label="Name *"
         id="name"
         onChange={handleChange}
@@ -79,7 +75,6 @@ const ItemForm: React.FunctionComponent<IFormProps> = ({
         error={item.nameError}
       />
       <Form.Input
-        
         label="Description"
         id="description"
         onChange={handleChange}
@@ -87,7 +82,6 @@ const ItemForm: React.FunctionComponent<IFormProps> = ({
         error={item.descriptionError}
       />
       <Form.Dropdown
-        
         label="Status *"
         id="status"
         selection
@@ -103,9 +97,9 @@ const ItemForm: React.FunctionComponent<IFormProps> = ({
       />
       <Form.Checkbox
         label="IsPublic"
-        id="public"
+        id="publiclyAvailable"
         onChange={handleCheckBoxChange}
-        checked={item.public}
+        checked={item.publiclyAvailable}
         error={item.publicError}
       />
       <Button.Group>
@@ -117,7 +111,7 @@ const ItemForm: React.FunctionComponent<IFormProps> = ({
           Cancel
         </Button>
         <Button.Or />
-        <Button positive onClick={()=>handleSave(item)}>
+        <Button positive onClick={() => handleSave(item)}>
           Save
         </Button>
       </Button.Group>
