@@ -2,7 +2,7 @@ import React from "react";
 import { useKeycloak } from "@react-keycloak/web";
 import { NavLink, withRouter } from "react-router-dom";
 import { Container, Dropdown, Menu } from "semantic-ui-react";
-import { isAdmin } from "./Helpers";
+import { handleLog, isAdmin } from "./Helpers";
 import { useState, useEffect } from "react";
 import { KeycloakProfile } from "keycloak-js";
 import { ToastContainer } from "react-toastify";
@@ -37,7 +37,7 @@ function Navbar(props: any) {
     if (!keycloak.profile) {
       keycloak.loadUserProfile()
       .then(profile=>{ 
-        console.log("Profile loaded"+profile);
+        handleLog("Profile loaded" + profile);
         keycloak.profile= profile;
         setProfile(profile);
       });     

@@ -1,3 +1,4 @@
+import { toast, ToastContent, ToastOptions } from "react-toastify";
 import { appConfig } from "../service/config";
 
 export const getAvatarUrl = (text: string) => {
@@ -32,4 +33,17 @@ export const handleLog = (data: any) => {
     return;
   }
   console.log(data);
+};
+  const errorToastOptions: ToastOptions = {
+    type: "error",
+  };
+  const successToastOptions: ToastOptions = {
+    type: "success",
+  };
+export  const successToast = (content: ToastContent) => {
+toast(content, successToastOptions);
+};
+
+export const errorToast = (content: ToastContent) => {
+  toast(content, errorToastOptions);
 };

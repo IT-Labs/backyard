@@ -1,8 +1,8 @@
 import { useKeycloak } from "@react-keycloak/web";
 import React, { useEffect, useState } from "react";
 import { RouteComponentProps, useHistory } from "react-router-dom";
-import { toast } from "react-toastify";
 import { Button, Form } from "semantic-ui-react";
+import { errorToast, successToast } from "../common/Helpers";
 import { ItemsService } from "../service/ItemsService";
 import { EditItemModel } from "./Items";
 interface IFormProps extends RouteComponentProps<{ id: string }> {}
@@ -22,6 +22,7 @@ const ItemForm: React.FunctionComponent<IFormProps> = ({
     description: "",
     status: "DRAFT",
   });
+
   const history = useHistory();
   const { keycloak } = useKeycloak();
   useEffect(() => {
@@ -34,12 +35,14 @@ const ItemForm: React.FunctionComponent<IFormProps> = ({
               id,
               keycloak.token ? keycloak.token : "token is missing "
             ).then((response) => setData(response.data)).catch(error=>{
-                toast("error loading item");
+                errorToast(
+                  `error loading item with id ${id}`
+                );
             })
           : setData(newLocal);       
       } catch (error) {
         setData(newLocal);
-         toast(error.message);
+         errorToast(error.message);
        
       }
     };
@@ -57,12 +60,12 @@ const ItemForm: React.FunctionComponent<IFormProps> = ({
   const handleSave = (item: EditItemModel) => {
     ItemsService.saveItem(id, item, keycloak.token ? keycloak.token : "")
       .then((response) => {
-        toast("Success save");
+        successToast("Success save");
 
         history.goBack();
       })
       .catch((error) => {
-        toast("error saving item");
+        errorToast("error saving item");
       });
   };
   return (

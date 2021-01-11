@@ -61,6 +61,13 @@ public class ItemServiceImpl implements ItemsService {
 		item.setType("PERSONAL");
 		item.setGuid(UUID.randomUUID());
 		item.setDescription(model.getDescription());
+		if (item.getStatus() == ItemStatus.DONE) {
+			item.setPublished(LocalDateTime.now());
+
+		}
+		else {
+			item.setPublished(null);
+		}
 		item = itemRepository.save(item);
 		return getModel(item);
 	}

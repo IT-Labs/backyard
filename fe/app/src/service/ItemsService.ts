@@ -47,8 +47,8 @@ function  deleteById(id: string, token: string) {
     });
   }
  
-  function get(token: string) {
-    return instance.get(`/items`, {
+  function get(token: string,page:number) {
+    return instance.get(`/items?page=${page}&sort=created`, {
       headers: {
         Authorization: "bearer " + token,
       },

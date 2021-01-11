@@ -6,10 +6,11 @@ import { Link } from "react-router-dom";
 
 import { Item } from "../service/Item";
 import { useKeycloak } from "@react-keycloak/web";
-import { Button, Image, Table } from "semantic-ui-react";
+import { Button, Image, Table, Pagination, PaginationProps } from "semantic-ui-react";
 import { ItemsService } from "../service/ItemsService";
-import { toast } from "react-toastify";
+
 import ConfirmationModal, { IModalProps } from "../common/ConfirmationModal";
+import { errorToast, handleLog, successToast } from "../common/Helpers";
 export interface EditItemModel {
   nameError: string;
   descriptionError: string;
@@ -31,27 +32,31 @@ const Items: React.FunctionComponent = () => {
     id: "",
   });
   const [items, setData] = useState<Item[]>([]);
-
+ const [activePage, setaActivePage] = useState(1);
+ const [totalPage, setTotalPages] = useState(0);
   const [loading, setLoading] = useState(true);
   const [message, setMessage] = useState("");
   const { keycloak } = useKeycloak();
   const getItems = async () => {
     try {
       ItemsService.get(
-        keycloak.token ? keycloak.token : "token is missing "
+        keycloak.token ? keycloak.token : "token is missing ",
+        activePage-1
       ).then((response) => {
         setData(response.data.content);
         setLoading(false);
+        setTotalPages(response.data.totalPages);
       });
     } catch (error) {
       setData([]);
       setLoading(false);
       setMessage(error.message);
+      handleLog(error.message);
     }
   };
   useEffect(() => {
     getItems();
-  }, [keycloak]);
+  }, [keycloak, activePage]);
 
   if (loading) {
     return <div>Loading Items</div>;
@@ -63,11 +68,13 @@ const Items: React.FunctionComponent = () => {
   const handleDeleteItem = (id: string) => {
     ItemsService.deleteById(id, keycloak.token ? keycloak.token : "")
       .then((response) => {
-        toast("Item deleted");
+      
+        successToast(`Item with ${id} deleted`);
         getItems();
       })
       .catch((error) => {
-        toast("error deleting item");
+        errorToast("error deleting item");
+         handleLog(error.message);
       });
   };
   const handleCloseModal = () => {
@@ -92,7 +99,10 @@ const Items: React.FunctionComponent = () => {
     };
     setModal(modal);
   };
-
+  const onPaginationChange = (e:any, pageInfo: PaginationProps) => {
+    let newLocal = pageInfo.activePage ? parseInt(pageInfo.activePage.toString(),10) : 1;
+    setaActivePage(newLocal);
+  };
   const itemsList =
     items &&
     items.map((item) => {
@@ -121,7 +131,7 @@ const Items: React.FunctionComponent = () => {
           <Table.Cell>
             <Image
               size="tiny"
-              src={`https://picsum.photos/seed/${item.id}/50/80`}
+              src={`https://picsum.photos/seed/${item.id}/30/30`}
               rounded
             />
           </Table.Cell>
@@ -140,11 +150,18 @@ const Items: React.FunctionComponent = () => {
   float:"right"
  };
   return (
-    <div>     
+    <div>
       <div style={addStyle}>
         <Link to={{ pathname: `/item/` }}>Add</Link>
         <ConfirmationModal props={modalData} />
       </div>
+      <Pagination
+        boundaryRange={0}
+        activePage={activePage}
+        onPageChange={onPaginationChange}
+        totalPages={totalPage}
+        ellipsisItem={null}
+      />
       <div style={tableStyle}>
         <Table compact striped>
           <Table.Header>
@@ -160,6 +177,13 @@ const Items: React.FunctionComponent = () => {
           </Table.Header>
           <Table.Body>{itemsList}</Table.Body>
         </Table>
+        <Pagination
+          boundaryRange={0}
+          activePage={activePage}
+          onPageChange={onPaginationChange}
+          totalPages={totalPage}
+          ellipsisItem={null}
+        />
       </div>
     </div>
   );
