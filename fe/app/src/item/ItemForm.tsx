@@ -60,7 +60,7 @@ const ItemForm: React.FunctionComponent<IFormProps> = ({
   const handleSave = (item: EditItemModel) => {
     ItemsService.saveItem(id, item, keycloak.token ? keycloak.token : "")
       .then((response) => {
-        successToast("Success save");
+        successToast(`Item Successfully ${id?'updated item with '+id:'created'}`);
 
         history.goBack();
       })
