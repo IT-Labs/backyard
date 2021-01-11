@@ -146,21 +146,14 @@ Feature: Items Page - list items
        Then I should see all data in the table correctly populated
 
    Scenario: Verify Poster images are correctly displayed in the table  
-       When I create item without poster image
-       Then I should see default photo displayed as poster image
-       When I create item with poster image
-       Then I should see uploaded photo displayed as poster image
-       When I remove poster image
-       Then I should see default photo displayed as poster image
-       When I update item's poster image
-       Then I should see updated photo displayed as poster image
+       Then I should see random photo as poster image
 
     Scenario: Verify N/A is displayed in the cells for not published items  
        When I create item 
-       And I don't publish the item
+       And I don't publish the item (status different than Done)
        Then I should see the published date as N/A 
        When I edit the item 
-       And I don't publish the item
+       And I don't publish the item (status is Done)
        Then I should see the published date as N/A 
 
     Scenario: Verify date in the table is in format MM/DD/YYYY  
@@ -175,7 +168,7 @@ Feature: Items Page - list items
        When I add full item's name 
        Then I should get item with that name as a result
        When I add item's partial name
-       Then I should get all mathing results that contain that partial name
+       Then I should get all matching results that contain that partial name
        When I add space
        Then search should not be perfromed
        And I should get all results

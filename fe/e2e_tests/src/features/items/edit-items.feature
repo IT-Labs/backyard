@@ -8,7 +8,7 @@ Feature: Items Page - Edit Item
         Then I should see Home link
         Then I should see Admin link
         Then I should see About link
-        Then I should see Hi FirstName link
+        Then I should see Hi Username link
         Then I should see Logout link
 
     Scenario: Verify menu items redirection from Edit item page
