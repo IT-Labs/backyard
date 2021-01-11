@@ -128,8 +128,8 @@ Feature: Items Page - Edit Item
         When I edit item
         And I choose status Done
         And I choose item to be private
-        Then item should be seen on Home Page by me        
-        And item should be seen on Home Page by other logged in users        
+        Then item shouldn't be seen on Home Page by me        
+        And item shouldn't be seen on Home Page by other logged in users        
         And item shouldn't be seen on Home Page by other not logged in users
 
     Scenario: Verify correctness of published public edited items
