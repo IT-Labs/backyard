@@ -3,6 +3,7 @@ package com.itlabs.api.controllers;
 import com.itlabs.api.configuration.ApiPageable;
 import com.itlabs.api.models.ItemEditModel;
 import com.itlabs.api.models.ItemModel;
+import com.itlabs.api.models.ItemStatus;
 import com.itlabs.api.service.ItemsService;
 import io.swagger.annotations.Api;
 import java.util.Map;
@@ -26,6 +27,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import springfox.documentation.annotations.ApiIgnore;
 
@@ -44,11 +46,12 @@ public class ItemsController {
 
 	@GetMapping()
 	@ApiPageable
-	public Page<ItemModel> get(@ApiIgnore Pageable pageable) {
+	public Page<ItemModel> get(@ApiIgnore Pageable pageable, @RequestParam(required = false) String name,
+							   @RequestParam(required = false) ItemStatus status) {
 		SecurityContext context = SecurityContextHolder.getContext();
 		Authentication authentication = context.getAuthentication();
 		log.info("Scopes: " + authentication.getAuthorities());
-		return itemsService.get(pageable);
+		return itemsService.get(pageable, name,status);
 	}
 
 	@PostMapping()

@@ -1,62 +1,77 @@
 import axios from "axios";
 import { EditItemModel } from "../item/Items";
 import { appConfig } from "./config";
-export  const  ItemsService = {
+export const ItemsService = {
   get,
   getPublic,
   saveItem,
   deleteById,
   getById,
- 
 };
 
- const instance = axios.create({
-    baseURL: appConfig.urlApi,
-  });
+const instance = axios.create({
+  baseURL: appConfig.urlApi,
+});
 
- 
-  function saveItem(id: string, data: EditItemModel, token: string) {
-    let action = id
-      ? instance.put("items/" + id, data, {
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-            Authorization: "bearer " + token,
-          },
-        })
-      : instance.post("items", data, {
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-            Authorization: "bearer " + token,
-          },
-        });
+function saveItem(id: string, data: EditItemModel, token: string) {
+  let action = id
+    ? instance.put("items/" + id, data, {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: "bearer " + token,
+        },
+      })
+    : instance.post("items", data, {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: "bearer " + token,
+        },
+      });
   return action;
-  }
- 
- function getById(id: string, token: string) {
-    return instance.get(`/items/${id}`, {
-      headers: { Authorization: "bearer " + token },
+}
+
+function getById(id: string, token: string) {
+  return instance.get(`/items/${id}`, {
+    headers: { Authorization: "bearer " + token },
+  });
+}
+function deleteById(id: string, token: string) {
+  return instance.delete(`/items/${id}`, {
+    headers: {
+      Authorization: "bearer " + token,
+    },
+  });
+}
+
+function get(
+  token: string,
+  page: number,
+  query: Map<string, string>,
+  sort: string
+) {
+  let q = "";
+  if (query) { 
+    query.forEach((v, k) => {
+      q = `${q}&${k}=${v.trim()}`;
     });
   }
-function  deleteById(id: string, token: string) {
-    return instance.delete(`/items/${id}`, {
-      headers: {
-        Authorization: "bearer " + token
-      },
-    });
+  let s = "&sort=created";
+
+  if (sort) {
+    s = `&sort=${sort}`;
   }
- 
-  function get(token: string,page:number) {
-    return instance.get(`/items?page=${page}&sort=created`, {
-      headers: {
-        Authorization: "bearer " + token,
-      },
-    });
-  }
-  function getPublic() {
-   return instance.get("/home/items" );
-  }
+
+  return instance.get(`/items?page=${page}${s}${q}`, {
+    headers: {
+      Authorization: "bearer " + token,
+    },
+  });
+}
+function getPublic() {
+  return instance.get("/home/items");
+}
 instance.interceptors.response.use(
   (response) => {
     return response;
@@ -69,5 +84,4 @@ instance.interceptors.response.use(
   }
 );
 
-
-export default {}
+export default {};

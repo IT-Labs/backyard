@@ -29,7 +29,7 @@ public class ItemsServiceTests extends BaseIntegration {
 		final int itemsCount = 10;
 		seedItemsInDatabase(itemsCount);
 
-		var result = itemsService.get(Pageable.unpaged());
+		var result = itemsService.get(Pageable.unpaged(), "", null);
 		assertNotNull(result);
 		assertTrue(result.getTotalElements() >= itemsCount);
 	}

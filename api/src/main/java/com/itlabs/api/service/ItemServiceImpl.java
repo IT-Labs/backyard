@@ -1,5 +1,6 @@
 package com.itlabs.api.service;
 
+import ch.qos.logback.core.util.StringCollectionUtil;
 import com.itlabs.api.entity.Items;
 import com.itlabs.api.models.ItemEditModel;
 import com.itlabs.api.models.ItemModel;
@@ -15,6 +16,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 @Service
 public class ItemServiceImpl implements ItemsService {
@@ -38,11 +40,22 @@ public class ItemServiceImpl implements ItemsService {
 
 	/**
 	 * @param pageable
+	 * @param name
+	 * @param status
 	 * @return Page<ItemModel>
 	 */
 	@Override
-	public Page<ItemModel> get(Pageable pageable) {
-		final var all = itemRepository.findAll(pageable);
+	public Page<ItemModel> get(Pageable pageable, String name, ItemStatus status) {
+		Page<Items> all = null;
+				if(status==null && StringUtils.isEmpty(name))
+				{all =itemRepository.findAll(pageable);
+				}else if(status!=null && !StringUtils.isEmpty(name) ){
+					all =itemRepository.findByNameStartsWithAndStatus(pageable,name,status);
+				}else if(status != null){
+					all =itemRepository.findByStatus(pageable,status);
+				}else{
+					all =itemRepository.findByNameStartsWith(pageable, name);
+				}
 		final var items = all.stream().map(this::getModel).collect(Collectors.toList());
 
 		return new PageImpl<>(items, pageable, all.getTotalElements());

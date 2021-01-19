@@ -7,6 +7,7 @@ import com.itlabs.api.service.ItemsService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.ResultActions;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.greaterThan;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -43,7 +44,7 @@ public class HomeControllerTests extends BaseIntegration {
 		validate(resultActions);
 	}
 
-	private void validate(org.springframework.test.web.servlet.ResultActions resultActions) throws Exception {
+	private void validate(ResultActions resultActions) throws Exception {
 		resultActions.andExpect(content().contentType("application/json")).andExpect(jsonPath("$").isArray())
 				.andExpect(jsonPath("$.length()", equalTo(5)));
 		for (int i = 0; i < 5; i++) {

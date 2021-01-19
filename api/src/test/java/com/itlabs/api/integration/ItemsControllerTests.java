@@ -5,16 +5,14 @@ import com.itlabs.api.controllers.Routes;
 import com.itlabs.api.models.ItemEditModel;
 import com.itlabs.api.models.ItemStatus;
 import com.itlabs.api.service.ItemsService;
-import java.util.UUID;
 import org.junit.jupiter.api.MethodOrderer.Alphanumeric;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
-import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
 import static org.hamcrest.Matchers.greaterThan;
+import static org.hamcrest.Matchers.stringContainsInOrder;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -49,6 +47,56 @@ public class ItemsControllerTests extends BaseIntegration {
 				.andExpect(jsonPath("$.content.length()", greaterThan(itemsCount - 1)))
 				.andExpect(jsonPath("$.pageable.pageSize").value("20"))
 				.andExpect(jsonPath("$.totalElements", greaterThan(itemsCount - 1)));
+	}
+	@Test
+	void itemsFilterByNameGetTest() throws Exception {
+		final int itemsCount = 5;
+		var namePrefix = "NamePref_";
+		this.seedItemsInDatabase(itemsCount)
+				.forEach(x-> {
+					var itemModel = new ItemEditModel(namePrefix+x.getName(),
+							x.getStatus(),x.getDescription(),x.isPublic());
+					itemsService.update(x.getGuid(),itemModel);
+				});
+
+		final String itemsRoute = Routes.ITEMS_ROUTE+"?name="+namePrefix;
+		final var resultActions = mvc.perform(getAuthorizationBuilder(get(itemsRoute))).andDo(print())
+				.andExpect(status().isOk());
+
+		resultActions.andExpect(content().contentType("application/json")).andExpect(jsonPath("$.content").isArray())
+				.andExpect(jsonPath("$.content.length()", greaterThan(itemsCount - 1)))
+				.andExpect(jsonPath("$.pageable.pageSize").value("20"))
+				.andExpect(jsonPath("$.totalElements", greaterThan(itemsCount - 1)));
+		validateContains(resultActions,"name",itemsCount,namePrefix);
+	}
+	@Test
+	void itemsFilterByStatusGetTest() throws Exception {
+		final int itemsCount = 5;
+		this.seedItemsInDatabase(itemsCount)
+				.forEach(x-> {
+			var itemModel = new ItemEditModel(x.getName(),
+					ItemStatus.IN_PROGRESS,x.getDescription(),x.isPublic());
+			itemsService.update(x.getGuid(),itemModel);
+		});
+
+		final String itemsRoute = Routes.ITEMS_ROUTE+"?status="+ItemStatus.IN_PROGRESS.toString();
+		final var resultActions = mvc.perform(getAuthorizationBuilder(get(itemsRoute))).andDo(print())
+				.andExpect(status().isOk());
+
+		resultActions.andExpect(content().contentType("application/json")).andExpect(jsonPath("$.content").isArray())
+				.andExpect(jsonPath("$.content.length()", greaterThan(itemsCount - 1)))
+				.andExpect(jsonPath("$.pageable.pageSize").value("20"))
+				.andExpect(jsonPath("$.totalElements", greaterThan(itemsCount - 1)));
+		validateContains(resultActions,"status",itemsCount,ItemStatus.IN_PROGRESS.toString());
+	}
+
+	private void validateContains(ResultActions resultActions,String field , int count, String expectedValue) throws Exception {
+
+		for (int i = 0; i < count; i++) {
+			String id = "$.content[" + i + "]."+ field;
+			resultActions.andExpect(jsonPath(id ,stringContainsInOrder(expectedValue)))
+				;
+		}
 	}
 
 	@Test

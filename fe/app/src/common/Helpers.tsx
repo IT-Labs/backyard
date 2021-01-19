@@ -40,8 +40,14 @@ export const handleLog = (data: any) => {
   const successToastOptions: ToastOptions = {
     type: "success",
   };
+   const warnToastOptions: ToastOptions = {
+     type: "warning",
+   };
 export  const successToast = (content: ToastContent) => {
 toast(content, successToastOptions);
+};
+export const warnToast = (content: ToastContent) => {
+  toast(content, warnToastOptions);
 };
 
 export const errorToast = (content: ToastContent) => {
