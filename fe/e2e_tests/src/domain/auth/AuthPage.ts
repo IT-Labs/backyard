@@ -2,7 +2,7 @@ import { client } from "nightwatch-api";
 
 export class AuthPage {
   elements = {
-    loginLink: "#login",
+    loginLink: "#nav_login",
     password: "#password",
     userName: "#username",
     loginBtn: "#kc-login",

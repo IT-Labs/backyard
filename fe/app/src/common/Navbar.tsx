@@ -57,15 +57,15 @@ function Navbar(props: any) {
   return (
     <Menu stackable>
       <Container>
-        <Menu.Item id="home" as={NavLink} exact to="/home">
+        <Menu.Item id="nav_home" as={NavLink} exact to="/home">
           Home
         </Menu.Item>
 
-        <Dropdown item text="Admin" style={getAdminMenuStyle()}>
+        <Dropdown id="nav_admin" item text="Admin" style={getAdminMenuStyle()}>
           <Dropdown.Menu>
             <Dropdown.Item
               as={NavLink}
-              id="items"
+              id="nav_items"
               exact
               to="/items"
               onClick={checkAuthenticated}
@@ -74,7 +74,7 @@ function Navbar(props: any) {
             </Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
-        <Menu.Item id="about" as={NavLink} exact to="/about">
+        <Menu.Item id="nav_about" as={NavLink} exact to="/about">
           About
         </Menu.Item>
         <Menu.Menu position="right">
@@ -85,7 +85,7 @@ function Navbar(props: any) {
               className="link item"
             >
               <Dropdown.Menu>
-                <Dropdown.Item id="settings" as={NavLink} to="/settings">
+                <Dropdown.Item id="nav_settings" as={NavLink} to="/settings">
                   Settings
                 </Dropdown.Item>
               </Dropdown.Menu>
@@ -93,7 +93,7 @@ function Navbar(props: any) {
           )}
           <Menu.Item
             as={NavLink}
-            id="login"
+            id="nav_login"
             exact
             to="/login"
             onClick={handleLogInOut}

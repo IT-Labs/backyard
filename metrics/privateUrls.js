@@ -21,7 +21,7 @@ async function rotatePages(context, commands) {
 async function login(commands, context) {
   commands.measure.start("login page");
   await commands.navigate(context.options.my.host);
-  const loginLink = "login";
+  const loginLink = "nav_login";
   await commands.wait.byId(loginLink, 5000);
   await commands.click.byId(loginLink);
 
