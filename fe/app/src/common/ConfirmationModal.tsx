@@ -13,19 +13,21 @@ export interface IModalProps {
 }
 function ConfirmationModal(modal: IModal) {
   return (
-    <Modal size="mini" open={modal.props.isOpen} onClose={modal.props.onClose}>
+    <Modal id="modal" size="mini" open={modal.props.isOpen} onClose={modal.props.onClose}>
       <Modal.Header>{modal.props.header}</Modal.Header>
       <Modal.Content>
         <p>{modal.props.content}</p>
       </Modal.Content>
       <Modal.Actions>
         <Button
+        id="modal_No"
           negative
           icon="thumbs down"
           content="No"
           onClick={modal.props.onClose}
         />
         <Button
+        id="model_Yes"
           positive
           icon="thumbs up"
           labelPosition="right"

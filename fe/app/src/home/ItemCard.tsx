@@ -13,19 +13,20 @@ function ItemCard(props: ItemProps) {
         src={`https://picsum.photos/seed/${props.item.id}/100/100`}
         wrapped
         ui={false}
+        id={`card_poster${props.item.id}`}
       />
       <Card.Content textAlign="center">
-        <Card.Header>{props.item.name}</Card.Header>
+        <Card.Header id={`card_name_${props.item.id}`}>
+          {props.item.name}
+        </Card.Header>
       </Card.Content>
       <Card.Content>
-        <Card.Description>
+        <Card.Description id={`card_description_${props.item.id}`}>
           Description: <strong>{props.item.description}</strong>
         </Card.Description>
-        <Card.Description>
+        <Card.Description id={`card_published_${props.item.id}`}>
           Published at:{" "}
-          <strong>
-            {new Date(props.item.published).toLocaleDateString()}
-          </strong>
+          <strong>{new Date(props.item.published).toLocaleDateString()}</strong>
         </Card.Description>
       </Card.Content>
     </>
@@ -33,7 +34,11 @@ function ItemCard(props: ItemProps) {
   return !props.link ? (
     <Card>{content}</Card>
   ) : (
-    <Card as={Link} to={`/item/${props.item.id}`}>
+    <Card
+      id={`card_link_${props.item.id}`}
+      as={Link}
+      to={`/item/${props.item.id}`}
+    >
       {content}
     </Card>
   );

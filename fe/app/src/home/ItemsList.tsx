@@ -18,7 +18,7 @@ function ItemsList(props: ItemsListProps) {
     </Card.Group>
   ) : (
     <Segment padded color="blue">
-      <Header textAlign="center" as="h4">
+      <Header id={`card_no_item_header`} textAlign="center" as="h4">
         No items available
       </Header>
     </Segment>

@@ -139,19 +139,25 @@ const Items: React.FunctionComponent = () => {
     items &&
     items.map((item) => {
       return (
-        <Table.Row key={item.id}>
+        <Table.Row id={item.id} key={item.id}>
           <Table.Cell>
-            <Link to={{ pathname: `/item/${item.id}` }}>{item.name} </Link>
+            <Link id={`link_${item.id}`} to={{ pathname: `/item/${item.id}` }}>
+              {item.name}{" "}
+            </Link>
           </Table.Cell>
-          <Table.Cell>{item.description}</Table.Cell>
-          <Table.Cell>
+          <Table.Cell id={`description_${item.id}`}>
+            {item.description}
+          </Table.Cell>
+          <Table.Cell id={`published_${item.id}`}>
             {item.published
               ? new Date(item.published).toLocaleDateString()
               : "NA"}
           </Table.Cell>
-          <Table.Cell>{item.status}</Table.Cell>
-          <Table.Cell>{item.publiclyAvailable ? "True" : "False"}</Table.Cell>
-          <Table.Cell>
+          <Table.Cell id={`status_${item.id}`}>{item.status}</Table.Cell>
+          <Table.Cell id={`isPublic_${item.id}`}>
+            {item.publiclyAvailable ? "True" : "False"}
+          </Table.Cell>
+          <Table.Cell id={`poster_${item.id}`}>
             <Image
               size="tiny"
               src={`https://picsum.photos/seed/${item.id}/30/30`}
@@ -160,6 +166,7 @@ const Items: React.FunctionComponent = () => {
           </Table.Cell>
           <Table.Cell collapsing>
             <Button
+              id={`delete_${item.id}`}
               circular
               color="red"
               size="small"
@@ -217,34 +224,35 @@ const Items: React.FunctionComponent = () => {
           ? "sort up"
           : "sort down"
         : "sort";
-    return <Button icon={icon} onClick={() => requestSort(key)}></Button>;
+    return <Button icon={icon} id={`sort_${key}`} onClick={() => requestSort(key)}></Button>;
   };
   const search = () => {
     return (
       <div>
-        {" "}
+        
         <Input
           label="Name"
-          id="name"
+          id="search_name"
           onChange={handleNameChange}
           value={searchByName}
         />
         <Dropdown
           label="Status"
-          id="status"
+          id="search_status"
           selection
           placeholder="select item status"
           onChange={handleStatusChange}
           options={ItemStatuses}
           value={searchByStatus}
         />
-        <Button onClick={() => resetSearch()}>Reset</Button>
+        <Button id="search_reset" onClick={() => resetSearch()}>Reset</Button>
       </div>
     );
   };
   const pagination = () => {
     return (
       <Pagination
+      id="items_pagination"
         boundaryRange={0}
         activePage={activePage}
         onPageChange={onPaginationChange}
@@ -258,31 +266,31 @@ const Items: React.FunctionComponent = () => {
       {search()}
       <Divider />
       <div style={addStyle}>
-        <Link to={{ pathname: `/item/` }}>Add</Link>
+        <Link id="link_add_item" to={{ pathname: `/item/` }}>Add</Link>
       </div>
       <div style={tableStyle}>
         {pagination()}
-        <Table compact striped>
+        <Table id="items_table" compact striped>
           <Table.Header>
             <Table.Row>
-              <Table.HeaderCell width={2}>
+              <Table.HeaderCell id="header_name" width={2}>
                 Name
                 {showSorting("name")}
               </Table.HeaderCell>
-              <Table.HeaderCell width={4}>Description</Table.HeaderCell>
-              <Table.HeaderCell width={1}>
+              <Table.HeaderCell id="header_description" width={4}>Description</Table.HeaderCell>
+              <Table.HeaderCell id="header_published" width={1}>
                 Published
                 {showSorting("published")}
               </Table.HeaderCell>
-              <Table.HeaderCell width={1}>
+              <Table.HeaderCell id ="header_status" width={1}>
                 Status
                 {showSorting("status")}
               </Table.HeaderCell>
-              <Table.HeaderCell width={1}>
+              <Table.HeaderCell id ="header_isPublic" width={1}>
                 Is public
                 {showSorting("isPublic")}
               </Table.HeaderCell>
-              <Table.HeaderCell width={1}>Poster</Table.HeaderCell>
+              <Table.HeaderCell id="header_poster" width={1}>Poster</Table.HeaderCell>
               <Table.HeaderCell width={1} />
             </Table.Row>
           </Table.Header>

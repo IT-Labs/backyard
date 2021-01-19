@@ -36,12 +36,15 @@ export const handleLog = (data: any) => {
 };
   const errorToastOptions: ToastOptions = {
     type: "error",
+    toastId: "toast_error",
   };
   const successToastOptions: ToastOptions = {
     type: "success",
+    toastId: "toast_success",
   };
    const warnToastOptions: ToastOptions = {
      type: "warning",
+     toastId:"toast_warning"
    };
 export  const successToast = (content: ToastContent) => {
 toast(content, successToastOptions);
