@@ -47,15 +47,18 @@ public class ItemServiceImpl implements ItemsService {
 	@Override
 	public Page<ItemModel> get(Pageable pageable, String name, ItemStatus status) {
 		Page<Items> all = null;
-				if(status==null && StringUtils.isEmpty(name))
-				{all =itemRepository.findAll(pageable);
-				}else if(status!=null && !StringUtils.isEmpty(name) ){
-					all =itemRepository.findByNameStartsWithAndStatus(pageable,name,status);
-				}else if(status != null){
-					all =itemRepository.findByStatus(pageable,status);
-				}else{
-					all =itemRepository.findByNameStartsWith(pageable, name);
-				}
+		if (status == null && StringUtils.isEmpty(name)) {
+			all = itemRepository.findAll(pageable);
+		}
+		else if (status != null && !StringUtils.isEmpty(name)) {
+			all = itemRepository.findByNameStartsWithAndStatus(pageable, name, status);
+		}
+		else if (status != null) {
+			all = itemRepository.findByStatus(pageable, status);
+		}
+		else {
+			all = itemRepository.findByNameStartsWith(pageable, name);
+		}
 		final var items = all.stream().map(this::getModel).collect(Collectors.toList());
 
 		return new PageImpl<>(items, pageable, all.getTotalElements());

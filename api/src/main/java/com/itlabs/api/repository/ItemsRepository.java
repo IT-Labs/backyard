@@ -23,9 +23,10 @@ public interface ItemsRepository extends JpaRepository<Items, Integer> {
 
 	Page<Items> findByIsPublicTrueAndStatus(Pageable pageable, ItemStatus status);
 
-    Page<Items> findByNameStartsWithAndStatus(Pageable pageable, String name, ItemStatus status);
+	Page<Items> findByNameStartsWithAndStatus(Pageable pageable, String name, ItemStatus status);
 
 	Page<Items> findByStatus(Pageable pageable, ItemStatus status);
 
 	Page<Items> findByNameStartsWith(Pageable pageable, String name);
+
 }

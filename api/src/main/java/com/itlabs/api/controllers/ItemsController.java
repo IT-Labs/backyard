@@ -47,11 +47,11 @@ public class ItemsController {
 	@GetMapping()
 	@ApiPageable
 	public Page<ItemModel> get(@ApiIgnore Pageable pageable, @RequestParam(required = false) String name,
-							   @RequestParam(required = false) ItemStatus status) {
+			@RequestParam(required = false) ItemStatus status) {
 		SecurityContext context = SecurityContextHolder.getContext();
 		Authentication authentication = context.getAuthentication();
 		log.info("Scopes: " + authentication.getAuthorities());
-		return itemsService.get(pageable, name,status);
+		return itemsService.get(pageable, name, status);
 	}
 
 	@PostMapping()
