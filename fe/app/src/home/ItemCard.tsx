@@ -13,7 +13,7 @@ function ItemCard(props: ItemProps) {
         src={`https://picsum.photos/seed/${props.item.id}/100/100`}
         wrapped
         ui={false}
-        id={`card_poster${props.item.id}`}
+        id={`card_poster_${props.item.id}`}
       />
       <Card.Content textAlign="center">
         <Card.Header id={`card_name_${props.item.id}`}>

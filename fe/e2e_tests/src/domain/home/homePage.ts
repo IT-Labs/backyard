@@ -2,12 +2,32 @@ import { client } from "nightwatch-api";
 import { appConfig } from "../../config";
 
 export class HomePage {
-  elements = {  
-    link: appConfig.url + "/",
-    content:"#comingSoon"
+  elements = {
+    url: appConfig.url + "/",
+    menu: "#nav_home",
+    cardPoster: "#card_poster_",
+    itemDescription: "#card_description_",
+    itemPublished: "#card_published_",
+    itemName: "#card_name_",
+    itemLink: "#card_link_",
+    content: "#items_container",
   };
-  async navigateToHome() {   
-    await client.url(this.elements.link);
-    return client.waitForElementVisible(this.elements.content, 500);
+
+  async navigateToHomeUrl() {
+    await client.url(this.elements.url);
+    return client.waitForElementVisible(this.elements.content, 1000);
+  }
+
+  async validateHomeMenuPresent() {
+    return client.assert.elementPresent(this.elements.menu);
+  }
+  async validateCardPresent(id: string) {
+    await client.assert.elementPresent(this.elements.itemName + id);
+    await client.assert.elementPresent(this.elements.itemPublished + id);
+    await client.assert.elementPresent(this.elements.itemDescription + id);
+    return client.assert.elementPresent(this.elements.cardPoster + id);
+  }
+  async validateLinkCardPresent(id: string) {
+    return client.assert.elementPresent(this.elements.itemLink + id);
   }
 }

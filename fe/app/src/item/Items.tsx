@@ -16,16 +16,18 @@ import {
   DropdownItemProps,
   Input,
   Divider,
+  Segment,
 } from "semantic-ui-react";
 import { ItemsService } from "../service/ItemsService";
 
 import ConfirmationModal, { IModalProps } from "../common/ConfirmationModal";
 import { errorToast, handleLog, successToast } from "../common/Helpers";
+import { setSyntheticLeadingComments } from "typescript";
 
 export interface EditItemModel {
   nameError: boolean;
   descriptionError: boolean;
-  statusError: boolean;  
+  statusError: boolean;
   publiclyAvailable: boolean;
   id: string;
   name: string;
@@ -39,6 +41,12 @@ const ItemStatuses: DropdownItemProps[] = [
   { text: "Done", value: "DONE" },
   { text: "In Progress", value: "IN_PROGRESS" },
   { text: "Cancel", value: "CANCEL" },
+];
+const PageSizes: DropdownItemProps[] = [
+  { text: "10", value: "10" },
+  { text: "25", value: "25" },
+  { text: "50", value: "50" },
+  { text: "100", value: "100" },
 ];
 const Items: React.FunctionComponent = () => {
   const [modalData, setModal] = useState<IModalProps>({
@@ -56,8 +64,9 @@ const Items: React.FunctionComponent = () => {
   const [message, setMessage] = useState("");
   const [searchByName, setSearchByName] = useState("");
   const [searchByStatus, setSearchByStatus] = useState("");
-  const defaultSort = "created,asc";
+  const defaultSort = "created,desc";
   const [sort, setSort] = useState(defaultSort);
+  const [pageSize, setPageSize] = useState(10);
   const { keycloak } = useKeycloak();
   const getItems = async () => {
     try {
@@ -72,7 +81,8 @@ const Items: React.FunctionComponent = () => {
         keycloak.token ? keycloak.token : "token is missing ",
         activePage - 1,
         filter,
-        sort
+        sort,
+        pageSize
       ).then((response) => {
         setData(response.data.content);
         setLoading(false);
@@ -87,7 +97,7 @@ const Items: React.FunctionComponent = () => {
   };
   useEffect(() => {
     getItems();
-  }, [keycloak, activePage, searchByName, searchByStatus, sort]);
+  }, [keycloak, activePage, searchByName, searchByStatus, sort, pageSize]);
 
   if (loading) {
     return <div>Loading Items</div>;
@@ -177,12 +187,12 @@ const Items: React.FunctionComponent = () => {
         </Table.Row>
       );
     });
-  const height = window.innerHeight - 100;
+  const height = window.innerHeight - 200;
   const tableStyle: CSSProperties = {
     height: height,
     maxHeight: height,
-    overflowY: "auto",
-    overflowX: "hidden",
+    // overflowY: "auto",
+    // overflowX: "hidden",
     clear: "both",
   };
   const addStyle: CSSProperties = {
@@ -191,6 +201,11 @@ const Items: React.FunctionComponent = () => {
   const handleStatusChange = (event: any, data: any) => {
     const { value } = data;
     setSearchByStatus(value);
+    resetPaging();
+  };
+  const handlePageSizeChange = (event: any, data: any) => {
+    const { value } = data;
+    setPageSize(value);
     resetPaging();
   };
   const handleNameChange = (event: any, data: any) => {
@@ -224,41 +239,63 @@ const Items: React.FunctionComponent = () => {
           ? "sort up"
           : "sort down"
         : "sort";
-    return <Button icon={icon} id={`sort_${key}`} onClick={() => requestSort(key)}></Button>;
+    return (
+      <Button
+        icon={icon}
+        id={`sort_${key}`}
+        onClick={() => requestSort(key)}
+      ></Button>
+    );
   };
   const search = () => {
     return (
       <div>
-        
-        <Input
-          label="Name"
-          id="search_name"
-          onChange={handleNameChange}
-          value={searchByName}
-        />
-        <Dropdown
-          label="Status"
-          id="search_status"
-          selection
-          placeholder="select item status"
-          onChange={handleStatusChange}
-          options={ItemStatuses}
-          value={searchByStatus}
-        />
-        <Button id="search_reset" onClick={() => resetSearch()}>Reset</Button>
+        <Segment>
+          <Input
+            placeholder="search by Name"
+            id="search_name"
+            onChange={handleNameChange}
+            value={searchByName}
+          />
+          {"&"}
+          <Dropdown
+            id="search_status"
+            selection
+            placeholder="search by status"
+            onChange={handleStatusChange}
+            options={ItemStatuses}
+            value={searchByStatus}
+          />
+          <Button id="search_reset" onClick={() => resetSearch()}>
+            Reset
+          </Button>
+        </Segment>
       </div>
     );
   };
   const pagination = () => {
     return (
-      <Pagination
-      id="items_pagination"
-        boundaryRange={0}
-        activePage={activePage}
-        onPageChange={onPaginationChange}
-        totalPages={totalPage}
-        ellipsisItem={null}
-      />
+      <Segment>
+        <Pagination
+          id="items_pagination"
+          boundaryRange={1}
+          siblingRange={1}
+          activePage={activePage}
+          onPageChange={onPaginationChange}
+          totalPages={totalPage}
+          showEllipsis={true}
+        />
+        <div style={addStyle}>
+          <span> Items per page</span>
+          <Dropdown
+            id="pageSize"
+            selection
+            onChange={handlePageSizeChange}
+            options={PageSizes}
+            value={`${pageSize}`}
+          />
+        </div>
+      </Segment>
     );
   };
   return (
@@ -266,10 +303,12 @@ const Items: React.FunctionComponent = () => {
       {search()}
       <Divider />
       <div style={addStyle}>
-        <Link id="link_add_item" to={{ pathname: `/item/` }}>Add</Link>
+        <Link id="link_add_item" to={{ pathname: `/item/` }}>
+          <Button label="create a new item">Add</Button>
+        </Link>
       </div>
       <div style={tableStyle}>
-        {pagination()}
+        {pagination()}        
         <Table id="items_table" compact striped>
           <Table.Header>
             <Table.Row>
@@ -277,27 +316,31 @@ const Items: React.FunctionComponent = () => {
                 Name
                 {showSorting("name")}
               </Table.HeaderCell>
-              <Table.HeaderCell id="header_description" width={4}>Description</Table.HeaderCell>
+              <Table.HeaderCell id="header_description" width={4}>
+                Description
+              </Table.HeaderCell>
               <Table.HeaderCell id="header_published" width={1}>
                 Published
                 {showSorting("published")}
               </Table.HeaderCell>
-              <Table.HeaderCell id ="header_status" width={1}>
+              <Table.HeaderCell id="header_status" width={1}>
                 Status
                 {showSorting("status")}
               </Table.HeaderCell>
-              <Table.HeaderCell id ="header_isPublic" width={1}>
+              <Table.HeaderCell id="header_isPublic" width={1}>
                 Is public
                 {showSorting("isPublic")}
               </Table.HeaderCell>
-              <Table.HeaderCell id="header_poster" width={1}>Poster</Table.HeaderCell>
+              <Table.HeaderCell id="header_poster" width={1}>
+                Poster
+              </Table.HeaderCell>
               <Table.HeaderCell width={1} />
             </Table.Row>
           </Table.Header>
           <Table.Body>{itemsList}</Table.Body>
         </Table>
       </div>
-      {pagination()}
+     
       <ConfirmationModal props={modalData} />
     </div>
   );

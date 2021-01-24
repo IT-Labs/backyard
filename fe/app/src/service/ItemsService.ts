@@ -49,7 +49,8 @@ function get(
   token: string,
   page: number,
   query: Map<string, string>,
-  sort: string
+  sort: string,
+  size:number
 ) {
   let q = "";
   if (query) { 
@@ -57,13 +58,13 @@ function get(
       q = `${q}&${k}=${v.trim()}`;
     });
   }
-  let s = "&sort=created";
+  let s = "&sort=created,desc";
 
   if (sort) {
     s = `&sort=${sort}`;
   }
 
-  return instance.get(`/items?page=${page}${s}${q}`, {
+  return instance.get(`/items?page=${page}&size=${size}${s}${q}`, {
     headers: {
       Authorization: "bearer " + token,
     },
