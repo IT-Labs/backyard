@@ -191,8 +191,6 @@ const Items: React.FunctionComponent = () => {
   const tableStyle: CSSProperties = {
     height: height,
     maxHeight: height,
-    // overflowY: "auto",
-    // overflowX: "hidden",
     clear: "both",
   };
   const addStyle: CSSProperties = {
@@ -304,7 +302,7 @@ const Items: React.FunctionComponent = () => {
       <Divider />
       <div style={addStyle}>
         <Link id="link_add_item" to={{ pathname: `/item/` }}>
-          <Button label="create a new item">Add</Button>
+          <Button label="create a new item" icon="plus"></Button>
         </Link>
       </div>
       <div style={tableStyle}>

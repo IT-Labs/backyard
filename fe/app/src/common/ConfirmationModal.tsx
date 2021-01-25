@@ -16,18 +16,18 @@ function ConfirmationModal(modal: IModal) {
     <Modal id="modal" size="mini" open={modal.props.isOpen} onClose={modal.props.onClose}>
       <Modal.Header>{modal.props.header}</Modal.Header>
       <Modal.Content>
-        <p>{modal.props.content}</p>
+        <p id="modal_content">{modal.props.content}</p>
       </Modal.Content>
       <Modal.Actions>
         <Button
-        id="modal_No"
+        id="modal_no"
           negative
           icon="thumbs down"
           content="No"
           onClick={modal.props.onClose}
         />
         <Button
-        id="model_Yes"
+        id="model_yes"
           positive
           icon="thumbs up"
           labelPosition="right"
