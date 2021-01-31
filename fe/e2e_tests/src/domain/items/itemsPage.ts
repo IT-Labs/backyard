@@ -4,7 +4,7 @@ import { appConfig } from "../../config";
 export class ItemsPage {
   elements = {
     link: appConfig.url + "/items",
-    menu: "#nav_home",
+    menu: "#nav_items",
     content: "#items_table",
     addItem: "#",
     modal: {

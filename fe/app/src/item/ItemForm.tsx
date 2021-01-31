@@ -87,7 +87,7 @@ const ItemForm: React.FunctionComponent<IFormProps> = ({
   };
   return (
     <Segment>
-      <Form>
+      <Form id="item">
         <Form.Input
           label="Name *"
           id="name"
@@ -117,10 +117,10 @@ const ItemForm: React.FunctionComponent<IFormProps> = ({
           id="publiclyAvailable"
           onChange={handleCheckBoxChange}
           checked={item.publiclyAvailable}
-          error= {false}
+          error={false}
         />
         <Button.Group>
-          <Button
+          <Button  id="back"
             onClick={() => {
               history.goBack();
             }}
@@ -128,7 +128,7 @@ const ItemForm: React.FunctionComponent<IFormProps> = ({
             Cancel
           </Button>
           <Button.Or />
-          <Button positive onClick={() => handleSave(item)}>
+          <Button  id="save"positive onClick={() => handleSave(item)}>
             Save
           </Button>
         </Button.Group>
