@@ -12,6 +12,15 @@ services:
     command: ["sh", "docker_run.sh"]
     networks:
       - sample
+  sample-tests-empty:
+    image: node:latest
+    container_name: sample-tests-empty
+    volumes:
+      - .:/usr/src/myapp
+    working_dir: /usr/src/myapp
+    command: ["sh", "docker_run_empty.sh"]
+    networks:
+      - sample
 networks:
   sample:
     name: sample-network

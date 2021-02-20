@@ -11,13 +11,20 @@ export class HomePage {
     itemName: "#card_name_",
     itemLink: "#card_link_",
     content: "#items_container",
+    emptyCard: "#card_no_item_header",
   };
-
+  async verifyHomeMessage(message: string) {
+    await client.waitForElementVisible(this.elements.emptyCard, 1000);
+    return client.expect
+      .element(this.elements.emptyCard)
+      .text.to.be.equal(message);
+  }
   async navigateToHomeUrl() {
     await client.url(this.elements.url);
     return client.waitForElementVisible(this.elements.content, 1000);
   }
 
+ 
   async validateHomeMenuPresent() {
     return client.assert.elementPresent(this.elements.menu);
   }

@@ -32,9 +32,10 @@ Feature: Home Page
     | not logged in | Home | Home page |
     | not logged in | About | About page |
     | not logged in | Login | Login page |
-
+    
+    @empty
     Scenario: Verify Home page main page when there are no public published items
-         Then I should see message in the middle of the screen: "There are no items yet!"
+        Then I should see message in the middle of the screen: There are no items yet!
 
     Scenario: Verify Home page main page when there are public published items
          Then I should see all the public published items
@@ -146,11 +147,3 @@ Feature: Home Page
 
     Scenario: Verify publish date will not be changed when user changes the status from Done, to Done
         Then I should see the publish date will not be changed
-
-    Scenario: Verify lazy loading for the items in the Home page
-        When the Home page has 150 items
-        Then I should see the first 50
-        And how I scroll down
-        Then I should see the next 50
-        And when I scroll again
-        Then I should see the last 50
