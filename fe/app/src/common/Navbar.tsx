@@ -83,6 +83,7 @@ function Navbar(props: any) {
               text={`Hi ${getUsername()}`}
               pointing
               className="link item"
+              id="nav_username"
             >
               <Dropdown.Menu>
                 <Dropdown.Item id="nav_settings" as={NavLink} to="/settings">

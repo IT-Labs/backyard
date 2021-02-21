@@ -13,6 +13,8 @@ export class HomePage {
     content: "#items_container",
     emptyCard: "#card_no_item_header",
   };
+
+
   async verifyHomeMessage(message: string) {
     await client.waitForElementVisible(this.elements.emptyCard, 1000);
     return client.expect
@@ -24,7 +26,6 @@ export class HomePage {
     return client.waitForElementVisible(this.elements.content, 1000);
   }
 
- 
   async validateHomeMenuPresent() {
     return client.assert.elementPresent(this.elements.menu);
   }

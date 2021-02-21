@@ -1,7 +1,10 @@
-import { When, Then } from "cucumber";
+import { Given, Then, When } from "cucumber";
 import { AuthPage } from "../../domain/auth/AuthPage";
 
 const page = new AuthPage();
+Given("I login as a admin user", function () {
+return page.login("sample","sample")
+});
 Then("I click login", function () {
   return page.clickLink();
 });
@@ -11,8 +14,8 @@ Then("I fill userName", function () {
 });
 
 Then("I fill password", function () {
-    return page.fillUserPassword("sample");
-  });
-  Then("I click sign in", function () {
-    return page.clickSignInBtn();
-  });
+  return page.fillUserPassword("sample");
+});
+Then("I click sign in", function () {
+  return page.clickSignInBtn();
+});
