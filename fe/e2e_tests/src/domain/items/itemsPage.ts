@@ -1,12 +1,14 @@
 import { client } from "nightwatch-api";
 import { appConfig } from "../../config";
 
+
 export class ItemsPage {
+  contentTimeOut = 10000;
   elements = {
     link: appConfig.url + "/items",
     menu: "#nav_items",
     content: "#items_table",
-    addItem: "#",
+    addItem: "#link_add_item",
     modal: {
       yes: "#modal_yes",
       no: "#modal_no",
@@ -21,6 +23,7 @@ export class ItemsPage {
       isPublic: "#isPublic_",
       description: "#description_",
       delete: "#delete_",
+      firstLink: "#items_table > tbody > tr:nth-child(1) > td:nth-child(1) > a",
     },
     header: {
       name: "#header_name",
@@ -46,6 +49,28 @@ export class ItemsPage {
   };
   async navigateToItems() {
     await client.url(this.elements.link);
-    return client.waitForElementVisible(this.elements.content, 10000);
+    return client.waitForElementVisible(
+      this.elements.content,
+      this.contentTimeOut
+    );
+  }
+
+  async clickNameLink() {
+    await client.waitForElementVisible(
+      this.elements.content,
+      this.contentTimeOut
+    );
+    await client.waitForElementVisible(this.elements.item.firstLink);
+    return client.click(this.elements.item.firstLink);
+  }
+  async clickCreateItem() {
+    await client.waitForElementVisible(
+      this.elements.addItem,
+      this.contentTimeOut
+    );
+    return client.click(this.elements.addItem);
+  }
+  async validateItemsPage() {
+    return client.assert.urlEquals(this.elements.link);
   }
 }

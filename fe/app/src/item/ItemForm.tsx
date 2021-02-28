@@ -113,6 +113,7 @@ const ItemForm: React.FunctionComponent<IFormProps> = ({
           error={item.statusError}
         />
         <Form.Checkbox
+          toggle
           label="IsPublic"
           id="publiclyAvailable"
           onChange={handleCheckBoxChange}
@@ -120,7 +121,8 @@ const ItemForm: React.FunctionComponent<IFormProps> = ({
           error={false}
         />
         <Button.Group>
-          <Button  id="back"
+          <Button
+            id="back"
             onClick={() => {
               history.goBack();
             }}
@@ -128,7 +130,7 @@ const ItemForm: React.FunctionComponent<IFormProps> = ({
             Cancel
           </Button>
           <Button.Or />
-          <Button  id="save"positive onClick={() => handleSave(item)}>
+          <Button id="save" positive onClick={() => handleSave(item)}>
             Save
           </Button>
         </Button.Group>

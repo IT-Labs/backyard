@@ -6,7 +6,7 @@ Feature: Items Page - list items
         Then I fill password
         Then I click sign in
 
-    
+
     @smoke
     Scenario: verify footer logo
         Then I should see it labs link
@@ -32,7 +32,7 @@ Feature: Items Page - list items
         Then i should see My profile page
         When I click Logout link
         Then I should see login page
-
+    @empty
     Scenario: Verify Items page without items
         When there are no items created
         Then I should see No results found!

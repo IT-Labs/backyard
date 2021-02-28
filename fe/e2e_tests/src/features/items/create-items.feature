@@ -1,7 +1,7 @@
 @home @all
 Feature: Items Page - Create Item
     Background: prepare
-        Given I login as a admin user 
+        Given I login as a admin user
         And I navigate to admin's items page
 
     Scenario: Verify menu items from Create item page
@@ -25,13 +25,14 @@ Feature: Items Page - Create Item
         When I click Logout link
         Then I should see login page
 
+    @smoke
     Scenario: Verify create button will redirect on Create Item page
         When I click on create button
         Then I should see create item page
-    
+
     Scenario: Verify create item page appearance
         When I click on create button
-        Then I should see create item page    
+        Then I should see create item page
         And the title of the page should be "Create Item"
         And I should see Name textbox
         And I should see Description textarea
@@ -49,7 +50,7 @@ Feature: Items Page - Create Item
 
     Scenario: Verify correctness of Cancel button
         When I click on create button
-        Then I should see create item page    
+        Then I should see create item page
         When I click Cancel button
         Then I should be redirected on list items page
         And no error messages should be shown
@@ -57,7 +58,7 @@ Feature: Items Page - Create Item
 
     Scenario: Verify required fields in Create item page
         When I click on create button
-        Then I should see create item page    
+        Then I should see create item page
         When I try to save item without data
         Then I should see "Name is required." message under name field
         And I should see Name label has asterisks symbol next to it
@@ -69,7 +70,7 @@ Feature: Items Page - Create Item
 
     Scenario: Verify max lenght limit in Create item page
         When I click on create button
-        Then I should see create item page    
+        Then I should see create item page
         When I try to save Name with more than 30 characters
         Then I should see Name is restricted on FE with 30 characters
         And I should see API returns message "Name should have 30 characters." message
@@ -82,29 +83,30 @@ Feature: Items Page - Create Item
         Then I should see create item page
         When I add Name
         And I select Status
-        And click Create
+        And click create item
         Then Item should be created
         And I should be redirected on list items page
 
+   
     Scenario: Verify user can create item using all fields in Create item page
         When I click on create button
         Then I should see create item page
-        When I add Name
-        And I add Description
+        When I add Name SampleName
+        And I add Description SampleDescription
         And I select Status
         And I check Is Public checkbox
-        And click Create
+        And click create item
         Then Item should be created
         And I should be redirected on list items page
 
-   Scenario: Verify correctness of published private newly created items
+    Scenario: Verify correctness of published private newly created items
         When I click on create button
         Then I should see create item page
         When I create item
         And I choose status Done
         And I choose item to be private
-        Then item shouldn't be seen on Home Page by me        
-        And item shouldn't be seen on Home Page by other logged in users        
+        Then item shouldn't be seen on Home Page by me
+        And item shouldn't be seen on Home Page by other logged in users
         And item shouldn't be seen on Home Page by other not logged in users
 
     Scenario: Verify correctness of published public newly created items
@@ -113,6 +115,6 @@ Feature: Items Page - Create Item
         When I create item
         And I choose status Done
         And I choose item to be private
-        Then item should be seen on Home Page by me        
-        And item should be seen on Home Page by other logged in users        
+        Then item should be seen on Home Page by me
+        And item should be seen on Home Page by other logged in users
         And item should be seen on Home Page by other not logged in users

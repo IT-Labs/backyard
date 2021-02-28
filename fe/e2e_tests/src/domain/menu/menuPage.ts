@@ -7,6 +7,7 @@ export class MenuPage {
     admin: "#nav_admin",
     username: "#nav_username",
     login: "#nav_login",
+    items: "#nav_items",
   };
 
   async checkLinkVisibility(link: string, isVisible: boolean) {
@@ -19,7 +20,7 @@ export class MenuPage {
       case "Admin":
         return this.validateMainMenu(this.elements.admin, isVisible);
       case "Hi Username": {
-        if (isVisible==true) {
+        if (isVisible == true) {
           console.log("testing visible" + isVisible);
           return await client.assert.elementPresent(this.elements.username);
         }
@@ -45,5 +46,11 @@ export class MenuPage {
     }
 
     return await client.assert.waitForElementNotVisible(element);
+  }
+
+  async clickItemsMenu() {
+    await this.checkLinkVisibility("Admin",true);
+    await client.click(this.elements.admin);
+    return client.click(this.elements.items);
   }
 }

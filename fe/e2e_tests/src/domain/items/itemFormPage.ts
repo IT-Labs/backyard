@@ -9,7 +9,10 @@ export class ItemFormPage {
     back: "#back",
     name: "#name",
     status: "#status",
-    isPublic: "#publiclyAvailable",
+    openStatus: "#status > i",
+    statusDone:
+      "#status > div.visible.menu.transition > div:nth-child(2) > span",
+    isPublic: "#item > div:nth-child(4) > div > label",
     description: "#description",
   };
   async navigateToItem(id: string) {
@@ -23,7 +26,29 @@ export class ItemFormPage {
   async back() {
     return client.click(this.elements.back);
   }
+  async validateItemFormPage() {
+    return client.assert.urlContains("/item/");
+  }
 
+
+  async addNameValue(value: string) {
+    return this.insertText(this.elements.name, value);
+  }
+  async clickCreate() {
+    return client.click(this.elements.save);
+  }
+
+  async checkPublic() {
+    return client.click(this.elements.isPublic);
+  }
+  async selectStatus() {
+    await client.click(this.elements.openStatus);
+    return client.click(this.elements.statusDone);
+  }
+ 
+  async addDescriptionValue(value:string) {
+    return this.insertText(this.elements.description, value);
+  }
   async validateName(value: string) {
     return this.validateText(this.elements.name, value);
   }

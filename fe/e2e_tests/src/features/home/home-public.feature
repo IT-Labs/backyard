@@ -2,7 +2,7 @@
 Feature: Home Page
     Background: prepare
         Given I navigate to home
-    @smoke @development
+    @smoke
     Scenario Outline: Verify menu items from Home page when user is public
         Then the menu <Link> should be <isVisible>
         Examples:

@@ -3,7 +3,7 @@ Feature: Home Page
     Background: prepare
         Given I login as a admin user
 
-@smoke @development
+@smoke
     Scenario Outline: Verify menu items from Home page when user is admin
         Then the menu <Link> should be <isVisible>
         Examples:
