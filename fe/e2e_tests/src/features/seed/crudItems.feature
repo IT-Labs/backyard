@@ -1,4 +1,4 @@
-@seed @development
+@seed_CRUD_item
 Feature: Items Init CRUD Seed
     Background: prepare
         Given I login as a admin user
