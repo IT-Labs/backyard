@@ -40,7 +40,7 @@ public class GatewayConfig {
 				.filters(f -> f.rewritePath("/items", "/api/v1/items").removeRequestHeader("Cookie")
 						.dedupeResponseHeader("Access-Control-Allow-Headers", Strategy.RETAIN_UNIQUE.toString())
 						.dedupeResponseHeader("Access-Control-Allow-Origin", Strategy.RETAIN_UNIQUE.toString())
-						.requestRateLimiter(c -> c.setRateLimiter(getItemsRateLimiter()))
+						.requestRateLimiter(c -> c.setRateLimiter(getItemsRateLimiter())).retry(5)
 						.hystrix(x -> x.setName("FallbackInternal").setFallbackUri("forward:/fallback/message")))
 				.uri(internalServiceConfiguration.getInternalApiUrl()).id("PublicModule");
 		// forward is not performed due cors issues
@@ -55,7 +55,7 @@ public class GatewayConfig {
 						.dedupeResponseHeader("Access-Control-Allow-Origin", Strategy.RETAIN_UNIQUE.toString())
 						.requestRateLimiter(
 								c -> c.setRateLimiter(getItemsRateLimiter()).setKeyResolver(ipKeyResolver()))
-						.hystrix(x -> x.setName("FallbackPublic").setFallbackUri("forward:/fallback/message")))
+						.retry(3).hystrix(x -> x.setName("FallbackPublic").setFallbackUri("forward:/fallback/message")))
 				.uri(internalServiceConfiguration.getInternalApiUrl()).id("itemsModule");
 		return predicateSpecAsyncBuilderFunction;
 	}

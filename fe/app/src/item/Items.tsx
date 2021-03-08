@@ -296,17 +296,14 @@ const Items: React.FunctionComponent = () => {
       </Segment>
     );
   };
-  return (
-    <div>
-      {search()}
-      <Divider />
-      <div style={addStyle}>
-        <Link id="link_add_item" to={{ pathname: `/item/` }}>
-          <Button label="create a new item" icon="plus"></Button>
-        </Link>
-      </div>
+  const itemsResult = () => {
+    if (items && items.length == 0) {
+      return <div id="no_items">There are no items!</div>;
+    }
+    return (
       <div style={tableStyle}>
-        {pagination()}        
+        {pagination()}
+
         <Table id="items_table" compact striped>
           <Table.Header>
             <Table.Row>
@@ -338,7 +335,18 @@ const Items: React.FunctionComponent = () => {
           <Table.Body>{itemsList}</Table.Body>
         </Table>
       </div>
-     
+    );
+  };
+  return (
+    <div>
+      {search()}
+      <Divider />
+      <div style={addStyle}>
+        <Link id="link_add_item" to={{ pathname: `/item/` }}>
+          <Button label="create a new item" icon="plus"></Button>
+        </Link>
+      </div>
+      {itemsResult()}
       <ConfirmationModal props={modalData} />
     </div>
   );

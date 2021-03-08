@@ -1,21 +1,26 @@
 @home @all
 Feature: Items Page - Delete Item
     Background: prepare
-        Given I login as a admin user 
+        Given I login as a admin user
         And I navigate to admin's items page
-        And there are items created
 
     Scenario: Verify delete icon
         Then I should see delete icon in each row as first option
+    @development
+    Scenario: Verify delete item
+        When I click on Delete icon for item with name DeleteItem
+        Then I should see delete confirmation modal
+        When I click on OK on the modal
+        Then Item with name DeleteItem is not shown on items page
 
     Scenario: Verify delete confirmation modal
-        When I click on Delete icon
+        When I click on Delete icon for item with name DeleteItem
         Then I should see delete confirmation modal
         And the title of the modal should be "Delete item"
         And the message in the modal should be "Are you sure you want to delete this item?"
-        And the buttons of the modal should be "Cancel" and "OK" 
+        And the buttons of the modal should be "Cancel" and "OK"
 
-    Scenario: Verify correctness of Cancel button in delete confirmation modal  
+    Scenario: Verify correctness of Cancel button in delete confirmation modal
         When i click on Delete icon
         And I click Cancel from delete confirmation modal
         Then modal should closes
@@ -38,10 +43,10 @@ Feature: Items Page - Delete Item
         And I should be on a same item page where previously was
         And I should see that Item is removed from the table
         And I should see that No results found! is not displayed
-        And I should see the table is now organized to show again 10/25/50/100 results 
+        And I should see the table is now organized to show again 10/25/50/100 results
 
     Scenario: Verify delete item for already deleted item
         Given I didn't refreshed the page
         And other admin already deleted my item
         When i click on Delete icon
-        Then I should receive red toaster message: This item is already deleted. Please refresh your page! 
+        Then I should receive red toaster message: This item is already deleted. Please refresh your page!

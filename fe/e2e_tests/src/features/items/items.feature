@@ -171,17 +171,12 @@ Feature: Items Page - list items
         When I edit the item
         And I publish the item
         Then I should see the published date as MM/DD/YYYY
-
+    # @development
     Scenario: Verify correctness by Search by Name
-        When I add full item's name
-        Then I should get item with that name as a result
-        When I add item's partial name
-        Then I should get all matching results that contain that partial name
-        When I add space
-        Then search should not be perfromed
-        And I should get all results
-        When I add multiple names in the search
-        Then I should get results that contain some of those names
+        When I add SearchItem in items search name
+        Then I should get item with that SearchItem as a result
+        When I add Search in items search name
+        Then I should get 1 results that contain Search in the name
 
     Scenario: Verify correctness by Search by Status
         When I select Status Draft
