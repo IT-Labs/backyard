@@ -26,7 +26,7 @@ public class TestContainerConfiguration {
 		POSTGRE_SQL_CONTAINER = new PostgreSQLContainer("postgres:12.5-alpine");
 		POSTGRE_SQL_CONTAINER.start();
 		POSTGRE_SQL_CONTAINER.waitingFor(Wait.forHealthcheck()).waitingFor(Wait.forHttp("/"));
-		KEYCLOAK_CONTAINER = new KeycloakContainer("jboss/keycloak:12.0.1").withRealmImportFile("sample-realm.json")
+		KEYCLOAK_CONTAINER = new KeycloakContainer("jboss/keycloak:12.0.4").withRealmImportFile("sample-realm.json")
 				.withCopyFileToContainer(MountableFile.forClasspathResource("create-keycloak-user.sh", 700),
 						"create-keycloak-user.sh");
 

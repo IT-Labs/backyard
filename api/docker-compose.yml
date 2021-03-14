@@ -29,7 +29,7 @@ services:
     depends_on:
       - flyway-sample
   flyway-sample:
-    image: flyway/flyway:6.5.7-alpine
+    image: flyway/flyway:7.7.0-alpine
     container_name: flyway-sample
     command: -url=jdbc:postgresql://api-postgres/sample -schemas=public -user=dev -password=dev123 migrate
     volumes:
