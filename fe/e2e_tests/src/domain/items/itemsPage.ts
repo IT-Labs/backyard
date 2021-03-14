@@ -10,8 +10,10 @@ export class ItemsPage {
     addItem: "#link_add_item",
     noItems: "#no_items",
     modal: {
-      yes: "#modal_yes",
-      no: "#modal_no",
+      //nightwatch not able to locate elements using the id selectors,
+      //more investigation is needed why
+      yes: "button.ui.icon.positive.right.labeled.button",
+      no: "button.ui.negative.button",
       title: "#modal_content",
       id: "#modal",
     },
@@ -89,6 +91,7 @@ export class ItemsPage {
     await this.searchByName(value);
     await this.clickDeleteButton(1);
   }
+
   private async validateContains(row: number, value: string) {
     const rowLink = this.elements.item.firstLink(row);
     await client.waitForElementVisible(rowLink);
@@ -127,7 +130,9 @@ export class ItemsPage {
       this.elements.content,
       this.contentTimeOut
     );
+
     const firstLink = this.elements.item.firstDeleteButton(row);
+
     await client.waitForElementVisible(firstLink);
     return client.click(firstLink);
   }
@@ -146,9 +151,13 @@ export class ItemsPage {
     return client.waitForElementVisible(this.elements.modal.title);
   }
   async clickOkModal() {
-    await client.waitForElementVisible(this.elements.modal.yes,this.contentTimeOut);
+    await client.waitForElementVisible(
+      this.elements.modal.yes,
+      this.contentTimeOut
+    );
     return client.click(this.elements.modal.yes);
   }
+
   private async insertText(id: string, value: string) {
     await client.assert.visible(id);
     await client.clearValue(id);
