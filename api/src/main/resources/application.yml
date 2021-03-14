@@ -5,7 +5,7 @@ info:
     java-vendor: ${java.specification.vendor}
 logging:
     level:
-        root: DEBUG
+        root: INFO
 management:
     endpoint:
         health:

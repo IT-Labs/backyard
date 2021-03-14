@@ -49,9 +49,10 @@ When("click create item", function () {
 });
 
 
-When(/^I add (.*) in items search name$/, function (value: string) {
+Then(/^I add (.*) in items search name$/, function (value: string) {
   return page.searchByName(value);
 });
+
 When ("I click on OK on the modal",function(){
   return page.clickOkModal();
 })
@@ -64,6 +65,7 @@ Then(
 Then("I should see delete confirmation modal", function () {
   return page.validateDeleteConfirmationDialog();
 });
+
 Then(
   /^I should get item with that (.*) as a result$/,
   function (value: string) {
@@ -77,10 +79,10 @@ Then(
   }
 );
 Then("Item should be created", function () {
-  page.validateItemsPage();
+ return page.validateItemsPage();
 });
 Then("I should be redirected on list items page", function () {
-  page.validateItemsPage();
+return  page.validateItemsPage();
 });
 Then(/^I should see (.*) item page$/, function (action: string) {
   return itemFormPage.validateItemFormPage();

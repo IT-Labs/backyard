@@ -27,9 +27,9 @@ export class ItemFormPage {
     return client.click(this.elements.back);
   }
   async validateItemFormPage() {
+    await client.pause(2000);
     return client.assert.urlContains("/item/");
   }
-
 
   async addNameValue(value: string) {
     return this.insertText(this.elements.name, value);
@@ -45,8 +45,8 @@ export class ItemFormPage {
     await client.click(this.elements.openStatus);
     return client.click(this.elements.statusDone);
   }
- 
-  async addDescriptionValue(value:string) {
+
+  async addDescriptionValue(value: string) {
     return this.insertText(this.elements.description, value);
   }
   async validateName(value: string) {

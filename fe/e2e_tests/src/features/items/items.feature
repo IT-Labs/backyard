@@ -1,10 +1,8 @@
 @home @all
 Feature: Items Page - list items
     Background: prepare
-        Given I navigate to admin's items page
-        Then I fill userName
-        Then I fill password
-        Then I click sign in
+        Given I login as a admin user
+        And I navigate to admin's items page
 
 
     @smoke
@@ -171,7 +169,8 @@ Feature: Items Page - list items
         When I edit the item
         And I publish the item
         Then I should see the published date as MM/DD/YYYY
-    # @development
+
+    @basics
     Scenario: Verify correctness by Search by Name
         When I add SearchItem in items search name
         Then I should get item with that SearchItem as a result

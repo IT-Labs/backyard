@@ -84,15 +84,16 @@ Feature: Items Page - Edit Item
         When I try to save Description with more than 100 characters
         Then I should see Description is restricted on FE with 100 characters
         And I should see API returns message "Description should have 100 characters." message
-# @development
+
+    @basics
     Scenario: Verify user can edit item changing only mandatory fields
         When I click to edit item with name EditItem
         Then I should see edit item page
         When I change the Name to TestEditedItemName
         And click create item
         Then I should be redirected on list items page
-        When I add TestEditedItemName in items search name
-        Then I should get item with that TestEditedItemName as a result
+        And  I add TestEditedItemName in items search name
+        And I should get item with that TestEditedItemName as a result
 
     Scenario: Verify user can edit item changing all fields in edit page
         When I click to edit item

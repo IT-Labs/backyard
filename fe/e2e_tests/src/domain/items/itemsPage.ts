@@ -60,6 +60,7 @@ export class ItemsPage {
       this.elements.search.name,
       this.contentTimeOut
     );
+    
     return this.insertText(this.elements.search.name, value);
   }
   async verifyItemByNameNotExist(value: string) {

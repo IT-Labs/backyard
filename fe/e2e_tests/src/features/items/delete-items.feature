@@ -6,7 +6,7 @@ Feature: Items Page - Delete Item
 
     Scenario: Verify delete icon
         Then I should see delete icon in each row as first option
-    @development
+    @basics
     Scenario: Verify delete item
         When I click on Delete icon for item with name DeleteItem
         Then I should see delete confirmation modal
