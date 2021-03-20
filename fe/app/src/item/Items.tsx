@@ -22,7 +22,6 @@ import { ItemsService } from "../service/ItemsService";
 
 import ConfirmationModal, { IModalProps } from "../common/ConfirmationModal";
 import { errorToast, handleLog, successToast } from "../common/Helpers";
-import { setSyntheticLeadingComments } from "typescript";
 
 export interface EditItemModel {
   nameError: boolean;
@@ -297,7 +296,7 @@ const Items: React.FunctionComponent = () => {
     );
   };
   const itemsResult = () => {
-    if (items && items.length == 0) {
+    if (items && items.length === 0) {
       return <div id="no_items">There are no items!</div>;
     }
     return (
