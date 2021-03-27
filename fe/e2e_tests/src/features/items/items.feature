@@ -32,9 +32,8 @@ Feature: Items Page - list items
         Then I should see login page
     @empty
     Scenario: Verify Items page without items
-        When there are no items created
-        Then I should see No results found!
-        And I should not see table header
+        Then I should see No results found! in Items page
+        And I should not see items table pagination
 
     Scenario: Verify items page with items
         When there are items created

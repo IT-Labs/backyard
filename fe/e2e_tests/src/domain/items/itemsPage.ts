@@ -8,7 +8,8 @@ export class ItemsPage {
     menu: "#nav_items",
     content: "#items_table",
     addItem: "#link_add_item",
-    noItems: "#no_items",
+    noResult: "#no_items",
+    pagination: "#items_pagination",
     modal: {
       //nightwatch not able to locate elements using the id selectors,
       //more investigation is needed why
@@ -60,7 +61,7 @@ export class ItemsPage {
       this.elements.search.name,
       this.contentTimeOut
     );
-    
+
     return this.insertText(this.elements.search.name, value);
   }
   async verifyItemByNameNotExist(value: string) {
@@ -69,9 +70,10 @@ export class ItemsPage {
   }
   async verifyNoResultsInItemsTable() {
     return client.waitForElementVisible(
-      this.elements.noItems,
+      this.elements.noResult,
       this.contentTimeOut
     );
+    
   }
   async validateItemNamesInResultItems(value: string, row: number) {
     await client.waitForElementVisible(
@@ -150,6 +152,10 @@ export class ItemsPage {
   }
   async validateDeleteConfirmationDialog() {
     return client.waitForElementVisible(this.elements.modal.title);
+  }
+
+  async verifyItemsTablePaginationIsNotShown() {
+    return client.waitForElementNotPresent(this.elements.pagination);
   }
   async clickOkModal() {
     await client.waitForElementVisible(

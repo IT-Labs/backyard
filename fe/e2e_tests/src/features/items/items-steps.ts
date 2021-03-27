@@ -30,7 +30,7 @@ When("I click on create button", function () {
   return page.clickCreateItem();
 });
 When(/^I change the Name to (.*)$/, function (value: string) {
-   return itemFormPage.addNameValue(value);
+  return itemFormPage.addNameValue(value);
 });
 When(/^I add Name (.*)$/, function (value: string) {
   return itemFormPage.addNameValue(value);
@@ -48,14 +48,14 @@ When("click create item", function () {
   return itemFormPage.clickCreate();
 });
 
-
 Then(/^I add (.*) in items search name$/, function (value: string) {
   return page.searchByName(value);
 });
 
-When ("I click on OK on the modal",function(){
+When("I click on OK on the modal", function () {
   return page.clickOkModal();
-})
+});
+
 Then(
   /^Item with name (.*) is not shown on items page$/,
   function (value: string) {
@@ -79,11 +79,17 @@ Then(
   }
 );
 Then("Item should be created", function () {
- return page.validateItemsPage();
+  return page.validateItemsPage();
 });
 Then("I should be redirected on list items page", function () {
-return  page.validateItemsPage();
+  return page.validateItemsPage();
 });
 Then(/^I should see (.*) item page$/, function (action: string) {
   return itemFormPage.validateItemFormPage();
+});
+Then("I should see No results found! in Items page", function () {
+  return page.verifyItemByNameNotExist("");
+});
+Then("I should not see items table pagination", function () {
+  return page.verifyItemsTablePaginationIsNotShown();
 });

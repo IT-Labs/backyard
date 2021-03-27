@@ -5,6 +5,7 @@ export class ItemFormPage {
   elements = {
     link: appConfig.url + "/item",
     content: "#item",
+
     save: "#save",
     back: "#back",
     name: "#name",
@@ -61,6 +62,7 @@ export class ItemFormPage {
   async validateDescription(value: string) {
     return this.validateText(this.elements.description, value);
   }
+ 
 
   private async validateText(id: string, value: string) {
     await client.assert.visible(id);

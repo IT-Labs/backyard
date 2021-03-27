@@ -16,14 +16,14 @@ export class HomePage {
 
 
   async verifyHomeMessage(message: string) {
-    await client.waitForElementVisible(this.elements.emptyCard, 1000);
+    await client.waitForElementVisible(this.elements.emptyCard, 5000);
     return client.expect
       .element(this.elements.emptyCard)
       .text.to.be.equal(message);
   }
   async navigateToHomeUrl() {
     await client.url(this.elements.url);
-    return client.waitForElementVisible(this.elements.content, 1000);
+     return client.assert.urlEquals(this.elements.url);
   }
 
   async validateHomeMenuPresent() {
