@@ -86,7 +86,8 @@ Following section present steps for running the test from scratch or repeating
 
 - restart test environment: [restart.sh](restart.sh) path\to\repository; example : C:/Projects/IT-Labs/backyard
   example :`./restart.sh C:/Projects/IT-Labs/backyard`
-- run test: [test.sh](test.sh) (If test(s) are not destructive (only read data from database) you can run them multiple times)
+- run test: [test.sh](test.sh) (If test(s) are not destructive (only read data from database) you can run them multiple times) 
+- example run : ![video](doc/TestRun.gif)
 
 ## Connect redis insight with redis
 
