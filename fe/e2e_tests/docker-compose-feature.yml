@@ -1,0 +1,17 @@
+# To execute this docker-compose yml file use `docker-compose -f <file_name> up`
+# Add the `-d` flag at the end for detached execution
+version: "3.7"
+services:
+  sample-feature-tests:
+    image: node:latest
+    container_name: sample-feature-tests
+    volumes:
+      - .:/usr/src/myapp
+    working_dir: /usr/src/myapp
+    command: ["sh", "docker_run_feature.sh"]
+    networks:
+      - sample
+networks:
+  sample:
+    name: sample-network
+    driver: bridge
