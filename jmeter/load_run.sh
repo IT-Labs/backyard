@@ -7,6 +7,7 @@ jmeter \
 -JRAMP_UP=2 \
 -JLOOPS=15 \
 -JGRAPHITE_HOST=graphite-sample \
+-JAUTH=keycloak-sample \
 -n -t tests/LoadItems.jmx \
 -l jtl/load_test-plan_$(date +%Y-%m-%d-%H-%M-%S).jtl \
 -j logs/load_jmeter_$(date +%Y-%m-%d-%H-%M-%S).log \

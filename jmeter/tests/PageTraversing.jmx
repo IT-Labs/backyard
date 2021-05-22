@@ -84,7 +84,7 @@
           <boolProp name="recycle">true</boolProp>
           <stringProp name="shareMode">shareMode.all</stringProp>
           <boolProp name="stopThread">false</boolProp>
-          <stringProp name="variableNames">arg,key</stringProp>
+          <stringProp name="variableNames">username,password</stringProp>
         </CSVDataSet>
         <hashTree/>
         <com.googlecode.jmeter.plugins.webdriver.config.RemoteDriverConfig guiclass="com.googlecode.jmeter.plugins.webdriver.config.gui.RemoteDriverConfigGui" testclass="com.googlecode.jmeter.plugins.webdriver.config.RemoteDriverConfig" testname="Selenium  Remote Driver Config" enabled="true">
@@ -103,15 +103,35 @@ WDS.sampleResult.sampleStart();
 WDS.sampleResult.getLatency();
 
 // variables from CSV file
-var  arg = WDS.vars.get(&quot;arg&quot;);
-var  key = WDS.vars.get(&quot;key&quot;);
-WDS.log.info(arg +&quot;:&quot;+key );
+var  username = WDS.vars.get(&quot;username&quot;);
+var  password = WDS.vars.get(&quot;password&quot;);
+WDS.log.info(username+&quot;:&quot;+ password);
 // args order is defined in parameters section
 var  url = WDS.args[0];
 var  timeBetteenUrls =Integer.parseInt(WDS.args[1]);
 var pages = WDS.args[2].split(&quot;;&quot;);
-//var profileLogoutElement=By.className(&quot;logo&quot;);
- //    wait.until(ExpectedConditions.visibilityOfElementLocated(profileLogoutElement));
+WDS.log.info(&quot;find login &quot;);
+ driver.get(url);
+var loginElement =By.id(&quot;login&quot;);
+wait.until(ExpectedConditions.visibilityOfElementLocated(loginElement));
+WebElement  loginField = driver.findElement(loginElement);
+WDS.log.info(&quot;click login &quot;);
+ loginField.click();
+ 
+var usernameElement =By.id(&quot;username&quot;);
+wait.until(ExpectedConditions.visibilityOfElementLocated(usernameElement));
+WebElement  userNameField = driver.findElement(usernameElement);
+WebElement  passwordField= driver.findElement(By.id(&quot;password&quot;));
+
+
+userNameField.click();
+userNameField.clear();
+userNameField.sendKeys(new String[] {username});
+
+passwordField.click();
+passwordField.clear();
+passwordField.sendKeys(new String[] {password});
+driver.findElement(By.id(&quot;kc-login&quot;)).click();
 
 //navigate to all passed pages
 for (int i = 0; i &lt; pages.length; i++) {	
@@ -120,14 +140,17 @@ for (int i = 0; i &lt; pages.length; i++) {
 	driver.get(navigate);     
 	java.lang.Thread.sleep(timeBetteenUrls);
 }
-
+WDS.log.info(&quot;find logout  and click&quot;);
+wait.until(ExpectedConditions.visibilityOfElementLocated(loginElement));
+WebElement  loginField = driver.findElement(loginElement);
+ loginField.click();
 WDS.sampleResult.sampleEnd();
 </stringProp>
           <stringProp name="WebDriverSampler.parameters"> ${SITE_URL}  ${TIME_ON_PAGE} ${PAGES}</stringProp>
           <stringProp name="WebDriverSampler.language">java</stringProp>
         </com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler>
         <hashTree/>
-        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="false">
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
           <boolProp name="ResultCollector.error_logging">false</boolProp>
           <objProp>
             <name>saveConfig</name>

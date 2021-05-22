@@ -1,5 +1,0 @@
-http://fe-dev:3000/ SampleApp
-http://fe-dev:3000/items SampleAppItems
-http://fe-dev:3000/about SampleAppAbout
-http://api-internal-sample:5001/swagger-ui/ SampleSwagger
-https://www.it-labs.com/ It_Labs_site 

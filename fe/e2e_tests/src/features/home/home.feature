@@ -1,15 +1,18 @@
 @home @all
 Feature: Home Page
     Background: prepare
-        Given I navigate to home
+        Given I login as a admin user
 
-    @smoketest
-    Scenario: verify footer logo
-        Then I should see it labs link
-        Then I should see logo
-     
-    @smoketest
-    Scenario: navigate to it labs site
-        When I click on it labs link
-        Then I should land on it labs site
-        
+@smoke
+    Scenario Outline: Verify menu items from Home page when user is admin
+        Then the menu <Link> should be <isVisible>
+        Examples:
+            | Link        | isVisible |
+            | Home        | true      |
+            | Admin       | true      |
+            | About       | true      |
+            | Hi Username | true      |
+            | Login       | false     |
+            | Logout      | true      |
+
+  
