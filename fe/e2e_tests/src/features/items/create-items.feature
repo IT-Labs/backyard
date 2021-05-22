@@ -87,7 +87,7 @@ Feature: Items Page - Create Item
         Then Item should be created
         And I should be redirected on list items page
 
-   
+    @basics  
     Scenario: Verify user can create item using all fields in Create item page
         When I click on create button
         Then I should see create item page
