@@ -5,12 +5,11 @@ import com.itlabs.api.common.GlobalConstants;
 import java.time.LocalDateTime;
 import java.util.UUID;
 import javax.persistence.Column;
+import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
-import javax.persistence.PrePersist;
-import javax.persistence.PreUpdate;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.Type;
@@ -18,6 +17,7 @@ import org.hibernate.annotations.Type;
 @Getter
 @Setter
 @MappedSuperclass
+@EntityListeners(AuditableListener.class)
 public class BaseEntity {
 
 	@Id
@@ -36,15 +36,12 @@ public class BaseEntity {
 	@Column(nullable = false)
 	private LocalDateTime created;
 
-	@PrePersist
-	protected void onCreate() {
-		setCreated(LocalDateTime.now());
-		setUpdated(LocalDateTime.now());
-	}
+	@Column(nullable = false)
+	@Type(type = "pg-uuid")
+	private UUID createdBy;
 
-	@PreUpdate
-	protected void onUpdate() {
-		setUpdated(LocalDateTime.now());
-	}
+	@Column(nullable = false)
+	@Type(type = "pg-uuid")
+	private UUID updatedBy;
 
 }

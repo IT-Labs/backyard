@@ -1,0 +1,11 @@
+server:
+    port: 5001
+spring:
+    datasource:
+        password: dev123
+        url: jdbc:postgresql://api-postgres/sample?stringtype=unspecified
+        username: dev
+    flyway:
+        enabled: false
+keycloak:
+    auth-server-url: http://keycloak-sample:6180/auth

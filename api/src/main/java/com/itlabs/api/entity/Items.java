@@ -1,6 +1,10 @@
 package com.itlabs.api.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.itlabs.api.common.GlobalConstants;
 import com.itlabs.api.models.ItemStatus;
+import java.time.LocalDateTime;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -22,5 +26,10 @@ public class Items extends BaseEntity {
 	ItemStatus status;
 
 	String type;
+
+	@JsonFormat(pattern = GlobalConstants.DATE_FORMAT)
+	LocalDateTime published;
+
+	boolean isPublic;
 
 }

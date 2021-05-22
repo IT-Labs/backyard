@@ -23,7 +23,7 @@ services:
       - sonarqube-sample
     command: sonar-scanner  -Dsonar.login=bf9653e42321198573e4e5c6cc02a069caae908e -Dsonar.projectKey=sample-fe -Dsonar.sources=. -Dsonar.exclusions=e2e_tests/reports/** -Dsonar.host.url=http://sonarqube-sample:9000   -Dsonar.scm.disabled=True
   sonar-api:
-    image: openjdk:14.0.1-slim
+    image: openjdk:11.0.9-slim
     container_name: sonar-api
     volumes:
       - //var/run/docker.sock:/var/run/docker.sock

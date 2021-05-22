@@ -1,9 +1,13 @@
 package com.itlabs.api.service;
 
+import ch.qos.logback.core.util.StringCollectionUtil;
 import com.itlabs.api.entity.Items;
 import com.itlabs.api.models.ItemEditModel;
 import com.itlabs.api.models.ItemModel;
+import com.itlabs.api.models.ItemStatus;
 import com.itlabs.api.repository.ItemsRepository;
+import java.time.LocalDateTime;
+import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
 import javax.transaction.Transactional;
@@ -12,6 +16,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 @Service
 public class ItemServiceImpl implements ItemsService {
@@ -35,11 +40,25 @@ public class ItemServiceImpl implements ItemsService {
 
 	/**
 	 * @param pageable
+	 * @param name
+	 * @param status
 	 * @return Page<ItemModel>
 	 */
 	@Override
-	public Page<ItemModel> get(Pageable pageable) {
-		final var all = itemRepository.findAll(pageable);
+	public Page<ItemModel> get(Pageable pageable, String name, ItemStatus status) {
+		Page<Items> all = null;
+		if (status == null && StringUtils.isEmpty(name)) {
+			all = itemRepository.findAll(pageable);
+		}
+		else if (status != null && !StringUtils.isEmpty(name)) {
+			all = itemRepository.findByNameStartsWithAndStatus(pageable, name, status);
+		}
+		else if (status != null) {
+			all = itemRepository.findByStatus(pageable, status);
+		}
+		else {
+			all = itemRepository.findByNameStartsWith(pageable, name);
+		}
 		final var items = all.stream().map(this::getModel).collect(Collectors.toList());
 
 		return new PageImpl<>(items, pageable, all.getTotalElements());
@@ -58,6 +77,13 @@ public class ItemServiceImpl implements ItemsService {
 		item.setType("PERSONAL");
 		item.setGuid(UUID.randomUUID());
 		item.setDescription(model.getDescription());
+		if (item.getStatus() == ItemStatus.DONE) {
+			item.setPublished(LocalDateTime.now());
+
+		}
+		else {
+			item.setPublished(null);
+		}
 		item = itemRepository.save(item);
 		return getModel(item);
 	}
@@ -73,6 +99,19 @@ public class ItemServiceImpl implements ItemsService {
 	public ItemModel update(UUID uuid, ItemEditModel editModel) {
 		var item = getDatabaseItem(uuid);
 		item.setName(editModel.getName());
+
+		if (editModel.getStatus() == ItemStatus.DONE) {
+			item.setPublished(LocalDateTime.now());
+
+		}
+		else {
+			item.setPublished(null);
+		}
+
+		if (editModel.getPubliclyAvailable() != null) {
+			item.setPublic(editModel.getPubliclyAvailable());
+		}
+
 		item.setStatus(editModel.getStatus());
 		item.setDescription(editModel.getDescription());
 		return getModel(itemRepository.save(item));
@@ -87,6 +126,12 @@ public class ItemServiceImpl implements ItemsService {
 		itemRepository.deleteByGuid(uuid);
 	}
 
+	@Override
+	public List<ItemModel> getPublicPublishedItems(Pageable pageable) {
+		return itemRepository.findByIsPublicTrueAndStatus(pageable, ItemStatus.DONE).stream().map(this::getModel)
+				.collect(Collectors.toList());
+	}
+
 	private Items getDatabaseItem(UUID uuid) {
 		return itemRepository.findByGuid(uuid).orElseThrow(
 				() -> new EmptyResultDataAccessException(String.format("Item with id %s not found", uuid), 1));
@@ -94,7 +139,7 @@ public class ItemServiceImpl implements ItemsService {
 
 	private ItemModel getModel(Items item) {
 		return ItemModel.builder().id(item.getGuid().toString()).name(item.getName()).description(item.getDescription())
-				.status(item.getStatus()).build();
+				.published(item.getPublished()).publiclyAvailable(item.isPublic()).status(item.getStatus()).build();
 	}
 
 }

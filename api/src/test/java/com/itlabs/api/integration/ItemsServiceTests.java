@@ -19,6 +19,8 @@ public class ItemsServiceTests extends BaseIntegration {
 
 	@Autowired
 	ItemsServiceTests(ItemsService itemsService) {
+
+		super(null);
 		this.itemsService = itemsService;
 	}
 
@@ -27,7 +29,7 @@ public class ItemsServiceTests extends BaseIntegration {
 		final int itemsCount = 10;
 		seedItemsInDatabase(itemsCount);
 
-		var result = itemsService.get(Pageable.unpaged());
+		var result = itemsService.get(Pageable.unpaged(), "", null);
 		assertNotNull(result);
 		assertTrue(result.getTotalElements() >= itemsCount);
 	}
@@ -46,7 +48,7 @@ public class ItemsServiceTests extends BaseIntegration {
 	}
 
 	private ItemEditModel getItemEditModel() {
-		return new ItemEditModel("Test", ItemStatus.DRAFT, "description");
+		return new ItemEditModel("Test", ItemStatus.DRAFT, "description", false);
 	}
 
 }

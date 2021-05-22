@@ -3,15 +3,23 @@ package com.itlabs.api.controllers;
 import com.itlabs.api.configuration.ApiPageable;
 import com.itlabs.api.models.ItemEditModel;
 import com.itlabs.api.models.ItemModel;
+import com.itlabs.api.models.ItemStatus;
 import com.itlabs.api.service.ItemsService;
 import io.swagger.annotations.Api;
+import java.util.Map;
 import java.util.UUID;
+import lombok.extern.slf4j.Slf4j;
+import org.keycloak.KeycloakPrincipal;
+import org.keycloak.adapters.springsecurity.token.KeycloakAuthenticationToken;
+import org.keycloak.representations.AccessToken;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,13 +27,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import springfox.documentation.annotations.ApiIgnore;
 
 @RestController
 @Api
-@CrossOrigin(maxAge = 3600)
 @RequestMapping(Routes.ITEMS_ROUTE)
+@Slf4j
+// @PreAuthorize("hasAuthority('SCOPE_user')")
 public class ItemsController {
 
 	private final ItemsService itemsService;
@@ -36,8 +46,12 @@ public class ItemsController {
 
 	@GetMapping()
 	@ApiPageable
-	public Page<ItemModel> get(@ApiIgnore Pageable pageable) {
-		return itemsService.get(pageable);
+	public Page<ItemModel> get(@ApiIgnore Pageable pageable, @RequestParam(required = false) String name,
+			@RequestParam(required = false) ItemStatus status) {
+		SecurityContext context = SecurityContextHolder.getContext();
+		Authentication authentication = context.getAuthentication();
+		log.info("Scopes: " + authentication.getAuthorities());
+		return itemsService.get(pageable, name, status);
 	}
 
 	@PostMapping()

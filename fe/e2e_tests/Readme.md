@@ -11,12 +11,12 @@ This repository contains e2e tests
 2. Node version
    https://nodejs.org/en/download/
 
-3. Yarn version 1.10
+3. Yarn version
    https://classic.yarnpkg.com/en/docs/install/#windows-stable
 
 ## Run tests locally
 
-To run all tests and test the whole application: (must specify customer)
+To run all tests and test the whole application
 yarn test --tags "@all"
 
 To execute specific tests-feature:

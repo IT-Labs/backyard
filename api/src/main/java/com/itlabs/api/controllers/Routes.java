@@ -10,4 +10,6 @@ public class Routes {
 
 	public static final String ITEMS_ROUTE = API_ROOT_ROUTE + "items";
 
+	public static final String HOME_ROUTE = "/public/home";
+
 }

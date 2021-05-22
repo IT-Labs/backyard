@@ -7,8 +7,20 @@ services:
     container_name: fe-dev
     environment: 
       - REACT_APP_API_URL=http://api-dev:5000/
+      - REACT_APP_AUTH_URL=http://keycloak-sample:6180/
     ports:
       - "5010:3000"
+    command: sh -c "yarn run start"
+    networks:
+      - sample
+  fe-dev-empty:
+    image: fe-sample
+    container_name: fe-dev-empty
+    environment: 
+      - REACT_APP_API_URL=http://api-dev-empty:5000/
+      - REACT_APP_AUTH_URL=http://keycloak-sample:6180/
+    ports:
+      - "5110:3000"
     command: sh -c "yarn run start"
     networks:
       - sample

@@ -1,34 +1,29 @@
 sample:
-    internal-api: http://localhost:5001/
+  internal-api: http://localhost:5001/
 server:
-    port: 5000
+  port: 5000
 info:
-    app:
-        description: playground application
-        name: Spring Backyard API Gateway Application
-    java-vendor: ${java.specification.vendor}
+  app:
+    description: playground application
+    name: Spring Backyard API Gateway Application
+  java-vendor: ${java.specification.vendor}
 logging:
-    level:
-        root: DEBUG
+  level:
+    root: DEBUG
 spring:
-    cache:
-        type: redis
-    redis:
-        host: localhost
-        port: 6378
-    cloud:
-        gateway:
-            httpclient:
-                connect-timeout: 20
+  cache:
+    type: redis
+  redis:
+    host: localhost
+    port: 6378
 management:
-    endpoint:
-        health:
-            cache:
-                time-to-live: 30s
-            show-details: always
-    endpoints:
-        web:
-            base-path: /v1/actuator
-            exposure:
-                include: '*'
-
+  endpoint:
+    health:
+      cache:
+        time-to-live: 30s
+      show-details: always
+  endpoints:
+    web:
+      base-path: /v1/actuator
+      exposure:
+        include: "*"
