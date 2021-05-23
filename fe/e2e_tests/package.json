@@ -44,7 +44,7 @@
     "fecha": "^2.3.3",
     "geckodriver": "^1.12.2",
     "jsonschema": "^1.2.4",
-    "lodash": "^4.17.10",
+    "lodash": "^4.17.21",
     "nightwatch": "^1.0.11",
     "nightwatch-api": "^0.4.0",
     "npm-run-all": "^4.1.5",
