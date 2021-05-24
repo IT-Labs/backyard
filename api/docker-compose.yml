@@ -6,7 +6,7 @@ networks:
     driver: bridge
 services:
   api-internal-sample:
-    image: "openjdk:11.0.9-slim"
+    image: "openjdk:15.0.2-slim"
     container_name: api-internal-sample
     volumes:
       - ./build/libs:/usr/src/myapp
@@ -37,7 +37,7 @@ services:
     networks:
       - sample
   api-internal-sample-empty:
-    image: "openjdk:11.0.9-slim"
+    image: "openjdk:15.0.2-slim"
     container_name: api-internal-sample-empty
     volumes:
       - ./build/libs:/usr/src/myapp
