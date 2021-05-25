@@ -3,22 +3,22 @@ buildscript {
 		mavenCentral()
 	}
 	dependencies {
-		classpath("io.spring.javaformat:spring-javaformat-gradle-plugin:0.0.25")
+		classpath("io.spring.javaformat:spring-javaformat-gradle-plugin:0.0.28")
 	}
 }
 
 plugins {
-	id 'org.springframework.boot' version '2.3.5.RELEASE'
-	id 'io.spring.dependency-management' version '1.0.10.RELEASE'
-	id "com.github.ben-manes.versions" version "0.33.0"
+	id 'org.springframework.boot' version '2.4.6'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id "com.github.ben-manes.versions" version "0.38.0"
 	id 'java'
-	id "org.sonarqube" version "3.0"
+	id "org.sonarqube" version "3.2.0"
 	id "jacoco"
 }
 apply plugin: 'io.spring.javaformat'
 group = 'com.it-labs'
-sourceCompatibility = '14'
-targetCompatibility ='14'
+sourceCompatibility = '15'
+targetCompatibility ='15'
 version ='version 1'
 configurations {
 	developmentOnly
@@ -40,7 +40,7 @@ repositories {
 	jcenter()
 }
 ext {
-	set('springCloudVersion', "Hoxton.SR8")
+	set('springCloudVersion', "2020.0.2")
 }
 
 dependencies {
@@ -48,12 +48,12 @@ dependencies {
 //	implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
 	implementation  'org.springframework.boot:spring-boot-starter-data-redis'
 
-	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-hystrix'
+	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-hystrix:2.2.8.RELEASE'
 	implementation 'org.springframework.cloud:spring-cloud-starter-gateway'
 //	implementation 'org.springframework.cloud:spring-cloud-starter-security'
 
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
-	compile 'io.micrometer:micrometer-registry-prometheus'
+	compileOnly 'io.micrometer:micrometer-registry-prometheus'
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
 	implementation "io.springfox:springfox-boot-starter:3.0.0"

@@ -2,7 +2,7 @@
 version: '3.7'
 services:
   build:
-    image: "openjdk:14-alpine"
+    image: "openjdk:15.0.2-slim"
     container_name: build-api-gateway
     volumes:
       - ./:/usr/src/myapp

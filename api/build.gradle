@@ -19,7 +19,6 @@ apply plugin: 'io.spring.javaformat'
 group = 'com.it-labs'
 sourceCompatibility = '15'
 targetCompatibility ='15'
-//downgraded to java 11 due keycloak 12 supports only java 11
 version ='version 1'
 configurations {
 	developmentOnly
