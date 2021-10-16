@@ -2,7 +2,7 @@
 version: '3.7'
 services:
   tests:
-    image: "openjdk:15.0.2-slim"
+    image: "openjdk:17-jdk-slim-buster"
     container_name: test-api-gateway
     volumes:
       - //var/run/docker.sock:/var/run/docker.sock

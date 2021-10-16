@@ -6,7 +6,7 @@ networks:
     driver: bridge
 services:
   api-dev:
-    image: "openjdk:15.0.2-slim"
+    image: "openjdk:17-jdk-slim-buster"
     container_name: api-dev
     volumes:
       - ./build/libs:/usr/src/myapp
@@ -28,7 +28,7 @@ services:
       - 5000:5000
 
   api-dev-empty:
-    image: "openjdk:15.0.2-slim"
+    image: "openjdk:17-jdk-slim-buster"
     container_name: api-dev-empty
     volumes:
       - ./build/libs:/usr/src/myapp

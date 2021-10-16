@@ -42,8 +42,10 @@ public class GatewayConfig {
 				.filters(f -> f.rewritePath("/items", "/api/v1/items").removeRequestHeader("Cookie")
 						.dedupeResponseHeader("Access-Control-Allow-Headers", Strategy.RETAIN_UNIQUE.toString())
 						.dedupeResponseHeader("Access-Control-Allow-Origin", Strategy.RETAIN_UNIQUE.toString())
-						.requestRateLimiter(c -> c.setRateLimiter(getItemsRateLimiter())).retry(5).fallbackHeaders(
-								x -> x.hy.setName("FallbackInternal").setFallbackUri("forward:/fallback/message"))
+				// .requestRateLimiter(c ->
+				// c.setRateLimiter(getItemsRateLimiter())).retry(5).fallbackHeaders(
+				// x ->
+				// x.setName("FallbackInternal").setFallbackUri("forward:/fallback/message"))
 				// .hystrix(x ->
 				// x.setName("FallbackInternal").setFallbackUri("forward:/fallback/message"))
 				).uri(internalServiceConfiguration.getInternalApiUrl())// .id("PublicModule")

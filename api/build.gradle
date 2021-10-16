@@ -3,22 +3,22 @@ buildscript {
 		mavenCentral()
 	}
 	dependencies {
-		classpath("io.spring.javaformat:spring-javaformat-gradle-plugin:0.0.28")
+		classpath("io.spring.javaformat:spring-javaformat-gradle-plugin:0.0.29")
 	}
 }
 
 plugins {
-	id 'org.springframework.boot' version '2.4.6'
+	id 'org.springframework.boot' version '2.5.5'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
-	id "com.github.ben-manes.versions" version "0.38.0"
+	id "com.github.ben-manes.versions" version "0.39.0"
 	id 'java'
 	id "org.sonarqube" version "3.2.0"
 	id "jacoco"
 }
 apply plugin: 'io.spring.javaformat'
 group = 'com.it-labs'
-sourceCompatibility = '15'
-targetCompatibility ='15'
+sourceCompatibility = '17'
+targetCompatibility ='17'
 version ='version 1'
 configurations {
 	developmentOnly
@@ -48,13 +48,13 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	implementation 'org.springframework.boot:spring-boot-starter-security'
-	implementation 'org.keycloak:keycloak-spring-boot-starter:13.0.0'
-	implementation 'org.keycloak:keycloak-admin-client:13.0.0'
-	implementation 'org.flywaydb:flyway-core:7.9.1'
+	implementation 'org.keycloak:keycloak-spring-boot-starter:15.0.2'
+	implementation 'org.keycloak:keycloak-admin-client:15.0.2'
+	implementation 'org.flywaydb:flyway-core:8.0.0'
 
 
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
-	runtimeOnly 'org.postgresql:postgresql:42.2.20'
+	runtimeOnly 'org.postgresql:postgresql:42.2.24'
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
 	implementation "io.springfox:springfox-boot-starter:3.0.0"
@@ -63,9 +63,9 @@ dependencies {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
 	testCompileOnly("com.github.javafaker:javafaker:1.0.2")
-	testCompileOnly('org.testcontainers:testcontainers:1.15.3')
-	testCompileOnly('org.testcontainers:postgresql:1.15.3')
-	testCompileOnly group: 'com.github.dasniko', name: 'testcontainers-keycloak', version: '1.7.0'
+	testCompileOnly('org.testcontainers:testcontainers:1.16.0')
+	testCompileOnly('org.testcontainers:postgresql:1.16.0')
+	testCompileOnly group: 'com.github.dasniko', name: 'testcontainers-keycloak', version: '1.8.0'
 	testCompileOnly 'org.projectlombok:lombok'
 	testAnnotationProcessor 'org.projectlombok:lombok'
 }
