@@ -16,6 +16,8 @@ spring:
   redis:
     host: localhost
     port: 6378
+  application:
+    name: api-gateway-sample
 management:
   endpoint:
     health:
