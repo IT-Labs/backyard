@@ -2,10 +2,10 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 12.4
+-- Dumped from database version 14.0 (Debian 14.0-1.pgdg110+1)
 -- Dumped by pg_dump version 14.0
 
--- Started on 2021-10-30 08:45:11
+-- Started on 2021-11-08 08:31:27
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -27,7 +27,7 @@ CREATE SCHEMA public;
 
 
 --
--- TOC entry 3367 (class 0 OID 0)
+-- TOC entry 3720 (class 0 OID 0)
 -- Dependencies: 3
 -- Name: SCHEMA public; Type: COMMENT; Schema: -; Owner: -
 --
@@ -40,7 +40,7 @@ SET default_tablespace = '';
 SET default_table_access_method = heap;
 
 --
--- TOC entry 238 (class 1259 OID 33094)
+-- TOC entry 209 (class 1259 OID 16415)
 -- Name: alert; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -70,7 +70,7 @@ CREATE TABLE public.alert (
 
 
 --
--- TOC entry 237 (class 1259 OID 33092)
+-- TOC entry 210 (class 1259 OID 16420)
 -- Name: alert_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -84,8 +84,8 @@ CREATE SEQUENCE public.alert_id_seq
 
 
 --
--- TOC entry 3368 (class 0 OID 0)
--- Dependencies: 237
+-- TOC entry 3721 (class 0 OID 0)
+-- Dependencies: 210
 -- Name: alert_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
@@ -93,7 +93,7 @@ ALTER SEQUENCE public.alert_id_seq OWNED BY public.alert.id;
 
 
 --
--- TOC entry 241 (class 1259 OID 33112)
+-- TOC entry 211 (class 1259 OID 16421)
 -- Name: alert_notification; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -115,7 +115,7 @@ CREATE TABLE public.alert_notification (
 
 
 --
--- TOC entry 240 (class 1259 OID 33110)
+-- TOC entry 212 (class 1259 OID 16429)
 -- Name: alert_notification_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -129,8 +129,8 @@ CREATE SEQUENCE public.alert_notification_id_seq
 
 
 --
--- TOC entry 3369 (class 0 OID 0)
--- Dependencies: 240
+-- TOC entry 3722 (class 0 OID 0)
+-- Dependencies: 212
 -- Name: alert_notification_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
@@ -138,7 +138,7 @@ ALTER SEQUENCE public.alert_notification_id_seq OWNED BY public.alert_notificati
 
 
 --
--- TOC entry 243 (class 1259 OID 33138)
+-- TOC entry 213 (class 1259 OID 16430)
 -- Name: alert_notification_state; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -155,7 +155,7 @@ CREATE TABLE public.alert_notification_state (
 
 
 --
--- TOC entry 242 (class 1259 OID 33136)
+-- TOC entry 214 (class 1259 OID 16433)
 -- Name: alert_notification_state_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -169,8 +169,8 @@ CREATE SEQUENCE public.alert_notification_state_id_seq
 
 
 --
--- TOC entry 3370 (class 0 OID 0)
--- Dependencies: 242
+-- TOC entry 3723 (class 0 OID 0)
+-- Dependencies: 214
 -- Name: alert_notification_state_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
@@ -178,7 +178,7 @@ ALTER SEQUENCE public.alert_notification_state_id_seq OWNED BY public.alert_noti
 
 
 --
--- TOC entry 239 (class 1259 OID 33106)
+-- TOC entry 215 (class 1259 OID 16434)
 -- Name: alert_rule_tag; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -189,7 +189,7 @@ CREATE TABLE public.alert_rule_tag (
 
 
 --
--- TOC entry 245 (class 1259 OID 33148)
+-- TOC entry 216 (class 1259 OID 16437)
 -- Name: annotation; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -218,7 +218,7 @@ CREATE TABLE public.annotation (
 
 
 --
--- TOC entry 244 (class 1259 OID 33146)
+-- TOC entry 217 (class 1259 OID 16446)
 -- Name: annotation_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -232,8 +232,8 @@ CREATE SEQUENCE public.annotation_id_seq
 
 
 --
--- TOC entry 3371 (class 0 OID 0)
--- Dependencies: 244
+-- TOC entry 3724 (class 0 OID 0)
+-- Dependencies: 217
 -- Name: annotation_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
@@ -241,7 +241,7 @@ ALTER SEQUENCE public.annotation_id_seq OWNED BY public.annotation.id;
 
 
 --
--- TOC entry 246 (class 1259 OID 33164)
+-- TOC entry 218 (class 1259 OID 16447)
 -- Name: annotation_tag; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -252,7 +252,7 @@ CREATE TABLE public.annotation_tag (
 
 
 --
--- TOC entry 223 (class 1259 OID 32990)
+-- TOC entry 219 (class 1259 OID 16450)
 -- Name: api_key; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -269,7 +269,7 @@ CREATE TABLE public.api_key (
 
 
 --
--- TOC entry 222 (class 1259 OID 32988)
+-- TOC entry 220 (class 1259 OID 16455)
 -- Name: api_key_id_seq1; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -283,8 +283,8 @@ CREATE SEQUENCE public.api_key_id_seq1
 
 
 --
--- TOC entry 3372 (class 0 OID 0)
--- Dependencies: 222
+-- TOC entry 3725 (class 0 OID 0)
+-- Dependencies: 220
 -- Name: api_key_id_seq1; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
@@ -292,7 +292,7 @@ ALTER SEQUENCE public.api_key_id_seq1 OWNED BY public.api_key.id;
 
 
 --
--- TOC entry 267 (class 1259 OID 33294)
+-- TOC entry 221 (class 1259 OID 16456)
 -- Name: cache_data; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -305,7 +305,7 @@ CREATE TABLE public.cache_data (
 
 
 --
--- TOC entry 217 (class 1259 OID 32886)
+-- TOC entry 222 (class 1259 OID 16461)
 -- Name: dashboard; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -330,7 +330,7 @@ CREATE TABLE public.dashboard (
 
 
 --
--- TOC entry 256 (class 1259 OID 33220)
+-- TOC entry 223 (class 1259 OID 16469)
 -- Name: dashboard_acl; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -348,7 +348,7 @@ CREATE TABLE public.dashboard_acl (
 
 
 --
--- TOC entry 255 (class 1259 OID 33218)
+-- TOC entry 224 (class 1259 OID 16473)
 -- Name: dashboard_acl_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -362,8 +362,8 @@ CREATE SEQUENCE public.dashboard_acl_id_seq
 
 
 --
--- TOC entry 3373 (class 0 OID 0)
--- Dependencies: 255
+-- TOC entry 3726 (class 0 OID 0)
+-- Dependencies: 224
 -- Name: dashboard_acl_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
@@ -371,7 +371,7 @@ ALTER SEQUENCE public.dashboard_acl_id_seq OWNED BY public.dashboard_acl.id;
 
 
 --
--- TOC entry 216 (class 1259 OID 32884)
+-- TOC entry 225 (class 1259 OID 16474)
 -- Name: dashboard_id_seq1; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -385,8 +385,8 @@ CREATE SEQUENCE public.dashboard_id_seq1
 
 
 --
--- TOC entry 3374 (class 0 OID 0)
--- Dependencies: 216
+-- TOC entry 3727 (class 0 OID 0)
+-- Dependencies: 225
 -- Name: dashboard_id_seq1; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
@@ -394,7 +394,7 @@ ALTER SEQUENCE public.dashboard_id_seq1 OWNED BY public.dashboard.id;
 
 
 --
--- TOC entry 219 (class 1259 OID 32931)
+-- TOC entry 226 (class 1259 OID 16475)
 -- Name: dashboard_provisioning; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -409,7 +409,7 @@ CREATE TABLE public.dashboard_provisioning (
 
 
 --
--- TOC entry 218 (class 1259 OID 32929)
+-- TOC entry 227 (class 1259 OID 16481)
 -- Name: dashboard_provisioning_id_seq1; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -423,8 +423,8 @@ CREATE SEQUENCE public.dashboard_provisioning_id_seq1
 
 
 --
--- TOC entry 3375 (class 0 OID 0)
--- Dependencies: 218
+-- TOC entry 3728 (class 0 OID 0)
+-- Dependencies: 227
 -- Name: dashboard_provisioning_id_seq1; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
@@ -432,7 +432,7 @@ ALTER SEQUENCE public.dashboard_provisioning_id_seq1 OWNED BY public.dashboard_p
 
 
 --
--- TOC entry 225 (class 1259 OID 33017)
+-- TOC entry 228 (class 1259 OID 16482)
 -- Name: dashboard_snapshot; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -454,7 +454,7 @@ CREATE TABLE public.dashboard_snapshot (
 
 
 --
--- TOC entry 224 (class 1259 OID 33015)
+-- TOC entry 229 (class 1259 OID 16487)
 -- Name: dashboard_snapshot_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -468,8 +468,8 @@ CREATE SEQUENCE public.dashboard_snapshot_id_seq
 
 
 --
--- TOC entry 3376 (class 0 OID 0)
--- Dependencies: 224
+-- TOC entry 3729 (class 0 OID 0)
+-- Dependencies: 229
 -- Name: dashboard_snapshot_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
@@ -477,7 +477,7 @@ ALTER SEQUENCE public.dashboard_snapshot_id_seq OWNED BY public.dashboard_snapsh
 
 
 --
--- TOC entry 215 (class 1259 OID 32877)
+-- TOC entry 230 (class 1259 OID 16488)
 -- Name: dashboard_tag; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -489,7 +489,7 @@ CREATE TABLE public.dashboard_tag (
 
 
 --
--- TOC entry 214 (class 1259 OID 32875)
+-- TOC entry 231 (class 1259 OID 16491)
 -- Name: dashboard_tag_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -503,8 +503,8 @@ CREATE SEQUENCE public.dashboard_tag_id_seq
 
 
 --
--- TOC entry 3377 (class 0 OID 0)
--- Dependencies: 214
+-- TOC entry 3730 (class 0 OID 0)
+-- Dependencies: 231
 -- Name: dashboard_tag_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
@@ -512,7 +512,7 @@ ALTER SEQUENCE public.dashboard_tag_id_seq OWNED BY public.dashboard_tag.id;
 
 
 --
--- TOC entry 250 (class 1259 OID 33187)
+-- TOC entry 232 (class 1259 OID 16492)
 -- Name: dashboard_version; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -530,7 +530,7 @@ CREATE TABLE public.dashboard_version (
 
 
 --
--- TOC entry 249 (class 1259 OID 33185)
+-- TOC entry 233 (class 1259 OID 16497)
 -- Name: dashboard_version_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -544,8 +544,8 @@ CREATE SEQUENCE public.dashboard_version_id_seq
 
 
 --
--- TOC entry 3378 (class 0 OID 0)
--- Dependencies: 249
+-- TOC entry 3731 (class 0 OID 0)
+-- Dependencies: 233
 -- Name: dashboard_version_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
@@ -553,7 +553,7 @@ ALTER SEQUENCE public.dashboard_version_id_seq OWNED BY public.dashboard_version
 
 
 --
--- TOC entry 221 (class 1259 OID 32959)
+-- TOC entry 234 (class 1259 OID 16498)
 -- Name: data_source; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -583,7 +583,7 @@ CREATE TABLE public.data_source (
 
 
 --
--- TOC entry 220 (class 1259 OID 32957)
+-- TOC entry 235 (class 1259 OID 16505)
 -- Name: data_source_id_seq1; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -597,8 +597,8 @@ CREATE SEQUENCE public.data_source_id_seq1
 
 
 --
--- TOC entry 3379 (class 0 OID 0)
--- Dependencies: 220
+-- TOC entry 3732 (class 0 OID 0)
+-- Dependencies: 235
 -- Name: data_source_id_seq1; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
@@ -606,7 +606,7 @@ ALTER SEQUENCE public.data_source_id_seq1 OWNED BY public.data_source.id;
 
 
 --
--- TOC entry 260 (class 1259 OID 33250)
+-- TOC entry 236 (class 1259 OID 16506)
 -- Name: login_attempt; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -619,7 +619,7 @@ CREATE TABLE public.login_attempt (
 
 
 --
--- TOC entry 259 (class 1259 OID 33248)
+-- TOC entry 237 (class 1259 OID 16510)
 -- Name: login_attempt_id_seq1; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -633,8 +633,8 @@ CREATE SEQUENCE public.login_attempt_id_seq1
 
 
 --
--- TOC entry 3380 (class 0 OID 0)
--- Dependencies: 259
+-- TOC entry 3733 (class 0 OID 0)
+-- Dependencies: 237
 -- Name: login_attempt_id_seq1; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
@@ -642,7 +642,7 @@ ALTER SEQUENCE public.login_attempt_id_seq1 OWNED BY public.login_attempt.id;
 
 
 --
--- TOC entry 203 (class 1259 OID 32772)
+-- TOC entry 238 (class 1259 OID 16511)
 -- Name: migration_log; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -657,7 +657,7 @@ CREATE TABLE public.migration_log (
 
 
 --
--- TOC entry 202 (class 1259 OID 32770)
+-- TOC entry 239 (class 1259 OID 16516)
 -- Name: migration_log_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -671,8 +671,8 @@ CREATE SEQUENCE public.migration_log_id_seq
 
 
 --
--- TOC entry 3381 (class 0 OID 0)
--- Dependencies: 202
+-- TOC entry 3734 (class 0 OID 0)
+-- Dependencies: 239
 -- Name: migration_log_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
@@ -680,7 +680,7 @@ ALTER SEQUENCE public.migration_log_id_seq OWNED BY public.migration_log.id;
 
 
 --
--- TOC entry 211 (class 1259 OID 32841)
+-- TOC entry 240 (class 1259 OID 16517)
 -- Name: org; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -701,7 +701,7 @@ CREATE TABLE public.org (
 
 
 --
--- TOC entry 210 (class 1259 OID 32839)
+-- TOC entry 241 (class 1259 OID 16522)
 -- Name: org_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -715,8 +715,8 @@ CREATE SEQUENCE public.org_id_seq
 
 
 --
--- TOC entry 3382 (class 0 OID 0)
--- Dependencies: 210
+-- TOC entry 3735 (class 0 OID 0)
+-- Dependencies: 241
 -- Name: org_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
@@ -724,7 +724,7 @@ ALTER SEQUENCE public.org_id_seq OWNED BY public.org.id;
 
 
 --
--- TOC entry 213 (class 1259 OID 32853)
+-- TOC entry 242 (class 1259 OID 16523)
 -- Name: org_user; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -739,7 +739,7 @@ CREATE TABLE public.org_user (
 
 
 --
--- TOC entry 212 (class 1259 OID 32851)
+-- TOC entry 243 (class 1259 OID 16526)
 -- Name: org_user_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -753,8 +753,8 @@ CREATE SEQUENCE public.org_user_id_seq
 
 
 --
--- TOC entry 3383 (class 0 OID 0)
--- Dependencies: 212
+-- TOC entry 3736 (class 0 OID 0)
+-- Dependencies: 243
 -- Name: org_user_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
@@ -762,7 +762,7 @@ ALTER SEQUENCE public.org_user_id_seq OWNED BY public.org_user.id;
 
 
 --
--- TOC entry 232 (class 1259 OID 33064)
+-- TOC entry 244 (class 1259 OID 16527)
 -- Name: playlist; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -775,7 +775,7 @@ CREATE TABLE public.playlist (
 
 
 --
--- TOC entry 231 (class 1259 OID 33062)
+-- TOC entry 245 (class 1259 OID 16532)
 -- Name: playlist_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -789,8 +789,8 @@ CREATE SEQUENCE public.playlist_id_seq
 
 
 --
--- TOC entry 3384 (class 0 OID 0)
--- Dependencies: 231
+-- TOC entry 3737 (class 0 OID 0)
+-- Dependencies: 245
 -- Name: playlist_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
@@ -798,7 +798,7 @@ ALTER SEQUENCE public.playlist_id_seq OWNED BY public.playlist.id;
 
 
 --
--- TOC entry 234 (class 1259 OID 33075)
+-- TOC entry 246 (class 1259 OID 16533)
 -- Name: playlist_item; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -813,7 +813,7 @@ CREATE TABLE public.playlist_item (
 
 
 --
--- TOC entry 233 (class 1259 OID 33073)
+-- TOC entry 247 (class 1259 OID 16538)
 -- Name: playlist_item_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -827,8 +827,8 @@ CREATE SEQUENCE public.playlist_item_id_seq
 
 
 --
--- TOC entry 3385 (class 0 OID 0)
--- Dependencies: 233
+-- TOC entry 3738 (class 0 OID 0)
+-- Dependencies: 247
 -- Name: playlist_item_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
@@ -836,7 +836,7 @@ ALTER SEQUENCE public.playlist_item_id_seq OWNED BY public.playlist_item.id;
 
 
 --
--- TOC entry 229 (class 1259 OID 33043)
+-- TOC entry 248 (class 1259 OID 16539)
 -- Name: plugin_setting; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -855,7 +855,7 @@ CREATE TABLE public.plugin_setting (
 
 
 --
--- TOC entry 228 (class 1259 OID 33041)
+-- TOC entry 249 (class 1259 OID 16544)
 -- Name: plugin_setting_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -869,8 +869,8 @@ CREATE SEQUENCE public.plugin_setting_id_seq
 
 
 --
--- TOC entry 3386 (class 0 OID 0)
--- Dependencies: 228
+-- TOC entry 3739 (class 0 OID 0)
+-- Dependencies: 249
 -- Name: plugin_setting_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
@@ -878,7 +878,7 @@ ALTER SEQUENCE public.plugin_setting_id_seq OWNED BY public.plugin_setting.id;
 
 
 --
--- TOC entry 236 (class 1259 OID 33086)
+-- TOC entry 250 (class 1259 OID 16545)
 -- Name: preferences; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -897,7 +897,7 @@ CREATE TABLE public.preferences (
 
 
 --
--- TOC entry 235 (class 1259 OID 33084)
+-- TOC entry 251 (class 1259 OID 16548)
 -- Name: preferences_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -911,8 +911,8 @@ CREATE SEQUENCE public.preferences_id_seq
 
 
 --
--- TOC entry 3387 (class 0 OID 0)
--- Dependencies: 235
+-- TOC entry 3740 (class 0 OID 0)
+-- Dependencies: 251
 -- Name: preferences_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
@@ -920,7 +920,7 @@ ALTER SEQUENCE public.preferences_id_seq OWNED BY public.preferences.id;
 
 
 --
--- TOC entry 227 (class 1259 OID 33033)
+-- TOC entry 252 (class 1259 OID 16549)
 -- Name: quota; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -936,7 +936,7 @@ CREATE TABLE public.quota (
 
 
 --
--- TOC entry 226 (class 1259 OID 33031)
+-- TOC entry 253 (class 1259 OID 16552)
 -- Name: quota_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -950,8 +950,8 @@ CREATE SEQUENCE public.quota_id_seq
 
 
 --
--- TOC entry 3388 (class 0 OID 0)
--- Dependencies: 226
+-- TOC entry 3741 (class 0 OID 0)
+-- Dependencies: 253
 -- Name: quota_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
@@ -959,7 +959,7 @@ ALTER SEQUENCE public.quota_id_seq OWNED BY public.quota.id;
 
 
 --
--- TOC entry 264 (class 1259 OID 33274)
+-- TOC entry 254 (class 1259 OID 16553)
 -- Name: server_lock; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -972,7 +972,7 @@ CREATE TABLE public.server_lock (
 
 
 --
--- TOC entry 263 (class 1259 OID 33272)
+-- TOC entry 255 (class 1259 OID 16556)
 -- Name: server_lock_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -986,8 +986,8 @@ CREATE SEQUENCE public.server_lock_id_seq
 
 
 --
--- TOC entry 3389 (class 0 OID 0)
--- Dependencies: 263
+-- TOC entry 3742 (class 0 OID 0)
+-- Dependencies: 255
 -- Name: server_lock_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
@@ -995,7 +995,7 @@ ALTER SEQUENCE public.server_lock_id_seq OWNED BY public.server_lock.id;
 
 
 --
--- TOC entry 230 (class 1259 OID 33054)
+-- TOC entry 256 (class 1259 OID 16557)
 -- Name: session; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -1007,7 +1007,7 @@ CREATE TABLE public.session (
 
 
 --
--- TOC entry 209 (class 1259 OID 32832)
+-- TOC entry 257 (class 1259 OID 16562)
 -- Name: star; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -1019,7 +1019,7 @@ CREATE TABLE public.star (
 
 
 --
--- TOC entry 208 (class 1259 OID 32830)
+-- TOC entry 258 (class 1259 OID 16565)
 -- Name: star_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -1033,8 +1033,8 @@ CREATE SEQUENCE public.star_id_seq
 
 
 --
--- TOC entry 3390 (class 0 OID 0)
--- Dependencies: 208
+-- TOC entry 3743 (class 0 OID 0)
+-- Dependencies: 258
 -- Name: star_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
@@ -1042,7 +1042,7 @@ ALTER SEQUENCE public.star_id_seq OWNED BY public.star.id;
 
 
 --
--- TOC entry 258 (class 1259 OID 33232)
+-- TOC entry 259 (class 1259 OID 16566)
 -- Name: tag; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -1054,7 +1054,7 @@ CREATE TABLE public.tag (
 
 
 --
--- TOC entry 257 (class 1259 OID 33230)
+-- TOC entry 260 (class 1259 OID 16569)
 -- Name: tag_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -1068,8 +1068,8 @@ CREATE SEQUENCE public.tag_id_seq
 
 
 --
--- TOC entry 3391 (class 0 OID 0)
--- Dependencies: 257
+-- TOC entry 3744 (class 0 OID 0)
+-- Dependencies: 260
 -- Name: tag_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
@@ -1077,7 +1077,7 @@ ALTER SEQUENCE public.tag_id_seq OWNED BY public.tag.id;
 
 
 --
--- TOC entry 252 (class 1259 OID 33200)
+-- TOC entry 261 (class 1259 OID 16570)
 -- Name: team; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -1092,7 +1092,7 @@ CREATE TABLE public.team (
 
 
 --
--- TOC entry 251 (class 1259 OID 33198)
+-- TOC entry 262 (class 1259 OID 16573)
 -- Name: team_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -1106,8 +1106,8 @@ CREATE SEQUENCE public.team_id_seq
 
 
 --
--- TOC entry 3392 (class 0 OID 0)
--- Dependencies: 251
+-- TOC entry 3745 (class 0 OID 0)
+-- Dependencies: 262
 -- Name: team_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
@@ -1115,7 +1115,7 @@ ALTER SEQUENCE public.team_id_seq OWNED BY public.team.id;
 
 
 --
--- TOC entry 254 (class 1259 OID 33210)
+-- TOC entry 263 (class 1259 OID 16574)
 -- Name: team_member; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -1132,7 +1132,7 @@ CREATE TABLE public.team_member (
 
 
 --
--- TOC entry 253 (class 1259 OID 33208)
+-- TOC entry 264 (class 1259 OID 16577)
 -- Name: team_member_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -1146,8 +1146,8 @@ CREATE SEQUENCE public.team_member_id_seq
 
 
 --
--- TOC entry 3393 (class 0 OID 0)
--- Dependencies: 253
+-- TOC entry 3746 (class 0 OID 0)
+-- Dependencies: 264
 -- Name: team_member_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
@@ -1155,7 +1155,7 @@ ALTER SEQUENCE public.team_member_id_seq OWNED BY public.team_member.id;
 
 
 --
--- TOC entry 207 (class 1259 OID 32814)
+-- TOC entry 265 (class 1259 OID 16578)
 -- Name: temp_user; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -1178,7 +1178,7 @@ CREATE TABLE public.temp_user (
 
 
 --
--- TOC entry 206 (class 1259 OID 32812)
+-- TOC entry 266 (class 1259 OID 16583)
 -- Name: temp_user_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -1192,8 +1192,8 @@ CREATE SEQUENCE public.temp_user_id_seq
 
 
 --
--- TOC entry 3394 (class 0 OID 0)
--- Dependencies: 206
+-- TOC entry 3747 (class 0 OID 0)
+-- Dependencies: 266
 -- Name: temp_user_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
@@ -1201,7 +1201,7 @@ ALTER SEQUENCE public.temp_user_id_seq OWNED BY public.temp_user.id;
 
 
 --
--- TOC entry 248 (class 1259 OID 33179)
+-- TOC entry 267 (class 1259 OID 16584)
 -- Name: test_data; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -1220,7 +1220,7 @@ CREATE TABLE public.test_data (
 
 
 --
--- TOC entry 247 (class 1259 OID 33177)
+-- TOC entry 268 (class 1259 OID 16587)
 -- Name: test_data_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -1234,8 +1234,8 @@ CREATE SEQUENCE public.test_data_id_seq
 
 
 --
--- TOC entry 3395 (class 0 OID 0)
--- Dependencies: 247
+-- TOC entry 3748 (class 0 OID 0)
+-- Dependencies: 268
 -- Name: test_data_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
@@ -1243,7 +1243,7 @@ ALTER SEQUENCE public.test_data_id_seq OWNED BY public.test_data.id;
 
 
 --
--- TOC entry 205 (class 1259 OID 32796)
+-- TOC entry 269 (class 1259 OID 16588)
 -- Name: user; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -1270,7 +1270,7 @@ CREATE TABLE public."user" (
 
 
 --
--- TOC entry 262 (class 1259 OID 33260)
+-- TOC entry 270 (class 1259 OID 16595)
 -- Name: user_auth; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -1288,7 +1288,7 @@ CREATE TABLE public.user_auth (
 
 
 --
--- TOC entry 261 (class 1259 OID 33258)
+-- TOC entry 271 (class 1259 OID 16600)
 -- Name: user_auth_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -1302,8 +1302,8 @@ CREATE SEQUENCE public.user_auth_id_seq
 
 
 --
--- TOC entry 3396 (class 0 OID 0)
--- Dependencies: 261
+-- TOC entry 3749 (class 0 OID 0)
+-- Dependencies: 271
 -- Name: user_auth_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
@@ -1311,7 +1311,7 @@ ALTER SEQUENCE public.user_auth_id_seq OWNED BY public.user_auth.id;
 
 
 --
--- TOC entry 266 (class 1259 OID 33283)
+-- TOC entry 272 (class 1259 OID 16601)
 -- Name: user_auth_token; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -1331,7 +1331,7 @@ CREATE TABLE public.user_auth_token (
 
 
 --
--- TOC entry 265 (class 1259 OID 33281)
+-- TOC entry 273 (class 1259 OID 16606)
 -- Name: user_auth_token_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -1345,8 +1345,8 @@ CREATE SEQUENCE public.user_auth_token_id_seq
 
 
 --
--- TOC entry 3397 (class 0 OID 0)
--- Dependencies: 265
+-- TOC entry 3750 (class 0 OID 0)
+-- Dependencies: 273
 -- Name: user_auth_token_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
@@ -1354,7 +1354,7 @@ ALTER SEQUENCE public.user_auth_token_id_seq OWNED BY public.user_auth_token.id;
 
 
 --
--- TOC entry 204 (class 1259 OID 32794)
+-- TOC entry 274 (class 1259 OID 16607)
 -- Name: user_id_seq1; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -1368,8 +1368,8 @@ CREATE SEQUENCE public.user_id_seq1
 
 
 --
--- TOC entry 3398 (class 0 OID 0)
--- Dependencies: 204
+-- TOC entry 3751 (class 0 OID 0)
+-- Dependencies: 274
 -- Name: user_id_seq1; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
@@ -1377,7 +1377,7 @@ ALTER SEQUENCE public.user_id_seq1 OWNED BY public."user".id;
 
 
 --
--- TOC entry 3018 (class 2604 OID 33097)
+-- TOC entry 3333 (class 2604 OID 16608)
 -- Name: alert id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1385,7 +1385,7 @@ ALTER TABLE ONLY public.alert ALTER COLUMN id SET DEFAULT nextval('public.alert_
 
 
 --
--- TOC entry 3019 (class 2604 OID 33115)
+-- TOC entry 3337 (class 2604 OID 16609)
 -- Name: alert_notification id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1393,7 +1393,7 @@ ALTER TABLE ONLY public.alert_notification ALTER COLUMN id SET DEFAULT nextval('
 
 
 --
--- TOC entry 3023 (class 2604 OID 33141)
+-- TOC entry 3338 (class 2604 OID 16610)
 -- Name: alert_notification_state id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1401,7 +1401,7 @@ ALTER TABLE ONLY public.alert_notification_state ALTER COLUMN id SET DEFAULT nex
 
 
 --
--- TOC entry 3024 (class 2604 OID 33151)
+-- TOC entry 3343 (class 2604 OID 16611)
 -- Name: annotation id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1409,7 +1409,7 @@ ALTER TABLE ONLY public.annotation ALTER COLUMN id SET DEFAULT nextval('public.a
 
 
 --
--- TOC entry 3011 (class 2604 OID 32993)
+-- TOC entry 3344 (class 2604 OID 16612)
 -- Name: api_key id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1417,7 +1417,7 @@ ALTER TABLE ONLY public.api_key ALTER COLUMN id SET DEFAULT nextval('public.api_
 
 
 --
--- TOC entry 3002 (class 2604 OID 32889)
+-- TOC entry 3348 (class 2604 OID 16613)
 -- Name: dashboard id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1425,7 +1425,7 @@ ALTER TABLE ONLY public.dashboard ALTER COLUMN id SET DEFAULT nextval('public.da
 
 
 --
--- TOC entry 3033 (class 2604 OID 33223)
+-- TOC entry 3350 (class 2604 OID 16614)
 -- Name: dashboard_acl id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1433,7 +1433,7 @@ ALTER TABLE ONLY public.dashboard_acl ALTER COLUMN id SET DEFAULT nextval('publi
 
 
 --
--- TOC entry 3006 (class 2604 OID 32934)
+-- TOC entry 3352 (class 2604 OID 16615)
 -- Name: dashboard_provisioning id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1441,7 +1441,7 @@ ALTER TABLE ONLY public.dashboard_provisioning ALTER COLUMN id SET DEFAULT nextv
 
 
 --
--- TOC entry 3012 (class 2604 OID 33020)
+-- TOC entry 3353 (class 2604 OID 16616)
 -- Name: dashboard_snapshot id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1449,7 +1449,7 @@ ALTER TABLE ONLY public.dashboard_snapshot ALTER COLUMN id SET DEFAULT nextval('
 
 
 --
--- TOC entry 3001 (class 2604 OID 32880)
+-- TOC entry 3354 (class 2604 OID 16617)
 -- Name: dashboard_tag id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1457,7 +1457,7 @@ ALTER TABLE ONLY public.dashboard_tag ALTER COLUMN id SET DEFAULT nextval('publi
 
 
 --
--- TOC entry 3030 (class 2604 OID 33190)
+-- TOC entry 3355 (class 2604 OID 16618)
 -- Name: dashboard_version id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1465,7 +1465,7 @@ ALTER TABLE ONLY public.dashboard_version ALTER COLUMN id SET DEFAULT nextval('p
 
 
 --
--- TOC entry 3008 (class 2604 OID 32962)
+-- TOC entry 3358 (class 2604 OID 16619)
 -- Name: data_source id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1473,7 +1473,7 @@ ALTER TABLE ONLY public.data_source ALTER COLUMN id SET DEFAULT nextval('public.
 
 
 --
--- TOC entry 3036 (class 2604 OID 33253)
+-- TOC entry 3360 (class 2604 OID 16620)
 -- Name: login_attempt id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1481,7 +1481,7 @@ ALTER TABLE ONLY public.login_attempt ALTER COLUMN id SET DEFAULT nextval('publi
 
 
 --
--- TOC entry 2993 (class 2604 OID 32775)
+-- TOC entry 3361 (class 2604 OID 16621)
 -- Name: migration_log id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1489,7 +1489,7 @@ ALTER TABLE ONLY public.migration_log ALTER COLUMN id SET DEFAULT nextval('publi
 
 
 --
--- TOC entry 2999 (class 2604 OID 32844)
+-- TOC entry 3362 (class 2604 OID 16622)
 -- Name: org id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1497,7 +1497,7 @@ ALTER TABLE ONLY public.org ALTER COLUMN id SET DEFAULT nextval('public.org_id_s
 
 
 --
--- TOC entry 3000 (class 2604 OID 32856)
+-- TOC entry 3363 (class 2604 OID 16623)
 -- Name: org_user id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1505,7 +1505,7 @@ ALTER TABLE ONLY public.org_user ALTER COLUMN id SET DEFAULT nextval('public.org
 
 
 --
--- TOC entry 3015 (class 2604 OID 33067)
+-- TOC entry 3364 (class 2604 OID 16624)
 -- Name: playlist id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1513,7 +1513,7 @@ ALTER TABLE ONLY public.playlist ALTER COLUMN id SET DEFAULT nextval('public.pla
 
 
 --
--- TOC entry 3016 (class 2604 OID 33078)
+-- TOC entry 3365 (class 2604 OID 16625)
 -- Name: playlist_item id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1521,7 +1521,7 @@ ALTER TABLE ONLY public.playlist_item ALTER COLUMN id SET DEFAULT nextval('publi
 
 
 --
--- TOC entry 3014 (class 2604 OID 33046)
+-- TOC entry 3366 (class 2604 OID 16626)
 -- Name: plugin_setting id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1529,7 +1529,7 @@ ALTER TABLE ONLY public.plugin_setting ALTER COLUMN id SET DEFAULT nextval('publ
 
 
 --
--- TOC entry 3017 (class 2604 OID 33089)
+-- TOC entry 3367 (class 2604 OID 16627)
 -- Name: preferences id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1537,7 +1537,7 @@ ALTER TABLE ONLY public.preferences ALTER COLUMN id SET DEFAULT nextval('public.
 
 
 --
--- TOC entry 3013 (class 2604 OID 33036)
+-- TOC entry 3368 (class 2604 OID 16628)
 -- Name: quota id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1545,7 +1545,7 @@ ALTER TABLE ONLY public.quota ALTER COLUMN id SET DEFAULT nextval('public.quota_
 
 
 --
--- TOC entry 3039 (class 2604 OID 33277)
+-- TOC entry 3369 (class 2604 OID 16629)
 -- Name: server_lock id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1553,7 +1553,7 @@ ALTER TABLE ONLY public.server_lock ALTER COLUMN id SET DEFAULT nextval('public.
 
 
 --
--- TOC entry 2998 (class 2604 OID 32835)
+-- TOC entry 3370 (class 2604 OID 16630)
 -- Name: star id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1561,7 +1561,7 @@ ALTER TABLE ONLY public.star ALTER COLUMN id SET DEFAULT nextval('public.star_id
 
 
 --
--- TOC entry 3035 (class 2604 OID 33235)
+-- TOC entry 3371 (class 2604 OID 16631)
 -- Name: tag id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1569,7 +1569,7 @@ ALTER TABLE ONLY public.tag ALTER COLUMN id SET DEFAULT nextval('public.tag_id_s
 
 
 --
--- TOC entry 3031 (class 2604 OID 33203)
+-- TOC entry 3372 (class 2604 OID 16632)
 -- Name: team id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1577,7 +1577,7 @@ ALTER TABLE ONLY public.team ALTER COLUMN id SET DEFAULT nextval('public.team_id
 
 
 --
--- TOC entry 3032 (class 2604 OID 33213)
+-- TOC entry 3373 (class 2604 OID 16633)
 -- Name: team_member id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1585,7 +1585,7 @@ ALTER TABLE ONLY public.team_member ALTER COLUMN id SET DEFAULT nextval('public.
 
 
 --
--- TOC entry 2997 (class 2604 OID 32817)
+-- TOC entry 3374 (class 2604 OID 16634)
 -- Name: temp_user id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1593,7 +1593,7 @@ ALTER TABLE ONLY public.temp_user ALTER COLUMN id SET DEFAULT nextval('public.te
 
 
 --
--- TOC entry 3029 (class 2604 OID 33182)
+-- TOC entry 3375 (class 2604 OID 16635)
 -- Name: test_data id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1601,7 +1601,7 @@ ALTER TABLE ONLY public.test_data ALTER COLUMN id SET DEFAULT nextval('public.te
 
 
 --
--- TOC entry 2994 (class 2604 OID 32799)
+-- TOC entry 3378 (class 2604 OID 16636)
 -- Name: user id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1609,7 +1609,7 @@ ALTER TABLE ONLY public."user" ALTER COLUMN id SET DEFAULT nextval('public.user_
 
 
 --
--- TOC entry 3038 (class 2604 OID 33263)
+-- TOC entry 3379 (class 2604 OID 16637)
 -- Name: user_auth id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1617,7 +1617,7 @@ ALTER TABLE ONLY public.user_auth ALTER COLUMN id SET DEFAULT nextval('public.us
 
 
 --
--- TOC entry 3040 (class 2604 OID 33286)
+-- TOC entry 3380 (class 2604 OID 16638)
 -- Name: user_auth_token id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1625,21 +1625,21 @@ ALTER TABLE ONLY public.user_auth_token ALTER COLUMN id SET DEFAULT nextval('pub
 
 
 --
--- TOC entry 3332 (class 0 OID 33094)
--- Dependencies: 238
+-- TOC entry 3649 (class 0 OID 16415)
+-- Dependencies: 209
 -- Data for Name: alert; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.alert (id, version, dashboard_id, panel_id, org_id, name, message, state, settings, frequency, handler, severity, silenced, execution_error, eval_data, eval_date, new_state_date, state_changes, created, updated, "for") FROM stdin;
-1	0	3	28	1	Panel Title alert		unknown	{"conditions":[{"evaluator":{"params":[1.25],"type":"gt"},"query":{"datasourceId":26,"model":{"expr":"node_load1{instance=~\\"$server:.*\\"} / count by(job, instance)(count by(job, instance, cpu)(node_cpu{instance=~\\"$server:.*\\"}))","intervalFactor":2,"refId":"A","step":600},"params":["A","5m","now"]},"reducer":{"params":[],"type":"avg"},"type":"query"}],"executionErrorState":"alerting","frequency":"60s","handler":1,"name":"Panel Title alert","noDataState":"keep_state","notifications":[{"id":1}]}	60	1		f			\N	2020-10-04 06:24:03	0	2020-10-04 06:24:03	2020-10-04 06:24:03	0
-2	0	3	13	1	Free/Used Disk Space alert		unknown	{"conditions":[{"evaluator":{"params":[850000000000],"type":"gt"},"query":{"datasourceId":26,"model":{"expr":"node_filesystem_size{fstype=\\"aufs\\"} - node_filesystem_free{fstype=\\"aufs\\"}","hide":false,"intervalFactor":2,"legendFormat":"Used Disk Space","refId":"A","step":600},"params":["A","5m","now"]},"reducer":{"params":[],"type":"avg"},"type":"query"}],"executionErrorState":"alerting","frequency":"60s","handler":1,"name":"Free/Used Disk Space alert","noDataState":"keep_state","notifications":[{"id":1}]}	60	1		f			\N	2020-10-04 06:24:03	0	2020-10-04 06:24:03	2020-10-04 06:24:03	0
-3	0	3	20	1	Available Memory alert		ok	{"conditions":[{"evaluator":{"params":[10000000000],"type":"gt"},"query":{"datasourceId":26,"model":{"expr":"sum(container_memory_rss{name=~\\".+\\"})","hide":true,"intervalFactor":2,"legendFormat":"{{__name__}}","refId":"A","step":20},"params":["A","5m","now"]},"reducer":{"params":[],"type":"avg"},"type":"query"}],"executionErrorState":"alerting","frequency":"60s","handler":1,"name":"Available Memory alert","noDataState":"keep_state","notifications":[{"id":1}]}	60	1		f	 	{}	\N	2020-10-04 06:25:20	1	2020-10-04 06:24:03	2020-10-04 06:24:03	0
+1	0	3	28	1	Panel Title alert		alerting	{"conditions":[{"evaluator":{"params":[1.25],"type":"gt"},"query":{"datasourceId":26,"model":{"expr":"node_load1{instance=~\\"$server:.*\\"} / count by(job, instance)(count by(job, instance, cpu)(node_cpu{instance=~\\"$server:.*\\"}))","intervalFactor":2,"refId":"A","step":600},"params":["A","5m","now"]},"reducer":{"params":[],"type":"avg"},"type":"query"}],"executionErrorState":"alerting","frequency":"60s","handler":1,"name":"Panel Title alert","noDataState":"keep_state","notifications":[{"id":1}]}	60	1		f	Could not find datasource Data source not found	{"error":"Could not find datasource Data source not found"}	\N	2021-11-06 22:29:01	1	2020-10-04 06:24:03	2020-10-04 06:24:03	0
+2	0	3	13	1	Free/Used Disk Space alert		alerting	{"conditions":[{"evaluator":{"params":[850000000000],"type":"gt"},"query":{"datasourceId":26,"model":{"expr":"node_filesystem_size{fstype=\\"aufs\\"} - node_filesystem_free{fstype=\\"aufs\\"}","hide":false,"intervalFactor":2,"legendFormat":"Used Disk Space","refId":"A","step":600},"params":["A","5m","now"]},"reducer":{"params":[],"type":"avg"},"type":"query"}],"executionErrorState":"alerting","frequency":"60s","handler":1,"name":"Free/Used Disk Space alert","noDataState":"keep_state","notifications":[{"id":1}]}	60	1		f	Could not find datasource Data source not found	{"error":"Could not find datasource Data source not found"}	\N	2021-11-06 22:29:05	1	2020-10-04 06:24:03	2020-10-04 06:24:03	0
+3	0	3	20	1	Available Memory alert		alerting	{"conditions":[{"evaluator":{"params":[10000000000],"type":"gt"},"query":{"datasourceId":26,"model":{"expr":"sum(container_memory_rss{name=~\\".+\\"})","hide":true,"intervalFactor":2,"legendFormat":"{{__name__}}","refId":"A","step":20},"params":["A","5m","now"]},"reducer":{"params":[],"type":"avg"},"type":"query"}],"executionErrorState":"alerting","frequency":"60s","handler":1,"name":"Available Memory alert","noDataState":"keep_state","notifications":[{"id":1}]}	60	1		f	Could not find datasource Data source not found	{"error":"Could not find datasource Data source not found"}	\N	2021-11-06 22:29:15	2	2020-10-04 06:24:03	2020-10-04 06:24:03	0
 \.
 
 
 --
--- TOC entry 3335 (class 0 OID 33112)
--- Dependencies: 241
+-- TOC entry 3651 (class 0 OID 16421)
+-- Dependencies: 211
 -- Data for Name: alert_notification; Type: TABLE DATA; Schema: public; Owner: -
 --
 
@@ -1648,8 +1648,8 @@ COPY public.alert_notification (id, org_id, name, type, settings, created, updat
 
 
 --
--- TOC entry 3337 (class 0 OID 33138)
--- Dependencies: 243
+-- TOC entry 3653 (class 0 OID 16430)
+-- Dependencies: 213
 -- Data for Name: alert_notification_state; Type: TABLE DATA; Schema: public; Owner: -
 --
 
@@ -1658,8 +1658,8 @@ COPY public.alert_notification_state (id, org_id, alert_id, notifier_id, state, 
 
 
 --
--- TOC entry 3333 (class 0 OID 33106)
--- Dependencies: 239
+-- TOC entry 3655 (class 0 OID 16434)
+-- Dependencies: 215
 -- Data for Name: alert_rule_tag; Type: TABLE DATA; Schema: public; Owner: -
 --
 
@@ -1668,19 +1668,22 @@ COPY public.alert_rule_tag (alert_id, tag_id) FROM stdin;
 
 
 --
--- TOC entry 3339 (class 0 OID 33148)
--- Dependencies: 245
+-- TOC entry 3656 (class 0 OID 16437)
+-- Dependencies: 216
 -- Data for Name: annotation; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.annotation (id, org_id, alert_id, user_id, dashboard_id, panel_id, category_id, type, title, text, metric, prev_state, new_state, data, epoch, region_id, tags, created, updated, epoch_end) FROM stdin;
 1	1	3	0	3	20	\N				\N	unknown	ok	{}	1601792720779	0	[]	1601792720780	1601792720780	1601792720779
+2	1	1	0	3	28	\N				\N	unknown	alerting	{"error":"Could not find datasource Data source not found"}	1636237741436	0	[]	1636237741436	1636237741436	1636237741436
+3	1	2	0	3	13	\N				\N	unknown	alerting	{"error":"Could not find datasource Data source not found"}	1636237745402	0	[]	1636237745402	1636237745402	1636237745402
+4	1	3	0	3	20	\N				\N	ok	alerting	{"error":"Could not find datasource Data source not found"}	1636237755418	0	[]	1636237755419	1636237755419	1636237755418
 \.
 
 
 --
--- TOC entry 3340 (class 0 OID 33164)
--- Dependencies: 246
+-- TOC entry 3658 (class 0 OID 16447)
+-- Dependencies: 218
 -- Data for Name: annotation_tag; Type: TABLE DATA; Schema: public; Owner: -
 --
 
@@ -1689,8 +1692,8 @@ COPY public.annotation_tag (annotation_id, tag_id) FROM stdin;
 
 
 --
--- TOC entry 3317 (class 0 OID 32990)
--- Dependencies: 223
+-- TOC entry 3659 (class 0 OID 16450)
+-- Dependencies: 219
 -- Data for Name: api_key; Type: TABLE DATA; Schema: public; Owner: -
 --
 
@@ -1699,8 +1702,8 @@ COPY public.api_key (id, org_id, name, key, role, created, updated, expires) FRO
 
 
 --
--- TOC entry 3361 (class 0 OID 33294)
--- Dependencies: 267
+-- TOC entry 3661 (class 0 OID 16456)
+-- Dependencies: 221
 -- Data for Name: cache_data; Type: TABLE DATA; Schema: public; Owner: -
 --
 
@@ -1709,8 +1712,8 @@ COPY public.cache_data (cache_key, data, expires, created_at) FROM stdin;
 
 
 --
--- TOC entry 3311 (class 0 OID 32886)
--- Dependencies: 217
+-- TOC entry 3662 (class 0 OID 16461)
+-- Dependencies: 222
 -- Data for Name: dashboard; Type: TABLE DATA; Schema: public; Owner: -
 --
 
@@ -1735,12 +1738,13 @@ COPY public.dashboard (id, version, slug, title, data, org_id, created, updated,
 16	2	welcome-to-sitespeed-io	Welcome to sitespeed.io	{"__requires":[{"id":"dashlist","name":"Dashboard list","type":"panel","version":""},{"id":"grafana","name":"Grafana","type":"grafana","version":"7.0.0"},{"id":"graphite","name":"Graphite","type":"datasource","version":"1.0.0"},{"id":"text","name":"Text","type":"panel","version":""}],"annotations":{"list":[{"builtIn":1,"datasource":"-- Grafana --","enable":true,"hide":true,"iconColor":"rgba(0, 211, 255, 1)","name":"Annotations \\u0026 Alerts","type":"dashboard"}]},"editable":true,"gnetId":null,"graphTooltip":0,"id":16,"links":[],"panels":[{"content":"\\u003ch1\\u003eWelcome to sitespeed.io\\u003c/h1\\u003e\\n\\u003cp\\u003e\\n\\u003ca href=\\"https://www.sitespeed.io/\\"\\u003esitespeed.io\\u003c/a\\u003e | \\n\\u003ca href=\\"https://www.sitespeed.io/documentation/sitespeed.io/\\"\\u003eDocumentation\\u003c/a\\u003e | \\n\\u003ca href=\\"https://www.sitespeed.io/documentation/sitespeed.io/performance-dashboard/\\"\\u003eSetup your own dashboard\\u003c/a\\u003e | \\n\\u003ca href=\\"https://github.com/sitespeedio/sitespeed.io/blob/master/CHANGELOG.md\\"\\u003eChangelog\\u003c/a\\u003e | \\n\\u003ca href=\\"https://twitter.com/SiteSpeedio\\"\\u003eTwitter\\u003c/a\\u003e | \\n\\u003ca href=\\"https://opencollective.com/sitespeedio\\"\\u003eOpen Collective\\u003c/a\\u003e\\n\\u003c/p\\u003e\\n\\n\\u003cp\\u003e\\nSitespeed.io is a \\u003ca href=\\"https://www.sitespeed.io/documentation/\\"\\u003eset of Open Source tools\\u003c/a\\u003e that makes it easy to monitor and measure the performance of your web site.\\n\\u003c/p\\u003e\\n\\u003cp\\u003eIf you don't know what you can do with sitespeed.io, you should look at the \\u003ca href=\\"https://dashboard.sitespeed.io/d/000000059/page-timing-metrics\\"\\u003epage timing dashboard\\u003c/a\\u003e or checkout what the \\u003ca href=\\"https://examples.sitespeed.io/13.x/2020-05-20-08-47-56/index.html\\"\\u003eHTML result\\u003c/a\\u003e looks like.\\n","datasource":"graphite","description":"","fieldConfig":{"defaults":{"custom":{"align":null},"mappings":[],"thresholds":{"mode":"absolute","steps":[{"color":"green","value":null},{"color":"red","value":80}]}},"overrides":[]},"gridPos":{"h":18,"w":13,"x":0,"y":0},"id":4,"mode":"html","pluginVersion":"7.0.0","targets":[{"refId":"A","target":""}],"timeFrom":null,"timeShift":null,"title":"","type":"text"},{"datasource":"graphite","description":"","fieldConfig":{"defaults":{"custom":{}},"overrides":[]},"folderId":null,"gridPos":{"h":18,"w":11,"x":13,"y":0},"headings":true,"id":2,"limit":10,"query":"","recent":false,"search":true,"starred":false,"tags":[],"targets":[{"refId":"A","target":""}],"timeFrom":null,"timeShift":null,"title":"Installed dashboards","type":"dashlist"}],"schemaVersion":25,"style":"dark","tags":[],"templating":{"list":[]},"time":{"from":"now-6h","to":"now"},"timepicker":{"refresh_intervals":["10s","30s","1m","5m","15m","30m","1h","2h","1d"]},"timezone":"","title":"Welcome to sitespeed.io","uid":"3zStduRGk","version":2}	1	2020-06-11 05:26:29	2020-10-04 06:23:18	2	1	0		18	f	f	3zStduRGk
 19	1	docker	docker	{"schemaVersion":17,"title":"docker","uid":"aPwsrXKMz","version":1}	1	2020-10-04 06:23:43	2020-10-04 06:23:43	2	2	0		0	t	f	aPwsrXKMz
 20	1	database	database	{"schemaVersion":17,"title":"database","uid":"dPrUrXFMk","version":1}	1	2020-10-04 06:24:19	2020-10-04 06:24:19	2	2	0		0	t	f	dPrUrXFMk
+21	7	health-panel	Health Panel	{"annotations":{"list":[{"builtIn":1,"datasource":"-- Grafana --","enable":true,"hide":true,"iconColor":"rgba(0, 211, 255, 1)","name":"Annotations \\u0026 Alerts","type":"dashboard"}]},"editable":true,"gnetId":null,"graphTooltip":0,"id":21,"iteration":1636355001299,"links":[],"panels":[{"aliasColors":{},"bars":false,"dashLength":10,"dashes":false,"datasource":"Prometheus","fieldConfig":{"defaults":{"custom":{}},"overrides":[]},"fill":1,"fillGradient":0,"gridPos":{"h":9,"w":12,"x":0,"y":0},"hiddenSeries":false,"id":2,"legend":{"avg":false,"current":false,"max":false,"min":false,"show":true,"total":false,"values":false},"lines":true,"linewidth":1,"nullPointMode":"null","options":{"alertThreshold":true},"percentage":false,"pluginVersion":"7.2.0","pointradius":2,"points":false,"renderer":"flot","seriesOverrides":[],"spaceLength":10,"stack":false,"steppedLine":false,"targets":[{"expr":"sum(actuator_health{indicator=~\\".+\\",service=\\"$service\\"}) by (indicator)","interval":"","legendFormat":"{{indicator}}","refId":"A"}],"thresholds":[],"timeFrom":null,"timeRegions":[],"timeShift":null,"title":"Health Indicators","tooltip":{"shared":true,"sort":0,"value_type":"individual"},"type":"graph","xaxis":{"buckets":null,"mode":"time","name":null,"show":true,"values":[]},"yaxes":[{"$$hashKey":"object:211","format":"short","label":null,"logBase":1,"max":null,"min":null,"show":true},{"$$hashKey":"object:212","format":"short","label":null,"logBase":1,"max":null,"min":null,"show":true}],"yaxis":{"align":false,"alignLevel":null}}],"schemaVersion":26,"style":"dark","tags":[],"templating":{"list":[{"allValue":".+","current":{"selected":true,"text":["api-gateway-sample"],"value":["api-gateway-sample"]},"datasource":"Prometheus","definition":"label_values(service)","hide":0,"includeAll":false,"label":"Service","multi":false,"name":"service","options":[{"selected":false,"text":"api","value":"api"},{"selected":true,"text":"api-gateway-sample","value":"api-gateway-sample"}],"query":"label_values(service)","refresh":0,"regex":"","skipUrlSync":false,"sort":1,"tagValuesQuery":"","tags":[],"tagsQuery":"","type":"query","useTags":false}]},"time":{"from":"now-5m","to":"now"},"timepicker":{},"timezone":"","title":"Health Panel","uid":"djUVKeK7k","version":7}	1	2021-11-07 06:56:35	2021-11-08 07:13:12	2	2	0		0	f	f	djUVKeK7k
 \.
 
 
 --
--- TOC entry 3350 (class 0 OID 33220)
--- Dependencies: 256
+-- TOC entry 3663 (class 0 OID 16469)
+-- Dependencies: 223
 -- Data for Name: dashboard_acl; Type: TABLE DATA; Schema: public; Owner: -
 --
 
@@ -1751,8 +1755,8 @@ COPY public.dashboard_acl (id, org_id, dashboard_id, user_id, team_id, permissio
 
 
 --
--- TOC entry 3313 (class 0 OID 32931)
--- Dependencies: 219
+-- TOC entry 3666 (class 0 OID 16475)
+-- Dependencies: 226
 -- Data for Name: dashboard_provisioning; Type: TABLE DATA; Schema: public; Owner: -
 --
 
@@ -1761,8 +1765,8 @@ COPY public.dashboard_provisioning (id, dashboard_id, name, external_id, updated
 
 
 --
--- TOC entry 3319 (class 0 OID 33017)
--- Dependencies: 225
+-- TOC entry 3668 (class 0 OID 16482)
+-- Dependencies: 228
 -- Data for Name: dashboard_snapshot; Type: TABLE DATA; Schema: public; Owner: -
 --
 
@@ -1771,8 +1775,8 @@ COPY public.dashboard_snapshot (id, name, key, delete_key, org_id, user_id, exte
 
 
 --
--- TOC entry 3309 (class 0 OID 32877)
--- Dependencies: 215
+-- TOC entry 3670 (class 0 OID 16488)
+-- Dependencies: 230
 -- Data for Name: dashboard_tag; Type: TABLE DATA; Schema: public; Owner: -
 --
 
@@ -1795,8 +1799,8 @@ COPY public.dashboard_tag (id, dashboard_id, term) FROM stdin;
 
 
 --
--- TOC entry 3344 (class 0 OID 33187)
--- Dependencies: 250
+-- TOC entry 3672 (class 0 OID 16492)
+-- Dependencies: 232
 -- Data for Name: dashboard_version; Type: TABLE DATA; Schema: public; Owner: -
 --
 
@@ -1839,24 +1843,31 @@ COPY public.dashboard_version (id, dashboard_id, parent_version, restored_from, 
 36	2	2	0	3	2020-10-04 06:24:04	2		{"annotations":{"list":[{"builtIn":1,"datasource":"-- Grafana --","enable":true,"hide":true,"iconColor":"rgba(0, 211, 255, 1)","limit":100,"name":"Annotations \\u0026 Alerts","showIn":0,"type":"dashboard"},{"datasource":"Prometheus","enable":true,"expr":"resets(process_uptime_seconds{application=\\"$application\\", instance=\\"$instance\\"}[1m]) \\u003e 0","iconColor":"rgba(255, 96, 96, 1)","name":"Restart Detection","showIn":0,"step":"1m","tagKeys":"restart-tag","textFormat":"uptime reset","titleFormat":"Restart"}]},"description":"Dashboard for Micrometer instrumented applications (Java, Spring Boot, Micronaut)","editable":true,"gnetId":4701,"graphTooltip":1,"id":2,"iteration":1590390411664,"links":[],"panels":[{"collapsed":false,"datasource":null,"gridPos":{"h":1,"w":24,"x":0,"y":0},"id":125,"panels":[],"repeat":null,"title":"Quick Facts","type":"row"},{"cacheTimeout":null,"colorBackground":false,"colorValue":true,"colors":["rgba(245, 54, 54, 0.9)","rgba(237, 129, 40, 0.89)","rgba(50, 172, 45, 0.97)"],"datasource":"Prometheus","decimals":1,"editable":true,"error":false,"fieldConfig":{"defaults":{"custom":{}},"overrides":[]},"format":"s","gauge":{"maxValue":100,"minValue":0,"show":false,"thresholdLabels":false,"thresholdMarkers":true},"gridPos":{"h":3,"w":6,"x":0,"y":1},"height":"","id":63,"interval":null,"links":[],"mappingType":1,"mappingTypes":[{"name":"value to text","value":1},{"name":"range to text","value":2}],"maxDataPoints":100,"nullPointMode":"connected","nullText":null,"postfix":"","postfixFontSize":"50%","prefix":"","prefixFontSize":"70%","rangeMaps":[{"from":"null","text":"N/A","to":"null"}],"sparkline":{"fillColor":"rgba(31, 118, 189, 0.18)","full":false,"lineColor":"rgb(31, 120, 193)","show":false},"tableColumn":"","targets":[{"expr":"process_uptime_seconds{application=\\"$application\\", instance=\\"$instance\\"}","format":"time_series","intervalFactor":2,"legendFormat":"","metric":"","refId":"A","step":14400}],"thresholds":"","title":"Uptime","type":"singlestat","valueFontSize":"80%","valueMaps":[{"op":"=","text":"N/A","value":"null"}],"valueName":"current"},{"cacheTimeout":null,"colorBackground":false,"colorValue":true,"colors":["rgba(245, 54, 54, 0.9)","rgba(237, 129, 40, 0.89)","rgba(50, 172, 45, 0.97)"],"datasource":"Prometheus","decimals":null,"editable":true,"error":false,"fieldConfig":{"defaults":{"custom":{}},"overrides":[]},"format":"dateTimeAsIso","gauge":{"maxValue":100,"minValue":0,"show":false,"thresholdLabels":false,"thresholdMarkers":true},"gridPos":{"h":3,"w":6,"x":6,"y":1},"height":"","id":92,"interval":null,"links":[],"mappingType":1,"mappingTypes":[{"name":"value to text","value":1},{"name":"range to text","value":2}],"maxDataPoints":100,"nullPointMode":"connected","nullText":null,"postfix":"","postfixFontSize":"50%","prefix":"","prefixFontSize":"70%","rangeMaps":[{"from":"null","text":"N/A","to":"null"}],"sparkline":{"fillColor":"rgba(31, 118, 189, 0.18)","full":false,"lineColor":"rgb(31, 120, 193)","show":false},"tableColumn":"","targets":[{"expr":"process_start_time_seconds{application=\\"$application\\", instance=\\"$instance\\"}*1000","format":"time_series","intervalFactor":2,"legendFormat":"","metric":"","refId":"A","step":14400}],"thresholds":"","title":"Start time","type":"singlestat","valueFontSize":"70%","valueMaps":[{"op":"=","text":"N/A","value":"null"}],"valueName":"current"},{"cacheTimeout":null,"colorBackground":false,"colorValue":true,"colors":["rgba(50, 172, 45, 0.97)","rgba(237, 129, 40, 0.89)","rgba(245, 54, 54, 0.9)"],"datasource":"Prometheus","decimals":2,"editable":true,"error":false,"fieldConfig":{"defaults":{"custom":{}},"overrides":[]},"format":"percent","gauge":{"maxValue":100,"minValue":0,"show":false,"thresholdLabels":false,"thresholdMarkers":true},"gridPos":{"h":3,"w":6,"x":12,"y":1},"id":65,"interval":null,"links":[],"mappingType":1,"mappingTypes":[{"name":"value to text","value":1},{"name":"range to text","value":2}],"maxDataPoints":100,"nullPointMode":"connected","nullText":null,"postfix":"","postfixFontSize":"50%","prefix":"","prefixFontSize":"70%","rangeMaps":[{"from":"null","text":"N/A","to":"null"}],"sparkline":{"fillColor":"rgba(31, 118, 189, 0.18)","full":false,"lineColor":"rgb(31, 120, 193)","show":false},"tableColumn":"","targets":[{"expr":"sum(jvm_memory_used_bytes{application=\\"$application\\", instance=\\"$instance\\", area=\\"heap\\"})*100/sum(jvm_memory_max_bytes{application=\\"$application\\",instance=\\"$instance\\", area=\\"heap\\"})","format":"time_series","intervalFactor":2,"legendFormat":"","refId":"A","step":14400}],"thresholds":"70,90","title":"Heap used","type":"singlestat","valueFontSize":"80%","valueMaps":[{"op":"=","text":"N/A","value":"null"}],"valueName":"current"},{"cacheTimeout":null,"colorBackground":false,"colorValue":true,"colors":["rgba(50, 172, 45, 0.97)","rgba(237, 129, 40, 0.89)","rgba(245, 54, 54, 0.9)"],"datasource":"Prometheus","decimals":2,"editable":true,"error":false,"fieldConfig":{"defaults":{"custom":{}},"overrides":[]},"format":"percent","gauge":{"maxValue":100,"minValue":0,"show":false,"thresholdLabels":false,"thresholdMarkers":true},"gridPos":{"h":3,"w":6,"x":18,"y":1},"id":75,"interval":null,"links":[],"mappingType":2,"mappingTypes":[{"name":"value to text","value":1},{"name":"range to text","value":2}],"maxDataPoints":100,"nullPointMode":"connected","nullText":null,"postfix":"","postfixFontSize":"50%","prefix":"","prefixFontSize":"70%","rangeMaps":[{"from":"null","text":"N/A","to":"null"},{"from":"-99999999999999999999999999999999","text":"N/A","to":"0"}],"sparkline":{"fillColor":"rgba(31, 118, 189, 0.18)","full":false,"lineColor":"rgb(31, 120, 193)","show":false},"tableColumn":"","targets":[{"expr":"sum(jvm_memory_used_bytes{application=\\"$application\\", instance=\\"$instance\\", area=\\"nonheap\\"})*100/sum(jvm_memory_max_bytes{application=\\"$application\\",instance=\\"$instance\\", area=\\"nonheap\\"})","format":"time_series","intervalFactor":2,"legendFormat":"","refId":"A","step":14400}],"thresholds":"70,90","title":"Non-Heap used","type":"singlestat","valueFontSize":"80%","valueMaps":[{"op":"=","text":"N/A","value":"null"},{"op":"=","text":"x","value":""}],"valueName":"current"},{"collapsed":false,"datasource":null,"gridPos":{"h":1,"w":24,"x":0,"y":4},"id":126,"panels":[],"repeat":null,"title":"I/O Overview","type":"row"},{"aliasColors":{},"bars":false,"dashLength":10,"dashes":false,"datasource":"Prometheus","fieldConfig":{"defaults":{"custom":{}},"overrides":[]},"fill":1,"fillGradient":0,"gridPos":{"h":7,"w":6,"x":0,"y":5},"hiddenSeries":false,"id":111,"legend":{"avg":false,"current":true,"max":false,"min":false,"show":true,"total":false,"values":true},"lines":true,"linewidth":1,"links":[],"nullPointMode":"null","options":{"dataLinks":[]},"percentage":false,"pointradius":5,"points":false,"renderer":"flot","seriesOverrides":[],"spaceLength":10,"stack":false,"steppedLine":false,"targets":[{"expr":"sum(rate(http_server_requests_seconds_count{application=\\"$application\\", instance=\\"$instance\\"}[1m]))","format":"time_series","intervalFactor":1,"legendFormat":"HTTP","refId":"A"}],"thresholds":[],"timeFrom":null,"timeRegions":[],"timeShift":null,"title":"Rate","tooltip":{"shared":true,"sort":0,"value_type":"individual"},"type":"graph","xaxis":{"buckets":null,"mode":"time","name":null,"show":true,"values":[]},"yaxes":[{"decimals":null,"format":"ops","label":null,"logBase":1,"max":null,"min":"0","show":true},{"format":"short","label":null,"logBase":1,"max":null,"min":null,"show":true}],"yaxis":{"align":false,"alignLevel":null}},{"aliasColors":{"HTTP":"#890f02","HTTP - 5xx":"#bf1b00"},"bars":false,"dashLength":10,"dashes":false,"datasource":"Prometheus","fieldConfig":{"defaults":{"custom":{}},"overrides":[]},"fill":1,"fillGradient":0,"gridPos":{"h":7,"w":6,"x":6,"y":5},"hiddenSeries":false,"id":112,"legend":{"avg":false,"current":true,"max":false,"min":false,"show":true,"total":false,"values":true},"lines":true,"linewidth":1,"links":[],"nullPointMode":"null","options":{"dataLinks":[]},"percentage":false,"pointradius":5,"points":false,"renderer":"flot","seriesOverrides":[],"spaceLength":10,"stack":false,"steppedLine":false,"targets":[{"expr":"sum(rate(http_server_requests_seconds_count{application=\\"$application\\", instance=\\"$instance\\", status=~\\"5..\\"}[1m]))","format":"time_series","intervalFactor":1,"legendFormat":"HTTP - 5xx","refId":"A"}],"thresholds":[],"timeFrom":null,"timeRegions":[],"timeShift":null,"title":"Errors","tooltip":{"shared":true,"sort":0,"value_type":"individual"},"type":"graph","xaxis":{"buckets":null,"mode":"time","name":null,"show":true,"values":[]},"yaxes":[{"decimals":null,"format":"ops","label":null,"logBase":1,"max":null,"min":"0","show":true},{"format":"short","label":null,"logBase":1,"max":null,"min":null,"show":true}],"yaxis":{"align":false,"alignLevel":null}},{"aliasColors":{},"bars":false,"dashLength":10,"dashes":false,"datasource":"Prometheus","fieldConfig":{"defaults":{"custom":{}},"overrides":[]},"fill":1,"fillGradient":0,"gridPos":{"h":7,"w":6,"x":12,"y":5},"hiddenSeries":false,"id":113,"legend":{"avg":false,"current":true,"max":false,"min":false,"show":true,"total":false,"values":true},"lines":true,"linewidth":1,"links":[],"nullPointMode":"null","options":{"dataLinks":[]},"percentage":false,"pointradius":5,"points":false,"renderer":"flot","seriesOverrides":[],"spaceLength":10,"stack":false,"steppedLine":false,"targets":[{"expr":"sum(rate(http_server_requests_seconds_sum{application=\\"$application\\", instance=\\"$instance\\", status!~\\"5..\\"}[1m]))/sum(rate(http_server_requests_seconds_count{application=\\"$application\\", instance=\\"$instance\\", status!~\\"5..\\"}[1m]))","format":"time_series","hide":false,"intervalFactor":1,"legendFormat":"HTTP - AVG","refId":"A"},{"expr":"max(http_server_requests_seconds_max{application=\\"$application\\", instance=\\"$instance\\", status!~\\"5..\\"})","format":"time_series","hide":false,"intervalFactor":1,"legendFormat":"HTTP - MAX","refId":"B"}],"thresholds":[],"timeFrom":null,"timeRegions":[],"timeShift":null,"title":"Duration","tooltip":{"shared":true,"sort":0,"value_type":"individual"},"type":"graph","xaxis":{"buckets":null,"mode":"time","name":null,"show":true,"values":[]},"yaxes":[{"format":"s","label":null,"logBase":1,"max":null,"min":"0","show":true},{"format":"short","label":null,"logBase":1,"max":null,"min":null,"show":true}],"yaxis":{"align":false,"alignLevel":null}},{"aliasColors":{},"bars":false,"dashLength":10,"dashes":false,"datasource":"Prometheus","description":"","fieldConfig":{"defaults":{"custom":{}},"overrides":[]},"fill":1,"fillGradient":0,"gridPos":{"h":7,"w":6,"x":18,"y":5},"hiddenSeries":false,"id":119,"legend":{"alignAsTable":false,"avg":false,"current":true,"max":false,"min":false,"show":true,"total":false,"values":true},"lines":true,"linewidth":1,"links":[],"nullPointMode":"null","options":{"dataLinks":[]},"percentage":false,"pointradius":5,"points":false,"renderer":"flot","seriesOverrides":[],"spaceLength":10,"stack":false,"steppedLine":false,"targets":[{"expr":"tomcat_threads_busy_threads{application=\\"$application\\", instance=\\"$instance\\"}","format":"time_series","hide":false,"intervalFactor":2,"legendFormat":"TOMCAT - BSY","refId":"A"},{"expr":"tomcat_threads_current_threads{application=\\"$application\\", instance=\\"$instance\\"}","format":"time_series","hide":false,"intervalFactor":2,"legendFormat":"TOMCAT - CUR","refId":"B"},{"expr":"tomcat_threads_config_max_threads{application=\\"$application\\", instance=\\"$instance\\"}","format":"time_series","hide":false,"intervalFactor":2,"legendFormat":"TOMCAT - MAX","refId":"C"},{"expr":"jetty_threads_busy{application=\\"$application\\", instance=\\"$instance\\"}","format":"time_series","hide":false,"intervalFactor":2,"legendFormat":"JETTY - BSY","refId":"D"},{"expr":"jetty_threads_current{application=\\"$application\\", instance=\\"$instance\\"}","format":"time_series","hide":false,"intervalFactor":2,"legendFormat":"JETTY - CUR","refId":"E"},{"expr":"jetty_threads_config_max{application=\\"$application\\", instance=\\"$instance\\"}","format":"time_series","hide":false,"intervalFactor":2,"legendFormat":"JETTY - MAX","refId":"F"}],"thresholds":[],"timeFrom":null,"timeRegions":[],"timeShift":null,"title":"Utilisation","tooltip":{"shared":true,"sort":0,"value_type":"individual"},"type":"graph","xaxis":{"buckets":null,"mode":"time","name":null,"show":true,"values":[]},"yaxes":[{"format":"short","label":null,"logBase":1,"max":null,"min":"0","show":true},{"format":"short","label":null,"logBase":1,"max":null,"min":null,"show":true}],"yaxis":{"align":false,"alignLevel":null}},{"collapsed":false,"datasource":null,"gridPos":{"h":1,"w":24,"x":0,"y":12},"id":127,"panels":[],"repeat":null,"title":"JVM Memory","type":"row"},{"aliasColors":{},"bars":false,"dashLength":10,"dashes":false,"datasource":"Prometheus","editable":true,"error":false,"fieldConfig":{"defaults":{"custom":{}},"overrides":[]},"fill":1,"fillGradient":0,"grid":{"leftLogBase":1,"leftMax":null,"leftMin":null,"rightLogBase":1,"rightMax":null,"rightMin":null},"gridPos":{"h":7,"w":6,"x":0,"y":13},"hiddenSeries":false,"id":24,"legend":{"avg":false,"current":true,"max":true,"min":false,"show":true,"total":false,"values":true},"lines":true,"linewidth":1,"links":[],"nullPointMode":"null","options":{"dataLinks":[]},"percentage":false,"pointradius":5,"points":false,"renderer":"flot","seriesOverrides":[],"spaceLength":10,"stack":false,"steppedLine":false,"targets":[{"expr":"sum(jvm_memory_used_bytes{application=\\"$application\\", instance=\\"$instance\\", area=\\"heap\\"})","format":"time_series","intervalFactor":2,"legendFormat":"used","metric":"","refId":"A","step":2400},{"expr":"sum(jvm_memory_committed_bytes{application=\\"$application\\", instance=\\"$instance\\", area=\\"heap\\"})","format":"time_series","intervalFactor":2,"legendFormat":"committed","refId":"B","step":2400},{"expr":"sum(jvm_memory_max_bytes{application=\\"$application\\", instance=\\"$instance\\", area=\\"heap\\"})","format":"time_series","intervalFactor":2,"legendFormat":"max","refId":"C","step":2400}],"thresholds":[],"timeFrom":null,"timeRegions":[],"timeShift":null,"title":"JVM Heap","tooltip":{"msResolution":false,"shared":true,"sort":0,"value_type":"cumulative"},"type":"graph","x-axis":true,"xaxis":{"buckets":null,"mode":"time","name":null,"show":true,"values":[]},"y-axis":true,"y_formats":["mbytes","short"],"yaxes":[{"format":"bytes","label":null,"logBase":1,"max":null,"min":0,"show":true},{"format":"short","label":null,"logBase":1,"max":null,"min":null,"show":true}],"yaxis":{"align":false,"alignLevel":null}},{"aliasColors":{},"bars":false,"dashLength":10,"dashes":false,"datasource":"Prometheus","editable":true,"error":false,"fieldConfig":{"defaults":{"custom":{}},"overrides":[]},"fill":1,"fillGradient":0,"grid":{"leftLogBase":1,"leftMax":null,"leftMin":null,"rightLogBase":1,"rightMax":null,"rightMin":null},"gridPos":{"h":7,"w":6,"x":6,"y":13},"hiddenSeries":false,"id":25,"legend":{"avg":false,"current":true,"max":true,"min":false,"show":true,"total":false,"values":true},"lines":true,"linewidth":1,"links":[],"nullPointMode":"null","options":{"dataLinks":[]},"percentage":false,"pointradius":5,"points":false,"renderer":"flot","seriesOverrides":[],"spaceLength":10,"stack":false,"steppedLine":false,"targets":[{"expr":"sum(jvm_memory_used_bytes{application=\\"$application\\", instance=\\"$instance\\", area=\\"nonheap\\"})","format":"time_series","interval":"","intervalFactor":2,"legendFormat":"used","metric":"","refId":"A","step":2400},{"expr":"sum(jvm_memory_committed_bytes{application=\\"$application\\", instance=\\"$instance\\", area=\\"nonheap\\"})","format":"time_series","intervalFactor":2,"legendFormat":"committed","refId":"B","step":2400},{"expr":"sum(jvm_memory_max_bytes{application=\\"$application\\", instance=\\"$instance\\", area=\\"nonheap\\"})","format":"time_series","intervalFactor":2,"legendFormat":"max","refId":"C","step":2400}],"thresholds":[],"timeFrom":null,"timeRegions":[],"timeShift":null,"title":"JVM Non-Heap","tooltip":{"msResolution":false,"shared":true,"sort":0,"value_type":"cumulative"},"type":"graph","x-axis":true,"xaxis":{"buckets":null,"mode":"time","name":null,"show":true,"values":[]},"y-axis":true,"y_formats":["mbytes","short"],"yaxes":[{"format":"bytes","label":null,"logBase":1,"max":null,"min":0,"show":true},{"format":"short","label":null,"logBase":1,"max":null,"min":null,"show":true}],"yaxis":{"align":false,"alignLevel":null}},{"aliasColors":{},"bars":false,"dashLength":10,"dashes":false,"datasource":"Prometheus","editable":true,"error":false,"fieldConfig":{"defaults":{"custom":{}},"overrides":[]},"fill":1,"fillGradient":0,"grid":{"leftLogBase":1,"leftMax":null,"leftMin":null,"rightLogBase":1,"rightMax":null,"rightMin":null},"gridPos":{"h":7,"w":6,"x":12,"y":13},"hiddenSeries":false,"id":26,"legend":{"alignAsTable":false,"avg":false,"current":true,"max":true,"min":false,"show":true,"total":false,"values":true},"lines":true,"linewidth":1,"links":[],"nullPointMode":"null","options":{"dataLinks":[]},"percentage":false,"pointradius":5,"points":false,"renderer":"flot","seriesOverrides":[],"spaceLength":10,"stack":false,"steppedLine":false,"targets":[{"expr":"sum(jvm_memory_used_bytes{application=\\"$application\\", instance=\\"$instance\\"})","format":"time_series","intervalFactor":2,"legendFormat":"used","metric":"","refId":"A","step":2400},{"expr":"sum(jvm_memory_committed_bytes{application=\\"$application\\", instance=\\"$instance\\"})","format":"time_series","intervalFactor":2,"legendFormat":"committed","refId":"B","step":2400},{"expr":"sum(jvm_memory_max_bytes{application=\\"$application\\", instance=\\"$instance\\"})","format":"time_series","intervalFactor":2,"legendFormat":"max","refId":"C","step":2400}],"thresholds":[],"timeFrom":null,"timeRegions":[],"timeShift":null,"title":"JVM Total","tooltip":{"msResolution":false,"shared":true,"sort":0,"value_type":"cumulative"},"type":"graph","x-axis":true,"xaxis":{"buckets":null,"mode":"time","name":null,"show":true,"values":[]},"y-axis":true,"y_formats":["mbytes","short"],"yaxes":[{"format":"bytes","label":"","logBase":1,"max":null,"min":0,"show":true},{"format":"short","label":null,"logBase":1,"max":null,"min":null,"show":true}],"yaxis":{"align":false,"alignLevel":null}},{"aliasColors":{},"bars":false,"dashLength":10,"dashes":false,"datasource":"Prometheus","editable":true,"error":false,"fieldConfig":{"defaults":{"custom":{}},"overrides":[]},"fill":1,"fillGradient":0,"grid":{"leftLogBase":1,"leftMax":null,"leftMin":null,"rightLogBase":1,"rightMax":null,"rightMin":null},"gridPos":{"h":7,"w":6,"x":18,"y":13},"hiddenSeries":false,"id":86,"legend":{"avg":false,"current":true,"max":true,"min":false,"show":true,"total":false,"values":true},"lines":true,"linewidth":1,"links":[],"nullPointMode":"null","options":{"dataLinks":[]},"percentage":false,"pointradius":5,"points":false,"renderer":"flot","seriesOverrides":[],"spaceLength":10,"stack":false,"steppedLine":false,"targets":[{"expr":"process_memory_vss_bytes{application=\\"$application\\", instance=\\"$instance\\"}","format":"time_series","hide":true,"intervalFactor":2,"legendFormat":"vss","metric":"","refId":"A","step":2400},{"expr":"process_memory_rss_bytes{application=\\"$application\\", instance=\\"$instance\\"}","format":"time_series","intervalFactor":2,"legendFormat":"rss","refId":"B"},{"expr":"process_memory_swap_bytes{application=\\"$application\\", instance=\\"$instance\\"}","format":"time_series","intervalFactor":2,"legendFormat":"swap","refId":"C"},{"expr":"process_memory_rss_bytes{application=\\"$application\\", instance=\\"$instance\\"} + process_memory_swap_bytes{application=\\"$application\\", instance=\\"$instance\\"}","format":"time_series","intervalFactor":2,"legendFormat":"total","refId":"D"}],"thresholds":[],"timeFrom":null,"timeRegions":[],"timeShift":null,"title":"JVM Process Memory","tooltip":{"msResolution":false,"shared":true,"sort":0,"value_type":"cumulative"},"type":"graph","x-axis":true,"xaxis":{"buckets":null,"mode":"time","name":null,"show":true,"values":[]},"y-axis":true,"y_formats":["mbytes","short"],"yaxes":[{"format":"bytes","label":"","logBase":1,"max":null,"min":"0","show":true},{"format":"short","label":null,"logBase":1,"max":null,"min":null,"show":true}],"yaxis":{"align":false,"alignLevel":null}},{"collapsed":false,"datasource":null,"gridPos":{"h":1,"w":24,"x":0,"y":20},"id":128,"panels":[],"repeat":null,"title":"JVM Misc","type":"row"},{"aliasColors":{},"bars":false,"dashLength":10,"dashes":false,"datasource":"Prometheus","editable":true,"error":false,"fieldConfig":{"defaults":{"custom":{}},"overrides":[]},"fill":1,"fillGradient":0,"grid":{"leftLogBase":1,"leftMax":null,"leftMin":null,"rightLogBase":1,"rightMax":null,"rightMin":null},"gridPos":{"h":7,"w":6,"x":0,"y":21},"hiddenSeries":false,"id":106,"legend":{"avg":false,"current":true,"max":true,"min":false,"show":true,"total":false,"values":true},"lines":true,"linewidth":1,"links":[],"nullPointMode":"null","options":{"dataLinks":[]},"percentage":false,"pointradius":5,"points":false,"renderer":"flot","seriesOverrides":[],"spaceLength":10,"stack":false,"steppedLine":false,"targets":[{"expr":"system_cpu_usage{application=\\"$application\\", instance=\\"$instance\\"}","format":"time_series","hide":false,"intervalFactor":1,"legendFormat":"system","metric":"","refId":"A","step":2400},{"expr":"process_cpu_usage{application=\\"$application\\", instance=\\"$instance\\"}","format":"time_series","hide":false,"intervalFactor":1,"legendFormat":"process","refId":"B"},{"expr":"avg_over_time(process_cpu_usage{application=\\"$application\\", instance=\\"$instance\\"}[1h])","format":"time_series","hide":false,"intervalFactor":1,"legendFormat":"process-1h","refId":"C"}],"thresholds":[],"timeFrom":null,"timeRegions":[],"timeShift":null,"title":"CPU Usage","tooltip":{"msResolution":false,"shared":true,"sort":0,"value_type":"cumulative"},"type":"graph","x-axis":true,"xaxis":{"buckets":null,"mode":"time","name":null,"show":true,"values":[]},"y-axis":true,"y_formats":["short","short"],"yaxes":[{"decimals":1,"format":"percentunit","label":"","logBase":1,"max":"1","min":0,"show":true},{"format":"short","label":null,"logBase":1,"max":null,"min":null,"show":true}],"yaxis":{"align":false,"alignLevel":null}},{"aliasColors":{},"bars":false,"dashLength":10,"dashes":false,"datasource":"Prometheus","editable":true,"error":false,"fieldConfig":{"defaults":{"custom":{}},"overrides":[]},"fill":1,"fillGradient":0,"grid":{"leftLogBase":1,"leftMax":null,"leftMin":null,"rightLogBase":1,"rightMax":null,"rightMin":null},"gridPos":{"h":7,"w":6,"x":6,"y":21},"hiddenSeries":false,"id":93,"legend":{"avg":false,"current":true,"max":true,"min":false,"show":true,"total":false,"values":true},"lines":true,"linewidth":1,"links":[],"nullPointMode":"null","options":{"dataLinks":[]},"percentage":false,"pointradius":5,"points":false,"renderer":"flot","seriesOverrides":[],"spaceLength":10,"stack":false,"steppedLine":false,"targets":[{"expr":"system_load_average_1m{application=\\"$application\\", instance=\\"$instance\\"}","format":"time_series","intervalFactor":2,"legendFormat":"system-1m","metric":"","refId":"A","step":2400},{"expr":"system_cpu_count{application=\\"$application\\", instance=\\"$instance\\"}","format":"time_series","intervalFactor":2,"legendFormat":"cpus","refId":"B"}],"thresholds":[],"timeFrom":null,"timeRegions":[],"timeShift":null,"title":"Load","tooltip":{"msResolution":false,"shared":true,"sort":0,"value_type":"cumulative"},"type":"graph","x-axis":true,"xaxis":{"buckets":null,"mode":"time","name":null,"show":true,"values":[]},"y-axis":true,"y_formats":["short","short"],"yaxes":[{"decimals":1,"format":"short","label":"","logBase":1,"max":null,"min":0,"show":true},{"format":"short","label":null,"logBase":1,"max":null,"min":null,"show":true}],"yaxis":{"align":false,"alignLevel":null}},{"aliasColors":{},"bars":false,"dashLength":10,"dashes":false,"datasource":"Prometheus","editable":true,"error":false,"fieldConfig":{"defaults":{"custom":{}},"overrides":[]},"fill":1,"fillGradient":0,"grid":{"leftLogBase":1,"leftMax":null,"leftMin":null,"rightLogBase":1,"rightMax":null,"rightMin":null},"gridPos":{"h":7,"w":6,"x":12,"y":21},"hiddenSeries":false,"id":32,"legend":{"avg":false,"current":true,"max":true,"min":false,"show":true,"total":false,"values":true},"lines":true,"linewidth":1,"links":[],"nullPointMode":"null","options":{"dataLinks":[]},"percentage":false,"pointradius":5,"points":false,"renderer":"flot","seriesOverrides":[],"spaceLength":10,"stack":false,"steppedLine":false,"targets":[{"expr":"jvm_threads_live_threads{application=\\"$application\\", instance=\\"$instance\\"}","format":"time_series","intervalFactor":2,"legendFormat":"live","metric":"","refId":"A","step":2400},{"expr":"jvm_threads_daemon_threads{application=\\"$application\\", instance=\\"$instance\\"}","format":"time_series","intervalFactor":2,"legendFormat":"daemon","metric":"","refId":"B","step":2400},{"expr":"jvm_threads_peak_threads{application=\\"$application\\", instance=\\"$instance\\"}","format":"time_series","intervalFactor":2,"legendFormat":"peak","refId":"C","step":2400},{"expr":"process_threads{application=\\"$application\\", instance=\\"$instance\\"}","format":"time_series","interval":"","intervalFactor":2,"legendFormat":"process","refId":"D","step":2400}],"thresholds":[],"timeFrom":null,"timeRegions":[],"timeShift":null,"title":"Threads","tooltip":{"msResolution":false,"shared":true,"sort":0,"value_type":"cumulative"},"type":"graph","x-axis":true,"xaxis":{"buckets":null,"mode":"time","name":null,"show":true,"values":[]},"y-axis":true,"y_formats":["short","short"],"yaxes":[{"decimals":0,"format":"short","label":null,"logBase":1,"max":null,"min":0,"show":true},{"format":"short","label":null,"logBase":1,"max":null,"min":null,"show":true}],"yaxis":{"align":false,"alignLevel":null}},{"aliasColors":{"blocked":"#bf1b00","new":"#fce2de","runnable":"#7eb26d","terminated":"#511749","timed-waiting":"#c15c17","waiting":"#eab839"},"bars":false,"dashLength":10,"dashes":false,"datasource":"Prometheus","fieldConfig":{"defaults":{"custom":{}},"overrides":[]},"fill":1,"fillGradient":0,"gridPos":{"h":7,"w":6,"x":18,"y":21},"hiddenSeries":false,"id":124,"legend":{"alignAsTable":false,"avg":false,"current":true,"max":true,"min":false,"rightSide":false,"show":true,"total":false,"values":true},"lines":true,"linewidth":1,"links":[],"nullPointMode":"null","options":{"dataLinks":[]},"percentage":false,"pointradius":5,"points":false,"renderer":"flot","seriesOverrides":[],"spaceLength":10,"stack":false,"steppedLine":false,"targets":[{"expr":"jvm_threads_states_threads{application=\\"$application\\", instance=\\"$instance\\"}","format":"time_series","intervalFactor":2,"legendFormat":"{{state}}","refId":"A"}],"thresholds":[],"timeFrom":null,"timeRegions":[],"timeShift":null,"title":"Thread States","tooltip":{"shared":true,"sort":0,"value_type":"individual"},"type":"graph","xaxis":{"buckets":null,"mode":"time","name":null,"show":true,"values":[]},"yaxes":[{"format":"short","label":null,"logBase":1,"max":null,"min":null,"show":true},{"format":"short","label":null,"logBase":1,"max":null,"min":null,"show":true}],"yaxis":{"align":false,"alignLevel":null}},{"aliasColors":{"debug":"#1F78C1","error":"#BF1B00","info":"#508642","trace":"#6ED0E0","warn":"#EAB839"},"bars":false,"dashLength":10,"dashes":false,"datasource":"Prometheus","editable":true,"error":false,"fieldConfig":{"defaults":{"custom":{}},"overrides":[]},"fill":1,"fillGradient":0,"grid":{"leftLogBase":1,"leftMax":null,"leftMin":null,"rightLogBase":1,"rightMax":null,"rightMin":null},"gridPos":{"h":7,"w":18,"x":0,"y":28},"height":"","hiddenSeries":false,"id":91,"legend":{"alignAsTable":false,"avg":false,"current":true,"hideEmpty":false,"hideZero":false,"max":true,"min":false,"rightSide":false,"show":true,"total":false,"values":true},"lines":true,"linewidth":1,"links":[],"nullPointMode":"null","options":{"dataLinks":[]},"percentage":true,"pointradius":5,"points":false,"renderer":"flot","seriesOverrides":[{"alias":"error","yaxis":1},{"alias":"warn","yaxis":1}],"spaceLength":10,"stack":false,"steppedLine":false,"targets":[{"expr":"increase(logback_events_total{application=\\"$application\\", instance=\\"$instance\\"}[1m])","format":"time_series","interval":"","intervalFactor":2,"legendFormat":"{{level}}","metric":"","refId":"A","step":1200}],"thresholds":[],"timeFrom":null,"timeRegions":[],"timeShift":null,"title":"Log Events","tooltip":{"msResolution":false,"shared":true,"sort":0,"value_type":"individual"},"type":"graph","x-axis":true,"xaxis":{"buckets":null,"mode":"time","name":null,"show":true,"values":[]},"y-axis":true,"y_formats":["short","short"],"yaxes":[{"decimals":0,"format":"opm","label":null,"logBase":1,"max":null,"min":"0","show":true},{"format":"short","label":null,"logBase":1,"max":null,"min":null,"show":true}],"yaxis":{"align":false,"alignLevel":null}},{"aliasColors":{},"bars":false,"dashLength":10,"dashes":false,"datasource":"Prometheus","editable":true,"error":false,"fieldConfig":{"defaults":{"custom":{}},"overrides":[]},"fill":1,"fillGradient":0,"grid":{"leftLogBase":1,"leftMax":null,"leftMin":null,"rightLogBase":1,"rightMax":null,"rightMin":null},"gridPos":{"h":7,"w":6,"x":18,"y":28},"hiddenSeries":false,"id":61,"legend":{"avg":false,"current":true,"max":true,"min":false,"show":true,"total":false,"values":true},"lines":true,"linewidth":1,"links":[],"nullPointMode":"null","options":{"dataLinks":[]},"percentage":false,"pointradius":5,"points":false,"renderer":"flot","seriesOverrides":[],"spaceLength":10,"stack":false,"steppedLine":false,"targets":[{"expr":"process_files_open_files{application=\\"$application\\", instance=\\"$instance\\"}","format":"time_series","hide":false,"intervalFactor":2,"legendFormat":"open","metric":"","refId":"A","step":2400},{"expr":"process_files_max_files{application=\\"$application\\", instance=\\"$instance\\"}","format":"time_series","hide":false,"intervalFactor":2,"legendFormat":"max","metric":"","refId":"B","step":2400}],"thresholds":[],"timeFrom":null,"timeRegions":[],"timeShift":null,"title":"File Descriptors","tooltip":{"msResolution":false,"shared":true,"sort":0,"value_type":"cumulative"},"type":"graph","x-axis":true,"xaxis":{"buckets":null,"mode":"time","name":null,"show":true,"values":[]},"y-axis":true,"y_formats":["short","short"],"yaxes":[{"decimals":0,"format":"short","label":null,"logBase":10,"max":null,"min":0,"show":true},{"format":"short","label":null,"logBase":1,"max":null,"min":null,"show":true}],"yaxis":{"align":false,"alignLevel":null}},{"collapsed":false,"datasource":null,"gridPos":{"h":1,"w":24,"x":0,"y":35},"id":129,"panels":[],"repeat":"persistence_counts","title":"JVM Memory Pools (Heap)","type":"row"},{"aliasColors":{},"bars":false,"dashLength":10,"dashes":false,"datasource":"Prometheus","editable":true,"error":false,"fieldConfig":{"defaults":{"custom":{}},"overrides":[]},"fill":1,"grid":{"leftLogBase":1,"leftMax":null,"leftMin":null,"rightLogBase":1,"rightMax":null,"rightMin":null},"gridPos":{"h":7,"w":8,"x":0,"y":36},"id":3,"legend":{"alignAsTable":false,"avg":false,"current":true,"max":true,"min":false,"rightSide":false,"show":true,"total":false,"values":true},"lines":true,"linewidth":1,"links":[],"maxPerRow":3,"nullPointMode":"null","percentage":false,"pointradius":5,"points":false,"renderer":"flot","repeat":"jvm_memory_pool_heap","scopedVars":{"jvm_memory_pool_heap":{"selected":false,"text":"G1 Eden Space","value":"G1 Eden Space"}},"seriesOverrides":[],"spaceLength":10,"stack":false,"steppedLine":false,"targets":[{"expr":"jvm_memory_used_bytes{application=\\"$application\\", instance=\\"$instance\\", id=~\\"$jvm_memory_pool_heap\\"}","format":"time_series","hide":false,"interval":"","intervalFactor":2,"legendFormat":"used","metric":"","refId":"A","step":1800},{"expr":"jvm_memory_committed_bytes{application=\\"$application\\", instance=\\"$instance\\", id=~\\"$jvm_memory_pool_heap\\"}","format":"time_series","hide":false,"interval":"","intervalFactor":2,"legendFormat":"commited","metric":"","refId":"B","step":1800},{"expr":"jvm_memory_max_bytes{application=\\"$application\\", instance=\\"$instance\\", id=~\\"$jvm_memory_pool_heap\\"}","format":"time_series","hide":false,"interval":"","intervalFactor":2,"legendFormat":"max","metric":"","refId":"C","step":1800}],"thresholds":[],"timeFrom":null,"timeShift":null,"title":"$jvm_memory_pool_heap","tooltip":{"msResolution":false,"shared":true,"sort":0,"value_type":"cumulative"},"type":"graph","x-axis":true,"xaxis":{"buckets":null,"mode":"time","name":null,"show":true,"values":[]},"y-axis":true,"y_formats":["mbytes","short"],"yaxes":[{"format":"bytes","label":null,"logBase":1,"max":null,"min":0,"show":true},{"format":"short","label":null,"logBase":1,"max":null,"min":null,"show":true}]},{"aliasColors":{},"bars":false,"dashLength":10,"dashes":false,"datasource":"Prometheus","editable":true,"error":false,"fieldConfig":{"defaults":{"custom":{}},"overrides":[]},"fill":1,"grid":{"leftLogBase":1,"leftMax":null,"leftMin":null,"rightLogBase":1,"rightMax":null,"rightMin":null},"gridPos":{"h":7,"w":8,"x":8,"y":36},"id":134,"legend":{"alignAsTable":false,"avg":false,"current":true,"max":true,"min":false,"rightSide":false,"show":true,"total":false,"values":true},"lines":true,"linewidth":1,"links":[],"maxPerRow":3,"nullPointMode":"null","percentage":false,"pointradius":5,"points":false,"renderer":"flot","repeat":null,"repeatIteration":1590390411664,"repeatPanelId":3,"scopedVars":{"jvm_memory_pool_heap":{"selected":false,"text":"G1 Old Gen","value":"G1 Old Gen"}},"seriesOverrides":[],"spaceLength":10,"stack":false,"steppedLine":false,"targets":[{"expr":"jvm_memory_used_bytes{application=\\"$application\\", instance=\\"$instance\\", id=~\\"$jvm_memory_pool_heap\\"}","format":"time_series","hide":false,"interval":"","intervalFactor":2,"legendFormat":"used","metric":"","refId":"A","step":1800},{"expr":"jvm_memory_committed_bytes{application=\\"$application\\", instance=\\"$instance\\", id=~\\"$jvm_memory_pool_heap\\"}","format":"time_series","hide":false,"interval":"","intervalFactor":2,"legendFormat":"commited","metric":"","refId":"B","step":1800},{"expr":"jvm_memory_max_bytes{application=\\"$application\\", instance=\\"$instance\\", id=~\\"$jvm_memory_pool_heap\\"}","format":"time_series","hide":false,"interval":"","intervalFactor":2,"legendFormat":"max","metric":"","refId":"C","step":1800}],"thresholds":[],"timeFrom":null,"timeShift":null,"title":"$jvm_memory_pool_heap","tooltip":{"msResolution":false,"shared":true,"sort":0,"value_type":"cumulative"},"type":"graph","x-axis":true,"xaxis":{"buckets":null,"mode":"time","name":null,"show":true,"values":[]},"y-axis":true,"y_formats":["mbytes","short"],"yaxes":[{"format":"bytes","label":null,"logBase":1,"max":null,"min":0,"show":true},{"format":"short","label":null,"logBase":1,"max":null,"min":null,"show":true}]},{"aliasColors":{},"bars":false,"dashLength":10,"dashes":false,"datasource":"Prometheus","editable":true,"error":false,"fieldConfig":{"defaults":{"custom":{}},"overrides":[]},"fill":1,"grid":{"leftLogBase":1,"leftMax":null,"leftMin":null,"rightLogBase":1,"rightMax":null,"rightMin":null},"gridPos":{"h":7,"w":8,"x":16,"y":36},"id":135,"legend":{"alignAsTable":false,"avg":false,"current":true,"max":true,"min":false,"rightSide":false,"show":true,"total":false,"values":true},"lines":true,"linewidth":1,"links":[],"maxPerRow":3,"nullPointMode":"null","percentage":false,"pointradius":5,"points":false,"renderer":"flot","repeat":null,"repeatIteration":1590390411664,"repeatPanelId":3,"scopedVars":{"jvm_memory_pool_heap":{"selected":false,"text":"G1 Survivor Space","value":"G1 Survivor Space"}},"seriesOverrides":[],"spaceLength":10,"stack":false,"steppedLine":false,"targets":[{"expr":"jvm_memory_used_bytes{application=\\"$application\\", instance=\\"$instance\\", id=~\\"$jvm_memory_pool_heap\\"}","format":"time_series","hide":false,"interval":"","intervalFactor":2,"legendFormat":"used","metric":"","refId":"A","step":1800},{"expr":"jvm_memory_committed_bytes{application=\\"$application\\", instance=\\"$instance\\", id=~\\"$jvm_memory_pool_heap\\"}","format":"time_series","hide":false,"interval":"","intervalFactor":2,"legendFormat":"commited","metric":"","refId":"B","step":1800},{"expr":"jvm_memory_max_bytes{application=\\"$application\\", instance=\\"$instance\\", id=~\\"$jvm_memory_pool_heap\\"}","format":"time_series","hide":false,"interval":"","intervalFactor":2,"legendFormat":"max","metric":"","refId":"C","step":1800}],"thresholds":[],"timeFrom":null,"timeShift":null,"title":"$jvm_memory_pool_heap","tooltip":{"msResolution":false,"shared":true,"sort":0,"value_type":"cumulative"},"type":"graph","x-axis":true,"xaxis":{"buckets":null,"mode":"time","name":null,"show":true,"values":[]},"y-axis":true,"y_formats":["mbytes","short"],"yaxes":[{"format":"bytes","label":null,"logBase":1,"max":null,"min":0,"show":true},{"format":"short","label":null,"logBase":1,"max":null,"min":null,"show":true}]},{"collapsed":false,"datasource":null,"gridPos":{"h":1,"w":24,"x":0,"y":43},"id":130,"panels":[],"repeat":null,"title":"JVM Memory Pools (Non-Heap)","type":"row"},{"aliasColors":{},"bars":false,"dashLength":10,"dashes":false,"datasource":"Prometheus","editable":true,"error":false,"fieldConfig":{"defaults":{"custom":{}},"overrides":[]},"fill":1,"grid":{"leftLogBase":1,"leftMax":null,"leftMin":null,"rightLogBase":1,"rightMax":null,"rightMin":null},"gridPos":{"h":7,"w":8,"x":0,"y":44},"id":78,"legend":{"alignAsTable":false,"avg":false,"current":true,"max":true,"min":false,"rightSide":false,"show":true,"total":false,"values":true},"lines":true,"linewidth":1,"links":[],"maxPerRow":3,"nullPointMode":"null","percentage":false,"pointradius":5,"points":false,"renderer":"flot","repeat":"jvm_memory_pool_nonheap","scopedVars":{"jvm_memory_pool_nonheap":{"selected":false,"text":"Metaspace","value":"Metaspace"}},"seriesOverrides":[],"spaceLength":10,"stack":false,"steppedLine":false,"targets":[{"expr":"jvm_memory_used_bytes{application=\\"$application\\", instance=\\"$instance\\", id=~\\"$jvm_memory_pool_nonheap\\"}","format":"time_series","hide":false,"interval":"","intervalFactor":2,"legendFormat":"used","metric":"","refId":"A","step":1800},{"expr":"jvm_memory_committed_bytes{application=\\"$application\\", instance=\\"$instance\\", id=~\\"$jvm_memory_pool_nonheap\\"}","format":"time_series","hide":false,"interval":"","intervalFactor":2,"legendFormat":"commited","metric":"","refId":"B","step":1800},{"expr":"jvm_memory_max_bytes{application=\\"$application\\", instance=\\"$instance\\", id=~\\"$jvm_memory_pool_nonheap\\"}","format":"time_series","hide":false,"interval":"","intervalFactor":2,"legendFormat":"max","metric":"","refId":"C","step":1800}],"thresholds":[],"timeFrom":null,"timeShift":null,"title":"$jvm_memory_pool_nonheap","tooltip":{"msResolution":false,"shared":true,"sort":0,"value_type":"cumulative"},"type":"graph","x-axis":true,"xaxis":{"buckets":null,"mode":"time","name":null,"show":true,"values":[]},"y-axis":true,"y_formats":["mbytes","short"],"yaxes":[{"format":"bytes","label":null,"logBase":1,"max":null,"min":0,"show":true},{"format":"short","label":null,"logBase":1,"max":null,"min":null,"show":true}]},{"aliasColors":{},"bars":false,"dashLength":10,"dashes":false,"datasource":"Prometheus","editable":true,"error":false,"fieldConfig":{"defaults":{"custom":{}},"overrides":[]},"fill":1,"grid":{"leftLogBase":1,"leftMax":null,"leftMin":null,"rightLogBase":1,"rightMax":null,"rightMin":null},"gridPos":{"h":7,"w":8,"x":8,"y":44},"id":136,"legend":{"alignAsTable":false,"avg":false,"current":true,"max":true,"min":false,"rightSide":false,"show":true,"total":false,"values":true},"lines":true,"linewidth":1,"links":[],"maxPerRow":3,"nullPointMode":"null","percentage":false,"pointradius":5,"points":false,"renderer":"flot","repeat":null,"repeatIteration":1590390411664,"repeatPanelId":78,"scopedVars":{"jvm_memory_pool_nonheap":{"selected":false,"text":"Compressed Class Space","value":"Compressed Class Space"}},"seriesOverrides":[],"spaceLength":10,"stack":false,"steppedLine":false,"targets":[{"expr":"jvm_memory_used_bytes{application=\\"$application\\", instance=\\"$instance\\", id=~\\"$jvm_memory_pool_nonheap\\"}","format":"time_series","hide":false,"interval":"","intervalFactor":2,"legendFormat":"used","metric":"","refId":"A","step":1800},{"expr":"jvm_memory_committed_bytes{application=\\"$application\\", instance=\\"$instance\\", id=~\\"$jvm_memory_pool_nonheap\\"}","format":"time_series","hide":false,"interval":"","intervalFactor":2,"legendFormat":"commited","metric":"","refId":"B","step":1800},{"expr":"jvm_memory_max_bytes{application=\\"$application\\", instance=\\"$instance\\", id=~\\"$jvm_memory_pool_nonheap\\"}","format":"time_series","hide":false,"interval":"","intervalFactor":2,"legendFormat":"max","metric":"","refId":"C","step":1800}],"thresholds":[],"timeFrom":null,"timeShift":null,"title":"$jvm_memory_pool_nonheap","tooltip":{"msResolution":false,"shared":true,"sort":0,"value_type":"cumulative"},"type":"graph","x-axis":true,"xaxis":{"buckets":null,"mode":"time","name":null,"show":true,"values":[]},"y-axis":true,"y_formats":["mbytes","short"],"yaxes":[{"format":"bytes","label":null,"logBase":1,"max":null,"min":0,"show":true},{"format":"short","label":null,"logBase":1,"max":null,"min":null,"show":true}]},{"aliasColors":{},"bars":false,"dashLength":10,"dashes":false,"datasource":"Prometheus","editable":true,"error":false,"fieldConfig":{"defaults":{"custom":{}},"overrides":[]},"fill":1,"grid":{"leftLogBase":1,"leftMax":null,"leftMin":null,"rightLogBase":1,"rightMax":null,"rightMin":null},"gridPos":{"h":7,"w":8,"x":16,"y":44},"id":137,"legend":{"alignAsTable":false,"avg":false,"current":true,"max":true,"min":false,"rightSide":false,"show":true,"total":false,"values":true},"lines":true,"linewidth":1,"links":[],"maxPerRow":3,"nullPointMode":"null","percentage":false,"pointradius":5,"points":false,"renderer":"flot","repeat":null,"repeatIteration":1590390411664,"repeatPanelId":78,"scopedVars":{"jvm_memory_pool_nonheap":{"selected":false,"text":"CodeHeap 'profiled nmethods'","value":"CodeHeap 'profiled nmethods'"}},"seriesOverrides":[],"spaceLength":10,"stack":false,"steppedLine":false,"targets":[{"expr":"jvm_memory_used_bytes{application=\\"$application\\", instance=\\"$instance\\", id=~\\"$jvm_memory_pool_nonheap\\"}","format":"time_series","hide":false,"interval":"","intervalFactor":2,"legendFormat":"used","metric":"","refId":"A","step":1800},{"expr":"jvm_memory_committed_bytes{application=\\"$application\\", instance=\\"$instance\\", id=~\\"$jvm_memory_pool_nonheap\\"}","format":"time_series","hide":false,"interval":"","intervalFactor":2,"legendFormat":"commited","metric":"","refId":"B","step":1800},{"expr":"jvm_memory_max_bytes{application=\\"$application\\", instance=\\"$instance\\", id=~\\"$jvm_memory_pool_nonheap\\"}","format":"time_series","hide":false,"interval":"","intervalFactor":2,"legendFormat":"max","metric":"","refId":"C","step":1800}],"thresholds":[],"timeFrom":null,"timeShift":null,"title":"$jvm_memory_pool_nonheap","tooltip":{"msResolution":false,"shared":true,"sort":0,"value_type":"cumulative"},"type":"graph","x-axis":true,"xaxis":{"buckets":null,"mode":"time","name":null,"show":true,"values":[]},"y-axis":true,"y_formats":["mbytes","short"],"yaxes":[{"format":"bytes","label":null,"logBase":1,"max":null,"min":0,"show":true},{"format":"short","label":null,"logBase":1,"max":null,"min":null,"show":true}]},{"aliasColors":{},"bars":false,"dashLength":10,"dashes":false,"datasource":"Prometheus","editable":true,"error":false,"fieldConfig":{"defaults":{"custom":{}},"overrides":[]},"fill":1,"grid":{"leftLogBase":1,"leftMax":null,"leftMin":null,"rightLogBase":1,"rightMax":null,"rightMin":null},"gridPos":{"h":7,"w":8,"x":0,"y":51},"id":138,"legend":{"alignAsTable":false,"avg":false,"current":true,"max":true,"min":false,"rightSide":false,"show":true,"total":false,"values":true},"lines":true,"linewidth":1,"links":[],"maxPerRow":3,"nullPointMode":"null","percentage":false,"pointradius":5,"points":false,"renderer":"flot","repeat":null,"repeatIteration":1590390411664,"repeatPanelId":78,"scopedVars":{"jvm_memory_pool_nonheap":{"selected":false,"text":"CodeHeap 'non-profiled nmethods'","value":"CodeHeap 'non-profiled nmethods'"}},"seriesOverrides":[],"spaceLength":10,"stack":false,"steppedLine":false,"targets":[{"expr":"jvm_memory_used_bytes{application=\\"$application\\", instance=\\"$instance\\", id=~\\"$jvm_memory_pool_nonheap\\"}","format":"time_series","hide":false,"interval":"","intervalFactor":2,"legendFormat":"used","metric":"","refId":"A","step":1800},{"expr":"jvm_memory_committed_bytes{application=\\"$application\\", instance=\\"$instance\\", id=~\\"$jvm_memory_pool_nonheap\\"}","format":"time_series","hide":false,"interval":"","intervalFactor":2,"legendFormat":"commited","metric":"","refId":"B","step":1800},{"expr":"jvm_memory_max_bytes{application=\\"$application\\", instance=\\"$instance\\", id=~\\"$jvm_memory_pool_nonheap\\"}","format":"time_series","hide":false,"interval":"","intervalFactor":2,"legendFormat":"max","metric":"","refId":"C","step":1800}],"thresholds":[],"timeFrom":null,"timeShift":null,"title":"$jvm_memory_pool_nonheap","tooltip":{"msResolution":false,"shared":true,"sort":0,"value_type":"cumulative"},"type":"graph","x-axis":true,"xaxis":{"buckets":null,"mode":"time","name":null,"show":true,"values":[]},"y-axis":true,"y_formats":["mbytes","short"],"yaxes":[{"format":"bytes","label":null,"logBase":1,"max":null,"min":0,"show":true},{"format":"short","label":null,"logBase":1,"max":null,"min":null,"show":true}]},{"aliasColors":{},"bars":false,"dashLength":10,"dashes":false,"datasource":"Prometheus","editable":true,"error":false,"fieldConfig":{"defaults":{"custom":{}},"overrides":[]},"fill":1,"grid":{"leftLogBase":1,"leftMax":null,"leftMin":null,"rightLogBase":1,"rightMax":null,"rightMin":null},"gridPos":{"h":7,"w":8,"x":8,"y":51},"id":139,"legend":{"alignAsTable":false,"avg":false,"current":true,"max":true,"min":false,"rightSide":false,"show":true,"total":false,"values":true},"lines":true,"linewidth":1,"links":[],"maxPerRow":3,"nullPointMode":"null","percentage":false,"pointradius":5,"points":false,"renderer":"flot","repeat":null,"repeatIteration":1590390411664,"repeatPanelId":78,"scopedVars":{"jvm_memory_pool_nonheap":{"selected":false,"text":"CodeHeap 'non-nmethods'","value":"CodeHeap 'non-nmethods'"}},"seriesOverrides":[],"spaceLength":10,"stack":false,"steppedLine":false,"targets":[{"expr":"jvm_memory_used_bytes{application=\\"$application\\", instance=\\"$instance\\", id=~\\"$jvm_memory_pool_nonheap\\"}","format":"time_series","hide":false,"interval":"","intervalFactor":2,"legendFormat":"used","metric":"","refId":"A","step":1800},{"expr":"jvm_memory_committed_bytes{application=\\"$application\\", instance=\\"$instance\\", id=~\\"$jvm_memory_pool_nonheap\\"}","format":"time_series","hide":false,"interval":"","intervalFactor":2,"legendFormat":"commited","metric":"","refId":"B","step":1800},{"expr":"jvm_memory_max_bytes{application=\\"$application\\", instance=\\"$instance\\", id=~\\"$jvm_memory_pool_nonheap\\"}","format":"time_series","hide":false,"interval":"","intervalFactor":2,"legendFormat":"max","metric":"","refId":"C","step":1800}],"thresholds":[],"timeFrom":null,"timeShift":null,"title":"$jvm_memory_pool_nonheap","tooltip":{"msResolution":false,"shared":true,"sort":0,"value_type":"cumulative"},"type":"graph","x-axis":true,"xaxis":{"buckets":null,"mode":"time","name":null,"show":true,"values":[]},"y-axis":true,"y_formats":["mbytes","short"],"yaxes":[{"format":"bytes","label":null,"logBase":1,"max":null,"min":0,"show":true},{"format":"short","label":null,"logBase":1,"max":null,"min":null,"show":true}]},{"collapsed":false,"datasource":null,"gridPos":{"h":1,"w":24,"x":0,"y":58},"id":131,"panels":[],"repeat":null,"title":"Garbage Collection","type":"row"},{"aliasColors":{},"bars":false,"dashLength":10,"dashes":false,"datasource":"Prometheus","fieldConfig":{"defaults":{"custom":{}},"overrides":[]},"fill":1,"gridPos":{"h":7,"w":8,"x":0,"y":59},"id":98,"legend":{"avg":false,"current":false,"max":false,"min":false,"show":true,"total":false,"values":false},"lines":true,"linewidth":1,"links":[],"nullPointMode":"null","percentage":false,"pointradius":5,"points":false,"renderer":"flot","seriesOverrides":[],"spaceLength":10,"stack":false,"steppedLine":false,"targets":[{"expr":"rate(jvm_gc_pause_seconds_count{application=\\"$application\\", instance=\\"$instance\\"}[1m])","format":"time_series","hide":false,"intervalFactor":1,"legendFormat":"{{action}} ({{cause}})","refId":"A"}],"thresholds":[],"timeFrom":null,"timeShift":null,"title":"Collections","tooltip":{"shared":true,"sort":0,"value_type":"individual"},"type":"graph","xaxis":{"buckets":null,"mode":"time","name":null,"show":true,"values":[]},"yaxes":[{"format":"ops","label":null,"logBase":1,"max":null,"min":"0","show":true},{"format":"short","label":"","logBase":1,"max":null,"min":null,"show":true}]},{"aliasColors":{},"bars":false,"dashLength":10,"dashes":false,"datasource":"Prometheus","fieldConfig":{"defaults":{"custom":{}},"overrides":[]},"fill":1,"gridPos":{"h":7,"w":8,"x":8,"y":59},"id":101,"legend":{"avg":false,"current":false,"max":false,"min":false,"show":true,"total":false,"values":false},"lines":true,"linewidth":1,"links":[],"nullPointMode":"null","percentage":false,"pointradius":5,"points":false,"renderer":"flot","seriesOverrides":[],"spaceLength":10,"stack":false,"steppedLine":false,"targets":[{"expr":"rate(jvm_gc_pause_seconds_sum{application=\\"$application\\", instance=\\"$instance\\"}[1m])/rate(jvm_gc_pause_seconds_count{application=\\"$application\\", instance=\\"$instance\\"}[1m])","format":"time_series","hide":false,"instant":false,"intervalFactor":1,"legendFormat":"avg {{action}} ({{cause}})","refId":"A"},{"expr":"jvm_gc_pause_seconds_max{application=\\"$application\\", instance=\\"$instance\\"}","format":"time_series","hide":false,"instant":false,"intervalFactor":1,"legendFormat":"max {{action}} ({{cause}})","refId":"B"}],"thresholds":[],"timeFrom":null,"timeShift":null,"title":"Pause Durations","tooltip":{"shared":true,"sort":0,"value_type":"individual"},"type":"graph","xaxis":{"buckets":null,"mode":"time","name":null,"show":true,"values":[]},"yaxes":[{"format":"s","label":null,"logBase":1,"max":null,"min":"0","show":true},{"format":"short","label":"","logBase":1,"max":null,"min":null,"show":true}]},{"aliasColors":{},"bars":false,"dashLength":10,"dashes":false,"datasource":"Prometheus","fieldConfig":{"defaults":{"custom":{}},"overrides":[]},"fill":1,"gridPos":{"h":7,"w":8,"x":16,"y":59},"id":99,"legend":{"avg":false,"current":false,"max":false,"min":false,"show":true,"total":false,"values":false},"lines":true,"linewidth":1,"links":[],"nullPointMode":"null","percentage":false,"pointradius":5,"points":false,"renderer":"flot","seriesOverrides":[],"spaceLength":10,"stack":false,"steppedLine":false,"targets":[{"expr":"rate(jvm_gc_memory_allocated_bytes_total{application=\\"$application\\", instance=\\"$instance\\"}[1m])","format":"time_series","interval":"","intervalFactor":1,"legendFormat":"allocated","refId":"A"},{"expr":"rate(jvm_gc_memory_promoted_bytes_total{application=\\"$application\\", instance=\\"$instance\\"}[1m])","format":"time_series","interval":"","intervalFactor":1,"legendFormat":"promoted","refId":"B"}],"thresholds":[],"timeFrom":null,"timeShift":null,"title":"Allocated/Promoted","tooltip":{"shared":true,"sort":0,"value_type":"individual"},"type":"graph","xaxis":{"buckets":null,"mode":"time","name":null,"show":true,"values":[]},"yaxes":[{"format":"Bps","label":null,"logBase":1,"max":null,"min":"0","show":true},{"format":"short","label":null,"logBase":1,"max":null,"min":null,"show":true}]},{"collapsed":false,"datasource":null,"gridPos":{"h":1,"w":24,"x":0,"y":66},"id":132,"panels":[],"repeat":null,"title":"Classloading","type":"row"},{"aliasColors":{},"bars":false,"dashLength":10,"dashes":false,"datasource":"Prometheus","editable":true,"error":false,"fieldConfig":{"defaults":{"custom":{}},"overrides":[]},"fill":1,"grid":{"leftLogBase":1,"leftMax":null,"leftMin":null,"rightLogBase":1,"rightMax":null,"rightMin":null},"gridPos":{"h":7,"w":12,"x":0,"y":67},"id":37,"legend":{"avg":false,"current":false,"max":false,"min":false,"show":true,"total":false,"values":false},"lines":true,"linewidth":1,"links":[],"nullPointMode":"null","percentage":false,"pointradius":5,"points":false,"renderer":"flot","seriesOverrides":[],"spaceLength":10,"stack":false,"steppedLine":false,"targets":[{"expr":"jvm_classes_loaded_classes{application=\\"$application\\", instance=\\"$instance\\"}","format":"time_series","intervalFactor":2,"legendFormat":"loaded","metric":"","refId":"A","step":1200}],"thresholds":[],"timeFrom":null,"timeShift":null,"title":"Classes loaded","tooltip":{"msResolution":false,"shared":true,"sort":0,"value_type":"cumulative"},"type":"graph","x-axis":true,"xaxis":{"buckets":null,"mode":"time","name":null,"show":true,"values":[]},"y-axis":true,"y_formats":["short","short"],"yaxes":[{"format":"short","label":null,"logBase":1,"max":null,"min":0,"show":true},{"format":"short","label":null,"logBase":1,"max":null,"min":null,"show":true}]},{"aliasColors":{},"bars":false,"dashLength":10,"dashes":false,"datasource":"Prometheus","editable":true,"error":false,"fieldConfig":{"defaults":{"custom":{}},"overrides":[]},"fill":1,"grid":{"leftLogBase":1,"leftMax":null,"leftMin":null,"rightLogBase":1,"rightMax":null,"rightMin":null},"gridPos":{"h":7,"w":12,"x":12,"y":67},"id":38,"legend":{"avg":false,"current":false,"max":false,"min":false,"show":true,"total":false,"values":false},"lines":true,"linewidth":1,"links":[],"nullPointMode":"null","percentage":false,"pointradius":5,"points":false,"renderer":"flot","seriesOverrides":[],"spaceLength":10,"stack":false,"steppedLine":false,"targets":[{"expr":"delta(jvm_classes_loaded_classes{application=\\"$application\\",instance=\\"$instance\\"}[1m])","format":"time_series","hide":false,"interval":"","intervalFactor":1,"legendFormat":"delta-1m","metric":"","refId":"A","step":1200}],"thresholds":[],"timeFrom":null,"timeShift":null,"title":"Class delta","tooltip":{"msResolution":false,"shared":true,"sort":0,"value_type":"cumulative"},"type":"graph","x-axis":true,"xaxis":{"buckets":null,"mode":"time","name":null,"show":true,"values":[]},"y-axis":true,"y_formats":["ops","short"],"yaxes":[{"decimals":null,"format":"short","label":"","logBase":1,"max":null,"min":null,"show":true},{"format":"short","label":null,"logBase":1,"max":null,"min":null,"show":true}]},{"collapsed":false,"datasource":null,"gridPos":{"h":1,"w":24,"x":0,"y":74},"id":133,"panels":[],"repeat":null,"title":"Buffer Pools","type":"row"},{"aliasColors":{},"bars":false,"dashLength":10,"dashes":false,"datasource":"Prometheus","editable":true,"error":false,"fieldConfig":{"defaults":{"custom":{}},"overrides":[]},"fill":1,"grid":{"leftLogBase":1,"leftMax":null,"leftMin":null,"rightLogBase":1,"rightMax":null,"rightMin":null},"gridPos":{"h":7,"w":6,"x":0,"y":75},"id":33,"legend":{"avg":false,"current":false,"max":false,"min":false,"show":true,"total":false,"values":false},"lines":true,"linewidth":1,"links":[],"nullPointMode":"null","percentage":false,"pointradius":5,"points":false,"renderer":"flot","seriesOverrides":[],"spaceLength":10,"stack":false,"steppedLine":false,"targets":[{"expr":"jvm_buffer_memory_used_bytes{application=\\"$application\\", instance=\\"$instance\\", id=\\"direct\\"}","format":"time_series","intervalFactor":2,"legendFormat":"used","metric":"","refId":"A","step":2400},{"expr":"jvm_buffer_total_capacity_bytes{application=\\"$application\\", instance=\\"$instance\\", id=\\"direct\\"}","format":"time_series","intervalFactor":2,"legendFormat":"capacity","metric":"","refId":"B","step":2400}],"thresholds":[],"timeFrom":null,"timeShift":null,"title":"Direct Buffers","tooltip":{"msResolution":false,"shared":true,"sort":0,"value_type":"cumulative"},"type":"graph","x-axis":true,"xaxis":{"buckets":null,"mode":"time","name":null,"show":true,"values":[]},"y-axis":true,"y_formats":["short","short"],"yaxes":[{"format":"bytes","label":null,"logBase":1,"max":null,"min":0,"show":true},{"format":"short","label":null,"logBase":1,"max":null,"min":null,"show":true}]},{"aliasColors":{},"bars":false,"dashLength":10,"dashes":false,"datasource":"Prometheus","editable":true,"error":false,"fieldConfig":{"defaults":{"custom":{}},"overrides":[]},"fill":1,"grid":{"leftLogBase":1,"leftMax":null,"leftMin":null,"rightLogBase":1,"rightMax":null,"rightMin":null},"gridPos":{"h":7,"w":6,"x":6,"y":75},"id":83,"legend":{"avg":false,"current":false,"max":false,"min":false,"show":true,"total":false,"values":false},"lines":true,"linewidth":1,"links":[],"nullPointMode":"null","percentage":false,"pointradius":5,"points":false,"renderer":"flot","seriesOverrides":[],"spaceLength":10,"stack":false,"steppedLine":false,"targets":[{"expr":"jvm_buffer_count_buffers{application=\\"$application\\", instance=\\"$instance\\", id=\\"direct\\"}","format":"time_series","intervalFactor":2,"legendFormat":"count","metric":"","refId":"A","step":2400}],"thresholds":[],"timeFrom":null,"timeShift":null,"title":"Direct Buffers","tooltip":{"msResolution":false,"shared":true,"sort":0,"value_type":"cumulative"},"type":"graph","x-axis":true,"xaxis":{"buckets":null,"mode":"time","name":null,"show":true,"values":[]},"y-axis":true,"y_formats":["short","short"],"yaxes":[{"decimals":0,"format":"short","label":null,"logBase":1,"max":null,"min":0,"show":true},{"format":"short","label":null,"logBase":1,"max":null,"min":null,"show":true}]},{"aliasColors":{},"bars":false,"dashLength":10,"dashes":false,"datasource":"Prometheus","editable":true,"error":false,"fieldConfig":{"defaults":{"custom":{}},"overrides":[]},"fill":1,"grid":{"leftLogBase":1,"leftMax":null,"leftMin":null,"rightLogBase":1,"rightMax":null,"rightMin":null},"gridPos":{"h":7,"w":6,"x":12,"y":75},"id":85,"legend":{"avg":false,"current":false,"max":false,"min":false,"show":true,"total":false,"values":false},"lines":true,"linewidth":1,"links":[],"nullPointMode":"null","percentage":false,"pointradius":5,"points":false,"renderer":"flot","seriesOverrides":[],"spaceLength":10,"stack":false,"steppedLine":false,"targets":[{"expr":"jvm_buffer_memory_used_bytes{application=\\"$application\\", instance=\\"$instance\\", id=\\"mapped\\"}","format":"time_series","intervalFactor":2,"legendFormat":"used","metric":"","refId":"A","step":2400},{"expr":"jvm_buffer_total_capacity_bytes{application=\\"$application\\", instance=\\"$instance\\", id=\\"mapped\\"}","format":"time_series","intervalFactor":2,"legendFormat":"capacity","metric":"","refId":"B","step":2400}],"thresholds":[],"timeFrom":null,"timeShift":null,"title":"Mapped Buffers","tooltip":{"msResolution":false,"shared":true,"sort":0,"value_type":"cumulative"},"type":"graph","x-axis":true,"xaxis":{"buckets":null,"mode":"time","name":null,"show":true,"values":[]},"y-axis":true,"y_formats":["short","short"],"yaxes":[{"format":"bytes","label":null,"logBase":1,"max":null,"min":0,"show":true},{"format":"short","label":null,"logBase":1,"max":null,"min":null,"show":true}]},{"aliasColors":{},"bars":false,"dashLength":10,"dashes":false,"datasource":"Prometheus","editable":true,"error":false,"fieldConfig":{"defaults":{"custom":{}},"overrides":[]},"fill":1,"grid":{"leftLogBase":1,"leftMax":null,"leftMin":null,"rightLogBase":1,"rightMax":null,"rightMin":null},"gridPos":{"h":7,"w":6,"x":18,"y":75},"id":84,"legend":{"avg":false,"current":false,"max":false,"min":false,"show":true,"total":false,"values":false},"lines":true,"linewidth":1,"links":[],"nullPointMode":"null","percentage":false,"pointradius":5,"points":false,"renderer":"flot","seriesOverrides":[],"spaceLength":10,"stack":false,"steppedLine":false,"targets":[{"expr":"jvm_buffer_count_buffers{application=\\"$application\\", instance=\\"$instance\\", id=\\"mapped\\"}","format":"time_series","intervalFactor":2,"legendFormat":"count","metric":"","refId":"A","step":2400}],"thresholds":[],"timeFrom":null,"timeShift":null,"title":"Mapped Buffers","tooltip":{"msResolution":false,"shared":true,"sort":0,"value_type":"cumulative"},"type":"graph","x-axis":true,"xaxis":{"buckets":null,"mode":"time","name":null,"show":true,"values":[]},"y-axis":true,"y_formats":["short","short"],"yaxes":[{"decimals":0,"format":"short","label":null,"logBase":1,"max":null,"min":0,"show":true},{"format":"short","label":null,"logBase":1,"max":null,"min":null,"show":true}]}],"refresh":"5s","schemaVersion":25,"style":"dark","tags":[],"templating":{"list":[{"allValue":null,"current":{"isNone":true,"selected":false,"text":"None","value":""},"datasource":"Prometheus","definition":"","hide":0,"includeAll":false,"label":"Application","multi":false,"name":"application","options":[],"query":"label_values(application)","refresh":2,"regex":"","skipUrlSync":false,"sort":0,"tagValuesQuery":"","tags":[],"tagsQuery":"","type":"query","useTags":false},{"allFormat":"glob","allValue":null,"current":{"selected":false,"text":"api-dev:5000","value":"api-dev:5000"},"datasource":"Prometheus","definition":"","hide":0,"includeAll":false,"label":"Instance","multi":false,"multiFormat":"glob","name":"instance","options":[],"query":"label_values(jvm_memory_used_bytes{application=\\"$application\\"}, instance)","refresh":2,"regex":"","skipUrlSync":false,"sort":0,"tagValuesQuery":"","tags":[],"tagsQuery":"","type":"query","useTags":false},{"allFormat":"glob","allValue":null,"current":{"selected":false,"text":"All","value":"$__all"},"datasource":"Prometheus","definition":"","hide":0,"includeAll":true,"label":"JVM Memory Pools Heap","multi":false,"multiFormat":"glob","name":"jvm_memory_pool_heap","options":[],"query":"label_values(jvm_memory_used_bytes{application=\\"$application\\", instance=\\"$instance\\", area=\\"heap\\"},id)","refresh":1,"regex":"","skipUrlSync":false,"sort":1,"tagValuesQuery":"","tags":[],"tagsQuery":"","type":"query","useTags":false},{"allFormat":"glob","allValue":null,"current":{"selected":false,"text":"All","value":"$__all"},"datasource":"Prometheus","definition":"","hide":0,"includeAll":true,"label":"JVM Memory Pools Non-Heap","multi":false,"multiFormat":"glob","name":"jvm_memory_pool_nonheap","options":[],"query":"label_values(jvm_memory_used_bytes{application=\\"$application\\", instance=\\"$instance\\", area=\\"nonheap\\"},id)","refresh":1,"regex":"","skipUrlSync":false,"sort":2,"tagValuesQuery":"","tags":[],"tagsQuery":"","type":"query","useTags":false}]},"time":{"from":"now-24h","to":"now"},"timepicker":{"now":true,"refresh_intervals":["5s","10s","30s","1m","5m","15m","30m","1h","2h","1d"],"time_options":["5m","15m","1h","6h","12h","24h","2d","7d","30d"]},"timezone":"browser","title":"JVM (Micrometer)","uid":"s5zCzHkGk","version":3}
 37	20	0	0	1	2020-10-04 06:24:19	2		{"schemaVersion":17,"title":"database","uid":"dPrUrXFMk","version":1}
 38	6	2	0	3	2020-10-04 06:24:32	2		{"annotations":{"list":[{"builtIn":1,"datasource":"-- Grafana --","enable":true,"hide":true,"iconColor":"rgba(0, 211, 255, 1)","name":"Annotations \\u0026 Alerts","type":"dashboard"}]},"description":"This dashboard works with postgres_exporter for prometheus","editable":true,"gnetId":9628,"graphTooltip":0,"id":6,"iteration":1590432543507,"links":[],"panels":[{"collapsed":false,"datasource":null,"gridPos":{"h":1,"w":24,"x":0,"y":0},"id":34,"panels":[],"title":"General Counters, CPU, Memory and File Descriptor Stats","type":"row"},{"cacheTimeout":null,"colorBackground":false,"colorValue":true,"colors":["#299c46","#7eb26d","#d44a3a"],"datasource":"Prometheus","fieldConfig":{"defaults":{"custom":{}},"overrides":[]},"format":"none","gauge":{"maxValue":100,"minValue":0,"show":false,"thresholdLabels":false,"thresholdMarkers":true},"gridPos":{"h":2,"w":4,"x":0,"y":1},"id":36,"interval":null,"links":[],"mappingType":1,"mappingTypes":[{"name":"value to text","value":1},{"name":"range to text","value":2}],"maxDataPoints":100,"nullPointMode":"connected","nullText":null,"postfix":"","postfixFontSize":"50%","prefix":"","prefixFontSize":"50%","rangeMaps":[{"from":"null","text":"N/A","to":"null"}],"sparkline":{"fillColor":"rgba(31, 118, 189, 0.18)","full":false,"lineColor":"rgb(31, 120, 193)","show":false},"tableColumn":"","targets":[{"expr":"pg_static{release=\\"$release\\", instance=\\"$instance\\"}","format":"time_series","instant":true,"intervalFactor":1,"legendFormat":"{{short_version}}","refId":"A"}],"thresholds":"","title":"Version","type":"singlestat","valueFontSize":"80%","valueMaps":[{"op":"=","text":"N/A","value":"null"}],"valueName":"name"},{"cacheTimeout":null,"colorBackground":false,"colorValue":false,"colors":["#299c46","rgba(237, 129, 40, 0.89)","#d44a3a"],"datasource":"Prometheus","description":"start time of the process","fieldConfig":{"defaults":{"custom":{}},"overrides":[]},"format":"dateTimeFromNow","gauge":{"maxValue":100,"minValue":0,"show":false,"thresholdLabels":false,"thresholdMarkers":true},"gridPos":{"h":2,"w":4,"x":4,"y":1},"id":28,"interval":null,"links":[],"mappingType":1,"mappingTypes":[{"name":"value to text","value":1},{"name":"range to text","value":2}],"maxDataPoints":100,"nullPointMode":"connected","nullText":null,"postfix":"","postfixFontSize":"110%","prefix":"","prefixFontSize":"110%","rangeMaps":[{"from":"null","text":"N/A","to":"null"}],"sparkline":{"fillColor":"rgba(31, 118, 189, 0.18)","full":false,"lineColor":"rgb(31, 120, 193)","show":false},"tableColumn":"{instance=\\"postgres-exported-sample:9187\\", job=\\"postgres-exporter-sample\\"}","targets":[{"expr":"process_start_time_seconds{release=\\"$release\\", instance=\\"$instance\\"} * 1000","format":"time_series","intervalFactor":2,"legendFormat":"","refId":"A"}],"thresholds":"","title":"Start Time","type":"singlestat","valueFontSize":"110%","valueMaps":[{"op":"=","text":"N/A","value":"null"}],"valueName":"avg"},{"cacheTimeout":null,"colorBackground":false,"colorValue":false,"colors":["rgba(245, 54, 54, 0.9)","rgba(237, 129, 40, 0.89)","rgba(50, 172, 45, 0.97)"],"datasource":"Prometheus","fieldConfig":{"defaults":{"custom":{}},"overrides":[]},"format":"decbytes","gauge":{"maxValue":100,"minValue":0,"show":false,"thresholdLabels":false,"thresholdMarkers":true},"gridPos":{"h":2,"w":4,"x":8,"y":1},"height":"200px","id":10,"interval":null,"links":[],"mappingType":1,"mappingTypes":[{"name":"value to text","value":1},{"name":"range to text","value":2}],"maxDataPoints":100,"nullPointMode":"connected","nullText":null,"postfix":"","postfixFontSize":"50%","prefix":"","prefixFontSize":"50%","rangeMaps":[{"from":"null","text":"N/A","to":"null"}],"sparkline":{"fillColor":"rgba(31, 118, 189, 0.18)","full":false,"lineColor":"rgb(31, 120, 193)","show":false},"tableColumn":"","targets":[{"expr":"SUM(pg_stat_database_tup_fetched{datname=~\\"$datname\\", instance=~\\"$instance\\"})","format":"time_series","intervalFactor":2,"refId":"A","step":4}],"thresholds":"","title":"Current fetch data","type":"singlestat","valueFontSize":"80%","valueMaps":[{"op":"=","text":"N/A","value":"null"}],"valueName":"current"},{"cacheTimeout":null,"colorBackground":false,"colorValue":false,"colors":["rgba(245, 54, 54, 0.9)","rgba(237, 129, 40, 0.89)","rgba(50, 172, 45, 0.97)"],"datasource":"Prometheus","fieldConfig":{"defaults":{"custom":{}},"overrides":[]},"format":"decbytes","gauge":{"maxValue":100,"minValue":0,"show":false,"thresholdLabels":false,"thresholdMarkers":true},"gridPos":{"h":2,"w":4,"x":12,"y":1},"height":"200px","id":11,"interval":null,"links":[],"mappingType":1,"mappingTypes":[{"name":"value to text","value":1},{"name":"range to text","value":2}],"maxDataPoints":100,"nullPointMode":"connected","nullText":null,"postfix":"","postfixFontSize":"50%","prefix":"","prefixFontSize":"50%","rangeMaps":[{"from":"null","text":"N/A","to":"null"}],"sparkline":{"fillColor":"rgba(31, 118, 189, 0.18)","full":false,"lineColor":"rgb(31, 120, 193)","show":false},"tableColumn":"","targets":[{"expr":"SUM(pg_stat_database_tup_inserted{release=\\"$release\\", datname=~\\"$datname\\", instance=~\\"$instance\\"})","format":"time_series","intervalFactor":2,"refId":"A","step":4}],"thresholds":"","title":"Current insert data","type":"singlestat","valueFontSize":"80%","valueMaps":[{"op":"=","text":"N/A","value":"null"}],"valueName":"current"},{"cacheTimeout":null,"colorBackground":false,"colorValue":false,"colors":["rgba(245, 54, 54, 0.9)","rgba(237, 129, 40, 0.89)","rgba(50, 172, 45, 0.97)"],"datasource":"Prometheus","fieldConfig":{"defaults":{"custom":{}},"overrides":[]},"format":"decbytes","gauge":{"maxValue":100,"minValue":0,"show":false,"thresholdLabels":false,"thresholdMarkers":true},"gridPos":{"h":2,"w":4,"x":16,"y":1},"height":"200px","id":12,"interval":null,"links":[],"mappingType":1,"mappingTypes":[{"name":"value to text","value":1},{"name":"range to text","value":2}],"maxDataPoints":100,"nullPointMode":"connected","nullText":null,"postfix":"","postfixFontSize":"50%","prefix":"","prefixFontSize":"50%","rangeMaps":[{"from":"null","text":"N/A","to":"null"}],"sparkline":{"fillColor":"rgba(31, 118, 189, 0.18)","full":false,"lineColor":"rgb(31, 120, 193)","show":false},"tableColumn":"","targets":[{"expr":"SUM(pg_stat_database_tup_updated{datname=~\\"$datname\\", instance=~\\"$instance\\"})","format":"time_series","intervalFactor":2,"refId":"A","step":4}],"thresholds":"","title":"Current update data","type":"singlestat","valueFontSize":"80%","valueMaps":[{"op":"=","text":"N/A","value":"null"}],"valueName":"current"},{"cacheTimeout":null,"colorBackground":false,"colorValue":false,"colors":["#299c46","rgba(237, 129, 40, 0.89)","#d44a3a"],"datasource":"Prometheus","fieldConfig":{"defaults":{"custom":{}},"overrides":[]},"format":"none","gauge":{"maxValue":100,"minValue":0,"show":false,"thresholdLabels":false,"thresholdMarkers":true},"gridPos":{"h":2,"w":4,"x":20,"y":1},"id":38,"interval":null,"links":[],"mappingType":1,"mappingTypes":[{"name":"value to text","value":1},{"name":"range to text","value":2}],"maxDataPoints":100,"nullPointMode":"connected","nullText":null,"postfix":"","postfixFontSize":"50%","prefix":"","prefixFontSize":"50%","rangeMaps":[{"from":"null","text":"N/A","to":"null"}],"sparkline":{"fillColor":"rgba(31, 118, 189, 0.18)","full":false,"lineColor":"rgb(31, 120, 193)","show":false},"tableColumn":"","targets":[{"expr":"pg_settings_max_connections{release=\\"$release\\", instance=\\"$instance\\"}","format":"time_series","intervalFactor":1,"refId":"A"}],"thresholds":"","title":"Max Connections","type":"singlestat","valueFontSize":"80%","valueMaps":[{"op":"=","text":"N/A","value":"null"}],"valueName":"avg"},{"aliasColors":{},"bars":false,"dashLength":10,"dashes":false,"datasource":"Prometheus","description":"Average user and system CPU time spent in seconds.","fieldConfig":{"defaults":{"custom":{}},"overrides":[]},"fill":1,"fillGradient":0,"gridPos":{"h":7,"w":8,"x":0,"y":3},"hiddenSeries":false,"id":22,"legend":{"alignAsTable":true,"avg":true,"current":true,"max":true,"min":true,"show":true,"total":false,"values":true},"lines":true,"linewidth":1,"links":[],"nullPointMode":"null","options":{"dataLinks":[]},"percentage":false,"pointradius":5,"points":false,"renderer":"flot","seriesOverrides":[],"spaceLength":10,"stack":false,"steppedLine":false,"targets":[{"expr":"avg(rate(process_cpu_seconds_total{release=\\"$release\\", instance=\\"$instance\\"}[5m]) * 1000)","format":"time_series","intervalFactor":2,"legendFormat":"CPU Time","refId":"A"}],"thresholds":[],"timeFrom":null,"timeRegions":[],"timeShift":null,"title":"Average CPU Usage","tooltip":{"shared":true,"sort":0,"value_type":"individual"},"type":"graph","xaxis":{"buckets":null,"mode":"time","name":null,"show":true,"values":[]},"yaxes":[{"format":"s","label":null,"logBase":1,"max":null,"min":null,"show":true},{"format":"short","label":null,"logBase":1,"max":null,"min":null,"show":true}],"yaxis":{"align":false,"alignLevel":null}},{"aliasColors":{},"bars":false,"dashLength":10,"dashes":false,"datasource":"Prometheus","description":"Virtual and Resident memory size in bytes, averages over 5 min interval","fieldConfig":{"defaults":{"custom":{}},"overrides":[]},"fill":1,"fillGradient":0,"gridPos":{"h":7,"w":8,"x":8,"y":3},"hiddenSeries":false,"id":24,"legend":{"alignAsTable":true,"avg":true,"current":true,"max":true,"min":true,"show":true,"total":false,"values":true},"lines":true,"linewidth":1,"links":[],"nullPointMode":"null","options":{"dataLinks":[]},"percentage":false,"pointradius":5,"points":false,"renderer":"flot","seriesOverrides":[],"spaceLength":10,"stack":false,"steppedLine":false,"targets":[{"expr":"avg(rate(process_resident_memory_bytes{release=\\"$release\\", instance=\\"$instance\\"}[5m]))","format":"time_series","intervalFactor":2,"legendFormat":"Resident Mem","refId":"A"},{"expr":"avg(rate(process_virtual_memory_bytes{release=\\"$release\\", instance=\\"$instance\\"}[5m]))","format":"time_series","intervalFactor":2,"legendFormat":"Virtual Mem","refId":"B"}],"thresholds":[],"timeFrom":null,"timeRegions":[],"timeShift":null,"title":"Average Memory Usage","tooltip":{"shared":true,"sort":0,"value_type":"individual"},"type":"graph","xaxis":{"buckets":null,"mode":"time","name":null,"show":true,"values":[]},"yaxes":[{"decimals":null,"format":"decbytes","label":null,"logBase":1,"max":null,"min":null,"show":true},{"format":"short","label":null,"logBase":1,"max":null,"min":null,"show":true}],"yaxis":{"align":false,"alignLevel":null}},{"aliasColors":{},"bars":false,"dashLength":10,"dashes":false,"datasource":"Prometheus","description":"Number of open file descriptors","fieldConfig":{"defaults":{"custom":{}},"overrides":[]},"fill":1,"fillGradient":0,"gridPos":{"h":7,"w":8,"x":16,"y":3},"hiddenSeries":false,"id":26,"legend":{"alignAsTable":true,"avg":true,"current":true,"max":true,"min":true,"show":true,"total":false,"values":true},"lines":true,"linewidth":1,"links":[],"nullPointMode":"null","options":{"dataLinks":[]},"percentage":false,"pointradius":5,"points":false,"renderer":"flot","seriesOverrides":[],"spaceLength":10,"stack":false,"steppedLine":false,"targets":[{"expr":"process_open_fds{release=\\"$release\\", instance=\\"$instance\\"}","format":"time_series","intervalFactor":2,"legendFormat":"Open FD","refId":"A"}],"thresholds":[],"timeFrom":null,"timeRegions":[],"timeShift":null,"title":"Open File Descriptors","tooltip":{"shared":true,"sort":0,"value_type":"individual"},"type":"graph","xaxis":{"buckets":null,"mode":"time","name":null,"show":true,"values":[]},"yaxes":[{"decimals":null,"format":"short","label":null,"logBase":1,"max":null,"min":null,"show":true},{"format":"short","label":null,"logBase":1,"max":null,"min":null,"show":true}],"yaxis":{"align":false,"alignLevel":null}},{"collapsed":false,"datasource":null,"gridPos":{"h":1,"w":24,"x":0,"y":10},"id":32,"panels":[],"title":"Settings","type":"row"},{"cacheTimeout":null,"colorBackground":false,"colorValue":false,"colors":["#299c46","rgba(237, 129, 40, 0.89)","#d44a3a"],"datasource":"Prometheus","fieldConfig":{"defaults":{"custom":{}},"overrides":[]},"format":"bytes","gauge":{"maxValue":100,"minValue":0,"show":false,"thresholdLabels":false,"thresholdMarkers":true},"gridPos":{"h":3,"w":3,"x":0,"y":11},"id":40,"interval":null,"links":[],"mappingType":1,"mappingTypes":[{"name":"value to text","value":1},{"name":"range to text","value":2}],"maxDataPoints":100,"nullPointMode":"connected","nullText":null,"postfix":"","postfixFontSize":"50%","prefix":"","prefixFontSize":"50%","rangeMaps":[{"from":"null","text":"N/A","to":"null"}],"sparkline":{"fillColor":"rgba(31, 118, 189, 0.18)","full":false,"lineColor":"rgb(31, 120, 193)","show":false},"tableColumn":"","targets":[{"expr":"pg_settings_shared_buffers_bytes{instance=\\"$instance\\"}","format":"time_series","intervalFactor":1,"refId":"A"}],"thresholds":"","title":"Shared Buffers","type":"singlestat","valueFontSize":"80%","valueMaps":[{"op":"=","text":"N/A","value":"null"}],"valueName":"current"},{"cacheTimeout":null,"colorBackground":false,"colorValue":false,"colors":["#299c46","rgba(237, 129, 40, 0.89)","#d44a3a"],"datasource":"Prometheus","fieldConfig":{"defaults":{"custom":{}},"overrides":[]},"format":"bytes","gauge":{"maxValue":100,"minValue":0,"show":false,"thresholdLabels":false,"thresholdMarkers":true},"gridPos":{"h":3,"w":3,"x":3,"y":11},"id":42,"interval":null,"links":[],"mappingType":1,"mappingTypes":[{"name":"value to text","value":1},{"name":"range to text","value":2}],"maxDataPoints":100,"nullPointMode":"connected","nullText":null,"postfix":"","postfixFontSize":"50%","prefix":"","prefixFontSize":"50%","rangeMaps":[{"from":"null","text":"N/A","to":"null"}],"sparkline":{"fillColor":"rgba(31, 118, 189, 0.18)","full":false,"lineColor":"rgb(31, 120, 193)","show":false},"tableColumn":"","targets":[{"expr":"pg_settings_effective_cache_size_bytes{instance=\\"$instance\\"}","format":"time_series","intervalFactor":1,"refId":"A"}],"thresholds":"","title":"Effective Cache","type":"singlestat","valueFontSize":"80%","valueMaps":[{"op":"=","text":"N/A","value":"null"}],"valueName":"current"},{"cacheTimeout":null,"colorBackground":false,"colorValue":false,"colors":["#299c46","rgba(237, 129, 40, 0.89)","#d44a3a"],"datasource":"Prometheus","fieldConfig":{"defaults":{"custom":{}},"overrides":[]},"format":"bytes","gauge":{"maxValue":100,"minValue":0,"show":false,"thresholdLabels":false,"thresholdMarkers":true},"gridPos":{"h":3,"w":3,"x":6,"y":11},"id":44,"interval":null,"links":[],"mappingType":1,"mappingTypes":[{"name":"value to text","value":1},{"name":"range to text","value":2}],"maxDataPoints":100,"nullPointMode":"connected","nullText":null,"postfix":"","postfixFontSize":"50%","prefix":"","prefixFontSize":"50%","rangeMaps":[{"from":"null","text":"N/A","to":"null"}],"sparkline":{"fillColor":"rgba(31, 118, 189, 0.18)","full":false,"lineColor":"rgb(31, 120, 193)","show":false},"tableColumn":"","targets":[{"expr":"pg_settings_maintenance_work_mem_bytes{instance=\\"$instance\\"}","format":"time_series","intervalFactor":1,"refId":"A"}],"thresholds":"","title":"Maintenance Work Mem","type":"singlestat","valueFontSize":"80%","valueMaps":[{"op":"=","text":"N/A","value":"null"}],"valueName":"current"},{"cacheTimeout":null,"colorBackground":false,"colorValue":false,"colors":["#299c46","rgba(237, 129, 40, 0.89)","#d44a3a"],"datasource":"Prometheus","fieldConfig":{"defaults":{"custom":{}},"overrides":[]},"format":"bytes","gauge":{"maxValue":100,"minValue":0,"show":false,"thresholdLabels":false,"thresholdMarkers":true},"gridPos":{"h":3,"w":3,"x":9,"y":11},"id":46,"interval":null,"links":[],"mappingType":1,"mappingTypes":[{"name":"value to text","value":1},{"name":"range to text","value":2}],"maxDataPoints":100,"nullPointMode":"connected","nullText":null,"postfix":"","postfixFontSize":"50%","prefix":"","prefixFontSize":"50%","rangeMaps":[{"from":"null","text":"N/A","to":"null"}],"sparkline":{"fillColor":"rgba(31, 118, 189, 0.18)","full":false,"lineColor":"rgb(31, 120, 193)","show":false},"tableColumn":"","targets":[{"expr":"pg_settings_work_mem_bytes{instance=\\"$instance\\"}","format":"time_series","intervalFactor":1,"legendFormat":"","refId":"A"}],"thresholds":"","title":"Work Mem","type":"singlestat","valueFontSize":"80%","valueMaps":[{"op":"=","text":"N/A","value":"null"}],"valueName":"current"},{"cacheTimeout":null,"colorBackground":false,"colorValue":false,"colors":["#299c46","rgba(237, 129, 40, 0.89)","#d44a3a"],"datasource":"Prometheus","decimals":1,"fieldConfig":{"defaults":{"custom":{}},"overrides":[]},"format":"bytes","gauge":{"maxValue":100,"minValue":0,"show":false,"thresholdLabels":false,"thresholdMarkers":true},"gridPos":{"h":3,"w":3,"x":12,"y":11},"id":48,"interval":null,"links":[],"mappingType":1,"mappingTypes":[{"name":"value to text","value":1},{"name":"range to text","value":2}],"maxDataPoints":100,"nullPointMode":"connected","nullText":null,"postfix":"","postfixFontSize":"50%","prefix":"","prefixFontSize":"50%","rangeMaps":[{"from":"null","text":"N/A","to":"null"}],"sparkline":{"fillColor":"rgba(31, 118, 189, 0.18)","full":false,"lineColor":"rgb(31, 120, 193)","show":false},"tableColumn":"","targets":[{"expr":"pg_settings_max_wal_size_bytes{instance=\\"$instance\\"}","format":"time_series","intervalFactor":1,"refId":"A"}],"thresholds":"","title":"Max WAL Size","type":"singlestat","valueFontSize":"80%","valueMaps":[{"op":"=","text":"N/A","value":"null"}],"valueName":"current"},{"cacheTimeout":null,"colorBackground":false,"colorValue":false,"colors":["#299c46","rgba(237, 129, 40, 0.89)","#d44a3a"],"datasource":"Prometheus","fieldConfig":{"defaults":{"custom":{}},"overrides":[]},"format":"none","gauge":{"maxValue":100,"minValue":0,"show":false,"thresholdLabels":false,"thresholdMarkers":true},"gridPos":{"h":3,"w":3,"x":15,"y":11},"id":50,"interval":null,"links":[],"mappingType":1,"mappingTypes":[{"name":"value to text","value":1},{"name":"range to text","value":2}],"maxDataPoints":100,"nullPointMode":"connected","nullText":null,"postfix":"","postfixFontSize":"50%","prefix":"","prefixFontSize":"50%","rangeMaps":[{"from":"null","text":"N/A","to":"null"}],"sparkline":{"fillColor":"rgba(31, 118, 189, 0.18)","full":false,"lineColor":"rgb(31, 120, 193)","show":false},"tableColumn":"","targets":[{"expr":"pg_settings_random_page_cost{instance=\\"$instance\\"}","format":"time_series","intervalFactor":1,"refId":"A"}],"thresholds":"","title":"Random Page Cost","type":"singlestat","valueFontSize":"80%","valueMaps":[{"op":"=","text":"N/A","value":"null"}],"valueName":"current"},{"cacheTimeout":null,"colorBackground":false,"colorValue":false,"colors":["#299c46","rgba(237, 129, 40, 0.89)","#d44a3a"],"datasource":"Prometheus","fieldConfig":{"defaults":{"custom":{}},"overrides":[]},"format":"none","gauge":{"maxValue":100,"minValue":0,"show":false,"thresholdLabels":false,"thresholdMarkers":true},"gridPos":{"h":3,"w":2,"x":18,"y":11},"id":52,"interval":null,"links":[],"mappingType":1,"mappingTypes":[{"name":"value to text","value":1},{"name":"range to text","value":2}],"maxDataPoints":100,"nullPointMode":"connected","nullText":null,"postfix":"","postfixFontSize":"50%","prefix":"","prefixFontSize":"50%","rangeMaps":[{"from":"null","text":"N/A","to":"null"}],"sparkline":{"fillColor":"rgba(31, 118, 189, 0.18)","full":false,"lineColor":"rgb(31, 120, 193)","show":false},"tableColumn":"","targets":[{"expr":"pg_settings_seq_page_cost","format":"time_series","intervalFactor":1,"refId":"A"}],"thresholds":"","title":"Seq Page Cost","type":"singlestat","valueFontSize":"80%","valueMaps":[{"op":"=","text":"N/A","value":"null"}],"valueName":"current"},{"cacheTimeout":null,"colorBackground":false,"colorValue":false,"colors":["#299c46","rgba(237, 129, 40, 0.89)","#d44a3a"],"datasource":"Prometheus","fieldConfig":{"defaults":{"custom":{}},"overrides":[]},"format":"none","gauge":{"maxValue":100,"minValue":0,"show":false,"thresholdLabels":false,"thresholdMarkers":true},"gridPos":{"h":3,"w":2,"x":20,"y":11},"id":54,"interval":null,"links":[],"mappingType":1,"mappingTypes":[{"name":"value to text","value":1},{"name":"range to text","value":2}],"maxDataPoints":100,"nullPointMode":"connected","nullText":null,"postfix":"","postfixFontSize":"50%","prefix":"","prefixFontSize":"50%","rangeMaps":[{"from":"null","text":"N/A","to":"null"}],"sparkline":{"fillColor":"rgba(31, 118, 189, 0.18)","full":false,"lineColor":"rgb(31, 120, 193)","show":false},"tableColumn":"","targets":[{"expr":"pg_settings_max_worker_processes{instance=\\"$instance\\"}","format":"time_series","intervalFactor":1,"refId":"A"}],"thresholds":"","title":"Max Worker Processes","type":"singlestat","valueFontSize":"80%","valueMaps":[{"op":"=","text":"N/A","value":"null"}],"valueName":"avg"},{"cacheTimeout":null,"colorBackground":false,"colorValue":false,"colors":["#299c46","rgba(237, 129, 40, 0.89)","#d44a3a"],"datasource":"Prometheus","fieldConfig":{"defaults":{"custom":{}},"overrides":[]},"format":"none","gauge":{"maxValue":100,"minValue":0,"show":false,"thresholdLabels":false,"thresholdMarkers":true},"gridPos":{"h":3,"w":2,"x":22,"y":11},"id":56,"interval":null,"links":[],"mappingType":1,"mappingTypes":[{"name":"value to text","value":1},{"name":"range to text","value":2}],"maxDataPoints":100,"nullPointMode":"connected","nullText":null,"postfix":"","postfixFontSize":"50%","prefix":"","prefixFontSize":"50%","rangeMaps":[{"from":"null","text":"N/A","to":"null"}],"sparkline":{"fillColor":"rgba(31, 118, 189, 0.18)","full":false,"lineColor":"rgb(31, 120, 193)","show":false},"tableColumn":"","targets":[{"expr":"pg_settings_max_parallel_workers{instance=\\"$instance\\"}","format":"time_series","intervalFactor":1,"refId":"A"}],"thresholds":"","title":"Max Parallel Workers","type":"singlestat","valueFontSize":"80%","valueMaps":[{"op":"=","text":"N/A","value":"null"}],"valueName":"current"},{"collapsed":false,"datasource":null,"gridPos":{"h":1,"w":24,"x":0,"y":14},"id":30,"panels":[],"title":"Database Stats","type":"row"},{"aliasColors":{},"bars":false,"dashLength":10,"dashes":false,"datasource":"Prometheus","fieldConfig":{"defaults":{"custom":{}},"overrides":[]},"fill":1,"fillGradient":0,"gridPos":{"h":7,"w":8,"x":0,"y":15},"hiddenSeries":false,"id":1,"legend":{"alignAsTable":true,"avg":true,"current":true,"max":true,"min":false,"rightSide":true,"show":true,"sort":"current","sortDesc":true,"total":false,"values":true},"lines":false,"linewidth":1,"links":[],"nullPointMode":"connected","options":{"dataLinks":[]},"percentage":false,"pointradius":3,"points":true,"renderer":"flot","seriesOverrides":[],"spaceLength":10,"stack":false,"steppedLine":false,"targets":[{"expr":"pg_stat_activity_count{datname=~\\"$datname\\", instance=~\\"$instance\\", state=\\"active\\"} !=0","format":"time_series","interval":"","intervalFactor":2,"legendFormat":"{{datname}}, s: {{state}}","refId":"A","step":2}],"thresholds":[],"timeFrom":null,"timeRegions":[],"timeShift":null,"title":"Active sessions","tooltip":{"shared":true,"sort":0,"value_type":"individual"},"type":"graph","xaxis":{"buckets":null,"mode":"time","name":null,"show":true,"values":[]},"yaxes":[{"decimals":0,"format":"none","label":null,"logBase":1,"max":null,"min":null,"show":true},{"format":"short","label":null,"logBase":1,"max":null,"min":null,"show":true}],"yaxis":{"align":false,"alignLevel":null}},{"aliasColors":{},"bars":false,"dashLength":10,"dashes":false,"datasource":"Prometheus","fieldConfig":{"defaults":{"custom":{}},"overrides":[]},"fill":1,"fillGradient":0,"gridPos":{"h":7,"w":8,"x":8,"y":15},"hiddenSeries":false,"id":60,"legend":{"alignAsTable":true,"avg":true,"current":true,"max":false,"min":false,"rightSide":true,"show":true,"total":true,"values":true},"lines":true,"linewidth":1,"links":[],"nullPointMode":"null","options":{"dataLinks":[]},"percentage":false,"pointradius":5,"points":false,"renderer":"flot","seriesOverrides":[],"spaceLength":10,"stack":false,"steppedLine":false,"targets":[{"expr":"irate(pg_stat_database_xact_commit{instance=\\"$instance\\", datname=~\\"$datname\\"}[5m])","format":"time_series","intervalFactor":1,"legendFormat":"{{datname}} commits","refId":"A"},{"expr":"irate(pg_stat_database_xact_rollback{instance=\\"$instance\\", datname=~\\"$datname\\"}[5m])","format":"time_series","intervalFactor":1,"legendFormat":"{{datname}} rollbacks","refId":"B"}],"thresholds":[],"timeFrom":null,"timeRegions":[],"timeShift":null,"title":"Transactions","tooltip":{"shared":true,"sort":0,"value_type":"individual"},"type":"graph","xaxis":{"buckets":null,"mode":"time","name":null,"show":true,"values":[]},"yaxes":[{"format":"short","label":null,"logBase":1,"max":null,"min":null,"show":true},{"format":"short","label":null,"logBase":1,"max":null,"min":null,"show":true}],"yaxis":{"align":false,"alignLevel":null}},{"aliasColors":{},"bars":false,"dashLength":10,"dashes":false,"datasource":"Prometheus","fieldConfig":{"defaults":{"custom":{}},"overrides":[]},"fill":1,"fillGradient":0,"gridPos":{"h":7,"w":8,"x":16,"y":15},"hiddenSeries":false,"id":8,"legend":{"alignAsTable":true,"avg":true,"current":true,"max":false,"min":false,"rightSide":true,"show":true,"sideWidth":null,"sort":"current","sortDesc":true,"total":true,"values":true},"lines":true,"linewidth":1,"links":[],"nullPointMode":"null","options":{"dataLinks":[]},"percentage":false,"pointradius":5,"points":false,"renderer":"flot","seriesOverrides":[],"spaceLength":10,"stack":false,"steppedLine":false,"targets":[{"expr":"pg_stat_database_tup_updated{datname=~\\"$datname\\", instance=~\\"$instance\\"} != 0","format":"time_series","intervalFactor":2,"legendFormat":"{{datname}}","refId":"A","step":2}],"thresholds":[],"timeFrom":null,"timeRegions":[],"timeShift":null,"title":"Update data","tooltip":{"shared":true,"sort":0,"value_type":"individual"},"type":"graph","xaxis":{"buckets":null,"mode":"time","name":null,"show":true,"values":[]},"yaxes":[{"format":"bytes","label":null,"logBase":1,"max":null,"min":null,"show":true},{"format":"short","label":null,"logBase":1,"max":null,"min":null,"show":true}],"yaxis":{"align":false,"alignLevel":null}},{"aliasColors":{},"bars":false,"dashLength":10,"dashes":false,"datasource":"Prometheus","fieldConfig":{"defaults":{"custom":{}},"overrides":[]},"fill":1,"fillGradient":0,"gridPos":{"h":7,"w":8,"x":0,"y":22},"hiddenSeries":false,"id":5,"legend":{"alignAsTable":true,"avg":true,"current":true,"max":false,"min":false,"rightSide":true,"show":true,"sort":"current","sortDesc":true,"total":true,"values":true},"lines":true,"linewidth":1,"links":[],"nullPointMode":"null","options":{"dataLinks":[]},"percentage":false,"pointradius":5,"points":false,"renderer":"flot","seriesOverrides":[],"spaceLength":10,"stack":false,"steppedLine":false,"targets":[{"expr":"pg_stat_database_tup_fetched{datname=~\\"$datname\\", instance=~\\"$instance\\"} != 0","format":"time_series","intervalFactor":2,"legendFormat":"{{datname}}","refId":"A","step":2}],"thresholds":[],"timeFrom":null,"timeRegions":[],"timeShift":null,"title":"Fetch data (SELECT)","tooltip":{"shared":true,"sort":0,"value_type":"individual"},"type":"graph","xaxis":{"buckets":null,"mode":"time","name":null,"show":true,"values":[]},"yaxes":[{"format":"bytes","label":null,"logBase":1,"max":null,"min":null,"show":true},{"format":"short","label":null,"logBase":1,"max":null,"min":null,"show":true}],"yaxis":{"align":false,"alignLevel":null}},{"aliasColors":{},"bars":false,"dashLength":10,"dashes":false,"datasource":"Prometheus","fieldConfig":{"defaults":{"custom":{}},"overrides":[]},"fill":1,"fillGradient":0,"gridPos":{"h":7,"w":8,"x":8,"y":22},"hiddenSeries":false,"id":6,"legend":{"alignAsTable":true,"avg":true,"current":true,"max":false,"min":false,"rightSide":true,"show":true,"sort":"current","sortDesc":true,"total":true,"values":true},"lines":true,"linewidth":1,"links":[],"nullPointMode":"null","options":{"dataLinks":[]},"percentage":false,"pointradius":5,"points":false,"renderer":"flot","seriesOverrides":[],"spaceLength":10,"stack":false,"steppedLine":false,"targets":[{"expr":"pg_stat_database_tup_inserted{datname=~\\"$datname\\", instance=~\\"$instance\\"} != 0","format":"time_series","intervalFactor":2,"legendFormat":"{{datname}}","refId":"A","step":2}],"thresholds":[],"timeFrom":null,"timeRegions":[],"timeShift":null,"title":"Insert data","tooltip":{"shared":true,"sort":0,"value_type":"individual"},"type":"graph","xaxis":{"buckets":null,"mode":"time","name":null,"show":true,"values":[]},"yaxes":[{"format":"bytes","label":null,"logBase":1,"max":null,"min":null,"show":true},{"format":"short","label":null,"logBase":1,"max":null,"min":null,"show":true}],"yaxis":{"align":false,"alignLevel":null}},{"aliasColors":{},"bars":false,"dashLength":10,"dashes":false,"datasource":"Prometheus","decimals":0,"fieldConfig":{"defaults":{"custom":{}},"overrides":[]},"fill":1,"fillGradient":0,"gridPos":{"h":7,"w":8,"x":16,"y":22},"hiddenSeries":false,"id":3,"legend":{"alignAsTable":true,"avg":true,"current":true,"hideEmpty":false,"max":false,"min":false,"rightSide":true,"show":true,"sort":"current","sortDesc":true,"total":true,"values":true},"lines":true,"linewidth":1,"links":[],"nullPointMode":"null","options":{"dataLinks":[]},"percentage":false,"pointradius":5,"points":false,"renderer":"flot","seriesOverrides":[],"spaceLength":10,"stack":false,"steppedLine":false,"targets":[{"expr":"pg_locks_count{datname=~\\"$datname\\", instance=~\\"$instance\\", mode=~\\"$mode\\"} != 0","format":"time_series","intervalFactor":2,"legendFormat":"{{datname}},{{mode}}","refId":"A","step":2}],"thresholds":[],"timeFrom":null,"timeRegions":[],"timeShift":null,"title":"Lock tables","tooltip":{"shared":true,"sort":0,"value_type":"individual"},"type":"graph","xaxis":{"buckets":null,"mode":"time","name":null,"show":true,"values":[]},"yaxes":[{"decimals":0,"format":"short","label":null,"logBase":1,"max":null,"min":"0","show":true},{"format":"short","label":null,"logBase":1,"max":null,"min":null,"show":true}],"yaxis":{"align":false,"alignLevel":null}},{"aliasColors":{},"bars":false,"dashLength":10,"dashes":false,"datasource":"Prometheus","fieldConfig":{"defaults":{"custom":{}},"overrides":[]},"fill":1,"fillGradient":0,"gridPos":{"h":7,"w":8,"x":0,"y":29},"hiddenSeries":false,"id":14,"legend":{"alignAsTable":true,"avg":true,"current":true,"max":false,"min":false,"rightSide":true,"show":true,"sort":"total","sortDesc":true,"total":true,"values":true},"lines":true,"linewidth":1,"links":[],"nullPointMode":"null","options":{"dataLinks":[]},"percentage":false,"pointradius":5,"points":false,"renderer":"flot","seriesOverrides":[],"spaceLength":10,"stack":false,"steppedLine":false,"targets":[{"expr":"pg_stat_database_tup_returned{datname=~\\"$datname\\", instance=~\\"$instance\\"} != 0","format":"time_series","intervalFactor":2,"legendFormat":"{{datname}}","refId":"A","step":2}],"thresholds":[],"timeFrom":null,"timeRegions":[],"timeShift":null,"title":"Return data","tooltip":{"shared":true,"sort":0,"value_type":"individual"},"type":"graph","xaxis":{"buckets":null,"mode":"time","name":null,"show":true,"values":[]},"yaxes":[{"format":"bytes","label":null,"logBase":1,"max":null,"min":null,"show":true},{"format":"short","label":null,"logBase":1,"max":null,"min":null,"show":true}],"yaxis":{"align":false,"alignLevel":null}},{"aliasColors":{},"bars":false,"dashLength":10,"dashes":false,"datasource":"Prometheus","fieldConfig":{"defaults":{"custom":{}},"overrides":[]},"fill":1,"fillGradient":0,"gridPos":{"h":7,"w":8,"x":8,"y":29},"hiddenSeries":false,"id":4,"legend":{"alignAsTable":true,"avg":false,"current":true,"max":true,"min":false,"rightSide":true,"show":true,"sort":"current","sortDesc":false,"total":false,"values":true},"lines":true,"linewidth":1,"links":[],"nullPointMode":"null","options":{"dataLinks":[]},"percentage":false,"pointradius":5,"points":false,"renderer":"flot","seriesOverrides":[],"spaceLength":10,"stack":false,"steppedLine":false,"targets":[{"expr":"pg_stat_activity_count{datname=~\\"$datname\\", instance=~\\"$instance\\", state=~\\"idle|idle in transaction|idle in transaction (aborted)\\"}","format":"time_series","intervalFactor":2,"legendFormat":"{{datname}}, s: {{state}}","refId":"A","step":2}],"thresholds":[],"timeFrom":null,"timeRegions":[],"timeShift":null,"title":"Idle sessions","tooltip":{"shared":true,"sort":0,"value_type":"individual"},"type":"graph","xaxis":{"buckets":null,"mode":"time","name":null,"show":true,"values":[]},"yaxes":[{"format":"short","label":null,"logBase":1,"max":null,"min":"0","show":true},{"format":"short","label":null,"logBase":1,"max":null,"min":null,"show":true}],"yaxis":{"align":false,"alignLevel":null}},{"aliasColors":{},"bars":false,"dashLength":10,"dashes":false,"datasource":"Prometheus","fieldConfig":{"defaults":{"custom":{}},"overrides":[]},"fill":1,"fillGradient":0,"gridPos":{"h":7,"w":8,"x":16,"y":29},"hiddenSeries":false,"id":7,"legend":{"alignAsTable":true,"avg":true,"current":true,"max":false,"min":false,"rightSide":true,"show":true,"sort":"current","sortDesc":true,"total":true,"values":true},"lines":true,"linewidth":1,"links":[],"nullPointMode":"null","options":{"dataLinks":[]},"percentage":false,"pointradius":5,"points":false,"renderer":"flot","seriesOverrides":[],"spaceLength":10,"stack":false,"steppedLine":false,"targets":[{"expr":"pg_stat_database_tup_deleted{datname=~\\"$datname\\", instance=~\\"$instance\\"} != 0","format":"time_series","intervalFactor":2,"legendFormat":"{{datname}}","refId":"A","step":2}],"thresholds":[],"timeFrom":null,"timeRegions":[],"timeShift":null,"title":"Delete data","tooltip":{"shared":true,"sort":0,"value_type":"individual"},"type":"graph","xaxis":{"buckets":null,"mode":"time","name":null,"show":true,"values":[]},"yaxes":[{"format":"bytes","label":null,"logBase":1,"max":null,"min":null,"show":true},{"format":"short","label":null,"logBase":1,"max":null,"min":null,"show":true}],"yaxis":{"align":false,"alignLevel":null}},{"aliasColors":{},"bars":false,"dashLength":10,"dashes":false,"datasource":"Prometheus","decimals":2,"fieldConfig":{"defaults":{"custom":{}},"overrides":[]},"fill":1,"fillGradient":0,"gridPos":{"h":7,"w":8,"x":0,"y":36},"hiddenSeries":false,"id":62,"legend":{"alignAsTable":true,"avg":true,"current":true,"max":false,"min":false,"rightSide":true,"show":true,"total":false,"values":true},"lines":true,"linewidth":1,"links":[],"nullPointMode":"null","options":{"dataLinks":[]},"percentage":false,"pointradius":5,"points":false,"renderer":"flot","seriesOverrides":[],"spaceLength":10,"stack":false,"steppedLine":false,"targets":[{"expr":"pg_stat_database_blks_hit{instance=\\"$instance\\", datname=~\\"$datname\\"} / (pg_stat_database_blks_read{instance=\\"$instance\\", datname=~\\"$datname\\"} + pg_stat_database_blks_hit{instance=\\"$instance\\", datname=~\\"$datname\\"})","format":"time_series","intervalFactor":1,"legendFormat":"{{ datname }}","refId":"A"}],"thresholds":[],"timeFrom":null,"timeRegions":[],"timeShift":null,"title":"Cache Hit Rate","tooltip":{"shared":true,"sort":0,"value_type":"individual"},"type":"graph","xaxis":{"buckets":null,"mode":"time","name":null,"show":true,"values":[]},"yaxes":[{"decimals":4,"format":"percentunit","label":"","logBase":1,"max":null,"min":null,"show":true},{"format":"short","label":null,"logBase":1,"max":null,"min":null,"show":true}],"yaxis":{"align":false,"alignLevel":null}},{"aliasColors":{},"bars":false,"dashLength":10,"dashes":false,"datasource":"Prometheus","fieldConfig":{"defaults":{"custom":{}},"overrides":[]},"fill":1,"fillGradient":0,"gridPos":{"h":7,"w":8,"x":8,"y":36},"hiddenSeries":false,"id":64,"legend":{"alignAsTable":true,"avg":true,"current":true,"max":true,"min":true,"rightSide":true,"show":true,"total":false,"values":true},"lines":true,"linewidth":1,"links":[],"nullPointMode":"null","options":{"dataLinks":[]},"percentage":false,"pointradius":5,"points":false,"renderer":"flot","seriesOverrides":[],"spaceLength":10,"stack":false,"steppedLine":false,"targets":[{"expr":"irate(pg_stat_bgwriter_buffers_backend{instance=\\"$instance\\"}[5m])","format":"time_series","intervalFactor":1,"legendFormat":"buffers_backend","refId":"A"},{"expr":"irate(pg_stat_bgwriter_buffers_alloc{instance=\\"$instance\\"}[5m])","format":"time_series","intervalFactor":1,"legendFormat":"buffers_alloc","refId":"B"},{"expr":"irate(pg_stat_bgwriter_buffers_backend_fsync{instance=\\"$instance\\"}[5m])","format":"time_series","intervalFactor":1,"legendFormat":"backend_fsync","refId":"C"},{"expr":"irate(pg_stat_bgwriter_buffers_checkpoint{instance=\\"$instance\\"}[5m])","format":"time_series","intervalFactor":1,"legendFormat":"buffers_checkpoint","refId":"D"},{"expr":"irate(pg_stat_bgwriter_buffers_clean{instance=\\"$instance\\"}[5m])","format":"time_series","intervalFactor":1,"legendFormat":"buffers_clean","refId":"E"}],"thresholds":[],"timeFrom":null,"timeRegions":[],"timeShift":null,"title":"Buffers (bgwriter)","tooltip":{"shared":true,"sort":0,"value_type":"individual"},"type":"graph","xaxis":{"buckets":null,"mode":"time","name":null,"show":true,"values":[]},"yaxes":[{"format":"short","label":null,"logBase":1,"max":null,"min":null,"show":true},{"format":"short","label":null,"logBase":1,"max":null,"min":null,"show":true}],"yaxis":{"align":false,"alignLevel":null}},{"aliasColors":{},"bars":false,"dashLength":10,"dashes":false,"datasource":"Prometheus","decimals":0,"fieldConfig":{"defaults":{"custom":{}},"overrides":[]},"fill":1,"fillGradient":0,"gridPos":{"h":7,"w":8,"x":16,"y":36},"hiddenSeries":false,"id":66,"legend":{"alignAsTable":true,"avg":true,"current":true,"max":false,"min":false,"rightSide":true,"show":true,"total":true,"values":true},"lines":true,"linewidth":1,"links":[],"nullPointMode":"null","options":{"dataLinks":[]},"percentage":false,"pointradius":5,"points":false,"renderer":"flot","seriesOverrides":[],"spaceLength":10,"stack":false,"steppedLine":false,"targets":[{"expr":"irate(pg_stat_database_conflicts{instance=\\"$instance\\", datname=~\\"$datname\\"}[5m])","format":"time_series","intervalFactor":1,"legendFormat":"{{datname}} conflicts","refId":"B"},{"expr":"irate(pg_stat_database_deadlocks{instance=\\"$instance\\", datname=~\\"$datname\\"}[5m])","format":"time_series","intervalFactor":1,"legendFormat":"{{datname}} deadlocks","refId":"A"}],"thresholds":[],"timeFrom":null,"timeRegions":[],"timeShift":null,"title":"Conflicts/Deadlocks","tooltip":{"shared":true,"sort":0,"value_type":"individual"},"type":"graph","xaxis":{"buckets":null,"mode":"time","name":null,"show":true,"values":[]},"yaxes":[{"format":"short","label":null,"logBase":1,"max":null,"min":"0","show":true},{"format":"short","label":null,"logBase":1,"max":null,"min":null,"show":true}],"yaxis":{"align":false,"alignLevel":null}},{"aliasColors":{},"bars":false,"dashLength":10,"dashes":false,"datasource":"Prometheus","description":"Total amount of data written to temporary files by queries in this database. All temporary files are counted, regardless of why the temporary file was created, and regardless of the log_temp_files setting.","fieldConfig":{"defaults":{"custom":{}},"overrides":[]},"fill":1,"fillGradient":0,"gridPos":{"h":7,"w":8,"x":0,"y":43},"hiddenSeries":false,"id":68,"legend":{"alignAsTable":true,"avg":true,"current":true,"max":false,"min":false,"rightSide":true,"show":true,"total":true,"values":true},"lines":true,"linewidth":1,"links":[],"nullPointMode":"null","options":{"dataLinks":[]},"percentage":false,"pointradius":5,"points":false,"renderer":"flot","seriesOverrides":[],"spaceLength":10,"stack":false,"steppedLine":false,"targets":[{"expr":"irate(pg_stat_database_temp_bytes{instance=\\"$instance\\", datname=~\\"$datname\\"}[5m])","format":"time_series","intervalFactor":1,"legendFormat":"{{datname}}","refId":"A"}],"thresholds":[],"timeFrom":null,"timeRegions":[],"timeShift":null,"title":"Temp File (Bytes)","tooltip":{"shared":true,"sort":0,"value_type":"individual"},"type":"graph","xaxis":{"buckets":null,"mode":"time","name":null,"show":true,"values":[]},"yaxes":[{"format":"bytes","label":null,"logBase":1,"max":null,"min":"0","show":true},{"format":"short","label":null,"logBase":1,"max":null,"min":null,"show":true}],"yaxis":{"align":false,"alignLevel":null}},{"aliasColors":{},"bars":false,"dashLength":10,"dashes":false,"datasource":"Prometheus","fieldConfig":{"defaults":{"custom":{}},"overrides":[]},"fill":1,"fillGradient":0,"gridPos":{"h":7,"w":16,"x":8,"y":43},"hiddenSeries":false,"id":70,"legend":{"alignAsTable":true,"avg":true,"current":true,"max":true,"min":true,"show":true,"total":false,"values":true},"lines":true,"linewidth":1,"links":[],"nullPointMode":"null","options":{"dataLinks":[]},"percentage":false,"pointradius":5,"points":false,"renderer":"flot","seriesOverrides":[],"spaceLength":10,"stack":false,"steppedLine":false,"targets":[{"expr":"irate(pg_stat_bgwriter_checkpoint_write_time{instance=\\"$instance\\"}[5m])","format":"time_series","intervalFactor":1,"legendFormat":"write_time - Total amount of time that has been spent in the portion of checkpoint processing where files are written to disk.","refId":"B"},{"expr":"irate(pg_stat_bgwriter_checkpoint_sync_time{instance=\\"$instance\\"}[5m])","format":"time_series","intervalFactor":1,"legendFormat":"sync_time - Total amount of time that has been spent in the portion of checkpoint processing where files are synchronized to disk.","refId":"A"}],"thresholds":[],"timeFrom":null,"timeRegions":[],"timeShift":null,"title":"Checkpoint Stats","tooltip":{"shared":true,"sort":0,"value_type":"individual"},"type":"graph","xaxis":{"buckets":null,"mode":"time","name":null,"show":true,"values":[]},"yaxes":[{"format":"ms","label":null,"logBase":1,"max":null,"min":null,"show":true},{"format":"short","label":null,"logBase":1,"max":null,"min":null,"show":true}],"yaxis":{"align":false,"alignLevel":null}}],"refresh":"10s","schemaVersion":25,"style":"dark","tags":["postgres","db","stats"],"templating":{"list":[{"auto":true,"auto_count":200,"auto_min":"1s","current":{"selected":false,"text":"auto","value":"$__auto_interval_interval"},"hide":0,"label":"Interval","name":"interval","options":[{"selected":true,"text":"auto","value":"$__auto_interval_interval"},{"selected":false,"text":"1s","value":"1s"},{"selected":false,"text":"5s","value":"5s"},{"selected":false,"text":"1m","value":"1m"},{"selected":false,"text":"5m","value":"5m"},{"selected":false,"text":"1h","value":"1h"},{"selected":false,"text":"6h","value":"6h"},{"selected":false,"text":"1d","value":"1d"}],"query":"1s,5s,1m,5m,1h,6h,1d","refresh":2,"skipUrlSync":false,"type":"interval"},{"allValue":null,"current":{"isNone":true,"selected":false,"text":"None","value":""},"datasource":"Prometheus","definition":"","hide":0,"includeAll":false,"label":"Namespace","multi":false,"name":"namespace","options":[],"query":"query_result(pg_exporter_last_scrape_duration_seconds)","refresh":2,"regex":"/.*kubernetes_namespace=\\"([^\\"]+).*/","skipUrlSync":false,"sort":1,"tagValuesQuery":"","tags":[],"tagsQuery":"","type":"query","useTags":false},{"allValue":null,"current":{"isNone":true,"selected":false,"text":"None","value":""},"datasource":"Prometheus","definition":"","hide":0,"includeAll":false,"label":"Release","multi":false,"name":"release","options":[],"query":"query_result(pg_exporter_last_scrape_duration_seconds{kubernetes_namespace=\\"$namespace\\"})","refresh":2,"regex":"/.*release=\\"([^\\"]+)/","skipUrlSync":false,"sort":1,"tagValuesQuery":"","tags":[],"tagsQuery":"","type":"query","useTags":false},{"allValue":null,"current":{"selected":false,"text":"postgres-exported-sample:9187","value":"postgres-exported-sample:9187"},"datasource":"Prometheus","definition":"","hide":0,"includeAll":false,"label":"Instance","multi":false,"name":"instance","options":[],"query":"query_result(up{release=\\"$release\\"})","refresh":1,"regex":"/.*instance=\\"([^\\"]+).*/","skipUrlSync":false,"sort":1,"tagValuesQuery":"","tags":[],"tagsQuery":"","type":"query","useTags":false},{"allValue":null,"current":{"selected":true,"tags":[],"text":"All","value":["$__all"]},"datasource":"Prometheus","definition":"","hide":0,"includeAll":true,"label":"Database","multi":true,"name":"datname","options":[],"query":"label_values(datname)","refresh":1,"regex":"","skipUrlSync":false,"sort":1,"tagValuesQuery":"","tags":[],"tagsQuery":"","type":"query","useTags":false},{"allValue":null,"current":{"selected":false,"text":"All","value":"$__all"},"datasource":"Prometheus","definition":"","hide":0,"includeAll":true,"label":"Lock table","multi":true,"name":"mode","options":[],"query":"label_values({mode=~\\"accessexclusivelock|accesssharelock|exclusivelock|rowexclusivelock|rowsharelock|sharelock|sharerowexclusivelock|shareupdateexclusivelock\\"}, mode)","refresh":1,"regex":"","skipUrlSync":false,"sort":0,"tagValuesQuery":"","tags":[],"tagsQuery":"","type":"query","useTags":false}]},"time":{"from":"now-30m","to":"now"},"timepicker":{"refresh_intervals":["5s","10s","30s","1m","5m","15m","30m","1h","2h","1d"],"time_options":["5m","15m","1h","6h","12h","24h","2d","7d","30d"]},"timezone":"","title":"PostgreSQL Database","uid":"000000039","version":3}
+39	21	0	0	1	2021-11-07 06:56:35	2		{"annotations":{"list":[{"builtIn":1,"datasource":"-- Grafana --","enable":true,"hide":true,"iconColor":"rgba(0, 211, 255, 1)","name":"Annotations \\u0026 Alerts","type":"dashboard"}]},"editable":true,"gnetId":null,"graphTooltip":0,"hideControls":false,"id":null,"links":[],"panels":[{"aliasColors":{},"bars":false,"dashLength":10,"dashes":false,"datasource":null,"fieldConfig":{"defaults":{"custom":{}},"overrides":[]},"fill":1,"fillGradient":0,"gridPos":{"h":9,"w":12,"x":0,"y":0},"hiddenSeries":false,"id":2,"legend":{"avg":false,"current":false,"max":false,"min":false,"show":true,"total":false,"values":false},"lines":true,"linewidth":1,"nullPointMode":"null","options":{"alertThreshold":true},"percentage":false,"pluginVersion":"7.2.0","pointradius":2,"points":false,"renderer":"flot","seriesOverrides":[],"spaceLength":10,"stack":false,"steppedLine":false,"targets":[{"expr":"sum(actuator_health{indicator=~\\".+\\"}) by (indicator)","interval":"","legendFormat":"{{indicator}}","refId":"A"}],"thresholds":[],"timeFrom":null,"timeRegions":[],"timeShift":null,"title":"Panel Title","tooltip":{"shared":true,"sort":0,"value_type":"individual"},"type":"graph","xaxis":{"buckets":null,"mode":"time","name":null,"show":true,"values":[]},"yaxes":[{"$$hashKey":"object:211","format":"short","label":null,"logBase":1,"max":null,"min":null,"show":true},{"$$hashKey":"object:212","format":"short","label":null,"logBase":1,"max":null,"min":null,"show":true}],"yaxis":{"align":false,"alignLevel":null}}],"schemaVersion":26,"style":"dark","tags":[],"templating":{"list":[]},"time":{"from":"now-6h","to":"now"},"timepicker":{},"timezone":"","title":"Health Panel","uid":"djUVKeK7k","version":1}
+40	21	1	0	2	2021-11-07 07:15:20	2	test	{"annotations":{"list":[{"builtIn":1,"datasource":"-- Grafana --","enable":true,"hide":true,"iconColor":"rgba(0, 211, 255, 1)","name":"Annotations \\u0026 Alerts","type":"dashboard"}]},"editable":true,"gnetId":null,"graphTooltip":0,"id":21,"links":[],"panels":[{"aliasColors":{},"bars":false,"dashLength":10,"dashes":false,"datasource":"Prometheus","fieldConfig":{"defaults":{"custom":{}},"overrides":[]},"fill":1,"fillGradient":0,"gridPos":{"h":9,"w":12,"x":0,"y":0},"hiddenSeries":false,"id":2,"legend":{"avg":false,"current":false,"max":false,"min":false,"show":true,"total":false,"values":false},"lines":true,"linewidth":1,"nullPointMode":"null","options":{"alertThreshold":true},"percentage":false,"pluginVersion":"7.2.0","pointradius":2,"points":false,"renderer":"flot","seriesOverrides":[],"spaceLength":10,"stack":false,"steppedLine":false,"targets":[{"expr":"sum(actuator_health{indicator=~\\".+\\"}) by (indicator)","interval":"","legendFormat":"{{indicator}}","refId":"A"}],"thresholds":[],"timeFrom":null,"timeRegions":[],"timeShift":null,"title":"Panel Title","tooltip":{"shared":true,"sort":0,"value_type":"individual"},"type":"graph","xaxis":{"buckets":null,"mode":"time","name":null,"show":true,"values":[]},"yaxes":[{"$$hashKey":"object:211","format":"short","label":null,"logBase":1,"max":null,"min":null,"show":true},{"$$hashKey":"object:212","format":"short","label":null,"logBase":1,"max":null,"min":null,"show":true}],"yaxis":{"align":false,"alignLevel":null}}],"schemaVersion":26,"style":"dark","tags":[],"templating":{"list":[]},"time":{"from":"now-6h","to":"now"},"timepicker":{},"timezone":"","title":"Health Panel","uid":"djUVKeK7k","version":2}
+41	21	2	0	3	2021-11-07 07:18:45	2		{"annotations":{"list":[{"builtIn":1,"datasource":"-- Grafana --","enable":true,"hide":true,"iconColor":"rgba(0, 211, 255, 1)","name":"Annotations \\u0026 Alerts","type":"dashboard"}]},"editable":true,"gnetId":null,"graphTooltip":0,"id":21,"links":[],"panels":[{"aliasColors":{},"bars":false,"dashLength":10,"dashes":false,"datasource":"Prometheus","fieldConfig":{"defaults":{"custom":{}},"overrides":[]},"fill":1,"fillGradient":0,"gridPos":{"h":9,"w":12,"x":0,"y":0},"hiddenSeries":false,"id":2,"legend":{"avg":false,"current":false,"max":false,"min":false,"show":true,"total":false,"values":false},"lines":true,"linewidth":1,"nullPointMode":"null","options":{"alertThreshold":true},"percentage":false,"pluginVersion":"7.2.0","pointradius":2,"points":false,"renderer":"flot","seriesOverrides":[],"spaceLength":10,"stack":false,"steppedLine":false,"targets":[{"expr":"sum(actuator_health{indicator=~\\".+\\"}) by (indicator)","interval":"","legendFormat":"{{indicator}}","refId":"A"}],"thresholds":[],"timeFrom":null,"timeRegions":[],"timeShift":null,"title":"Panel Title","tooltip":{"shared":true,"sort":0,"value_type":"individual"},"type":"graph","xaxis":{"buckets":null,"mode":"time","name":null,"show":true,"values":[]},"yaxes":[{"$$hashKey":"object:211","format":"short","label":null,"logBase":1,"max":null,"min":null,"show":true},{"$$hashKey":"object:212","format":"short","label":null,"logBase":1,"max":null,"min":null,"show":true}],"yaxis":{"align":false,"alignLevel":null}}],"schemaVersion":26,"style":"dark","tags":[],"templating":{"list":[{"allValue":null,"current":{"selected":true,"text":["api-gateway-sample"],"value":["api-gateway-sample"]},"datasource":"Prometheus","definition":"label_values(service)","hide":0,"includeAll":false,"label":"Service","multi":true,"name":"service","options":[{"selected":true,"text":"api-gateway-sample","value":"api-gateway-sample"}],"query":"label_values(service)","refresh":0,"regex":"","skipUrlSync":false,"sort":1,"tagValuesQuery":"","tags":[],"tagsQuery":"","type":"query","useTags":false}]},"time":{"from":"now-6h","to":"now"},"timepicker":{},"timezone":"","title":"Health Panel","uid":"djUVKeK7k","version":3}
+42	21	3	0	4	2021-11-07 07:41:34	2		{"annotations":{"list":[{"builtIn":1,"datasource":"-- Grafana --","enable":true,"hide":true,"iconColor":"rgba(0, 211, 255, 1)","name":"Annotations \\u0026 Alerts","type":"dashboard"}]},"editable":true,"gnetId":null,"graphTooltip":0,"id":21,"iteration":1636270443655,"links":[],"panels":[{"aliasColors":{},"bars":false,"dashLength":10,"dashes":false,"datasource":"Prometheus","fieldConfig":{"defaults":{"custom":{}},"overrides":[]},"fill":1,"fillGradient":0,"gridPos":{"h":9,"w":12,"x":0,"y":0},"hiddenSeries":false,"id":2,"legend":{"avg":false,"current":false,"max":false,"min":false,"show":true,"total":false,"values":false},"lines":true,"linewidth":1,"nullPointMode":"null","options":{"alertThreshold":true},"percentage":false,"pluginVersion":"7.2.0","pointradius":2,"points":false,"renderer":"flot","seriesOverrides":[],"spaceLength":10,"stack":false,"steppedLine":false,"targets":[{"expr":"sum(actuator_health{indicator=~\\".+\\"}) by (indicator)","interval":"","legendFormat":"{{indicator}}","refId":"A"}],"thresholds":[],"timeFrom":null,"timeRegions":[],"timeShift":null,"title":"Panel Title","tooltip":{"shared":true,"sort":0,"value_type":"individual"},"type":"graph","xaxis":{"buckets":null,"mode":"time","name":null,"show":true,"values":[]},"yaxes":[{"$$hashKey":"object:211","format":"short","label":null,"logBase":1,"max":null,"min":null,"show":true},{"$$hashKey":"object:212","format":"short","label":null,"logBase":1,"max":null,"min":null,"show":true}],"yaxis":{"align":false,"alignLevel":null}}],"schemaVersion":26,"style":"dark","tags":[],"templating":{"list":[{"allValue":null,"current":{"selected":true,"text":["api-gateway-sample"],"value":["api-gateway-sample"]},"datasource":"Prometheus","definition":"label_values(service)","hide":0,"includeAll":false,"label":"Service","multi":true,"name":"service","options":[{"selected":true,"text":"api-gateway-sample","value":"api-gateway-sample"}],"query":"label_values(service)","refresh":0,"regex":"","skipUrlSync":false,"sort":1,"tagValuesQuery":"","tags":[],"tagsQuery":"","type":"query","useTags":false}]},"time":{"from":"now-6h","to":"now"},"timepicker":{},"timezone":"","title":"Health Panel","uid":"djUVKeK7k","version":4}
+43	21	4	0	5	2021-11-08 07:07:16	2		{"annotations":{"list":[{"builtIn":1,"datasource":"-- Grafana --","enable":true,"hide":true,"iconColor":"rgba(0, 211, 255, 1)","name":"Annotations \\u0026 Alerts","type":"dashboard"}]},"editable":true,"gnetId":null,"graphTooltip":0,"id":21,"iteration":1636355001277,"links":[],"panels":[{"aliasColors":{},"bars":false,"dashLength":10,"dashes":false,"datasource":"Prometheus","fieldConfig":{"defaults":{"custom":{}},"overrides":[]},"fill":1,"fillGradient":0,"gridPos":{"h":9,"w":12,"x":0,"y":0},"hiddenSeries":false,"id":2,"legend":{"avg":false,"current":false,"max":false,"min":false,"show":true,"total":false,"values":false},"lines":true,"linewidth":1,"nullPointMode":"null","options":{"alertThreshold":true},"percentage":false,"pluginVersion":"7.2.0","pointradius":2,"points":false,"renderer":"flot","seriesOverrides":[],"spaceLength":10,"stack":false,"steppedLine":false,"targets":[{"expr":"sum(actuator_health{indicator=~\\".+\\"}) by (indicator)","interval":"","legendFormat":"{{indicator}}","refId":"A"}],"thresholds":[],"timeFrom":null,"timeRegions":[],"timeShift":null,"title":"Panel Title","tooltip":{"shared":true,"sort":0,"value_type":"individual"},"type":"graph","xaxis":{"buckets":null,"mode":"time","name":null,"show":true,"values":[]},"yaxes":[{"$$hashKey":"object:211","format":"short","label":null,"logBase":1,"max":null,"min":null,"show":true},{"$$hashKey":"object:212","format":"short","label":null,"logBase":1,"max":null,"min":null,"show":true}],"yaxis":{"align":false,"alignLevel":null}}],"schemaVersion":26,"style":"dark","tags":[],"templating":{"list":[{"allValue":".+","current":{"selected":true,"text":["api-gateway-sample"],"value":["api-gateway-sample"]},"datasource":"Prometheus","definition":"label_values(service)","hide":0,"includeAll":true,"label":"Service","multi":true,"name":"service","options":[{"selected":false,"text":"All","value":"$__all"},{"selected":false,"text":"api","value":"api"},{"selected":true,"text":"api-gateway-sample","value":"api-gateway-sample"}],"query":"label_values(service)","refresh":0,"regex":"","skipUrlSync":false,"sort":1,"tagValuesQuery":"","tags":[],"tagsQuery":"","type":"query","useTags":false}]},"time":{"from":"now-5m","to":"now"},"timepicker":{},"timezone":"","title":"Health Panel","uid":"djUVKeK7k","version":5}
+44	21	5	0	6	2021-11-08 07:11:05	2		{"annotations":{"list":[{"builtIn":1,"datasource":"-- Grafana --","enable":true,"hide":true,"iconColor":"rgba(0, 211, 255, 1)","name":"Annotations \\u0026 Alerts","type":"dashboard"}]},"editable":true,"gnetId":null,"graphTooltip":0,"id":21,"iteration":1636355001287,"links":[],"panels":[{"aliasColors":{},"bars":false,"dashLength":10,"dashes":false,"datasource":"Prometheus","fieldConfig":{"defaults":{"custom":{}},"overrides":[]},"fill":1,"fillGradient":0,"gridPos":{"h":9,"w":12,"x":0,"y":0},"hiddenSeries":false,"id":2,"legend":{"avg":false,"current":false,"max":false,"min":false,"show":true,"total":false,"values":false},"lines":true,"linewidth":1,"nullPointMode":"null","options":{"alertThreshold":true},"percentage":false,"pluginVersion":"7.2.0","pointradius":2,"points":false,"renderer":"flot","seriesOverrides":[],"spaceLength":10,"stack":false,"steppedLine":false,"targets":[{"expr":"sum(actuator_health{indicator=~\\".+\\",service=\\"$service\\"}) by (indicator)","interval":"","legendFormat":"{{indicator}}","refId":"A"}],"thresholds":[],"timeFrom":null,"timeRegions":[],"timeShift":null,"title":"Panel Title","tooltip":{"shared":true,"sort":0,"value_type":"individual"},"type":"graph","xaxis":{"buckets":null,"mode":"time","name":null,"show":true,"values":[]},"yaxes":[{"$$hashKey":"object:211","format":"short","label":null,"logBase":1,"max":null,"min":null,"show":true},{"$$hashKey":"object:212","format":"short","label":null,"logBase":1,"max":null,"min":null,"show":true}],"yaxis":{"align":false,"alignLevel":null}}],"schemaVersion":26,"style":"dark","tags":[],"templating":{"list":[{"allValue":".+","current":{"selected":true,"text":["api-gateway-sample"],"value":["api-gateway-sample"]},"datasource":"Prometheus","definition":"label_values(service)","hide":0,"includeAll":true,"label":"Service","multi":true,"name":"service","options":[{"selected":false,"text":"All","value":"$__all"},{"selected":true,"text":"api","value":"api"},{"selected":false,"text":"api-gateway-sample","value":"api-gateway-sample"}],"query":"label_values(service)","refresh":0,"regex":"","skipUrlSync":false,"sort":1,"tagValuesQuery":"","tags":[],"tagsQuery":"","type":"query","useTags":false}]},"time":{"from":"now-5m","to":"now"},"timepicker":{},"timezone":"","title":"Health Panel","uid":"djUVKeK7k","version":6}
+45	21	6	0	7	2021-11-08 07:13:12	2		{"annotations":{"list":[{"builtIn":1,"datasource":"-- Grafana --","enable":true,"hide":true,"iconColor":"rgba(0, 211, 255, 1)","name":"Annotations \\u0026 Alerts","type":"dashboard"}]},"editable":true,"gnetId":null,"graphTooltip":0,"id":21,"iteration":1636355001299,"links":[],"panels":[{"aliasColors":{},"bars":false,"dashLength":10,"dashes":false,"datasource":"Prometheus","fieldConfig":{"defaults":{"custom":{}},"overrides":[]},"fill":1,"fillGradient":0,"gridPos":{"h":9,"w":12,"x":0,"y":0},"hiddenSeries":false,"id":2,"legend":{"avg":false,"current":false,"max":false,"min":false,"show":true,"total":false,"values":false},"lines":true,"linewidth":1,"nullPointMode":"null","options":{"alertThreshold":true},"percentage":false,"pluginVersion":"7.2.0","pointradius":2,"points":false,"renderer":"flot","seriesOverrides":[],"spaceLength":10,"stack":false,"steppedLine":false,"targets":[{"expr":"sum(actuator_health{indicator=~\\".+\\",service=\\"$service\\"}) by (indicator)","interval":"","legendFormat":"{{indicator}}","refId":"A"}],"thresholds":[],"timeFrom":null,"timeRegions":[],"timeShift":null,"title":"Health Indicators","tooltip":{"shared":true,"sort":0,"value_type":"individual"},"type":"graph","xaxis":{"buckets":null,"mode":"time","name":null,"show":true,"values":[]},"yaxes":[{"$$hashKey":"object:211","format":"short","label":null,"logBase":1,"max":null,"min":null,"show":true},{"$$hashKey":"object:212","format":"short","label":null,"logBase":1,"max":null,"min":null,"show":true}],"yaxis":{"align":false,"alignLevel":null}}],"schemaVersion":26,"style":"dark","tags":[],"templating":{"list":[{"allValue":".+","current":{"selected":true,"text":["api-gateway-sample"],"value":["api-gateway-sample"]},"datasource":"Prometheus","definition":"label_values(service)","hide":0,"includeAll":false,"label":"Service","multi":false,"name":"service","options":[{"selected":false,"text":"api","value":"api"},{"selected":true,"text":"api-gateway-sample","value":"api-gateway-sample"}],"query":"label_values(service)","refresh":0,"regex":"","skipUrlSync":false,"sort":1,"tagValuesQuery":"","tags":[],"tagsQuery":"","type":"query","useTags":false}]},"time":{"from":"now-5m","to":"now"},"timepicker":{},"timezone":"","title":"Health Panel","uid":"djUVKeK7k","version":7}
 \.
 
 
 --
--- TOC entry 3315 (class 0 OID 32959)
--- Dependencies: 221
+-- TOC entry 3674 (class 0 OID 16498)
+-- Dependencies: 234
 -- Data for Name: data_source; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.data_source (id, org_id, version, type, name, access, url, password, "user", database, basic_auth, basic_auth_user, basic_auth_password, is_default, json_data, created, updated, with_credentials, secure_json_data, read_only, uid) FROM stdin;
-26	1	1	prometheus	Prometheus	proxy	http://prometheus-sample:9090				f			t	{}	2020-10-04 05:34:35	2020-10-04 05:34:35	f	{}	f	JHujwuKMk
+27	1	1	prometheus	Prometheus	proxy	http://prometheus-sample:9090				f			t	{}	2021-11-06 22:28:34	2021-11-06 22:28:34	f	{}	f	deJMh3F7k
 23	1	2	graphite	graphite	proxy	http://graphite-sample:80				t	guest	guest	f	{}	2020-06-11 05:26:28	2020-06-11 05:27:21	f	{}	f	cBO8L-mMk
 \.
 
 
 --
--- TOC entry 3354 (class 0 OID 33250)
--- Dependencies: 260
+-- TOC entry 3676 (class 0 OID 16506)
+-- Dependencies: 236
 -- Data for Name: login_attempt; Type: TABLE DATA; Schema: public; Owner: -
 --
 
@@ -1865,8 +1876,8 @@ COPY public.login_attempt (id, username, ip_address, created) FROM stdin;
 
 
 --
--- TOC entry 3297 (class 0 OID 32772)
--- Dependencies: 203
+-- TOC entry 3678 (class 0 OID 16511)
+-- Dependencies: 238
 -- Data for Name: migration_log; Type: TABLE DATA; Schema: public; Owner: -
 --
 
@@ -2117,8 +2128,8 @@ COPY public.migration_log (id, migration_id, sql, success, error, "timestamp") F
 
 
 --
--- TOC entry 3305 (class 0 OID 32841)
--- Dependencies: 211
+-- TOC entry 3680 (class 0 OID 16517)
+-- Dependencies: 240
 -- Data for Name: org; Type: TABLE DATA; Schema: public; Owner: -
 --
 
@@ -2128,8 +2139,8 @@ COPY public.org (id, version, name, address1, address2, city, state, zip_code, c
 
 
 --
--- TOC entry 3307 (class 0 OID 32853)
--- Dependencies: 213
+-- TOC entry 3682 (class 0 OID 16523)
+-- Dependencies: 242
 -- Data for Name: org_user; Type: TABLE DATA; Schema: public; Owner: -
 --
 
@@ -2140,8 +2151,8 @@ COPY public.org_user (id, org_id, user_id, role, created, updated) FROM stdin;
 
 
 --
--- TOC entry 3326 (class 0 OID 33064)
--- Dependencies: 232
+-- TOC entry 3684 (class 0 OID 16527)
+-- Dependencies: 244
 -- Data for Name: playlist; Type: TABLE DATA; Schema: public; Owner: -
 --
 
@@ -2151,8 +2162,8 @@ COPY public.playlist (id, name, "interval", org_id) FROM stdin;
 
 
 --
--- TOC entry 3328 (class 0 OID 33075)
--- Dependencies: 234
+-- TOC entry 3686 (class 0 OID 16533)
+-- Dependencies: 246
 -- Data for Name: playlist_item; Type: TABLE DATA; Schema: public; Owner: -
 --
 
@@ -2165,8 +2176,8 @@ COPY public.playlist_item (id, playlist_id, type, value, title, "order") FROM st
 
 
 --
--- TOC entry 3323 (class 0 OID 33043)
--- Dependencies: 229
+-- TOC entry 3688 (class 0 OID 16539)
+-- Dependencies: 248
 -- Data for Name: plugin_setting; Type: TABLE DATA; Schema: public; Owner: -
 --
 
@@ -2175,8 +2186,8 @@ COPY public.plugin_setting (id, org_id, plugin_id, enabled, pinned, json_data, s
 
 
 --
--- TOC entry 3330 (class 0 OID 33086)
--- Dependencies: 236
+-- TOC entry 3690 (class 0 OID 16545)
+-- Dependencies: 250
 -- Data for Name: preferences; Type: TABLE DATA; Schema: public; Owner: -
 --
 
@@ -2185,8 +2196,8 @@ COPY public.preferences (id, org_id, user_id, version, home_dashboard_id, timezo
 
 
 --
--- TOC entry 3321 (class 0 OID 33033)
--- Dependencies: 227
+-- TOC entry 3692 (class 0 OID 16549)
+-- Dependencies: 252
 -- Data for Name: quota; Type: TABLE DATA; Schema: public; Owner: -
 --
 
@@ -2195,20 +2206,20 @@ COPY public.quota (id, org_id, user_id, target, "limit", created, updated) FROM 
 
 
 --
--- TOC entry 3358 (class 0 OID 33274)
--- Dependencies: 264
+-- TOC entry 3694 (class 0 OID 16553)
+-- Dependencies: 254
 -- Data for Name: server_lock; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.server_lock (id, operation_uid, version, last_execution) FROM stdin;
-1	cleanup expired auth tokens	7	1601789675
-2	delete old login attempts	222	1601793275
+1	cleanup expired auth tokens	9	1636316767
+2	delete old login attempts	354	1636356367
 \.
 
 
 --
--- TOC entry 3324 (class 0 OID 33054)
--- Dependencies: 230
+-- TOC entry 3696 (class 0 OID 16557)
+-- Dependencies: 256
 -- Data for Name: session; Type: TABLE DATA; Schema: public; Owner: -
 --
 
@@ -2217,8 +2228,8 @@ COPY public.session (key, data, expiry) FROM stdin;
 
 
 --
--- TOC entry 3303 (class 0 OID 32832)
--- Dependencies: 209
+-- TOC entry 3697 (class 0 OID 16562)
+-- Dependencies: 257
 -- Data for Name: star; Type: TABLE DATA; Schema: public; Owner: -
 --
 
@@ -2227,8 +2238,8 @@ COPY public.star (id, user_id, dashboard_id) FROM stdin;
 
 
 --
--- TOC entry 3352 (class 0 OID 33232)
--- Dependencies: 258
+-- TOC entry 3699 (class 0 OID 16566)
+-- Dependencies: 259
 -- Data for Name: tag; Type: TABLE DATA; Schema: public; Owner: -
 --
 
@@ -2237,8 +2248,8 @@ COPY public.tag (id, key, value) FROM stdin;
 
 
 --
--- TOC entry 3346 (class 0 OID 33200)
--- Dependencies: 252
+-- TOC entry 3701 (class 0 OID 16570)
+-- Dependencies: 261
 -- Data for Name: team; Type: TABLE DATA; Schema: public; Owner: -
 --
 
@@ -2247,8 +2258,8 @@ COPY public.team (id, name, org_id, created, updated, email) FROM stdin;
 
 
 --
--- TOC entry 3348 (class 0 OID 33210)
--- Dependencies: 254
+-- TOC entry 3703 (class 0 OID 16574)
+-- Dependencies: 263
 -- Data for Name: team_member; Type: TABLE DATA; Schema: public; Owner: -
 --
 
@@ -2257,8 +2268,8 @@ COPY public.team_member (id, org_id, team_id, user_id, created, updated, externa
 
 
 --
--- TOC entry 3301 (class 0 OID 32814)
--- Dependencies: 207
+-- TOC entry 3705 (class 0 OID 16578)
+-- Dependencies: 265
 -- Data for Name: temp_user; Type: TABLE DATA; Schema: public; Owner: -
 --
 
@@ -2267,8 +2278,8 @@ COPY public.temp_user (id, org_id, version, email, name, role, code, status, inv
 
 
 --
--- TOC entry 3342 (class 0 OID 33179)
--- Dependencies: 248
+-- TOC entry 3707 (class 0 OID 16584)
+-- Dependencies: 267
 -- Data for Name: test_data; Type: TABLE DATA; Schema: public; Owner: -
 --
 
@@ -2277,19 +2288,19 @@ COPY public.test_data (id, metric1, metric2, value_big_int, value_double, value_
 
 
 --
--- TOC entry 3299 (class 0 OID 32796)
--- Dependencies: 205
+-- TOC entry 3709 (class 0 OID 16588)
+-- Dependencies: 269
 -- Data for Name: user; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public."user" (id, version, login, email, name, password, salt, rands, company, org_id, is_admin, email_verified, theme, created, updated, help_flags1, last_seen_at, is_disabled) FROM stdin;
-2	0	admin	admin@localhost		721f6fcdab69a4cfb8c7c367e6c3003af44bb9a474f64277589d27d610759b0a61849c7162fda6b8f5f5994ad423571d955d	wZuvD52AcK	DzMcWb4goW		1	t	f		2020-09-27 04:56:30	2020-10-04 05:35:50	0	2020-10-04 06:27:52	f
+2	0	admin	admin@localhost		721f6fcdab69a4cfb8c7c367e6c3003af44bb9a474f64277589d27d610759b0a61849c7162fda6b8f5f5994ad423571d955d	wZuvD52AcK	DzMcWb4goW		1	t	f		2020-09-27 04:56:30	2021-11-06 22:30:27	0	2021-11-08 07:20:07	f
 \.
 
 
 --
--- TOC entry 3356 (class 0 OID 33260)
--- Dependencies: 262
+-- TOC entry 3710 (class 0 OID 16595)
+-- Dependencies: 270
 -- Data for Name: user_auth; Type: TABLE DATA; Schema: public; Owner: -
 --
 
@@ -2298,19 +2309,19 @@ COPY public.user_auth (id, user_id, auth_module, auth_id, created, o_auth_access
 
 
 --
--- TOC entry 3360 (class 0 OID 33283)
--- Dependencies: 266
+-- TOC entry 3712 (class 0 OID 16601)
+-- Dependencies: 272
 -- Data for Name: user_auth_token; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.user_auth_token (id, user_id, auth_token, prev_auth_token, user_agent, client_ip, auth_token_seen, seen_at, rotated_at, created_at, updated_at) FROM stdin;
-5	2	f4de624adf174d67d566a58f407f33219594513b8e4dd6da3efd6c905601152d	5017c17118893d4909ee7acf131461611fce6e2dd2c7f6e6e2de2825f2832192	Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36	172.20.0.1	t	1601792564	1601792564	1601789738	1601789738
+6	2	9bc804cff6c71a2c6298016424dd30099b163e956f68abd3e3e355e117cbfe3a	86edfdeb28b5e0ceee675e3c7fdeb3feef86adefd3774d8a1d2ad04c253049b2	Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36	192.168.192.1	t	1636356196	1636356191	1636237823	1636237823
 \.
 
 
 --
--- TOC entry 3399 (class 0 OID 0)
--- Dependencies: 237
+-- TOC entry 3752 (class 0 OID 0)
+-- Dependencies: 210
 -- Name: alert_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
@@ -2318,8 +2329,8 @@ SELECT pg_catalog.setval('public.alert_id_seq', 3, true);
 
 
 --
--- TOC entry 3400 (class 0 OID 0)
--- Dependencies: 240
+-- TOC entry 3753 (class 0 OID 0)
+-- Dependencies: 212
 -- Name: alert_notification_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
@@ -2327,8 +2338,8 @@ SELECT pg_catalog.setval('public.alert_notification_id_seq', 1, false);
 
 
 --
--- TOC entry 3401 (class 0 OID 0)
--- Dependencies: 242
+-- TOC entry 3754 (class 0 OID 0)
+-- Dependencies: 214
 -- Name: alert_notification_state_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
@@ -2336,17 +2347,17 @@ SELECT pg_catalog.setval('public.alert_notification_state_id_seq', 1, false);
 
 
 --
--- TOC entry 3402 (class 0 OID 0)
--- Dependencies: 244
+-- TOC entry 3755 (class 0 OID 0)
+-- Dependencies: 217
 -- Name: annotation_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.annotation_id_seq', 1, true);
+SELECT pg_catalog.setval('public.annotation_id_seq', 4, true);
 
 
 --
--- TOC entry 3403 (class 0 OID 0)
--- Dependencies: 222
+-- TOC entry 3756 (class 0 OID 0)
+-- Dependencies: 220
 -- Name: api_key_id_seq1; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
@@ -2354,8 +2365,8 @@ SELECT pg_catalog.setval('public.api_key_id_seq1', 1, false);
 
 
 --
--- TOC entry 3404 (class 0 OID 0)
--- Dependencies: 255
+-- TOC entry 3757 (class 0 OID 0)
+-- Dependencies: 224
 -- Name: dashboard_acl_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
@@ -2363,17 +2374,17 @@ SELECT pg_catalog.setval('public.dashboard_acl_id_seq', 2, true);
 
 
 --
--- TOC entry 3405 (class 0 OID 0)
--- Dependencies: 216
+-- TOC entry 3758 (class 0 OID 0)
+-- Dependencies: 225
 -- Name: dashboard_id_seq1; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.dashboard_id_seq1', 20, true);
+SELECT pg_catalog.setval('public.dashboard_id_seq1', 21, true);
 
 
 --
--- TOC entry 3406 (class 0 OID 0)
--- Dependencies: 218
+-- TOC entry 3759 (class 0 OID 0)
+-- Dependencies: 227
 -- Name: dashboard_provisioning_id_seq1; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
@@ -2381,8 +2392,8 @@ SELECT pg_catalog.setval('public.dashboard_provisioning_id_seq1', 1, false);
 
 
 --
--- TOC entry 3407 (class 0 OID 0)
--- Dependencies: 224
+-- TOC entry 3760 (class 0 OID 0)
+-- Dependencies: 229
 -- Name: dashboard_snapshot_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
@@ -2390,8 +2401,8 @@ SELECT pg_catalog.setval('public.dashboard_snapshot_id_seq', 1, false);
 
 
 --
--- TOC entry 3408 (class 0 OID 0)
--- Dependencies: 214
+-- TOC entry 3761 (class 0 OID 0)
+-- Dependencies: 231
 -- Name: dashboard_tag_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
@@ -2399,26 +2410,26 @@ SELECT pg_catalog.setval('public.dashboard_tag_id_seq', 30, true);
 
 
 --
--- TOC entry 3409 (class 0 OID 0)
--- Dependencies: 249
+-- TOC entry 3762 (class 0 OID 0)
+-- Dependencies: 233
 -- Name: dashboard_version_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.dashboard_version_id_seq', 38, true);
+SELECT pg_catalog.setval('public.dashboard_version_id_seq', 45, true);
 
 
 --
--- TOC entry 3410 (class 0 OID 0)
--- Dependencies: 220
+-- TOC entry 3763 (class 0 OID 0)
+-- Dependencies: 235
 -- Name: data_source_id_seq1; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.data_source_id_seq1', 26, true);
+SELECT pg_catalog.setval('public.data_source_id_seq1', 27, true);
 
 
 --
--- TOC entry 3411 (class 0 OID 0)
--- Dependencies: 259
+-- TOC entry 3764 (class 0 OID 0)
+-- Dependencies: 237
 -- Name: login_attempt_id_seq1; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
@@ -2426,8 +2437,8 @@ SELECT pg_catalog.setval('public.login_attempt_id_seq1', 3, true);
 
 
 --
--- TOC entry 3412 (class 0 OID 0)
--- Dependencies: 202
+-- TOC entry 3765 (class 0 OID 0)
+-- Dependencies: 239
 -- Name: migration_log_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
@@ -2435,8 +2446,8 @@ SELECT pg_catalog.setval('public.migration_log_id_seq', 242, true);
 
 
 --
--- TOC entry 3413 (class 0 OID 0)
--- Dependencies: 210
+-- TOC entry 3766 (class 0 OID 0)
+-- Dependencies: 241
 -- Name: org_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
@@ -2444,8 +2455,8 @@ SELECT pg_catalog.setval('public.org_id_seq', 1, true);
 
 
 --
--- TOC entry 3414 (class 0 OID 0)
--- Dependencies: 212
+-- TOC entry 3767 (class 0 OID 0)
+-- Dependencies: 243
 -- Name: org_user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
@@ -2453,8 +2464,8 @@ SELECT pg_catalog.setval('public.org_user_id_seq', 2, true);
 
 
 --
--- TOC entry 3415 (class 0 OID 0)
--- Dependencies: 231
+-- TOC entry 3768 (class 0 OID 0)
+-- Dependencies: 245
 -- Name: playlist_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
@@ -2462,8 +2473,8 @@ SELECT pg_catalog.setval('public.playlist_id_seq', 1, true);
 
 
 --
--- TOC entry 3416 (class 0 OID 0)
--- Dependencies: 233
+-- TOC entry 3769 (class 0 OID 0)
+-- Dependencies: 247
 -- Name: playlist_item_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
@@ -2471,8 +2482,8 @@ SELECT pg_catalog.setval('public.playlist_item_id_seq', 4, true);
 
 
 --
--- TOC entry 3417 (class 0 OID 0)
--- Dependencies: 228
+-- TOC entry 3770 (class 0 OID 0)
+-- Dependencies: 249
 -- Name: plugin_setting_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
@@ -2480,8 +2491,8 @@ SELECT pg_catalog.setval('public.plugin_setting_id_seq', 1, false);
 
 
 --
--- TOC entry 3418 (class 0 OID 0)
--- Dependencies: 235
+-- TOC entry 3771 (class 0 OID 0)
+-- Dependencies: 251
 -- Name: preferences_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
@@ -2489,8 +2500,8 @@ SELECT pg_catalog.setval('public.preferences_id_seq', 1, false);
 
 
 --
--- TOC entry 3419 (class 0 OID 0)
--- Dependencies: 226
+-- TOC entry 3772 (class 0 OID 0)
+-- Dependencies: 253
 -- Name: quota_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
@@ -2498,8 +2509,8 @@ SELECT pg_catalog.setval('public.quota_id_seq', 1, false);
 
 
 --
--- TOC entry 3420 (class 0 OID 0)
--- Dependencies: 263
+-- TOC entry 3773 (class 0 OID 0)
+-- Dependencies: 255
 -- Name: server_lock_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
@@ -2507,8 +2518,8 @@ SELECT pg_catalog.setval('public.server_lock_id_seq', 34, true);
 
 
 --
--- TOC entry 3421 (class 0 OID 0)
--- Dependencies: 208
+-- TOC entry 3774 (class 0 OID 0)
+-- Dependencies: 258
 -- Name: star_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
@@ -2516,8 +2527,8 @@ SELECT pg_catalog.setval('public.star_id_seq', 1, false);
 
 
 --
--- TOC entry 3422 (class 0 OID 0)
--- Dependencies: 257
+-- TOC entry 3775 (class 0 OID 0)
+-- Dependencies: 260
 -- Name: tag_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
@@ -2525,8 +2536,8 @@ SELECT pg_catalog.setval('public.tag_id_seq', 1, false);
 
 
 --
--- TOC entry 3423 (class 0 OID 0)
--- Dependencies: 251
+-- TOC entry 3776 (class 0 OID 0)
+-- Dependencies: 262
 -- Name: team_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
@@ -2534,8 +2545,8 @@ SELECT pg_catalog.setval('public.team_id_seq', 1, false);
 
 
 --
--- TOC entry 3424 (class 0 OID 0)
--- Dependencies: 253
+-- TOC entry 3777 (class 0 OID 0)
+-- Dependencies: 264
 -- Name: team_member_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
@@ -2543,8 +2554,8 @@ SELECT pg_catalog.setval('public.team_member_id_seq', 1, false);
 
 
 --
--- TOC entry 3425 (class 0 OID 0)
--- Dependencies: 206
+-- TOC entry 3778 (class 0 OID 0)
+-- Dependencies: 266
 -- Name: temp_user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
@@ -2552,8 +2563,8 @@ SELECT pg_catalog.setval('public.temp_user_id_seq', 1, false);
 
 
 --
--- TOC entry 3426 (class 0 OID 0)
--- Dependencies: 247
+-- TOC entry 3779 (class 0 OID 0)
+-- Dependencies: 268
 -- Name: test_data_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
@@ -2561,8 +2572,8 @@ SELECT pg_catalog.setval('public.test_data_id_seq', 1, false);
 
 
 --
--- TOC entry 3427 (class 0 OID 0)
--- Dependencies: 261
+-- TOC entry 3780 (class 0 OID 0)
+-- Dependencies: 271
 -- Name: user_auth_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
@@ -2570,17 +2581,17 @@ SELECT pg_catalog.setval('public.user_auth_id_seq', 1, false);
 
 
 --
--- TOC entry 3428 (class 0 OID 0)
--- Dependencies: 265
+-- TOC entry 3781 (class 0 OID 0)
+-- Dependencies: 273
 -- Name: user_auth_token_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.user_auth_token_id_seq', 5, true);
+SELECT pg_catalog.setval('public.user_auth_token_id_seq', 6, true);
 
 
 --
--- TOC entry 3429 (class 0 OID 0)
--- Dependencies: 204
+-- TOC entry 3782 (class 0 OID 0)
+-- Dependencies: 274
 -- Name: user_id_seq1; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
@@ -2588,7 +2599,7 @@ SELECT pg_catalog.setval('public.user_id_seq1', 2, true);
 
 
 --
--- TOC entry 3116 (class 2606 OID 33120)
+-- TOC entry 3388 (class 2606 OID 16689)
 -- Name: alert_notification alert_notification_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2597,7 +2608,7 @@ ALTER TABLE ONLY public.alert_notification
 
 
 --
--- TOC entry 3119 (class 2606 OID 33143)
+-- TOC entry 3391 (class 2606 OID 16691)
 -- Name: alert_notification_state alert_notification_state_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2606,7 +2617,7 @@ ALTER TABLE ONLY public.alert_notification_state
 
 
 --
--- TOC entry 3112 (class 2606 OID 33102)
+-- TOC entry 3385 (class 2606 OID 16693)
 -- Name: alert alert_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2615,7 +2626,7 @@ ALTER TABLE ONLY public.alert
 
 
 --
--- TOC entry 3128 (class 2606 OID 33156)
+-- TOC entry 3401 (class 2606 OID 16695)
 -- Name: annotation annotation_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2624,7 +2635,7 @@ ALTER TABLE ONLY public.annotation
 
 
 --
--- TOC entry 3088 (class 2606 OID 32998)
+-- TOC entry 3407 (class 2606 OID 16697)
 -- Name: api_key api_key_pkey1; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2633,7 +2644,7 @@ ALTER TABLE ONLY public.api_key
 
 
 --
--- TOC entry 3169 (class 2606 OID 33301)
+-- TOC entry 3410 (class 2606 OID 16699)
 -- Name: cache_data cache_data_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2642,7 +2653,7 @@ ALTER TABLE ONLY public.cache_data
 
 
 --
--- TOC entry 3149 (class 2606 OID 33226)
+-- TOC entry 3423 (class 2606 OID 16701)
 -- Name: dashboard_acl dashboard_acl_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2651,7 +2662,7 @@ ALTER TABLE ONLY public.dashboard_acl
 
 
 --
--- TOC entry 3074 (class 2606 OID 32894)
+-- TOC entry 3418 (class 2606 OID 16703)
 -- Name: dashboard dashboard_pkey1; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2660,7 +2671,7 @@ ALTER TABLE ONLY public.dashboard
 
 
 --
--- TOC entry 3078 (class 2606 OID 32940)
+-- TOC entry 3427 (class 2606 OID 16705)
 -- Name: dashboard_provisioning dashboard_provisioning_pkey1; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2669,7 +2680,7 @@ ALTER TABLE ONLY public.dashboard_provisioning
 
 
 --
--- TOC entry 3093 (class 2606 OID 33025)
+-- TOC entry 3432 (class 2606 OID 16707)
 -- Name: dashboard_snapshot dashboard_snapshot_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2678,7 +2689,7 @@ ALTER TABLE ONLY public.dashboard_snapshot
 
 
 --
--- TOC entry 3066 (class 2606 OID 32882)
+-- TOC entry 3435 (class 2606 OID 16709)
 -- Name: dashboard_tag dashboard_tag_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2687,7 +2698,7 @@ ALTER TABLE ONLY public.dashboard_tag
 
 
 --
--- TOC entry 3135 (class 2606 OID 33195)
+-- TOC entry 3439 (class 2606 OID 16711)
 -- Name: dashboard_version dashboard_version_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2696,7 +2707,7 @@ ALTER TABLE ONLY public.dashboard_version
 
 
 --
--- TOC entry 3083 (class 2606 OID 32967)
+-- TOC entry 3444 (class 2606 OID 16713)
 -- Name: data_source data_source_pkey1; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2705,7 +2716,7 @@ ALTER TABLE ONLY public.data_source
 
 
 --
--- TOC entry 3155 (class 2606 OID 33256)
+-- TOC entry 3447 (class 2606 OID 16715)
 -- Name: login_attempt login_attempt_pkey1; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2714,7 +2725,7 @@ ALTER TABLE ONLY public.login_attempt
 
 
 --
--- TOC entry 3042 (class 2606 OID 32780)
+-- TOC entry 3449 (class 2606 OID 16717)
 -- Name: migration_log migration_log_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2723,7 +2734,7 @@ ALTER TABLE ONLY public.migration_log
 
 
 --
--- TOC entry 3059 (class 2606 OID 32849)
+-- TOC entry 3452 (class 2606 OID 16719)
 -- Name: org org_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2732,7 +2743,7 @@ ALTER TABLE ONLY public.org
 
 
 --
--- TOC entry 3063 (class 2606 OID 32858)
+-- TOC entry 3456 (class 2606 OID 16721)
 -- Name: org_user org_user_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2741,7 +2752,7 @@ ALTER TABLE ONLY public.org_user
 
 
 --
--- TOC entry 3105 (class 2606 OID 33083)
+-- TOC entry 3460 (class 2606 OID 16723)
 -- Name: playlist_item playlist_item_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2750,7 +2761,7 @@ ALTER TABLE ONLY public.playlist_item
 
 
 --
--- TOC entry 3103 (class 2606 OID 33072)
+-- TOC entry 3458 (class 2606 OID 16725)
 -- Name: playlist playlist_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2759,7 +2770,7 @@ ALTER TABLE ONLY public.playlist
 
 
 --
--- TOC entry 3099 (class 2606 OID 33051)
+-- TOC entry 3463 (class 2606 OID 16727)
 -- Name: plugin_setting plugin_setting_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2768,7 +2779,7 @@ ALTER TABLE ONLY public.plugin_setting
 
 
 --
--- TOC entry 3107 (class 2606 OID 33091)
+-- TOC entry 3465 (class 2606 OID 16729)
 -- Name: preferences preferences_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2777,7 +2788,7 @@ ALTER TABLE ONLY public.preferences
 
 
 --
--- TOC entry 3096 (class 2606 OID 33038)
+-- TOC entry 3468 (class 2606 OID 16731)
 -- Name: quota quota_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2786,7 +2797,7 @@ ALTER TABLE ONLY public.quota
 
 
 --
--- TOC entry 3162 (class 2606 OID 33279)
+-- TOC entry 3471 (class 2606 OID 16733)
 -- Name: server_lock server_lock_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2795,7 +2806,7 @@ ALTER TABLE ONLY public.server_lock
 
 
 --
--- TOC entry 3101 (class 2606 OID 33061)
+-- TOC entry 3473 (class 2606 OID 16735)
 -- Name: session session_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2804,7 +2815,7 @@ ALTER TABLE ONLY public.session
 
 
 --
--- TOC entry 3056 (class 2606 OID 32837)
+-- TOC entry 3476 (class 2606 OID 16737)
 -- Name: star star_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2813,7 +2824,7 @@ ALTER TABLE ONLY public.star
 
 
 --
--- TOC entry 3152 (class 2606 OID 33237)
+-- TOC entry 3479 (class 2606 OID 16739)
 -- Name: tag tag_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2822,7 +2833,7 @@ ALTER TABLE ONLY public.tag
 
 
 --
--- TOC entry 3144 (class 2606 OID 33215)
+-- TOC entry 3488 (class 2606 OID 16741)
 -- Name: team_member team_member_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2831,7 +2842,7 @@ ALTER TABLE ONLY public.team_member
 
 
 --
--- TOC entry 3139 (class 2606 OID 33205)
+-- TOC entry 3483 (class 2606 OID 16743)
 -- Name: team team_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2840,7 +2851,7 @@ ALTER TABLE ONLY public.team
 
 
 --
--- TOC entry 3053 (class 2606 OID 32822)
+-- TOC entry 3494 (class 2606 OID 16745)
 -- Name: temp_user temp_user_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2849,7 +2860,7 @@ ALTER TABLE ONLY public.temp_user
 
 
 --
--- TOC entry 3131 (class 2606 OID 33184)
+-- TOC entry 3496 (class 2606 OID 16747)
 -- Name: test_data test_data_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2858,7 +2869,7 @@ ALTER TABLE ONLY public.test_data
 
 
 --
--- TOC entry 3159 (class 2606 OID 33265)
+-- TOC entry 3505 (class 2606 OID 16749)
 -- Name: user_auth user_auth_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2867,7 +2878,7 @@ ALTER TABLE ONLY public.user_auth
 
 
 --
--- TOC entry 3166 (class 2606 OID 33291)
+-- TOC entry 3509 (class 2606 OID 16751)
 -- Name: user_auth_token user_auth_token_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2876,7 +2887,7 @@ ALTER TABLE ONLY public.user_auth_token
 
 
 --
--- TOC entry 3047 (class 2606 OID 32804)
+-- TOC entry 3501 (class 2606 OID 16753)
 -- Name: user user_pkey1; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2885,7 +2896,7 @@ ALTER TABLE ONLY public."user"
 
 
 --
--- TOC entry 3108 (class 1259 OID 33105)
+-- TOC entry 3381 (class 1259 OID 16754)
 -- Name: IDX_alert_dashboard_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -2893,7 +2904,7 @@ CREATE INDEX "IDX_alert_dashboard_id" ON public.alert USING btree (dashboard_id)
 
 
 --
--- TOC entry 3109 (class 1259 OID 33103)
+-- TOC entry 3382 (class 1259 OID 16755)
 -- Name: IDX_alert_org_id_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -2901,7 +2912,7 @@ CREATE INDEX "IDX_alert_org_id_id" ON public.alert USING btree (org_id, id);
 
 
 --
--- TOC entry 3110 (class 1259 OID 33125)
+-- TOC entry 3383 (class 1259 OID 16756)
 -- Name: IDX_alert_state; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -2909,7 +2920,7 @@ CREATE INDEX "IDX_alert_state" ON public.alert USING btree (state);
 
 
 --
--- TOC entry 3120 (class 1259 OID 33176)
+-- TOC entry 3393 (class 1259 OID 16757)
 -- Name: IDX_annotation_alert_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -2917,7 +2928,7 @@ CREATE INDEX "IDX_annotation_alert_id" ON public.annotation USING btree (alert_i
 
 
 --
--- TOC entry 3121 (class 1259 OID 33157)
+-- TOC entry 3394 (class 1259 OID 16758)
 -- Name: IDX_annotation_org_id_alert_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -2925,7 +2936,7 @@ CREATE INDEX "IDX_annotation_org_id_alert_id" ON public.annotation USING btree (
 
 
 --
--- TOC entry 3122 (class 1259 OID 33170)
+-- TOC entry 3395 (class 1259 OID 16759)
 -- Name: IDX_annotation_org_id_created; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -2933,7 +2944,7 @@ CREATE INDEX "IDX_annotation_org_id_created" ON public.annotation USING btree (o
 
 
 --
--- TOC entry 3123 (class 1259 OID 33174)
+-- TOC entry 3396 (class 1259 OID 16760)
 -- Name: IDX_annotation_org_id_dashboard_id_epoch_end_epoch; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -2941,7 +2952,7 @@ CREATE INDEX "IDX_annotation_org_id_dashboard_id_epoch_end_epoch" ON public.anno
 
 
 --
--- TOC entry 3124 (class 1259 OID 33175)
+-- TOC entry 3397 (class 1259 OID 16761)
 -- Name: IDX_annotation_org_id_epoch_end_epoch; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -2949,7 +2960,7 @@ CREATE INDEX "IDX_annotation_org_id_epoch_end_epoch" ON public.annotation USING 
 
 
 --
--- TOC entry 3125 (class 1259 OID 33162)
+-- TOC entry 3398 (class 1259 OID 16762)
 -- Name: IDX_annotation_org_id_type; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -2957,7 +2968,7 @@ CREATE INDEX "IDX_annotation_org_id_type" ON public.annotation USING btree (org_
 
 
 --
--- TOC entry 3126 (class 1259 OID 33171)
+-- TOC entry 3399 (class 1259 OID 16763)
 -- Name: IDX_annotation_org_id_updated; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -2965,7 +2976,7 @@ CREATE INDEX "IDX_annotation_org_id_updated" ON public.annotation USING btree (o
 
 
 --
--- TOC entry 3084 (class 1259 OID 32999)
+-- TOC entry 3403 (class 1259 OID 16764)
 -- Name: IDX_api_key_org_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -2973,7 +2984,7 @@ CREATE INDEX "IDX_api_key_org_id" ON public.api_key USING btree (org_id);
 
 
 --
--- TOC entry 3145 (class 1259 OID 33227)
+-- TOC entry 3419 (class 1259 OID 16765)
 -- Name: IDX_dashboard_acl_dashboard_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -2981,7 +2992,7 @@ CREATE INDEX "IDX_dashboard_acl_dashboard_id" ON public.dashboard_acl USING btre
 
 
 --
--- TOC entry 3067 (class 1259 OID 32897)
+-- TOC entry 3411 (class 1259 OID 16766)
 -- Name: IDX_dashboard_gnet_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -2989,7 +3000,7 @@ CREATE INDEX "IDX_dashboard_gnet_id" ON public.dashboard USING btree (gnet_id);
 
 
 --
--- TOC entry 3068 (class 1259 OID 32895)
+-- TOC entry 3412 (class 1259 OID 16767)
 -- Name: IDX_dashboard_org_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -2997,7 +3008,7 @@ CREATE INDEX "IDX_dashboard_org_id" ON public.dashboard USING btree (org_id);
 
 
 --
--- TOC entry 3069 (class 1259 OID 32901)
+-- TOC entry 3413 (class 1259 OID 16768)
 -- Name: IDX_dashboard_org_id_plugin_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -3005,7 +3016,7 @@ CREATE INDEX "IDX_dashboard_org_id_plugin_id" ON public.dashboard USING btree (o
 
 
 --
--- TOC entry 3075 (class 1259 OID 32941)
+-- TOC entry 3424 (class 1259 OID 16769)
 -- Name: IDX_dashboard_provisioning_dashboard_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -3013,7 +3024,7 @@ CREATE INDEX "IDX_dashboard_provisioning_dashboard_id" ON public.dashboard_provi
 
 
 --
--- TOC entry 3076 (class 1259 OID 32942)
+-- TOC entry 3425 (class 1259 OID 16770)
 -- Name: IDX_dashboard_provisioning_dashboard_id_name; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -3021,7 +3032,7 @@ CREATE INDEX "IDX_dashboard_provisioning_dashboard_id_name" ON public.dashboard_
 
 
 --
--- TOC entry 3089 (class 1259 OID 33028)
+-- TOC entry 3428 (class 1259 OID 16771)
 -- Name: IDX_dashboard_snapshot_user_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -3029,7 +3040,7 @@ CREATE INDEX "IDX_dashboard_snapshot_user_id" ON public.dashboard_snapshot USING
 
 
 --
--- TOC entry 3064 (class 1259 OID 32899)
+-- TOC entry 3433 (class 1259 OID 16772)
 -- Name: IDX_dashboard_tag_dashboard_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -3037,7 +3048,7 @@ CREATE INDEX "IDX_dashboard_tag_dashboard_id" ON public.dashboard_tag USING btre
 
 
 --
--- TOC entry 3070 (class 1259 OID 32943)
+-- TOC entry 3414 (class 1259 OID 16773)
 -- Name: IDX_dashboard_title; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -3045,7 +3056,7 @@ CREATE INDEX "IDX_dashboard_title" ON public.dashboard USING btree (title);
 
 
 --
--- TOC entry 3132 (class 1259 OID 33196)
+-- TOC entry 3436 (class 1259 OID 16774)
 -- Name: IDX_dashboard_version_dashboard_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -3053,7 +3064,7 @@ CREATE INDEX "IDX_dashboard_version_dashboard_id" ON public.dashboard_version US
 
 
 --
--- TOC entry 3079 (class 1259 OID 32968)
+-- TOC entry 3440 (class 1259 OID 16775)
 -- Name: IDX_data_source_org_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -3061,7 +3072,7 @@ CREATE INDEX "IDX_data_source_org_id" ON public.data_source USING btree (org_id)
 
 
 --
--- TOC entry 3153 (class 1259 OID 33257)
+-- TOC entry 3445 (class 1259 OID 16776)
 -- Name: IDX_login_attempt_username; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -3069,7 +3080,7 @@ CREATE INDEX "IDX_login_attempt_username" ON public.login_attempt USING btree (u
 
 
 --
--- TOC entry 3060 (class 1259 OID 32859)
+-- TOC entry 3453 (class 1259 OID 16777)
 -- Name: IDX_org_user_org_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -3077,7 +3088,7 @@ CREATE INDEX "IDX_org_user_org_id" ON public.org_user USING btree (org_id);
 
 
 --
--- TOC entry 3140 (class 1259 OID 33216)
+-- TOC entry 3484 (class 1259 OID 16778)
 -- Name: IDX_team_member_org_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -3085,7 +3096,7 @@ CREATE INDEX "IDX_team_member_org_id" ON public.team_member USING btree (org_id)
 
 
 --
--- TOC entry 3141 (class 1259 OID 40993)
+-- TOC entry 3485 (class 1259 OID 16779)
 -- Name: IDX_team_member_team_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -3093,7 +3104,7 @@ CREATE INDEX "IDX_team_member_team_id" ON public.team_member USING btree (team_i
 
 
 --
--- TOC entry 3136 (class 1259 OID 33206)
+-- TOC entry 3480 (class 1259 OID 16780)
 -- Name: IDX_team_org_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -3101,7 +3112,7 @@ CREATE INDEX "IDX_team_org_id" ON public.team USING btree (org_id);
 
 
 --
--- TOC entry 3048 (class 1259 OID 32828)
+-- TOC entry 3489 (class 1259 OID 16781)
 -- Name: IDX_temp_user_code; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -3109,7 +3120,7 @@ CREATE INDEX "IDX_temp_user_code" ON public.temp_user USING btree (code);
 
 
 --
--- TOC entry 3049 (class 1259 OID 32827)
+-- TOC entry 3490 (class 1259 OID 16782)
 -- Name: IDX_temp_user_email; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -3117,7 +3128,7 @@ CREATE INDEX "IDX_temp_user_email" ON public.temp_user USING btree (email);
 
 
 --
--- TOC entry 3050 (class 1259 OID 32824)
+-- TOC entry 3491 (class 1259 OID 16783)
 -- Name: IDX_temp_user_org_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -3125,7 +3136,7 @@ CREATE INDEX "IDX_temp_user_org_id" ON public.temp_user USING btree (org_id);
 
 
 --
--- TOC entry 3051 (class 1259 OID 32829)
+-- TOC entry 3492 (class 1259 OID 16784)
 -- Name: IDX_temp_user_status; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -3133,7 +3144,7 @@ CREATE INDEX "IDX_temp_user_status" ON public.temp_user USING btree (status);
 
 
 --
--- TOC entry 3156 (class 1259 OID 33267)
+-- TOC entry 3502 (class 1259 OID 16785)
 -- Name: IDX_user_auth_auth_module_auth_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -3141,7 +3152,7 @@ CREATE INDEX "IDX_user_auth_auth_module_auth_id" ON public.user_auth USING btree
 
 
 --
--- TOC entry 3157 (class 1259 OID 33271)
+-- TOC entry 3503 (class 1259 OID 16786)
 -- Name: IDX_user_auth_user_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -3149,7 +3160,7 @@ CREATE INDEX "IDX_user_auth_user_id" ON public.user_auth USING btree (user_id);
 
 
 --
--- TOC entry 3043 (class 1259 OID 32811)
+-- TOC entry 3497 (class 1259 OID 16787)
 -- Name: IDX_user_login_email; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -3157,7 +3168,7 @@ CREATE INDEX "IDX_user_login_email" ON public."user" USING btree (login, email);
 
 
 --
--- TOC entry 3114 (class 1259 OID 33145)
+-- TOC entry 3386 (class 1259 OID 16788)
 -- Name: UQE_alert_notification_org_id_uid; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -3165,7 +3176,7 @@ CREATE UNIQUE INDEX "UQE_alert_notification_org_id_uid" ON public.alert_notifica
 
 
 --
--- TOC entry 3117 (class 1259 OID 33144)
+-- TOC entry 3389 (class 1259 OID 16789)
 -- Name: UQE_alert_notification_state_org_id_alert_id_notifier_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -3173,7 +3184,7 @@ CREATE UNIQUE INDEX "UQE_alert_notification_state_org_id_alert_id_notifier_id" O
 
 
 --
--- TOC entry 3113 (class 1259 OID 33109)
+-- TOC entry 3392 (class 1259 OID 16790)
 -- Name: UQE_alert_rule_tag_alert_id_tag_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -3181,7 +3192,7 @@ CREATE UNIQUE INDEX "UQE_alert_rule_tag_alert_id_tag_id" ON public.alert_rule_ta
 
 
 --
--- TOC entry 3129 (class 1259 OID 33167)
+-- TOC entry 3402 (class 1259 OID 16791)
 -- Name: UQE_annotation_tag_annotation_id_tag_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -3189,7 +3200,7 @@ CREATE UNIQUE INDEX "UQE_annotation_tag_annotation_id_tag_id" ON public.annotati
 
 
 --
--- TOC entry 3085 (class 1259 OID 33003)
+-- TOC entry 3404 (class 1259 OID 16792)
 -- Name: UQE_api_key_key; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -3197,7 +3208,7 @@ CREATE UNIQUE INDEX "UQE_api_key_key" ON public.api_key USING btree (key);
 
 
 --
--- TOC entry 3086 (class 1259 OID 33002)
+-- TOC entry 3405 (class 1259 OID 16793)
 -- Name: UQE_api_key_org_id_name; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -3205,7 +3216,7 @@ CREATE UNIQUE INDEX "UQE_api_key_org_id_name" ON public.api_key USING btree (org
 
 
 --
--- TOC entry 3167 (class 1259 OID 33302)
+-- TOC entry 3408 (class 1259 OID 16794)
 -- Name: UQE_cache_data_cache_key; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -3213,7 +3224,7 @@ CREATE UNIQUE INDEX "UQE_cache_data_cache_key" ON public.cache_data USING btree 
 
 
 --
--- TOC entry 3146 (class 1259 OID 33229)
+-- TOC entry 3420 (class 1259 OID 16795)
 -- Name: UQE_dashboard_acl_dashboard_id_team_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -3221,7 +3232,7 @@ CREATE UNIQUE INDEX "UQE_dashboard_acl_dashboard_id_team_id" ON public.dashboard
 
 
 --
--- TOC entry 3147 (class 1259 OID 33228)
+-- TOC entry 3421 (class 1259 OID 16796)
 -- Name: UQE_dashboard_acl_dashboard_id_user_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -3229,7 +3240,7 @@ CREATE UNIQUE INDEX "UQE_dashboard_acl_dashboard_id_user_id" ON public.dashboard
 
 
 --
--- TOC entry 3071 (class 1259 OID 32917)
+-- TOC entry 3415 (class 1259 OID 16797)
 -- Name: UQE_dashboard_org_id_folder_id_title; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -3237,7 +3248,7 @@ CREATE UNIQUE INDEX "UQE_dashboard_org_id_folder_id_title" ON public.dashboard U
 
 
 --
--- TOC entry 3072 (class 1259 OID 32905)
+-- TOC entry 3416 (class 1259 OID 16798)
 -- Name: UQE_dashboard_org_id_uid; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -3245,7 +3256,7 @@ CREATE UNIQUE INDEX "UQE_dashboard_org_id_uid" ON public.dashboard USING btree (
 
 
 --
--- TOC entry 3090 (class 1259 OID 33030)
+-- TOC entry 3429 (class 1259 OID 16799)
 -- Name: UQE_dashboard_snapshot_delete_key; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -3253,7 +3264,7 @@ CREATE UNIQUE INDEX "UQE_dashboard_snapshot_delete_key" ON public.dashboard_snap
 
 
 --
--- TOC entry 3091 (class 1259 OID 33029)
+-- TOC entry 3430 (class 1259 OID 16800)
 -- Name: UQE_dashboard_snapshot_key; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -3261,7 +3272,7 @@ CREATE UNIQUE INDEX "UQE_dashboard_snapshot_key" ON public.dashboard_snapshot US
 
 
 --
--- TOC entry 3133 (class 1259 OID 33197)
+-- TOC entry 3437 (class 1259 OID 16801)
 -- Name: UQE_dashboard_version_dashboard_id_version; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -3269,7 +3280,7 @@ CREATE UNIQUE INDEX "UQE_dashboard_version_dashboard_id_version" ON public.dashb
 
 
 --
--- TOC entry 3080 (class 1259 OID 32971)
+-- TOC entry 3441 (class 1259 OID 16802)
 -- Name: UQE_data_source_org_id_name; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -3277,7 +3288,7 @@ CREATE UNIQUE INDEX "UQE_data_source_org_id_name" ON public.data_source USING bt
 
 
 --
--- TOC entry 3081 (class 1259 OID 32973)
+-- TOC entry 3442 (class 1259 OID 16803)
 -- Name: UQE_data_source_org_id_uid; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -3285,7 +3296,7 @@ CREATE UNIQUE INDEX "UQE_data_source_org_id_uid" ON public.data_source USING btr
 
 
 --
--- TOC entry 3057 (class 1259 OID 32861)
+-- TOC entry 3450 (class 1259 OID 16804)
 -- Name: UQE_org_name; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -3293,7 +3304,7 @@ CREATE UNIQUE INDEX "UQE_org_name" ON public.org USING btree (name);
 
 
 --
--- TOC entry 3061 (class 1259 OID 32860)
+-- TOC entry 3454 (class 1259 OID 16805)
 -- Name: UQE_org_user_org_id_user_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -3301,7 +3312,7 @@ CREATE UNIQUE INDEX "UQE_org_user_org_id_user_id" ON public.org_user USING btree
 
 
 --
--- TOC entry 3097 (class 1259 OID 33053)
+-- TOC entry 3461 (class 1259 OID 16806)
 -- Name: UQE_plugin_setting_org_id_plugin_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -3309,7 +3320,7 @@ CREATE UNIQUE INDEX "UQE_plugin_setting_org_id_plugin_id" ON public.plugin_setti
 
 
 --
--- TOC entry 3094 (class 1259 OID 33040)
+-- TOC entry 3466 (class 1259 OID 16807)
 -- Name: UQE_quota_org_id_user_id_target; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -3317,7 +3328,7 @@ CREATE UNIQUE INDEX "UQE_quota_org_id_user_id_target" ON public.quota USING btre
 
 
 --
--- TOC entry 3160 (class 1259 OID 33280)
+-- TOC entry 3469 (class 1259 OID 16808)
 -- Name: UQE_server_lock_operation_uid; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -3325,7 +3336,7 @@ CREATE UNIQUE INDEX "UQE_server_lock_operation_uid" ON public.server_lock USING 
 
 
 --
--- TOC entry 3054 (class 1259 OID 32838)
+-- TOC entry 3474 (class 1259 OID 16809)
 -- Name: UQE_star_user_id_dashboard_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -3333,7 +3344,7 @@ CREATE UNIQUE INDEX "UQE_star_user_id_dashboard_id" ON public.star USING btree (
 
 
 --
--- TOC entry 3150 (class 1259 OID 33238)
+-- TOC entry 3477 (class 1259 OID 16810)
 -- Name: UQE_tag_key_value; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -3341,7 +3352,7 @@ CREATE UNIQUE INDEX "UQE_tag_key_value" ON public.tag USING btree (key, value);
 
 
 --
--- TOC entry 3142 (class 1259 OID 33217)
+-- TOC entry 3486 (class 1259 OID 16811)
 -- Name: UQE_team_member_org_id_team_id_user_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -3349,7 +3360,7 @@ CREATE UNIQUE INDEX "UQE_team_member_org_id_team_id_user_id" ON public.team_memb
 
 
 --
--- TOC entry 3137 (class 1259 OID 33207)
+-- TOC entry 3481 (class 1259 OID 16812)
 -- Name: UQE_team_org_id_name; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -3357,7 +3368,7 @@ CREATE UNIQUE INDEX "UQE_team_org_id_name" ON public.team USING btree (org_id, n
 
 
 --
--- TOC entry 3163 (class 1259 OID 33292)
+-- TOC entry 3506 (class 1259 OID 16813)
 -- Name: UQE_user_auth_token_auth_token; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -3365,7 +3376,7 @@ CREATE UNIQUE INDEX "UQE_user_auth_token_auth_token" ON public.user_auth_token U
 
 
 --
--- TOC entry 3164 (class 1259 OID 33293)
+-- TOC entry 3507 (class 1259 OID 16814)
 -- Name: UQE_user_auth_token_prev_auth_token; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -3373,7 +3384,7 @@ CREATE UNIQUE INDEX "UQE_user_auth_token_prev_auth_token" ON public.user_auth_to
 
 
 --
--- TOC entry 3044 (class 1259 OID 32809)
+-- TOC entry 3498 (class 1259 OID 16815)
 -- Name: UQE_user_email; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -3381,14 +3392,14 @@ CREATE UNIQUE INDEX "UQE_user_email" ON public."user" USING btree (email);
 
 
 --
--- TOC entry 3045 (class 1259 OID 32808)
+-- TOC entry 3499 (class 1259 OID 16816)
 -- Name: UQE_user_login; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE UNIQUE INDEX "UQE_user_login" ON public."user" USING btree (login);
 
 
--- Completed on 2021-10-30 08:45:12
+-- Completed on 2021-11-08 08:31:28
 
 --
 -- PostgreSQL database dump complete
