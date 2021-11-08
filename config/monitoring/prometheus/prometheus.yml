@@ -25,11 +25,16 @@ scrape_configs:
     scrape_interval: 1m
     static_configs:
       - targets: ['localhost:9090']
-  - job_name: 'api-dev'
+  - job_name: 'api-gateway'
     scrape_interval: 1m
     metrics_path: '/v1/actuator/prometheus'
     static_configs:
       - targets: ['api-dev:5000']
+  - job_name: 'api-internal-sample'
+    scrape_interval: 1m
+    metrics_path: '/v1/actuator/prometheus'
+    static_configs:
+      - targets: ['api-internal-sample:5001']
   - job_name: 'postgres-exporter-sample'
     scrape_interval: 1m
     metrics_path: '/metrics'
