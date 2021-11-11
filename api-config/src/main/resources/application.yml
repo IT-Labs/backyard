@@ -19,8 +19,8 @@ spring:
       server:
         native:
           search-locations: classpath:/config
-#        git:
-#          uri:  file:///C:/Projects/EA/alumni/src/main/resources
+        git:
+          uri: https://github.com/IT-Labs/backyard/tree/spring-cloud-config/cloud-config
   cache:
     type: redis
   redis:

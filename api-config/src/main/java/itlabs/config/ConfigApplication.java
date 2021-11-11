@@ -14,5 +14,6 @@ public class ConfigApplication {
 	// https://towardsaws.com/how-to-externalize-spring-boot-properties-to-an-aws-system-manager-parameter-store-2a945b1e856f
 	// https://medium.com/trendyol-tech/automating-dynamic-config-management-with-spring-cloud-config-bus-a34e15397b15
 	// https://medium.com/swlh/spring-cloud-config-bus-auto-refresh-properties-for-clients-d18fa4c036cb
+	//https://blog.marcosbarbero.com/integrating-vault-spring-cloud-config/
 
 }
