@@ -40,6 +40,9 @@ repositories {
 	jcenter()
 
 }
+ext {
+	set('springCloudVersion', "2020.0.4")
+}
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
@@ -51,7 +54,8 @@ dependencies {
 	implementation 'org.keycloak:keycloak-spring-boot-starter:15.0.2'
 	implementation 'org.keycloak:keycloak-admin-client:15.0.2'
 	implementation 'org.flywaydb:flyway-core:8.0.0'
-
+	implementation 'org.springframework.cloud:spring-cloud-starter-config'
+	implementation("org.springframework.cloud:spring-cloud-starter-bus-amqp")
 
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	runtimeOnly 'org.postgresql:postgresql:42.2.24'
@@ -68,6 +72,11 @@ dependencies {
 	testCompileOnly group: 'com.github.dasniko', name: 'testcontainers-keycloak', version: '1.8.0'
 	testCompileOnly 'org.projectlombok:lombok'
 	testAnnotationProcessor 'org.projectlombok:lombok'
+}
+dependencyManagement {
+	imports {
+		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+	}
 }
 
 test {

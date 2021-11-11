@@ -32,6 +32,20 @@ spring:
         username: dev
     flyway:
         locations: classpath:/db/migration/
+    config:
+        import: "configserver:http://localhost:8888"
+    cloud:
+        config:
+            allow-override: true
+            override-none: true
+            bus:
+                enabled: true
+    rabbitmq:
+        host: localhost
+        port: 5672
+        username: dev
+        password: dev123
+        virtual-host: /
 #    security:
 #        oauth2:
 #            resourceserver:
@@ -45,3 +59,21 @@ keycloak:
     ssl-required: external
     confidential-port: 0
     principal-attribute: preferred_username
+---
+server:
+    port: 5001
+spring:
+    config:
+        activate:
+            on-profile: docker
+        import: "configserver:http://api-config-sample:8888"
+    rabbitmq:
+        host: rabbitmq-sample
+    datasource:
+        password: dev123
+        url: jdbc:postgresql://api-postgres/sample?stringtype=unspecified
+        username: dev
+    flyway:
+        enabled: false
+keycloak:
+    auth-server-url: http://keycloak-sample:6180/auth

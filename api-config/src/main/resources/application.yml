@@ -1,32 +1,33 @@
-sample:
-  internal-api: http://localhost:5001/
 server:
-  port: 5000
+  port: 8888
 info:
   app:
     description: playground application
-    name: Spring Backyard API Gateway Application
+    name: Spring Backyard Cloud Config Application
   java-vendor: ${java.specification.vendor}
 logging:
   level:
     root: DEBUG
 spring:
+  cloud:
+    bus:
+      enabled: true
+      refresh:
+        enabled: true
+    config:
+      enabled: true
+      server:
+        native:
+          search-locations: classpath:/config
+#        git:
+#          uri:  file:///C:/Projects/EA/alumni/src/main/resources
   cache:
     type: redis
   redis:
     host: localhost
     port: 6378
   application:
-    name: api-gateway-sample
-  config:
-    import: "configserver:http://localhost:8888"
-  cloud:
-    config:
-      name: api-gateway
-      allow-override: true
-      override-none: true
-    bus:
-      enabled: true
+    name: api-cloud-config-sample
   rabbitmq:
     host: localhost
     port: 5672
@@ -46,20 +47,16 @@ management:
         include: "*"
 ---
 logging:
-  level:
-    root: DEBUG
-sample:
-  internal-api: http://api-internal-sample:5001
+    level:
+        root: DEBUG
 server:
-  port: 5000
+    port: 8888
 spring:
   config:
     activate:
       on-profile: docker
-    import: "configserver:http://api-config-sample:8888"
   rabbitmq:
-    host: rabbitmq-sample
+     host: rabbitmq-sample
   redis:
     host: redis-sample
     port: 6379
-

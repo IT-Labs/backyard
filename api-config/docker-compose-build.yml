@@ -1,0 +1,10 @@
+#docker-compose.yml (Base)
+version: '3.7'
+services:
+  build:
+    image: "openjdk:17-jdk-slim-buster"
+    container_name: build-api-config
+    volumes:
+      - ./:/usr/src/myapp
+    working_dir: /usr/src/myapp    
+    command:  ./gradlew clean format build -x test
