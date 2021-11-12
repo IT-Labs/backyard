@@ -11,6 +11,22 @@ volumes:
   redisinsight-sample:
   redis-sample:
 services:
+  vault-sample:
+    image: vault:latest
+    container_name: vault-sample
+    volumes:
+      - ./vault/config:/vault/config
+      - ./vault/policies:/vault/policies
+      - ./vault/data:/vault/data
+    ports:
+      - 8200:8200
+    environment:
+      - VAULT_ADDR=http://0.0.0.0:8200
+      - VAULT_API_ADDR=http://0.0.0.0:8200
+      - VAULT_ADDRESS=http://0.0.0.0:8200
+      - VAULT_DEV_ROOT_TOKEN_ID=sample
+    networks:
+      - sample
   rabbitmq-sample:
     image: "bitnami/rabbitmq:latest"
     container_name: rabbitmq-sample

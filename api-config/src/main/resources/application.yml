@@ -15,12 +15,23 @@ spring:
       refresh:
         enabled: true
     config:
-      enabled: true
+#      enabled: true
+      vault:
+        authentication: TOKEN
+        token: sample
       server:
         native:
           search-locations: classpath:/config
+          order: 3
         git:
-          uri: https://github.com/IT-Labs/backyard/tree/spring-cloud-config/cloud-config
+          uri: https://github.com/weekly-drafts/config-repo-spring-cloud-configserver-vault
+          skipSslValidation: true
+          order: 2
+        vault:
+          port: 8200
+          host: localhost
+          kvVersion: 1
+          order: 1
   cache:
     type: redis
   redis:
