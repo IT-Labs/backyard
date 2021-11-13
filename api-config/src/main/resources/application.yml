@@ -22,12 +22,13 @@ spring:
       server:
         native:
           search-locations: classpath:/config
-          order: 3
+          order: 1
         git:
           uri: https://github.com/IT-Labs/backyard
           skipSslValidation: true
           searchPaths: cloud-config
           default-label: spring-cloud-config
+          order: 2
         vault:
           port: 8200
           host: localhost

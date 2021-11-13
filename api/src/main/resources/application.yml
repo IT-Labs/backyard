@@ -36,6 +36,7 @@ spring:
         import: "configserver:http://localhost:8888"
     cloud:
         config:
+            name: internal-api
             allow-override: true
             override-none: true
             bus:
