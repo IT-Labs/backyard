@@ -11,6 +11,7 @@ logging:
 spring:
   cloud:
     bus:
+      id: api-config-sample
       enabled: true
       refresh:
         enabled: true
