@@ -24,9 +24,10 @@ spring:
           search-locations: classpath:/config
           order: 3
         git:
-          uri: https://github.com/weekly-drafts/config-repo-spring-cloud-configserver-vault
+          uri: https://github.com/IT-Labs/backyard
           skipSslValidation: true
-          order: 2
+          searchPaths: cloud-config
+          default-label: spring-cloud-config
         vault:
           port: 8200
           host: localhost
@@ -46,6 +47,9 @@ spring:
     password: dev123
     virtual-host: /
 management:
+  health:
+    vault:
+      enabled: false
   endpoint:
     health:
       cache:

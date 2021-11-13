@@ -15,5 +15,9 @@ public class ConfigApplication {
 	// https://medium.com/trendyol-tech/automating-dynamic-config-management-with-spring-cloud-config-bus-a34e15397b15
 	// https://medium.com/swlh/spring-cloud-config-bus-auto-refresh-properties-for-clients-d18fa4c036cb
 	//https://blog.marcosbarbero.com/integrating-vault-spring-cloud-config/
+	// https://docs.pivotal.io/spring-cloud-services/3-1/config-server/writing-client-applications.html 
+	// https://www.youtube.com/watch?v=n0kmSftlesE
+	// https://www.javainuse.com/spring/cloud-vault
+	// https://blog.trifork.com/2018/07/20/integrating-the-aws-parameter-store-with-spring-cloud/
 
 }
