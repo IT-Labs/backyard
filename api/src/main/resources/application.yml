@@ -40,7 +40,6 @@ spring:
       allow-override: true
       override-none: true
     bus:
-      id: api-config-sample
       enabled: true
   rabbitmq:
     host: localhost

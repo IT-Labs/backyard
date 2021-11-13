@@ -11,12 +11,12 @@ logging:
 spring:
   cloud:
     bus:
-      id: api-config-sample
+      id: ${vcap.application.name:${spring.application.name:application}}:${vcap.application.instance_index:${spring.profiles.active:${local.server.port:${server.port:0}}}}:${vcap.application.instance_id:${random.value}}
       enabled: true
       refresh:
         enabled: true
     config:
-#      enabled: true
+      #      enabled: true
       vault:
         authentication: TOKEN
         token: sample
@@ -64,16 +64,16 @@ management:
         include: "*"
 ---
 logging:
-    level:
-        root: DEBUG
+  level:
+    root: DEBUG
 server:
-    port: 8888
+  port: 8888
 spring:
   config:
     activate:
       on-profile: docker
   rabbitmq:
-     host: rabbitmq-sample
+    host: rabbitmq-sample
   redis:
     host: redis-sample
     port: 6379
