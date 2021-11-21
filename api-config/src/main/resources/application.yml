@@ -11,12 +11,10 @@ logging:
 spring:
   cloud:
     bus:
-    #  id: ${vcap.application.name:${spring.application.name:application}}:${vcap.application.instance_index:${spring.profiles.active:${local.server.port:${server.port:0}}}}:${vcap.application.instance_id:${random.value}}
       enabled: true
       refresh:
         enabled: true
     config:
-      #      enabled: true
       vault:
         authentication: TOKEN
         token: sample
