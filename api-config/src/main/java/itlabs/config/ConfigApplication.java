@@ -2,6 +2,7 @@ package itlabs.config;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.config.monitor.GithubPropertyPathNotificationExtractor;
 import org.springframework.cloud.config.server.EnableConfigServer;
 
 @SpringBootApplication
@@ -19,5 +20,7 @@ public class ConfigApplication {
 	// https://www.youtube.com/watch?v=n0kmSftlesE
 	// https://www.javainuse.com/spring/cloud-vault
 	// https://blog.trifork.com/2018/07/20/integrating-the-aws-parameter-store-with-spring-cloud/
+	// https://spencer.gibb.us/blog/2015/09/24/spring-cloud-config-push-notifications/
+	// https://zoltanaltfatter.com/2016/06/30/centralized-configuration-with-spring-cloud-config/
 
 }

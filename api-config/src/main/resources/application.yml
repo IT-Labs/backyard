@@ -21,6 +21,9 @@ spring:
         authentication: TOKEN
         token: sample
       server:
+        monitor:
+          github:
+            enabled: true
         native:
           search-locations: classpath:/config
           order: 2
@@ -29,6 +32,8 @@ spring:
           skipSslValidation: true
           searchPaths: cloud-config
           default-label: spring-cloud-config
+#          force-pull: true
+#          deleteUntrackedBranches: true
           order: 1
         vault:
           port: 8200

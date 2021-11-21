@@ -1,0 +1,18 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="ConfigApplication" type="Application" factoryName="Application" nameIsGenerated="true">
+    <envs>
+      <env name="SPRING_PROFILES_ACTIVE" value="native,git" />
+    </envs>
+    <option name="MAIN_CLASS_NAME" value="itlabs.config.ConfigApplication" />
+    <module name="api-config.main" />
+    <extension name="coverage">
+      <pattern>
+        <option name="PATTERN" value="itlabs.config.*" />
+        <option name="ENABLED" value="true" />
+      </pattern>
+    </extension>
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
