@@ -10,34 +10,31 @@ logging:
     root: DEBUG
 spring:
   cloud:
+    bootstrap.enabled: true
     bus:
       enabled: true
       refresh:
         enabled: true
     config:
-      vault:
-        authentication: TOKEN
-        token: sample
       server:
-        monitor:
-          github:
-            enabled: true
         native:
           search-locations: classpath:/config
-          order: 2
+          order: 1
         git:
           uri: https://github.com/IT-Labs/backyard
           skipSslValidation: true
           searchPaths: cloud-config
           default-label: spring-cloud-config
-#          force-pull: true
-#          deleteUntrackedBranches: true
-          order: 1
+          force-pull: true
+          deleteUntrackedBranches: true
+          order: 2
         vault:
           port: 8200
           host: localhost
-          kvVersion: 1
+          kvVersion: 2
           order: 1
+          authentication: TOKEN
+          token: sample
   cache:
     type: redis
   redis:

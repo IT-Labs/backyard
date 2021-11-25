@@ -32,6 +32,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 	implementation 'org.springframework.cloud:spring-cloud-config-server'
 	implementation  'org.springframework.boot:spring-boot-starter-data-redis'
+//	implementation 'org.springframework.cloud:spring-cloud-starter-vault-config'
 	implementation 'org.springframework.cloud:spring-cloud-config-monitor'
 	implementation'org.springframework.cloud:spring-cloud-starter-stream-rabbit'
 	implementation 'io.micrometer:micrometer-registry-prometheus'

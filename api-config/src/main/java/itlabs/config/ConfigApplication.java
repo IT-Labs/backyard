@@ -22,5 +22,5 @@ public class ConfigApplication {
 	// https://blog.trifork.com/2018/07/20/integrating-the-aws-parameter-store-with-spring-cloud/
 	// https://spencer.gibb.us/blog/2015/09/24/spring-cloud-config-push-notifications/
 	// https://zoltanaltfatter.com/2016/06/30/centralized-configuration-with-spring-cloud-config/
-
+// https://github.com/rezaganjis/spring-cloud-vault-server
 }
