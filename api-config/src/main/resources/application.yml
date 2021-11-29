@@ -9,6 +9,12 @@ logging:
   level:
     root: DEBUG
 spring:
+  datasource:
+    password: dev123
+    url: jdbc:postgresql://localhost:5432/config?stringtype=unspecified
+    username: dev
+  flyway:
+    locations: classpath:/db/migration/
   cloud:
     bus:
       enabled: true
@@ -38,6 +44,10 @@ spring:
           host: localhost
           kvVersion: 1
           order: 1
+        jdbc:
+          sql: SELECT key, value FROM properties WHERE application=? AND profile=? AND label=?;
+          order: 3
+          default-label: label
   cache:
     type: redis
   redis:
