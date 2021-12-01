@@ -40,8 +40,6 @@ spring:
       allow-override: true
       override-none: true
       label: master
-    bus:
-      enabled: true
   rabbitmq:
     host: localhost
     port: 5672

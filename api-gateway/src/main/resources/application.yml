@@ -19,14 +19,12 @@ spring:
   application:
     name: api-gateway-sample
   config:
-    import: "configserver:http://localhost:8888"
+    import: "configserver:http://localhost:8888/config"
   cloud:
     config:
       name: api-gateway
       allow-override: true
       override-none: true
-    bus:
-      enabled: true
   rabbitmq:
     host: localhost
     port: 5672
