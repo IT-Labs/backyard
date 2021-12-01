@@ -3,7 +3,7 @@
     <envs>
       <env name="SPRING_PROFILES_ACTIVE" value="jdbc" />
     </envs>
-    <option name="MAIN_CLASS_NAME" value="itlabs.config.ConfigApplication" />
+    <option name="MAIN_CLASS_NAME" value="itlabs.ConfigApplication" />
     <module name="api-config.main" />
     <extension name="coverage">
       <pattern>

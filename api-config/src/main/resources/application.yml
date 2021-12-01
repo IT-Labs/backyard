@@ -22,7 +22,9 @@ spring:
       refresh:
         enabled: true
     config:
+      lable: master
       server:
+        prefix: config
         native:
           search-locations: classpath:/config
           order: 1
@@ -44,7 +46,6 @@ spring:
         jdbc:
           sql: SELECT key, value FROM properties WHERE application=? AND profile=? AND label=?;
           order: 3
-          default-label: label
   cache:
     type: redis
   redis:

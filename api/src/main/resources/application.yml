@@ -33,12 +33,13 @@ spring:
   flyway:
     locations: classpath:/db/migration/
   config:
-    import: "configserver:http://localhost:8888"
+    import: "configserver:http://localhost:8888/config"
   cloud:
     config:
       name: internal-api
       allow-override: true
       override-none: true
+      label: master
     bus:
       enabled: true
   rabbitmq:

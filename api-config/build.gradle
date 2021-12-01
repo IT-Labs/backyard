@@ -34,14 +34,15 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 	implementation 'org.springframework.cloud:spring-cloud-config-server'
 	implementation  'org.springframework.boot:spring-boot-starter-data-redis'
-//	implementation 'org.springframework.cloud:spring-cloud-starter-vault-config'
+	implementation "io.springfox:springfox-boot-starter:3.0.0"
 	implementation 'org.springframework.cloud:spring-cloud-config-monitor'
 	implementation'org.springframework.cloud:spring-cloud-starter-stream-rabbit'
 	implementation 'io.micrometer:micrometer-registry-prometheus'
 	implementation 'org.flywaydb:flyway-core:8.0.0'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	runtimeOnly 'org.postgresql:postgresql:42.2.24'
-
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
@@ -52,6 +53,9 @@ dependencyManagement {
 }
 bootJar {
 	archiveFileName="service.jar"
+}
+springBoot {
+	buildInfo()
 }
 test {
 	useJUnitPlatform()
