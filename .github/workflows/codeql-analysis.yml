@@ -68,7 +68,8 @@ jobs:
     #    uses a compiled language
 
     - run: |
-        gradle clean test
+        cd ./api
+        gradlew clean test
     #   make bootstrap
     #   make release
 
