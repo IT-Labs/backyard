@@ -83,6 +83,8 @@ spring:
   config:
     activate:
       on-profile: docker
+  datasource:
+    url: jdbc:postgresql://api-postgres/config?stringtype=unspecified
   rabbitmq:
     host: rabbitmq-sample
   redis:

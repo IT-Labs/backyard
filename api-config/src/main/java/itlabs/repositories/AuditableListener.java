@@ -6,8 +6,6 @@ import javax.persistence.PreUpdate;
 
 public class AuditableListener {
 
-
-
 	@PrePersist
 	protected void onCreate(BaseEntity entity) {
 		final LocalDateTime created = LocalDateTime.now();
@@ -19,6 +17,6 @@ public class AuditableListener {
 	@PreUpdate
 	protected void onUpdate(BaseEntity entity) {
 		entity.setUpdated(LocalDateTime.now());
-		}
+	}
 
 }

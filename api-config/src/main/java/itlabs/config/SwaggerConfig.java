@@ -32,8 +32,7 @@ public class SwaggerConfig {
 	public Docket api() {
 		return new Docket(SWAGGER_2).groupName("api").select().apis(RequestHandlerSelectors.any())
 
-				.build()
-				.apiInfo(apiInfo(buildProperties.getName()));
+				.build().apiInfo(apiInfo(buildProperties.getName()));
 	}
 
 	@Bean

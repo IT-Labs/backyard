@@ -36,6 +36,4 @@ public class BaseEntity {
 	@Column(nullable = false)
 	private LocalDateTime created;
 
-
-
 }
