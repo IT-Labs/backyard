@@ -45,16 +45,14 @@ management:
 ---
 logging:
   level:
-    root: DEBUG
+    root: ERROR
 sample:
   internal-api: http://api-internal-sample:5001
-server:
-  port: 5000
 spring:
   config:
     activate:
       on-profile: docker
-    import: "configserver:http://api-config-sample:8888"
+    import: "configserver:http://api-config-sample:8888/config"
   rabbitmq:
     host: rabbitmq-sample
   redis:

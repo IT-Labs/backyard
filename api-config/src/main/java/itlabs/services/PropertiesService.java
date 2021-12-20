@@ -4,12 +4,16 @@ import itlabs.models.PropertyModel;
 import itlabs.models.PropertyViewModel;
 import itlabs.repositories.PropertiesRepository;
 import itlabs.repositories.Property;
+
+import java.util.Optional;
 import java.util.UUID;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
+
+import javax.transaction.Transactional;
 
 @Service
 public class PropertiesService {
@@ -21,17 +25,18 @@ public class PropertiesService {
 	}
 
 	public PropertyViewModel save(PropertyModel model) {
-		return getModel(propertiesRepository.save(getEntity(model, null)));
+		return getModel(propertiesRepository.save(getEntity(model, null))).get();
 	}
 
-	public PropertyViewModel get(UUID id) {
+	public Optional<PropertyViewModel> get(UUID id) {
 		return getModel(propertiesRepository.findByGuid(id).get());
 	}
 
 	public PropertyViewModel update(UUID id, PropertyModel model) {
-		return getModel(propertiesRepository.save(getEntity(model, propertiesRepository.findByGuid(id).get())));
+		return getModel(propertiesRepository.save(getEntity(model, propertiesRepository.findByGuid(id).get()))).get();
 	}
 
+	@Transactional
 	public void delete(UUID id) {
 		propertiesRepository.deleteByGuid(id);
 	}
@@ -39,12 +44,12 @@ public class PropertiesService {
 	public Page<PropertyViewModel> get(Pageable pageable, String application) {
 		var dbItems = StringUtils.hasLength(application) ? propertiesRepository.findByApplication(pageable, application)
 				: propertiesRepository.findAll(pageable);
-		return new PageImpl<>(dbItems.map(this::getModel).toList(), pageable, dbItems.getTotalElements());
+		return new PageImpl<>(dbItems.map(x -> getModel(x).get()).toList(), pageable, dbItems.getTotalElements());
 	}
 
-	private PropertyViewModel getModel(Property entity) {
+	private Optional<PropertyViewModel> getModel(Property entity) {
 		if (entity == null) {
-			return null;
+			return Optional.empty();
 		}
 		var model = new PropertyViewModel();
 		if (StringUtils.hasLength(entity.getApplication())) {
@@ -63,7 +68,7 @@ public class PropertiesService {
 			model.setValue(entity.getValue());
 		}
 		model.setUuid(entity.getGuid());
-		return model;
+		return Optional.of(model);
 	}
 
 	private Property getEntity(PropertyModel property, Property entity) {

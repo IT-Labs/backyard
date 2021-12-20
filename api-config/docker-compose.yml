@@ -12,7 +12,7 @@ services:
       - ./build/libs:/usr/src/myapp
     working_dir: /usr/src/myapp
     environment:
-      - SPRING_PROFILES_ACTIVE=docker,jdbc,git,native
+      - SPRING_PROFILES_ACTIVE=docker,jdbc,git
     command:
       [
         "java",

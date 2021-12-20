@@ -3,6 +3,7 @@ package itlabs.controllers;
 import io.swagger.annotations.Api;
 import itlabs.models.PropertyModel;
 import itlabs.models.PropertyViewModel;
+import itlabs.services.NotificationService;
 import itlabs.services.PropertiesService;
 
 import java.util.List;
@@ -36,11 +37,14 @@ public class JdbcPropertiesController {
 
 	private final PropertiesService propertiesService;
 
-	private final PropertyPathEndpoint propertyPathEndpoint;
+	private final NotificationService notificationService;
 
-	public JdbcPropertiesController(PropertiesService propertiesService, PropertyPathEndpoint propertyPathEndpoint) {
+	;
+
+	public JdbcPropertiesController(PropertiesService propertiesService, NotificationService notificationService) {
 		this.propertiesService = propertiesService;
-		this.propertyPathEndpoint = propertyPathEndpoint;
+		this.notificationService = notificationService;
+
 	}
 
 	@GetMapping
@@ -53,28 +57,29 @@ public class JdbcPropertiesController {
 	public ResponseEntity<PropertyViewModel> post(@RequestBody @Validated PropertyModel model,
 			@RequestHeader HttpHeaders headers) {
 		final var propertyViewModel = propertiesService.save(model);
-		var result = propertyPathEndpoint.notifyByForm(headers, List.of(model.getApplication()));
-		log.debug("notify {} {}", model.getApplication(), result.stream().collect(Collectors.joining(",")));
+		notificationService.notifyApplicationsForConfigurationChange(headers, model.getApplication());
 		return new ResponseEntity<>(propertyViewModel, HttpStatus.CREATED);
 	}
 
 	@GetMapping(path = "/{id}")
 	public ResponseEntity<PropertyViewModel> getItem(@PathVariable("id") UUID id) {
-		return new ResponseEntity<>(propertiesService.get(id), HttpStatus.OK);
+		return new ResponseEntity<>(propertiesService.get(id).get(), HttpStatus.OK);
 	}
 
 	@PutMapping(path = "/{id}")
 	public ResponseEntity<PropertyViewModel> put(@PathVariable("id") UUID id, @RequestBody PropertyModel model,
 			@RequestHeader HttpHeaders headers) {
 		final var update = propertiesService.update(id, model);
-		var result = propertyPathEndpoint.notifyByForm(headers, List.of(model.getApplication()));
-		log.debug("notify {} {}", model.getApplication(), result.stream().collect(Collectors.joining(",")));
+		notificationService.notifyApplicationsForConfigurationChange(headers, model.getApplication());
 		return new ResponseEntity<>(update, HttpStatus.CREATED);
 	}
 
 	@DeleteMapping(path = "/{id}")
-	public ResponseEntity<String> delete(@PathVariable("id") UUID id) {
-		propertiesService.delete(id);
+	public ResponseEntity<String> delete(@PathVariable("id") UUID id, @RequestHeader HttpHeaders headers) {
+		propertiesService.get(id).ifPresent(model -> {
+			propertiesService.delete(id);
+			notificationService.notifyApplicationsForConfigurationChange(headers, model.getApplication());
+		});
 		return new ResponseEntity<>("deleted", HttpStatus.NO_CONTENT);
 	}
 

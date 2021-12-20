@@ -11,7 +11,7 @@ logging:
 spring:
   datasource:
     password: dev123
-    url: jdbc:postgresql://localhost:5432/config?stringtype=unspecified
+    url: jdbc:postgresql://localhost:5444/config?stringtype=unspecified
     username: dev
   flyway:
     locations: classpath:/db/migration/

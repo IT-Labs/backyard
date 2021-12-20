@@ -60,13 +60,11 @@ keycloak:
   confidential-port: 0
   principal-attribute: preferred_username
 ---
-server:
-  port: 5001
 spring:
   config:
     activate:
       on-profile: docker
-    import: "configserver:http://api-config-sample:8888"
+    import: "configserver:http://api-config-sample:8888/config"
   rabbitmq:
     host: rabbitmq-sample
   datasource:

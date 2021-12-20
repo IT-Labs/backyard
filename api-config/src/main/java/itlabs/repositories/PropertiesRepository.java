@@ -12,8 +12,6 @@ public interface PropertiesRepository extends JpaRepository<Property, Integer> {
 
 	Optional<Property> findByGuid(UUID uuid);
 
-	@Modifying
-	@Query("DELETE FROM Property i WHERE i.guid = :guid")
 	void deleteByGuid(UUID guid);
 
 	Page<Property> findByApplication(Pageable pageable, String application);
