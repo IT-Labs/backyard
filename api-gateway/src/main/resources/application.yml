@@ -25,6 +25,7 @@ spring:
       name: api-gateway
       allow-override: true
       override-none: true
+      label: develop
   rabbitmq:
     host: localhost
     port: 5672

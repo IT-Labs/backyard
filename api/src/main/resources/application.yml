@@ -28,7 +28,7 @@ spring:
     name: api
   datasource:
     password: dev123
-    url: jdbc:postgresql://localhost:5432/sample?stringtype=unspecified
+    url: jdbc:postgresql://localhost:5444/sample?stringtype=unspecified
     username: dev
   flyway:
     locations: classpath:/db/migration/
