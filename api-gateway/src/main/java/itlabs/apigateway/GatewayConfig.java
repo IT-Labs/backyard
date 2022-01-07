@@ -1,11 +1,20 @@
 package itlabs.apigateway;
 
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.function.Function;
+
+import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.springframework.cloud.config.client.ConfigClientProperties;
+import org.springframework.cloud.config.client.ConfigClientRequestTemplateFactory;
+import org.springframework.cloud.config.client.ConfigServicePropertySourceLocator;
 import org.springframework.cloud.gateway.filter.factory.DedupeResponseHeaderGatewayFilterFactory.Strategy;
 import org.springframework.cloud.gateway.filter.ratelimit.KeyResolver;
 import org.springframework.cloud.gateway.filter.ratelimit.RedisRateLimiter;
 import org.springframework.cloud.gateway.route.Route;
-import org.springframework.cloud.gateway.route.Route.AsyncBuilder;
 import org.springframework.cloud.gateway.route.RouteLocator;
 import org.springframework.cloud.gateway.route.builder.Buildable;
 import org.springframework.cloud.gateway.route.builder.PredicateSpec;
@@ -13,12 +22,50 @@ import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.client.ClientHttpRequestInterceptor;
+import org.springframework.http.client.SimpleClientHttpRequestFactory;
+import org.springframework.web.client.RestTemplate;
 import reactor.core.publisher.Mono;
 
 @Configuration
 @Slf4j
 public class GatewayConfig {
+
+	@Bean
+	public ConfigServicePropertySourceLocator configServicePropertySourceLocator(
+			ConfigClientProperties clientProperties) {
+
+		ConfigServicePropertySourceLocator configServicePropertySourceLocator = new ConfigServicePropertySourceLocator(
+				clientProperties);
+		ConfigClientRequestTemplateFactory requestTemplateFactory = new ConfigClientRequestTemplateFactory(
+				LogFactory.getLog(this.getClass()), clientProperties);
+		var restTemplate = requestTemplateFactory.create();
+		restTemplate.getInterceptors().add(getInterceptor("token"));
+		// restTemplate.setInterceptors(Arrays.asList());
+		configServicePropertySourceLocator.setRestTemplate(restTemplate);
+		// configServicePropertySourceLocator.setRestTemplate(customRestTemplate("clientProperties"));
+
+		return configServicePropertySourceLocator;
+	}
+
+	private RestTemplate customRestTemplate(String jwtToken) {
+		Map<String, String> headers = new HashMap<>();
+		headers.put("Authorization", "Bearer " + jwtToken);
+		var requestFactory = new SimpleClientHttpRequestFactory();
+		requestFactory.setReadTimeout((60 * 1000 * 3) + 5000);
+
+		RestTemplate template = new RestTemplate(requestFactory);
+		template.setInterceptors(
+				Arrays.asList(new ConfigClientRequestTemplateFactory.GenericRequestHeaderInterceptor(headers)));
+		return template;
+	}
+
+	private ClientHttpRequestInterceptor getInterceptor(String jwtToken) {
+		Map<String, String> headers = new HashMap<>();
+		headers.put("Authorization", "Bearer " + jwtToken);
+		return new ConfigClientRequestTemplateFactory.GenericRequestHeaderInterceptor(headers);
+
+	}
 
 	@Bean
 	KeyResolver ipKeyResolver() {

@@ -1,6 +1,5 @@
 #docker-compose.yml (Base)
-#https://github.com/wrouesnel/postgres_exporter
-version: "3.7"
+version: "3.8"
 networks:
   sample:
     name: sample-network
@@ -94,68 +93,3 @@ services:
       - sample
     depends_on:
       - redis-sample
-  zookeeper-debezium:
-    image: debezium/zookeeper:1.6
-    container_name: zookeeper-debezium
-    hostname: zookeeper-debezium
-    ports:
-      - "2181:2181"
-      - "2888:2888"
-      - "3888:3888"
-    networks:
-      - sample
-  kafka-debezium:
-    image: debezium/kafka:1.6
-    container_name: kafka-debezium
-    hostname: kafka-debezium
-    ports:
-      - "4092:9092"
-    links:
-      - zookeeper-debezium
-    environment:
-      - ZOOKEEPER_CONNECT=zookeeper-debezium:2181
-      - KAFKA_AUTO_CREATE_TOPICS_ENABLE=true
-    networks:
-      - sample
-  kafka-ui-debezium:
-    image: provectuslabs/kafka-ui
-    container_name: kafka-ui-debezium
-    ports:
-      - "4093:8080"
-    links:
-      - zookeeper-debezium
-      - kafka-debezium
-    networks:
-      - sample
-    environment:
-      - KAFKA_CLUSTERS_0_NAME=local
-      - KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS=kafka-debezium:9092
-      - KAFKA_CLUSTERS_0_ZOOKEEPER=zookeeper-debezium:2181
-  connect-debezium:
-    image: debezium/connect:1.6
-    container_name: connect-debezium
-    ports:
-      - "4094:8083"
-    environment:
-      - BOOTSTRAP_SERVERS=kafka-debezium:9092
-      - GROUP_ID=1
-      - CONFIG_STORAGE_TOPIC=my_connect_configs
-      - OFFSET_STORAGE_TOPIC=my_connect_offsets
-      - STATUS_STORAGE_TOPIC=my_connect_statuses
-      - CONNECT_TOPIC_CREATION_ENABLE=true
-    depends_on:
-      - zookeeper-debezium
-      - kafka-debezium
-    networks:
-      - sample
-  debezium-ui:
-    image: debezium/debezium-ui:1.6
-    container_name: debezium-ui
-    ports:
-      - "4095:8080"
-    environment:
-      - KAFKA_CONNECT_URI=http://connect-debezium:8083
-    depends_on:
-      - connect-debezium
-    networks:
-      - sample
