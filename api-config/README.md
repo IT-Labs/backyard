@@ -6,7 +6,7 @@ execute ./infrastructure.sh to setup common service
 
 ## localhost run
 
-./gradlew bootRun
+./gradlew -Dorg.gradle.java.home="C:\\Program Files\\Java\\jdk-17.0.1" bootRun  --args='--spring.profiles.active=git,jdbc'
 
 - access swagger : http://localhost:8888/swagger-ui/ 
 - access default config:  http://localhost:8888/config/applicatio/default 

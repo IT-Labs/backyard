@@ -17,7 +17,7 @@ const Home: React.FunctionComponent = () => {
           setData(response.data);
           setLoading(false);
         });
-      } catch (error) {
+      } catch (error:any) {
         setData([]);
         setLoading(false);
         toast(error.message);

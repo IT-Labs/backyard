@@ -44,7 +44,7 @@ const ItemForm: React.FunctionComponent<IFormProps> = ({
                 errorToast(`error loading item with id ${id}`);
               })
           : setData(newItem);
-      } catch (error) {
+      } catch (error:any) {
         setData(newItem);
         errorToast(error.message);
       }

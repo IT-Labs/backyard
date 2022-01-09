@@ -1,3 +1,3 @@
 #!/bin/sh
 docker-compose down
-docker build --tag fe-sample .
+docker build --no-cache --tag fe-sample .
