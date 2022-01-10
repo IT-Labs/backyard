@@ -3,9 +3,10 @@ import { Container } from "semantic-ui-react";
 import { ItemsService } from "../service/ItemsService";
 import { Item } from "../service/Item";
 import ItemsList from "./ItemsList";
+import ReactLoading from "react-loading";
 import { toast } from "react-toastify";
 
-const Home: React.FunctionComponent = () => {
+function Home()  {
   const [data, setData] = useState<Item[]>([]);
 
   const [loading, setLoading] = useState(true);
@@ -28,7 +29,7 @@ const Home: React.FunctionComponent = () => {
   }, []);
 
   if (loading) {
-    return <div>Loading Items</div>;
+    return <ReactLoading color={"red"} height={"20%"} width={"20%"} />;
   }
  
 

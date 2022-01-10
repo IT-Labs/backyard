@@ -1,8 +1,8 @@
 import React from "react";
 import Countdown from "react-countdown";
 
-class ComingSoon extends React.Component {
-  render() {
+function ComingSoon () {
+  
     return (
       <div className="comingSoon">       
 
@@ -20,6 +20,5 @@ class ComingSoon extends React.Component {
       </div>
     );
   }
-}
 
-export default ComingSoon;
+  export default ComingSoon;

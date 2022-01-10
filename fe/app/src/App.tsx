@@ -1,7 +1,7 @@
 import React from "react";
 import { ReactKeycloakProvider } from "@react-keycloak/web";
 import Keycloak, { KeycloakConfig } from "keycloak-js";
-import { Route, Switch, BrowserRouter as Router } from "react-router-dom";
+import { Route, Routes, BrowserRouter as Router, BrowserRouter } from "react-router-dom";
 import { Dimmer, Header, Icon } from "semantic-ui-react";
 import PrivateRoute from "./common/PrivateRoute";
 import Navbar from "./common/Navbar";
@@ -58,18 +58,28 @@ function App() {
       LoadingComponent={loadingComponent}
       onEvent={(event, error) => handleOnEvent(event, error)}
     >
-      <Router>
+      <BrowserRouter>
         <Navbar />
-        <Switch>
-          <Route path="/" exact component={Home} />
-          <Route path="/home" component={Home} />
-          <Route path="/about" component={About} />
-          <PrivateRoute path="/items" component={Items} />
-          <PrivateRoute path="/item/:id" component={ItemForm} />
-          <PrivateRoute path="/item/" component={ItemForm} />
-          <Route component={Notfound} />
-        </Switch>
-      </Router>
+
+        <Routes>
+          <Route path="/" element={Home} />
+          <Route path="/home" element={Home} />
+          <Route path="/about" element={About} />
+          <Route
+            path="/items"
+            element={<PrivateRoute component={Items} />}
+          />
+          <Route
+            path="/item/:id"
+            element={<PrivateRoute component={ItemForm} />}
+          />
+          <Route
+            path="/item/"
+            element={<PrivateRoute component={ItemForm} />}
+          />
+          <Route element={Notfound} />
+        </Routes>
+      </BrowserRouter>
       <Footer />
     </ReactKeycloakProvider>
   );
