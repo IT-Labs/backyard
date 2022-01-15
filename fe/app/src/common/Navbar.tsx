@@ -31,7 +31,7 @@ function Navbar() {
   };
 
   useEffect(() => {
-    if (!keycloak.profile) {
+    if (keycloak.profile) {
       keycloak.loadUserProfile().then((profile) => {
         handleLog("Profile loaded" + profile);
         keycloak.profile = profile;

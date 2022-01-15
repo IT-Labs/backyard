@@ -62,13 +62,10 @@ function App() {
         <Navbar />
 
         <Routes>
-          <Route path="/" element={Home} />
-          <Route path="/home" element={Home} />
-          <Route path="/about" element={About} />
-          <Route
-            path="/items"
-            element={<PrivateRoute component={Items} />}
-          />
+          <Route path="/" element={<Home />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/about" element={<About/>} />
+          <Route path="/items" element={<PrivateRoute component={Items} />} />
           <Route
             path="/item/:id"
             element={<PrivateRoute component={ItemForm} />}

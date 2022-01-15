@@ -8,7 +8,7 @@ function ComingSoon () {
 
         <p> Under Construction </p>
         <Countdown
-          date={new Date(2021, 3, 1, 0, 0, 0, 0)}
+          date={new Date(2022, 3, 1, 0, 0, 0, 0)}
           intervalDelay={0}
           precision={3}
           renderer={(props) => (
