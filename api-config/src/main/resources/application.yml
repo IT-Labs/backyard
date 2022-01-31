@@ -22,7 +22,7 @@ spring:
       refresh:
         enabled: true
     config:
-      lable: master
+      label: master
       server:
         prefix: config
         native:

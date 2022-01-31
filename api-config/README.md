@@ -10,7 +10,7 @@ execute ./infrastructure.sh to setup common service
 
 - access swagger : http://localhost:8888/swagger-ui/ 
 - access default config:  http://localhost:8888/config/applicatio/default 
-- inser config in database with REST API  call 
+- insert config in database with REST API  call 
 ```curl -X POST "http://localhost:8888/api/v1/properties/jdbc" -H "accept: */*" -H "Content-Type: application/json" -d "{ \"application\": \"application\", \"key\": \"logging.level.root\", \"label\": \"master\", \"profile\": \"default\", \"value\": \"WARN\"}" ``` 
      
 

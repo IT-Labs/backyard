@@ -9,6 +9,7 @@ volumes:
     external: true
   redisinsight-sample:
   redis-sample:
+  localstack-sample:
 services:
   vault-sample:
     image: vault:latest
@@ -93,3 +94,22 @@ services:
       - sample
     depends_on:
       - redis-sample
+  localstack-sample:
+    container_name: localstack-sample
+    image: localstack/localstack:latest
+    environment:
+      - SERVICES=s3
+      - AWS_DEFAULT_REGION=us-east-1
+    volumes: 
+      - localstack-sample:/tmp/localstack
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    ports:
+      - 4566:4566
+    networks:
+      - sample
+  aws-cli-sample:
+    image: amazon/aws-cli 
+    container_name: aws-cli-sample 
+    entrypoint: tail -f /dev/null  #force the container to stay alive
+    networks:
+      - sample 
