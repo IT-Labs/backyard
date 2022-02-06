@@ -46,6 +46,12 @@ spring:
         jdbc:
           sql: SELECT key, value FROM properties WHERE application=? AND profile=? AND label=?;
           order: 3
+        awss3:
+          bucket: config-sample
+          order: 4
+          endpoint: http://s3.localhost.localstack.cloud:4566 # http://localhost:4566 is not working because of s3 path style
+          region: us-east-1
+
   cache:
     type: redis
   redis:
@@ -59,6 +65,7 @@ spring:
     username: dev
     password: dev123
     virtual-host: /
+
 management:
   health:
     vault:

@@ -152,25 +152,31 @@ example : `./performance_test.sh C:/Projects/IT-Labs/backyard/metrics`
 -
 
 ## local stack
-
-s3  
-open aws -cli sample cli
-run ` aws configure`
+start local stack and aws s3 cli  docker compose services 
+### create a bucket
+- navigate to aws s3 CLI  
+- run ` aws configure`
 then enter
 AWS Access Key ID [None]: sample
 AWS Secret Access Key [None]: sample
 Default region name [None]:
 Default output format [None]:
-run the command to create a bucket
-` aws --endpoint-url=http://localstack-sample:4566 s3 mb s3://config-sample`
+- run the command to create a bucket
+``` aws --endpoint-url=http://localstack-sample:4566 s3 mb s3://config-sample```
 you should `get make_bucket: config-sample` as response
-navigate to http://localhost:4566/config-sample you should get a response :
+- navigate to http://localhost:4566/config-sample you should get a response :
 `<ListBucketResult xmlns="http://s3.amazonaws.com/doc/2006-03-01/">
 <Name>config-sample</Name>
 <MaxKeys>1000</MaxKeys>
 <IsTruncated>false</IsTruncated>
 </ListBucketResult> `
-
+  
+  ### manage local stack  content 
+ navigate to  root folder 
+ - copy content to s3 bucket
+ ```aws --endpoint-url=http://localstack-sample:4566 s3 cp ./myFolder/cloud-config s3://config-sample --recursive```
+ remove content from s3 bucket 
+ ```aws --endpoint-url=http://localstack-sample:4566 s3 rm s3://config-sample --recursive```
 
 ## Sonar
 

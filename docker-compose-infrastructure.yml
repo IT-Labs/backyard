@@ -110,6 +110,8 @@ services:
   aws-cli-sample:
     image: amazon/aws-cli 
     container_name: aws-cli-sample 
+    volumes:
+      - ./:/myFolder
     entrypoint: tail -f /dev/null  #force the container to stay alive
     networks:
       - sample 
