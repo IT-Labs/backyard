@@ -13,6 +13,12 @@ execute ./infrastructure.sh to setup common service
 - insert config in database with REST API  call 
 ```curl -X POST "http://localhost:8888/api/v1/properties/jdbc" -H "accept: */*" -H "Content-Type: application/json" -d "{ \"application\": \"application\", \"key\": \"logging.level.root\", \"label\": \"master\", \"profile\": \"default\", \"value\": \"WARN\"}" ``` 
      
+## trigger configuration refresh from repository and send event to topic 
+ - Github event 
+```curl -X POST http://localhost:8888/monitor -H "X-Github-Event: push" -H "Content-Type: application/json" -d '{"commits": [{"modified": ["application.properties"]}]}'```
+
+
+
 
 # Build
 
