@@ -10,11 +10,10 @@ import org.springframework.http.HttpStatus;
 @Builder
 public class ErrorModel {
 
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = GlobalConstants.DATE_FORMAT)
-	private Date timestamp;
+  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = GlobalConstants.DATE_FORMAT)
+  private Date timestamp;
 
-	private String message;
+  private String message;
 
-	private HttpStatus code;
-
+  private HttpStatus code;
 }

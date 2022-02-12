@@ -11,6 +11,5 @@ import org.springframework.stereotype.Component;
 @RefreshScope
 public class CloudConfigs {
 
-	private String location;
-
+  private String location;
 }

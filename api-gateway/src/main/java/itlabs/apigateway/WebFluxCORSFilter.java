@@ -13,22 +13,21 @@ import org.springframework.web.reactive.config.EnableWebFlux;
 @EnableWebFlux
 public class WebFluxCORSFilter {
 
-	@Bean
-	public CorsWebFilter corsFilter(CorsConfigurationSource corsConfigurationSource) {
-		return new CorsWebFilter(corsConfigurationSource);
-	}
+  @Bean
+  public CorsWebFilter corsFilter(CorsConfigurationSource corsConfigurationSource) {
+    return new CorsWebFilter(corsConfigurationSource);
+  }
 
-	@Bean
-	CorsConfigurationSource corsConfigurationSource() {
-		final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-		CorsConfiguration config = new CorsConfiguration().applyPermitDefaultValues();
-		config.setMaxAge(5000L);
-		config.addAllowedMethod(HttpMethod.PATCH.name());
-		config.addAllowedMethod(HttpMethod.DELETE.name());
-		config.addAllowedMethod(HttpMethod.OPTIONS.name());
-		config.addAllowedMethod(HttpMethod.PUT.name());
-		source.registerCorsConfiguration("/**", config);
-		return source;
-	}
-
+  @Bean
+  CorsConfigurationSource corsConfigurationSource() {
+    final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+    CorsConfiguration config = new CorsConfiguration().applyPermitDefaultValues();
+    config.setMaxAge(5000L);
+    config.addAllowedMethod(HttpMethod.PATCH.name());
+    config.addAllowedMethod(HttpMethod.DELETE.name());
+    config.addAllowedMethod(HttpMethod.OPTIONS.name());
+    config.addAllowedMethod(HttpMethod.PUT.name());
+    source.registerCorsConfiguration("/**", config);
+    return source;
+  }
 }

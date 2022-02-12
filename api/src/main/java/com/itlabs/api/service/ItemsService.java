@@ -10,16 +10,15 @@ import org.springframework.data.domain.Pageable;
 
 public interface ItemsService {
 
-	ItemModel get(UUID uuid);
+  ItemModel get(UUID uuid);
 
-	Page<ItemModel> get(Pageable pageable, String name, ItemStatus status);
+  Page<ItemModel> get(Pageable pageable, String name, ItemStatus status);
 
-	ItemModel save(ItemEditModel model);
+  ItemModel save(ItemEditModel model);
 
-	ItemModel update(UUID uuid, ItemEditModel model);
+  ItemModel update(UUID uuid, ItemEditModel model);
 
-	void delete(UUID uuid);
+  void delete(UUID uuid);
 
-	List<ItemModel> getPublicPublishedItems(Pageable pageable);
-
+  List<ItemModel> getPublicPublishedItems(Pageable pageable);
 }

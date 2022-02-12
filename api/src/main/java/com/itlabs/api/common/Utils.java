@@ -4,17 +4,15 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class Utils {
 
-	private Utils() {
-		// hide constructor
-	}
+  private Utils() {
+    // hide constructor
+  }
 
-	public static String asJsonString(final Object obj) {
-		try {
-			return new ObjectMapper().writeValueAsString(obj);
-		}
-		catch (Exception e) {
-			throw new GeneralRuntimeException(e);
-		}
-	}
-
+  public static String asJsonString(final Object obj) {
+    try {
+      return new ObjectMapper().writeValueAsString(obj);
+    } catch (Exception e) {
+      throw new GeneralRuntimeException(e);
+    }
+  }
 }

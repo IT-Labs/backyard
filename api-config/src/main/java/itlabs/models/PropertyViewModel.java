@@ -8,6 +8,5 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = false)
 public class PropertyViewModel extends PropertyModel {
 
-	UUID uuid;
-
+  UUID uuid;
 }

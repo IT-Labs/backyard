@@ -12,7 +12,6 @@ import org.springframework.stereotype.Component;
 @RefreshScope
 public class CloudConfigs {
 
-	@Value("${config.location:Default}")
-	private String location;
-
+  @Value("${config.location:Default}")
+  private String location;
 }

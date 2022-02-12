@@ -1,11 +1,3 @@
-buildscript {
-	repositories {
-		mavenCentral()
-	}
-	dependencies {
-		classpath("io.spring.javaformat:spring-javaformat-gradle-plugin:0.0.29")
-	}
-}
 
 plugins {
 	id 'org.springframework.boot' version '2.5.6'
@@ -14,8 +6,9 @@ plugins {
 	id 'java'
 	id "org.sonarqube" version "3.2.0"
 	id "jacoco"
+	id "com.diffplug.spotless" version "6.2.0"
 }
-apply plugin: 'io.spring.javaformat'
+
 group = 'com.it-labs'
 sourceCompatibility = '17'
 targetCompatibility ='17'
@@ -39,6 +32,10 @@ repositories {
 	mavenCentral()
 	jcenter()
 }
+spotless {
+	java {
+		googleJavaFormat()
+	}}
 ext {
 	set('springCloudVersion', "2020.0.4")
 }

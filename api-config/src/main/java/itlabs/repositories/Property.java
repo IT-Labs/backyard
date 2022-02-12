@@ -11,14 +11,13 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = false)
 public class Property extends BaseEntity {
 
-	String value;
+  String value;
 
-	String key;
+  String key;
 
-	String profile;
+  String profile;
 
-	String application;
+  String application;
 
-	String label;
-
+  String label;
 }
