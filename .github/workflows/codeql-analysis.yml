@@ -14,7 +14,7 @@ name: "CodeQL"
 
 on:
   push:
-    branches: [ master, develop ]
+    branches: [ master, develop,spring-cloud-config ]
   pull_request:
     # The branches below must be a subset of the branches above
     branches: [ master ]
@@ -25,7 +25,9 @@ jobs:
   analyze:
     name: Analyze
     runs-on: ubuntu-latest
-
+    defaults:
+      run:
+        working-directory: api
     strategy:
       fail-fast: false
       matrix:
@@ -38,7 +40,7 @@ jobs:
     - name: Setup Java JDK
       uses: actions/setup-java@v1
       with:
-        java-version: 14
+        java-version: 17
     - name: Checkout repository
       uses: actions/checkout@v2
 
