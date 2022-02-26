@@ -5,8 +5,8 @@ This repository contains a full working local environment, where you can execute
 
 ## Stack
 
-- Java
-- Spring Boot
+- Java 17
+- Spring Boot 
 - Gradle
 - React
 - Typescript
@@ -21,6 +21,8 @@ This repository contains a full working local environment, where you can execute
 - sitespeed.io
 - Jmeter
 - Keycloak
+- Localstack s3
+- AWS CLI docker 
 
 # Readme
 
@@ -97,6 +99,10 @@ port :6379
 If you want to backup volume,because [restart.sh](restart.sh) is restoring your volume on each run
 you should run the [backup script](volume_backup.sh)
 example : `./volume_backup.sh C:/Projects/IT-Labs/backyard`
+
+## Infra
+ Run some of the infrastructure service by docker 
+ ```docker-compose  -f "docker-compose-infrastructure.yml" up -d --build api-postgres redis-sample redis-insight ```
 
 ## Jmeter test
 
