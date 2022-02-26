@@ -16,6 +16,22 @@ spring:
   redis:
     host: localhost
     port: 6378
+  application:
+    name: api-gateway-sample
+  config:
+    import: "configserver:http://localhost:8888/config"
+  cloud:
+    config:
+      name: api-gateway
+      allow-override: true
+      override-none: true
+      label: develop
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: dev
+    password: dev123
+    virtual-host: /
 management:
   endpoint:
     health:
@@ -27,3 +43,20 @@ management:
       base-path: /v1/actuator
       exposure:
         include: "*"
+---
+logging:
+  level:
+    root: INFO
+sample:
+  internal-api: http://api-internal-sample:5001
+spring:
+  config:
+    activate:
+      on-profile: docker
+    import: "configserver:http://api-config-sample:8888/config"
+  rabbitmq:
+    host: rabbitmq-sample
+  redis:
+    host: redis-sample
+    port: 6379
+

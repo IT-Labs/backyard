@@ -47,7 +47,7 @@ services:
       - sonarqube-sample
     command: ./gradlew clean format test jacocoTestReport  sonarqube  -Dsonar.login=03f19ea1eb7ccb34633498cadd3ee1d9233d8ab2 -Dsonar.projectKey=api-gateway -Dsonar.host.url=http://sonarqube-sample:9000   -Dsonar.scm.disabled=True  
   sonarqube-sample:
-    image: sonarqube:8.5-community
+    image: sonarqube:9.3.0-community
     container_name: sonarqube-sample
     ports:
       - 9001:9000

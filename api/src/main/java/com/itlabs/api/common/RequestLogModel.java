@@ -13,54 +13,51 @@ import org.springframework.web.context.request.WebRequest;
 @Getter
 public class RequestLogModel {
 
-	private RequestLogModel() {
+  private RequestLogModel() {}
 
-	}
+  public RequestLogModel(WebRequest request) {
+    this(((ServletWebRequest) request).getRequest());
+  }
 
-	public RequestLogModel(WebRequest request) {
-		this(((ServletWebRequest) request).getRequest());
-	}
+  public RequestLogModel(HttpServletRequest request) {
+    if (request == null) {
+      return;
+    }
+    setUrl(request);
+    setUser(request);
+    setRemoteAddress(request);
+    setHttpHeaders(request);
+  }
 
-	public RequestLogModel(HttpServletRequest request) {
-		if (request == null) {
-			return;
-		}
-		setUrl(request);
-		setUser(request);
-		setRemoteAddress(request);
-		setHttpHeaders(request);
-	}
+  private String action;
 
-	private String action;
+  private String remoteAddress;
 
-	private String remoteAddress;
+  private String user;
 
-	private String user;
+  private String url;
 
-	private String url;
+  private HttpHeaders headers;
 
-	private HttpHeaders headers;
+  private void setHttpHeaders(HttpServletRequest request) {
+    headers = new ServletServerHttpRequest(request).getHeaders();
+  }
 
-	private void setHttpHeaders(HttpServletRequest request) {
-		headers = new ServletServerHttpRequest(request).getHeaders();
-	}
+  private void setRemoteAddress(HttpServletRequest request) {
+    remoteAddress = request.getRemoteAddr();
+  }
 
-	private void setRemoteAddress(HttpServletRequest request) {
-		remoteAddress = request.getRemoteAddr();
-	}
+  private void setUser(HttpServletRequest request) {
+    user = request.getRemoteUser();
+  }
 
-	private void setUser(HttpServletRequest request) {
-		user = request.getRemoteUser();
-	}
-
-	private void setUrl(HttpServletRequest request) {
-		url = request.getRequestURI();
-		action = request.getMethod();
-		String queryString = request.getQueryString();
-		if (StringUtils.isEmpty(queryString)) {
-			return;
-		}
-		url = String.format("%s?%s", url, queryString);
-	}
-
+  private void setUrl(HttpServletRequest request) {
+    url = request.getRequestURI();
+    action = request.getMethod();
+    String queryString = request.getQueryString();
+    if (StringUtils.isEmpty(queryString)) {
+      return;
+    }
+    url = String.format("%s?%s", url, queryString);
+  }
 }

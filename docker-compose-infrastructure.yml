@@ -1,6 +1,5 @@
 #docker-compose.yml (Base)
-#https://github.com/wrouesnel/postgres_exporter
-version: "3.7"
+version: "3.8"
 networks:
   sample:
     name: sample-network
@@ -10,9 +9,37 @@ volumes:
     external: true
   redisinsight-sample:
   redis-sample:
+  localstack-sample:
 services:
+  vault-sample:
+    image: vault:latest
+    container_name: vault-sample
+    volumes:
+      - ./vault/config:/vault/config
+      - ./vault/policies:/vault/policies
+      - ./vault/data:/vault/data
+    ports:
+      - 8200:8200
+    environment:
+      - VAULT_ADDR=http://0.0.0.0:8200
+      - VAULT_API_ADDR=http://0.0.0.0:8200
+      - VAULT_ADDRESS=http://0.0.0.0:8200
+      - VAULT_DEV_ROOT_TOKEN_ID=sample
+    networks:
+      - sample
+  rabbitmq-sample:
+    image: "bitnami/rabbitmq:latest"
+    container_name: rabbitmq-sample
+    environment:
+      - RABBITMQ_USERNAME=dev
+      - RABBITMQ_PASSWORD=dev123
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+    networks:
+      - sample
   api-postgres:
-    image: library/postgres:12-alpine
+    image: library/postgres:14
     container_name: api-postgres
     environment:
       - POSTGRES_PASSWORD=dev123
@@ -25,7 +52,7 @@ services:
     networks:
       - sample
   keycloak-sample:
-    image: jboss/keycloak:12.0.1
+    image: jboss/keycloak:16.1.0
     container_name: keycloak-sample
     environment:
       - KEYCLOAK_USER=admin
@@ -48,7 +75,7 @@ services:
     #   test: "curl -f http://localhost:8080/auth || exit 1"
     #   start_period: 20s
   redis-sample:
-    image: redis:6.0.0-alpine
+    image: redis:6.2.6-alpine
     container_name: redis-sample
     networks:
       - sample
@@ -58,7 +85,7 @@ services:
       - "6378:6379"
   redis-insight:
     container_name: redis-insight-sample
-    image: redislabs/redisinsight:latest
+    image: redislabs/redisinsight:1.11.0
     ports:
       - "8002:8001"
     volumes:
@@ -67,3 +94,24 @@ services:
       - sample
     depends_on:
       - redis-sample
+  localstack-sample:
+    container_name: localstack-sample
+    image: localstack/localstack:latest
+    environment:
+      - SERVICES=s3
+      - AWS_DEFAULT_REGION=us-east-1
+    volumes: 
+      - localstack-sample:/tmp/localstack
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    ports:
+      - 4566:4566
+    networks:
+      - sample
+  aws-cli-sample:
+    image: amazon/aws-cli 
+    container_name: aws-cli-sample 
+    volumes:
+      - ./:/myFolder
+    entrypoint: tail -f /dev/null  #force the container to stay alive
+    networks:
+      - sample 

@@ -4,6 +4,5 @@ import com.itlabs.api.entity.Items;
 
 public interface ItemRangService {
 
-	long getRang(Items item);
-
+  long getRang(Items item);
 }

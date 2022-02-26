@@ -18,6 +18,11 @@ execute ./infrastructure.sh to setup common service
 - ./gradlew clean test
 - Check test results -> /build/reports/tests/test/index.html
 
+## Trigger refresh event  
+All configuration which are marked with @RefreshScope will be refreshed.
+All beans which are marked with @RefreshScope will be recreated on next call.
+
+```curl -X POST 'http://localhost:5001/v1/actuator/refresh'```
 ## docker
 
 ### create volume if not exist

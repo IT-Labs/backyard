@@ -1,0 +1,28 @@
+#docker-compose.yml (Base)
+version: "3.7"
+networks:
+  sample:
+    name: sample-network
+    driver: bridge
+services:
+  api-config-sample:
+    image: "openjdk:17-jdk-slim-buster"
+    container_name: api-config-sample
+    volumes:
+      - ./build/libs:/usr/src/myapp
+    working_dir: /usr/src/myapp
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker,jdbc,git
+    command:
+      [
+        "java",
+        "-Djava.security.egd=file:/dev/./urandom",
+        "-jar",
+        "/usr/src/myapp/service.jar",
+      ]
+    networks:
+      - sample
+    expose:
+      - "8888"
+    ports:
+      - 8888:8888

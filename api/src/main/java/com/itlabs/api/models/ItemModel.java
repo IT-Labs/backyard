@@ -10,16 +10,15 @@ import lombok.Value;
 @AllArgsConstructor
 public class ItemModel {
 
-	private String name;
+  private String name;
 
-	private ItemStatus status;
+  private ItemStatus status;
 
-	private String description;
+  private String description;
 
-	private String id;
+  private String id;
 
-	private boolean publiclyAvailable;
+  private boolean publiclyAvailable;
 
-	private LocalDateTime published;
-
+  private LocalDateTime published;
 }

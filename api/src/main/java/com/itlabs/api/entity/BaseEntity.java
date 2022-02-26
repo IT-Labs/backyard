@@ -20,28 +20,27 @@ import org.hibernate.annotations.Type;
 @EntityListeners(AuditableListener.class)
 public class BaseEntity {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Integer id;
 
-	@Column(nullable = false)
-	@Type(type = "pg-uuid")
-	private UUID guid;
+  @Column(nullable = false)
+  @Type(type = "pg-uuid")
+  private UUID guid;
 
-	@JsonFormat(pattern = GlobalConstants.DATE_FORMAT)
-	@Column(nullable = false)
-	private LocalDateTime updated;
+  @JsonFormat(pattern = GlobalConstants.DATE_FORMAT)
+  @Column(nullable = false)
+  private LocalDateTime updated;
 
-	@JsonFormat(pattern = GlobalConstants.DATE_FORMAT)
-	@Column(nullable = false)
-	private LocalDateTime created;
+  @JsonFormat(pattern = GlobalConstants.DATE_FORMAT)
+  @Column(nullable = false)
+  private LocalDateTime created;
 
-	@Column(nullable = false)
-	@Type(type = "pg-uuid")
-	private UUID createdBy;
+  @Column(nullable = false)
+  @Type(type = "pg-uuid")
+  private UUID createdBy;
 
-	@Column(nullable = false)
-	@Type(type = "pg-uuid")
-	private UUID updatedBy;
-
+  @Column(nullable = false)
+  @Type(type = "pg-uuid")
+  private UUID updatedBy;
 }

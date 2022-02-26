@@ -1,6 +1,6 @@
 import { useKeycloak } from "@react-keycloak/web";
-import React, { useEffect, useState } from "react";
-import { RouteComponentProps, useHistory } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import { Button, DropdownItemProps, Form, Segment } from "semantic-ui-react";
 import { errorToast, successToast, warnToast } from "../common/Helpers";
 import { ItemsService } from "../service/ItemsService";
@@ -11,12 +11,8 @@ const ItemStatuses: DropdownItemProps[] = [
   { text: "In Progress", value: "IN_PROGRESS" },
   { text: "Cancel", value: "CANCEL" },
 ];
-interface IFormProps extends RouteComponentProps<{ id: string }> {}
-const ItemForm: React.FunctionComponent<IFormProps> = ({
-  match: {
-    params: { id },
-  },
-}) => {
+const ItemForm: React.FunctionComponent=() => {
+  const params = useParams();
   const newItem = {
     nameError: false,
     descriptionError: false,
@@ -28,8 +24,8 @@ const ItemForm: React.FunctionComponent<IFormProps> = ({
     status: "DRAFT",
   };
   const [item, setData] = useState<EditItemModel>(newItem);
-
-  const history = useHistory();
+  const history = useNavigate();
+  let id = params.id;
   const { keycloak } = useKeycloak();
   useEffect(() => {
     const getItem = async () => {
@@ -44,13 +40,13 @@ const ItemForm: React.FunctionComponent<IFormProps> = ({
                 errorToast(`error loading item with id ${id}`);
               })
           : setData(newItem);
-      } catch (error) {
+      } catch (error: any) {
         setData(newItem);
         errorToast(error.message);
       }
     };
     getItem();
-  }, [keycloak, id]);
+  }, [keycloak]);
   const handleCheckBoxChange = (event: any) => {
     const { id, checked } = event.target;
     setData({ ...item, [id]: checked });
@@ -59,84 +55,87 @@ const ItemForm: React.FunctionComponent<IFormProps> = ({
     const { id, value } = data;
     setData({ ...item, [id]: value });
   };
-  const iaValidItem = (item: EditItemModel) => {
-    const nameHasAValue = item.name.trim() === "";
-    item.nameError = nameHasAValue;
-    setData(item);
-    return nameHasAValue || item.descriptionError || item.statusError
+  const iaValidItem = (isValidItem: EditItemModel) => {
+    const nameHasAValue = isValidItem.name.trim() === "";
+    isValidItem.nameError = nameHasAValue;
+    setData(isValidItem);
+    return nameHasAValue ||
+      isValidItem.descriptionError ||
+      isValidItem.statusError
       ? false
       : true;
   };
-  const handleSave = (item: EditItemModel) => {
-    if (!iaValidItem(item)) {
+  const handleSave = (editItem: EditItemModel) => {
+    if (!iaValidItem(editItem)) {
       warnToast("invalid form! Please check required fields");
       return;
     }
+    
+      ItemsService.saveItem(id, editItem, keycloak.token ? keycloak.token : "")
+        .then((response) => {
+          successToast(
+            `Item Successfully ${id ? "updated item with " + id : "created"}`
+          );
 
-    ItemsService.saveItem(id, item, keycloak.token ? keycloak.token : "")
-      .then((response) => {
-        successToast(
-          `Item Successfully ${id ? "updated item with " + id : "created"}`
-        );
-
-        history.goBack();
-      })
-      .catch((error) => {
-        errorToast("error saving item");
-      });
-  };
-  return (
-    <Segment>
-      <Form id="item">
-        <Form.Input
-          label="Name *"
-          id="name"
-          onChange={handleChange}
-          value={item.name}
-          error={item.nameError}
-        />
-        <Form.TextArea
-          label="Description"
-          id="description"
-          onChange={handleChange}
-          value={item.description}
-          error={item.descriptionError}
-        />
-        <Form.Dropdown
-          label="Status *"
-          id="status"
-          selection
-          placeholder="select item status"
-          onChange={handleChange}
-          options={ItemStatuses}
-          value={item.status}
-          error={item.statusError}
-        />
-        <Form.Checkbox
-          toggle
-          label="IsPublic"
-          id="publiclyAvailable"
-          onChange={handleCheckBoxChange}
-          checked={item.publiclyAvailable}
-          error={false}
-        />
-        <Button.Group>
-          <Button
-            id="back"
-            onClick={() => {
-              history.goBack();
-            }}
-          >
-            Cancel
-          </Button>
-          <Button.Or />
-          <Button id="save" positive onClick={() => handleSave(item)}>
-            Save
-          </Button>
-        </Button.Group>
-      </Form>
-    </Segment>
-  );
+          history("/items");
+        })
+        .catch((error) => {
+          errorToast("error saving item");
+        });
+    }
+    return (
+      <Segment>
+        <Form id="item">
+          <Form.Input
+            label="Name *"
+            id="name"
+            onChange={handleChange}
+            value={item.name}
+            error={item.nameError}
+          />
+          <Form.TextArea
+            label="Description"
+            id="description"
+            onChange={handleChange}
+            value={item.description}
+            error={item.descriptionError}
+          />
+          <Form.Dropdown
+            label="Status *"
+            id="status"
+            selection
+            placeholder="select item status"
+            onChange={handleChange}
+            options={ItemStatuses}
+            value={item.status}
+            error={item.statusError}
+          />
+          <Form.Checkbox
+            toggle
+            label="IsPublic"
+            id="publiclyAvailable"
+            onChange={handleCheckBoxChange}
+            checked={item.publiclyAvailable}
+            error={false}
+          />
+          <Button.Group>
+            <Button
+              id="back"
+              onClick={() => {
+                history("/items");
+              }}
+            >
+              Cancel
+            </Button>
+            <Button.Or />
+            <Button id="save" positive onClick={() => handleSave(item)}>
+              Save
+            </Button>
+          </Button.Group>
+        </Form>
+      </Segment>
+    );
+  
 };
 
 export default ItemForm;

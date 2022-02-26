@@ -28,7 +28,11 @@ docker-compose down
 ## Check latest plugin dependencies
 
      gradlew dependencyUpdates
+## Trigger refresh event  
+All configuration which are marked with @RefreshScope will be refreshed.
+All beans which are marked with @RefreshScope will be recreated on next call.
 
+```curl -X POST 'http://localhost:5001/v1/actuator/refresh'```
 
 ### Reference Documentation
 
