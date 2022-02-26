@@ -1,47 +1,77 @@
 info:
-    app:
-        description: playground application
-        name: Spring Backyard API Application
-    java-vendor: ${java.specification.vendor}
+  app:
+    description: playground application
+    name: Spring Backyard API Application
+  java-vendor: ${java.specification.vendor}
 logging:
-    level:
-        root: INFO
+  level:
+    root: INFO
 management:
-    endpoint:
-        health:
-            cache:
-                time-to-live: 30s
-            show-details: always
-    endpoints:
-        web:
-            base-path: /v1/actuator
-            exposure:
-                include: '*'
+  endpoint:
+    health:
+      cache:
+        time-to-live: 30s
+      show-details: always
+  endpoints:
+    web:
+      base-path: /v1/actuator
+      exposure:
+        include: "*"
 server:
-    error:
-        path: /error.html
-        whitelabel:
-            enabled: false
-    port: 5001
+  error:
+    path: /error.html
+    whitelabel:
+      enabled: false
+  port: 5001
 spring:
-    application:
-        name: api
-    datasource:
-        password: dev123
-        url: jdbc:postgresql://localhost:5432/sample?stringtype=unspecified
-        username: dev
-    flyway:
-        locations: classpath:/db/migration/
+  application:
+    name: api
+  datasource:
+    password: dev123
+    url: jdbc:postgresql://localhost:5444/sample?stringtype=unspecified
+    username: dev
+  flyway:
+    locations: classpath:/db/migration/
+  config:
+    import: "configserver:http://localhost:8888/config"
+  cloud:
+    config:
+      name: internal-api
+      allow-override: true
+      override-none: true
+      label: master
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: dev
+    password: dev123
+    virtual-host: /
 #    security:
 #        oauth2:
 #            resourceserver:
 #                jwt:
 #                    issuer-uri: http://localhost:6180/auth/realms/master
 keycloak:
-    auth-server-url: http://${KEYCLOAK_HOST:localhost}:${KEYCLOAK_PORT:6180}/auth
-    realm: realm-sample
-    resource: sample-client
-    public-client: true
-    ssl-required: external
-    confidential-port: 0
-    principal-attribute: preferred_username
+  auth-server-url: http://${KEYCLOAK_HOST:localhost}:${KEYCLOAK_PORT:6180}/auth
+  realm: realm-sample
+  resource: sample-client
+  public-client: true
+  ssl-required: external
+  confidential-port: 0
+  principal-attribute: preferred_username
+---
+spring:
+  config:
+    activate:
+      on-profile: docker
+    import: "configserver:http://api-config-sample:8888/config"
+  rabbitmq:
+    host: rabbitmq-sample
+  datasource:
+    password: dev123
+    url: jdbc:postgresql://api-postgres/sample?stringtype=unspecified
+    username: dev
+  flyway:
+    enabled: false
+keycloak:
+  auth-server-url: http://keycloak-sample:6180/auth

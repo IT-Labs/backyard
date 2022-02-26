@@ -1,19 +1,19 @@
-import React from "react";
 import { useKeycloak } from "@react-keycloak/web";
-import { NavLink, withRouter } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { Container, Dropdown, Menu } from "semantic-ui-react";
 import { handleLog, isAdmin } from "./Helpers";
 import { useState, useEffect } from "react";
 import { KeycloakProfile } from "keycloak-js";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-function Navbar(props: any) {
+function Navbar() {
   const { keycloak } = useKeycloak();
   const [profile, setProfile] = useState<KeycloakProfile>({});
+  const navigate = useNavigate();
   const handleLogInOut = () => {
     if (keycloak.authenticated) {
-      props.history.push("/");
       keycloak.logout();
+      navigate("/");
     } else {
       keycloak.login();
     }
@@ -25,24 +25,20 @@ function Navbar(props: any) {
     }
   };
 
-  const getUsername =  () => {
-
+  const getUsername = () => {
     //TODO: extend d.ts to get from token the preferred_username
-    return (
-      keycloak.authenticated && profile.username
-    );
+    return keycloak.authenticated && profile.username;
   };
 
   useEffect(() => {
-    if (!keycloak.profile) {
-      keycloak.loadUserProfile()
-      .then(profile=>{ 
+    if (keycloak.profile) {
+      keycloak.loadUserProfile().then((profile) => {
         handleLog("Profile loaded" + profile);
-        keycloak.profile= profile;
+        keycloak.profile = profile;
         setProfile(profile);
-      });     
-  }
-  }, [keycloak]);  
+      });
+    }
+  }, [keycloak]);
 
   const getLogInOutText = () => {
     return keycloak.authenticated ? "Logout" : "Login";
@@ -57,7 +53,7 @@ function Navbar(props: any) {
   return (
     <Menu stackable>
       <Container>
-        <Menu.Item id="nav_home" as={NavLink} exact to="/home">
+        <Menu.Item id="nav_home" as={NavLink} to="/home">
           Home
         </Menu.Item>
 
@@ -66,7 +62,6 @@ function Navbar(props: any) {
             <Dropdown.Item
               as={NavLink}
               id="nav_items"
-              exact
               to="/items"
               onClick={checkAuthenticated}
             >
@@ -74,7 +69,7 @@ function Navbar(props: any) {
             </Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
-        <Menu.Item id="nav_about" as={NavLink} exact to="/about">
+        <Menu.Item id="nav_about" as={NavLink} to="/about">
           About
         </Menu.Item>
         <Menu.Menu position="right">
@@ -95,7 +90,6 @@ function Navbar(props: any) {
           <Menu.Item
             as={NavLink}
             id="nav_login"
-            exact
             to="/login"
             onClick={handleLogInOut}
           >
@@ -107,5 +101,4 @@ function Navbar(props: any) {
     </Menu>
   );
 }
-
-export default withRouter(Navbar);
+export default Navbar;

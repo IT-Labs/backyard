@@ -87,7 +87,7 @@ const Items: React.FunctionComponent = () => {
         setLoading(false);
         setTotalPages(response.data.totalPages);
       });
-    } catch (error) {
+    } catch (error:any) {
       setData([]);
       setLoading(false);
       setMessage(error.message);

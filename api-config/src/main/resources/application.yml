@@ -1,0 +1,99 @@
+server:
+  port: 8888
+info:
+  app:
+    description: playground application
+    name: Spring Backyard Cloud Config Application
+  java-vendor: ${java.specification.vendor}
+logging:
+  level:
+    root: INFO
+spring:
+  datasource:
+    password: dev123
+    url: jdbc:postgresql://localhost:5444/config?stringtype=unspecified
+    username: dev
+  flyway:
+    locations: classpath:/db/migration/
+  cloud:
+    bootstrap.enabled: true
+    bus:
+      enabled: true
+      refresh:
+        enabled: true
+    config:
+      label: master
+      server:
+        prefix: config
+        native:
+          search-locations: classpath:/config
+          order: 1
+        git:
+          uri: https://github.com/IT-Labs/backyard
+          skipSslValidation: true
+          searchPaths: cloud-config
+          default-label: spring-cloud-config
+          force-pull: true
+          deleteUntrackedBranches: true
+          order: 2
+        vault:
+          port: 8200
+          host: localhost
+          kvVersion: 2
+          order: 1
+          authentication: TOKEN
+          token: sample
+        jdbc:
+          sql: SELECT key, value FROM properties WHERE application=? AND profile=? AND label=?;
+          order: 3
+        awss3:
+          bucket: config-sample
+          order: 4
+          endpoint: http://s3.localhost.localstack.cloud:4566 # http://localhost:4566 is not working because of s3 path style
+          region: us-east-1
+
+  cache:
+    type: redis
+  redis:
+    host: localhost
+    port: 6378
+  application:
+    name: api-cloud-config-sample
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: dev
+    password: dev123
+    virtual-host: /
+
+management:
+  health:
+    vault:
+      enabled: false
+  endpoint:
+    health:
+      cache:
+        time-to-live: 30s
+      show-details: always
+  endpoints:
+    web:
+      base-path: /v1/actuator
+      exposure:
+        include: "*"
+---
+logging:
+  level:
+    root: DEBUG
+server:
+  port: 8888
+spring:
+  config:
+    activate:
+      on-profile: docker
+  datasource:
+    url: jdbc:postgresql://api-postgres/config?stringtype=unspecified
+  rabbitmq:
+    host: rabbitmq-sample
+  redis:
+    host: redis-sample
+    port: 6379

@@ -12,19 +12,24 @@ import org.springframework.stereotype.Service;
 @Service
 public class IAMServiceImpl implements IAMService {
 
-	public String getIAMUserId() {
-		SecurityContext context = SecurityContextHolder.getContext();
-		Authentication authentication = context.getAuthentication();
+  public String getIAMUserId() {
+    SecurityContext context = SecurityContextHolder.getContext();
+    Authentication authentication = context.getAuthentication();
 
-		final AccessToken token = ((KeycloakAuthenticationToken) authentication).getAccount()
-				.getKeycloakSecurityContext().getToken();
-		final Map<String, Object> otherClaims = token.getOtherClaims();
-		var userId = otherClaims.containsKey("user_id") ? otherClaims.get("user_id").toString() : token.getSubject();
-		return userId;
-	}
+    final AccessToken token =
+        ((KeycloakAuthenticationToken) authentication)
+            .getAccount()
+            .getKeycloakSecurityContext()
+            .getToken();
+    final Map<String, Object> otherClaims = token.getOtherClaims();
+    var userId =
+        otherClaims.containsKey("user_id")
+            ? otherClaims.get("user_id").toString()
+            : token.getSubject();
+    return userId;
+  }
 
-	public UUID getIAMUserIdUUID() {
-		return UUID.fromString(getIAMUserId());
-	}
-
+  public UUID getIAMUserIdUUID() {
+    return UUID.fromString(getIAMUserId());
+  }
 }

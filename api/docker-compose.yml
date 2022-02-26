@@ -6,7 +6,7 @@ networks:
     driver: bridge
 services:
   api-internal-sample:
-    image: "openjdk:11.0.9-slim"
+    image: "openjdk:17-jdk-slim-buster"
     container_name: api-internal-sample
     volumes:
       - ./build/libs:/usr/src/myapp
@@ -29,7 +29,7 @@ services:
     depends_on:
       - flyway-sample
   flyway-sample:
-    image: flyway/flyway:7.7.0-alpine
+    image: flyway/flyway:8.0.0-alpine
     container_name: flyway-sample
     command: -url=jdbc:postgresql://api-postgres/sample -schemas=public -user=dev -password=dev123 migrate
     volumes:
@@ -37,7 +37,7 @@ services:
     networks:
       - sample
   api-internal-sample-empty:
-    image: "openjdk:11.0.9-slim"
+    image: "openjdk:17-jdk-slim-buster"
     container_name: api-internal-sample-empty
     volumes:
       - ./build/libs:/usr/src/myapp
@@ -61,7 +61,7 @@ services:
     depends_on:
       - flyway-sample-empty
   flyway-sample-empty:
-    image: flyway/flyway:6.5.7-alpine
+    image: flyway/flyway:8.0.0-alpine
     container_name: flyway-sample-empty
     command: -url=jdbc:postgresql://api-postgres/sample_empty -schemas=public -user=dev -password=dev123 migrate
     volumes:

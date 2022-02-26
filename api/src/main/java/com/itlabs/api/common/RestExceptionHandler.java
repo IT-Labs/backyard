@@ -21,36 +21,40 @@ import org.springframework.web.util.WebUtils;
 @Slf4j
 public class RestExceptionHandler extends ResponseEntityExceptionHandler {
 
-	@Override
-	protected ResponseEntity<Object> handleExceptionInternal(Exception ex, Object body, HttpHeaders headers,
-			HttpStatus status, WebRequest request) {
-		log.error("Internal Error with request {}", new RequestLogModel(request).toString(), ex);
-		if (HttpStatus.INTERNAL_SERVER_ERROR.equals(status)) {
-			request.setAttribute(WebUtils.ERROR_EXCEPTION_ATTRIBUTE, ex, RequestAttributes.SCOPE_REQUEST);
-		}
-		return buildResponseEntity(ex, HttpStatus.BAD_REQUEST);
-	}
+  @Override
+  protected ResponseEntity<Object> handleExceptionInternal(
+      Exception ex, Object body, HttpHeaders headers, HttpStatus status, WebRequest request) {
+    log.error("Internal Error with request {}", new RequestLogModel(request).toString(), ex);
+    if (HttpStatus.INTERNAL_SERVER_ERROR.equals(status)) {
+      request.setAttribute(WebUtils.ERROR_EXCEPTION_ATTRIBUTE, ex, RequestAttributes.SCOPE_REQUEST);
+    }
+    return buildResponseEntity(ex, HttpStatus.BAD_REQUEST);
+  }
 
-	@ExceptionHandler(Exception.class)
-	protected ResponseEntity<Object> handleException(Exception ex, HttpServletRequest request) {
-		return logAndBuildResponseEntity(ex, request, HttpStatus.INTERNAL_SERVER_ERROR);
-	}
+  @ExceptionHandler(Exception.class)
+  protected ResponseEntity<Object> handleException(Exception ex, HttpServletRequest request) {
+    return logAndBuildResponseEntity(ex, request, HttpStatus.INTERNAL_SERVER_ERROR);
+  }
 
-	@ExceptionHandler({ EmptyResultDataAccessException.class })
-	protected ResponseEntity<Object> handleItemNotFound(EmptyResultDataAccessException ex, HttpServletRequest request) {
-		return logAndBuildResponseEntity(ex, request, HttpStatus.NOT_FOUND);
-	}
+  @ExceptionHandler({EmptyResultDataAccessException.class})
+  protected ResponseEntity<Object> handleItemNotFound(
+      EmptyResultDataAccessException ex, HttpServletRequest request) {
+    return logAndBuildResponseEntity(ex, request, HttpStatus.NOT_FOUND);
+  }
 
-	private ResponseEntity<Object> buildResponseEntity(Exception exception, HttpStatus status) {
-		final ErrorModel errorModel = ErrorModel.builder().code(status).timestamp(new Date())
-				.message(exception.getMessage()).build();
-		return new ResponseEntity<>(errorModel, status);
-	}
+  private ResponseEntity<Object> buildResponseEntity(Exception exception, HttpStatus status) {
+    final ErrorModel errorModel =
+        ErrorModel.builder()
+            .code(status)
+            .timestamp(new Date())
+            .message(exception.getMessage())
+            .build();
+    return new ResponseEntity<>(errorModel, status);
+  }
 
-	private ResponseEntity<Object> logAndBuildResponseEntity(Exception exception, HttpServletRequest request,
-			HttpStatus httpStatus) {
-		log.error("Error with request {}", new RequestLogModel(request).toString(), exception);
-		return buildResponseEntity(exception, httpStatus);
-	}
-
+  private ResponseEntity<Object> logAndBuildResponseEntity(
+      Exception exception, HttpServletRequest request, HttpStatus httpStatus) {
+    log.error("Error with request {}", new RequestLogModel(request).toString(), exception);
+    return buildResponseEntity(exception, httpStatus);
+  }
 }

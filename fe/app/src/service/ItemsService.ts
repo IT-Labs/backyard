@@ -13,7 +13,7 @@ const instance = axios.create({
   baseURL: appConfig.urlApi,
 });
 
-function saveItem(id: string, data: EditItemModel, token: string) {
+function saveItem(id: string|undefined, data: EditItemModel, token: string) {
   let action = id
     ? instance.put("items/" + id, data, {
         headers: {
