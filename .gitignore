@@ -12,3 +12,4 @@ bin/
 /fe/app/.eslintcache
 *.log
 /.vscode/settings.json
+/api-common/target/
