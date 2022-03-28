@@ -14,7 +14,17 @@ version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '17'
 
 repositories {
+
 	mavenCentral()
+	maven {
+		credentials {
+			username 'dev'
+			password 'dev1234'
+		}
+		name 'Nexus Sample Repository'
+		allowInsecureProtocol true
+		url "http://localhost:4041/repository/api-common-sample/"
+	}
 }
 
 ext {
@@ -27,14 +37,13 @@ spotless {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 	implementation 'org.springframework.cloud:spring-cloud-config-server'
 	implementation  'org.springframework.boot:spring-boot-starter-data-redis'
 	implementation "io.springfox:springfox-boot-starter:3.0.0"
 	implementation 'org.springframework.cloud:spring-cloud-config-monitor'
 	implementation'org.springframework.cloud:spring-cloud-starter-stream-rabbit'
-	implementation 'io.micrometer:micrometer-registry-prometheus'
 	implementation 'org.flywaydb:flyway-core:8.0.0'
+	implementation 'com.it-labs:api-common-spring-boot-starter:2.5.6'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	implementation  'com.amazonaws:aws-java-sdk-s3:1.12.153'
 	runtimeOnly 'org.postgresql:postgresql:42.2.24'

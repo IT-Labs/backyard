@@ -1,0 +1,18 @@
+#docker-compose.yml (Base)
+version: '3.7'
+networks:
+  sample:
+    name: sample-network
+    driver: bridge
+services:
+  build:
+    image: api-common-sample
+    build:
+      context: .
+    container_name: build-api-common-sample
+    networks:
+      - sample
+    volumes:
+      - ./:/usr/src/myapp
+    working_dir: /usr/src/myapp
+    command: ./mvnw clean  spotless:apply  deploy -Dmaven.test.skip=true -P docker -s settings.xml

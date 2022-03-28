@@ -1,0 +1,18 @@
+version: "3.7"
+networks:
+  sample:
+    name: sample-network
+    driver: bridge
+services:
+  nexus-sample:
+    image: sonatype/nexus3
+    container_name: nexus-sample
+    volumes:
+      - "nexus-data:/nexus-data"
+    ports:
+      - "4041:8081"
+    networks:
+      - sample
+  
+volumes:
+  nexus-data: {}

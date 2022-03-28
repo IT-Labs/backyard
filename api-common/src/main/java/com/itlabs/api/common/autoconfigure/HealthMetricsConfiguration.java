@@ -1,22 +1,21 @@
-package itlabs.config;
+package com.itlabs.api.common.autoconfigure;
 
 import io.micrometer.core.instrument.Gauge;
 import io.micrometer.core.instrument.MeterRegistry;
 import java.util.Map;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.actuate.health.CompositeHealthContributor;
-import org.springframework.boot.actuate.health.CompositeReactiveHealthContributor;
 import org.springframework.boot.actuate.health.Health;
 import org.springframework.boot.actuate.health.HealthContributor;
 import org.springframework.boot.actuate.health.HealthIndicator;
-import org.springframework.boot.actuate.health.ReactiveHealthContributor;
-import org.springframework.boot.actuate.health.ReactiveHealthIndicator;
 import org.springframework.boot.actuate.health.Status;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration(proxyBeanMethods = false)
+@Slf4j
+@ConditionalOnClass({MeterRegistry.class, Gauge.class, Health.class, HealthIndicator.class})
 public class HealthMetricsConfiguration {
 
   private static final int UNKNOWN = 0;
@@ -27,7 +26,7 @@ public class HealthMetricsConfiguration {
 
   private static final int SERVICE_UP = 3;
 
-  public static final String ACTUATOR_HEALTH_METRIC_NAME = "actuator_health";
+  public static final String ACTUATOR_HEALTH_METRIC_NAME = "actuator_health_sample";
 
   public static final String ACTUATOR_HEALTH_TAG_SERVICE_NAME = "service";
 
@@ -37,38 +36,13 @@ public class HealthMetricsConfiguration {
 
   private final String applicationName;
 
-  private final Logger log = LoggerFactory.getLogger(getClass());
-
   public HealthMetricsConfiguration(
       MeterRegistry registry,
       Map<String, HealthContributor> healthContributors,
-      Map<String, ReactiveHealthContributor> reactiveHealthContributors,
       @Value("${spring.application.name}") String applicationName) {
     this.registry = registry;
     this.applicationName = applicationName;
-
     setMeterStatusFromHealthContributors(healthContributors);
-    setMeterStatusFromReactiveHealthContributors(reactiveHealthContributors);
-  }
-
-  private void setMeterStatusFromReactiveHealthContributors(
-      Map<String, ReactiveHealthContributor> reactiveHealthContributors) {
-    reactiveHealthContributors.forEach(
-        (name, contributor) -> {
-          if (contributor instanceof ReactiveHealthIndicator) {
-
-            setHealthStatusInMeterRegistry(name, ((ReactiveHealthIndicator) contributor));
-          } else if (contributor instanceof CompositeReactiveHealthContributor) {
-            CompositeReactiveHealthContributor healthContributor =
-                (CompositeReactiveHealthContributor) contributor;
-            healthContributor.forEach(
-                x ->
-                    setHealthStatusInMeterRegistry(
-                        x.getName(), ((ReactiveHealthIndicator) x.getContributor())));
-          } else {
-            throwIllegalStateException(name);
-          }
-        });
   }
 
   private void setMeterStatusFromHealthContributors(
@@ -92,10 +66,6 @@ public class HealthMetricsConfiguration {
 
   private void throwIllegalStateException(String name) {
     throw new IllegalStateException(String.format("Unknown HealthContributor type: %s", name));
-  }
-
-  private void setHealthStatusInMeterRegistry(String name, ReactiveHealthIndicator contributor) {
-    setHealthStatusInMeterRegistry(name, contributor.health().block());
   }
 
   private void setHealthStatusInMeterRegistry(String name, HealthIndicator contributor) {

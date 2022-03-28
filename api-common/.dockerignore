@@ -1,0 +1,7 @@
+src/
+target/
+bin/
+.mvn/
+.git/
+.gitignore
+.idea/

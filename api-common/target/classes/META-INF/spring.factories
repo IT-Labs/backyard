@@ -1,0 +1,2 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.itlabs.api.common.autoconfigure.HealthMetricsConfiguration
