@@ -208,3 +208,47 @@ this is solving the production elastic search setup : https://www.elastic.co/gui
 - run `docker-compose -f docker-compose-sonar.yml up -d sonar-api` for API analysis
 - run `docker-compose -f docker-compose-sonar.yml up -d sonar-api-gateway` for API gateway analysis
 - remove all containers : `docker-compose -f docker-compose-sonar.yml down`
+
+#### Debezium run
+
+For debezium infrastructure you need to run the docker compose file docker-compose-kafka.yml:
+- ```docker-compose -f docker-compose-kafka.yml up```
+
+This docker compose file will run 5 containers:
+  - Kafka containers
+    - kafka-debezium
+    - zookeeper-debezium
+  - Debezium connector
+    - connect-debezium
+  - UI for Kafka interaction and monitoring 
+    - kafka-ui-debezium
+  - UI for Debezium connectors (interaction and monitoring)
+    - debezium-ui
+    
+Debezium connector can be created by: 
+    - Using Debezium UI (debezium-ui container)
+    - Using Debezium REST Interface
+    
+In order to create connector for PostgresSQL by using Debezium REST Interface
+following request should be executed:
+- POST http://localhost:8083/connectors with request body:
+ ``` {
+    "name": "connector-name",
+    "config": {
+        "connector.class": "io.debezium.connector.postgresql.PostgresConnector",
+        "tasks.max": "1",
+        "database.hostname": "host.docker.internal",
+        "database.port": "5432",
+        "database.user": "XXXX",
+        "database.password": "XXXX",
+        "database.dbname": "XXXX",
+        "database.server.name": "XXXX",
+        "table.include.list": "XXXX,XXXX",
+        "plugin.name": "pgoutput",
+        "slot.name": "slottest",
+        "time.precision.mode":"connect"
+     }
+  }```
+
+For available connectors and their properties for configuration, more info can be found on
+- https://debezium.io/documentation/reference/stable/connectors/index.html
