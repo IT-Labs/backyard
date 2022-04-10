@@ -76,7 +76,6 @@ jobs:
     #    uses a compiled language
 
     - run: |
-        cd ./api
         ls 
         gradlew clean test
     #   make bootstrap
