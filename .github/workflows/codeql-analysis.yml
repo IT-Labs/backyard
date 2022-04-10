@@ -77,8 +77,7 @@ jobs:
 
     - run: |
         cd ./api
-        ls 
-        ./gradlew clean test
+        ./gradlew build -x test
     #   make bootstrap
     #   make release
 
