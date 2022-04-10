@@ -20,42 +20,50 @@ import org.springframework.security.web.authentication.session.SessionAuthentica
 @KeycloakConfiguration
 public class SecurityConfig extends KeycloakWebSecurityConfigurerAdapter {
 
-	@Autowired
-	public void configureGlobal(AuthenticationManagerBuilder auth) {
-		KeycloakAuthenticationProvider keycloakAuthenticationProvider = keycloakAuthenticationProvider();
-		keycloakAuthenticationProvider.setGrantedAuthoritiesMapper(new SimpleAuthorityMapper());
-		auth.authenticationProvider(keycloakAuthenticationProvider);
-	}
+  @Autowired
+  public void configureGlobal(AuthenticationManagerBuilder auth) {
+    KeycloakAuthenticationProvider keycloakAuthenticationProvider =
+        keycloakAuthenticationProvider();
+    keycloakAuthenticationProvider.setGrantedAuthoritiesMapper(new SimpleAuthorityMapper());
+    auth.authenticationProvider(keycloakAuthenticationProvider);
+  }
 
-	@Bean
-	public KeycloakSpringBootConfigResolver keycloakConfigResolver() {
-		return new KeycloakSpringBootConfigResolver();
-	}
+  @Bean
+  public KeycloakSpringBootConfigResolver keycloakConfigResolver() {
+    return new KeycloakSpringBootConfigResolver();
+  }
 
-	@Bean
-	@Override
-	protected SessionAuthenticationStrategy sessionAuthenticationStrategy() {
-		return new RegisterSessionAuthenticationStrategy(new SessionRegistryImpl());
-	}
+  @Bean
+  @Override
+  protected SessionAuthenticationStrategy sessionAuthenticationStrategy() {
+    return new RegisterSessionAuthenticationStrategy(new SessionRegistryImpl());
+  }
 
-	@Override
-	protected void configure(HttpSecurity http) throws Exception {
-		super.configure(http);
-		http.authorizeRequests().antMatchers(HttpMethod.GET, "/v1/actuator/**").permitAll()
-				.antMatchers("/swagger-resources/**", "/swagger-ui/**", "/v2/api-docs", "/v2/api-docs/**",
-						"/error.html")
-				.permitAll().antMatchers("/api/**").authenticated();
-		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-		http.cors().and().csrf().disable();
-	}
+  @Override
+  protected void configure(HttpSecurity http) throws Exception {
+    super.configure(http);
+    http.authorizeRequests()
+        .antMatchers(HttpMethod.GET, "/v1/actuator/**")
+        .permitAll()
+        .antMatchers(
+            "/swagger-resources/**",
+            "/swagger-ui/**",
+            "/v2/api-docs",
+            "/v2/api-docs/**",
+            "/error.html")
+        .permitAll()
+        .antMatchers("/api/**")
+        .authenticated();
+    http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+    http.cors().and().csrf().disable();
+  }
 
-	@Bean
-	@Override
-	@ConditionalOnMissingBean(HttpSessionManager.class)
-	protected HttpSessionManager httpSessionManager() {
-		return new HttpSessionManager();
-	}
+  @Bean
+  @Override
+  @ConditionalOnMissingBean(HttpSessionManager.class)
+  protected HttpSessionManager httpSessionManager() {
+    return new HttpSessionManager();
+  }
 
-	public static final String USER = "ADMIN";
-
+  public static final String USER = "ADMIN";
 }

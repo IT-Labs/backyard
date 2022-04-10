@@ -9,9 +9,8 @@ import springfox.documentation.annotations.ApiIgnore;
 @ApiIgnore
 public class RootController {
 
-	@GetMapping(value = "/")
-	public ResponseEntity<String> get() {
-		return ResponseEntity.ok("Welcome to sample api");
-	}
-
+  @GetMapping(value = "/")
+  public ResponseEntity<String> get() {
+    return ResponseEntity.ok("Welcome to sample api");
+  }
 }

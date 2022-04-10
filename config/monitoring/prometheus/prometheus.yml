@@ -1,6 +1,6 @@
 # my global config
 global:
-  scrape_interval:   1m # Default is every 1 minute.
+  scrape_interval: 1m # Default is every 1 minute.
   scrape_timeout: 30s # default (10s).
   evaluation_interval: 5m # E The default is every 1 minute.
 
@@ -11,32 +11,42 @@ alerting:
         - targets:
           # - alertmanager:9093
 scrape_configs:
-  - job_name: 'cadvisor'
+  - job_name: "cadvisor"
     scrape_interval: 1m
-    metrics_path: '/metrics'
+    metrics_path: "/metrics"
     static_configs:
-      - targets: ['cadvisor-sample:8080']
-  - job_name: 'node-exporter'
+      - targets: ["cadvisor-sample:8080"]
+  - job_name: "node-exporter"
     scrape_interval: 1m
-    metrics_path: '/metrics'
+    metrics_path: "/metrics"
     static_configs:
-      - targets: ['node-exporter-sample:9100']
-  - job_name: 'prometheus'
+      - targets: ["node-exporter-sample:9100"]
+  - job_name: "prometheus"
     scrape_interval: 1m
     static_configs:
-      - targets: ['localhost:9090']
-  - job_name: 'api-dev'
+      - targets: ["localhost:9090"]
+  - job_name: "api-gateway"
     scrape_interval: 1m
-    metrics_path: '/v1/actuator/prometheus'
+    metrics_path: "/v1/actuator/prometheus"
     static_configs:
-      - targets: ['api-dev:5000']
-  - job_name: 'postgres-exporter-sample'
+      - targets: ["api-dev:5000"]
+  - job_name: "api-internal-sample"
     scrape_interval: 1m
-    metrics_path: '/metrics'
+    metrics_path: "/v1/actuator/prometheus"
     static_configs:
-      - targets: ['postgres-exported-sample:9187']
-  - job_name: 'grafana-sample'
+      - targets: ["api-internal-sample:5001"]
+  - job_name: "api-config-sample"
     scrape_interval: 1m
-    metrics_path: '/metrics'
+    metrics_path: "/v1/actuator/prometheus"
     static_configs:
-      - targets: ['grafana-sample:3000']
+      - targets: ["api-config-sample:8888"]
+  - job_name: "postgres-exporter-sample"
+    scrape_interval: 1m
+    metrics_path: "/metrics"
+    static_configs:
+      - targets: ["postgres-exported-sample:9187"]
+  - job_name: "grafana-sample"
+    scrape_interval: 1m
+    metrics_path: "/metrics"
+    static_configs:
+      - targets: ["grafana-sample:3000"]

@@ -4,8 +4,7 @@ import java.util.UUID;
 
 public interface IAMService {
 
-	String getIAMUserId();
+  String getIAMUserId();
 
-	UUID getIAMUserIdUUID();
-
+  UUID getIAMUserIdUUID();
 }

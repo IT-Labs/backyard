@@ -14,8 +14,8 @@ name: "CodeQL"
 
 on:
   workflow_dispatch:
-#   push:
-#     branches: [ master, develop ]
+  push:
+    branches: [ master, develop,es-gh-workflow ]
 #   pull_request:
 #     # The branches below must be a subset of the branches above
 #     branches: [ master ]
@@ -26,7 +26,9 @@ jobs:
   analyze:
     name: Analyze
     runs-on: ubuntu-latest
-
+    # defaults:
+    #   run:
+    #     working-directory: api
     strategy:
       fail-fast: false
       matrix:
@@ -40,7 +42,7 @@ jobs:
       uses: actions/setup-java@v2
       with:
         distribution: adopt
-        java-version: 14
+        java-version: 17
         
     - name: Checkout repository
       uses: actions/checkout@v2
@@ -50,6 +52,7 @@ jobs:
       uses: github/codeql-action/init@v1.0.26
       with:
         languages: ${{ matrix.language }}
+    # config-file: ./.github/codeql/codeql-config.yml
         # If you wish to specify custom queries, you can do so here or in a config file.
         # By default, queries listed here will override any specified in a config file.
         # Prefix the list here with "+" to use these queries and those in the config file.
@@ -59,7 +62,12 @@ jobs:
     # If this step fails, then you should remove it and run the build manually (see below)
 #     - name: Autobuild
 #       uses: github/codeql-action/autobuild@v1.0.26
-
+    # - name: Validate Gradle wrapper
+    #   uses: gradle/wrapper-validation-action@e6e38bacfdf1a337459f332974bb2327a31aaf4b
+    # - name: Build with Gradle
+    #   uses: gradle/gradle-build-action@937999e9cc2425eddc7fd62d1053baf041147db7
+    #   with:
+    #     arguments: build
     # ℹ️ Command-line programs to run using the OS shell.
     # 📚 https://git.io/JvXDl
 

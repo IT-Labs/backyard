@@ -7,6 +7,5 @@ import lombok.Value;
 @AllArgsConstructor
 public class ProductEditModel {
 
-	private String name;
-
+  private String name;
 }

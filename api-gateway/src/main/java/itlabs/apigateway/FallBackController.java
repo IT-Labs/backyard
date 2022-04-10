@@ -11,14 +11,15 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin
 public class FallBackController {
 
-	// TODO: enable cors
-	@GetMapping("/message")
-	public ResponseEntity<FallbackModel> message() {
+  // TODO: enable cors
+  @GetMapping("/message")
+  public ResponseEntity<FallbackModel> message() {
 
-		final ResponseEntity<FallbackModel> modelResponseEntity = ResponseEntity.ok().header("fallback", "fallback")
-				.body(FallbackModel.builder().message("Service can to be contacted").build());
+    final ResponseEntity<FallbackModel> modelResponseEntity =
+        ResponseEntity.ok()
+            .header("fallback", "fallback")
+            .body(FallbackModel.builder().message("Service can to be contacted").build());
 
-		return modelResponseEntity;
-	}
-
+    return modelResponseEntity;
+  }
 }

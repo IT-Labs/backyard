@@ -3,7 +3,7 @@
 version: "3.7"
 services:
   sample-tests:
-    image: node:latest
+    image: node:16
     container_name: sample-tests
     volumes:
       - .:/usr/src/myapp
@@ -13,7 +13,7 @@ services:
     networks:
       - sample
   sample-tests-empty:
-    image: node:latest
+    image: node:16
     container_name: sample-tests-empty
     volumes:
       - .:/usr/src/myapp
