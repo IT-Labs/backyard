@@ -32,7 +32,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        language: [ 'java' ]
+        language: [ 'javascript' ]
         # CodeQL supports [ 'cpp', 'csharp', 'go', 'java', 'javascript', 'python' ]
         # Learn more:
         # https://docs.github.com/github/finding-security-vulnerabilities-and-errors-in-your-code/configuring-code-scanning#changing-the-languages-that-are-analyzed
@@ -60,8 +60,8 @@ jobs:
 
     # Autobuild attempts to build any compiled languages  (C/C++, C#, or Java).
     # If this step fails, then you should remove it and run the build manually (see below)
-#     - name: Autobuild
-#       uses: github/codeql-action/autobuild@v1.0.26
+    - name: Autobuild
+      uses: github/codeql-action/autobuild@v1.0.26
     # - name: Validate Gradle wrapper
     #   uses: gradle/wrapper-validation-action@e6e38bacfdf1a337459f332974bb2327a31aaf4b
     # - name: Build with Gradle
@@ -75,9 +75,9 @@ jobs:
     #    and modify them (or add more) to build your code if your project
     #    uses a compiled language
 
-    - run: |
-        cd ./api
-        ./gradlew build -x test
+    # - run: |
+    #     cd ./api
+    #     ./gradlew build -x test
     #   make bootstrap
     #   make release
 
