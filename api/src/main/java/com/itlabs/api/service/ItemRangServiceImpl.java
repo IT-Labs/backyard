@@ -1,6 +1,8 @@
 package com.itlabs.api.service;
 
 import com.itlabs.api.entity.Items;
+
+import java.io.File;
 import java.time.ZoneOffset;
 import org.springframework.stereotype.Service;
 
@@ -29,4 +31,12 @@ public class ItemRangServiceImpl implements ItemRangService {
 
     return result;
   }
+
+  private static File makeFile(String filename) {
+    if (filename != null && filename.length() >= 0) {
+      return new File(filename);
+    }
+    return new File("default.name");
+  }
+
 }
