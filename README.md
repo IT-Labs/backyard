@@ -3,6 +3,11 @@
 Purpose of this repository to give real working examples for development and testing the code.
 This repository contains a full working local environment, where you can execute your application with minimum installed tools [setup](#root-setup).
 
+[![CodeQL](https://github.com/IT-Labs/backyard/actions/workflows/codeql-analysis-api.yml/badge.svg)](https://github.com/IT-Labs/backyard/actions/workflows/codeql-analysis-api.yml)
+[![CodeQL](https://github.com/IT-Labs/backyard/actions/workflows/codeql-analysis-api-config.yml/badge.svg)](https://github.com/IT-Labs/backyard/actions/workflows/codeql-analysis-api-config.yml)
+[![CodeQL](https://github.com/IT-Labs/backyard/actions/workflows/codeql-analysis-api-gateway.yml/badge.svg)](https://github.com/IT-Labs/backyard/actions/workflows/codeql-analysis-api-gateway.yml)
+[![CodeQL](https://github.com/IT-Labs/backyard/actions/workflows/codeql-analysis-script.yml/badge.svg)](https://github.com/IT-Labs/backyard/actions/workflows/codeql-analysis-script.yml)
+
 ## Stack
 
 - Java 17
@@ -208,3 +213,5 @@ this is solving the production elastic search setup : https://www.elastic.co/gui
 - run `docker-compose -f docker-compose-sonar.yml up -d sonar-api` for API analysis
 - run `docker-compose -f docker-compose-sonar.yml up -d sonar-api-gateway` for API gateway analysis
 - remove all containers : `docker-compose -f docker-compose-sonar.yml down`
+
+
