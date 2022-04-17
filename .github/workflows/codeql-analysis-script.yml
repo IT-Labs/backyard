@@ -14,9 +14,13 @@ name: "CodeQL"
 on:
   push:
     branches: [ master, develop ]
+    paths-ignore:
+     - doc/**
   pull_request:
     # The branches below must be a subset of the branches above
-    branches: [ master ]
+    branches: [ master,develop ]
+    paths-ignore:
+     - doc/**
   schedule:
     - cron: '18 17 * * 5'
 
@@ -54,6 +58,7 @@ jobs:
     # If this step fails, then you should remove it and run the build manually (see below)
     - name: Autobuild
       uses: github/codeql-action/autobuild@v2
+      
 
     # ℹ️ Command-line programs to run using the OS shell.
     # 📚 https://git.io/JvXDl
