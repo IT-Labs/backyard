@@ -12,7 +12,7 @@ volumes:
   redis-sample:
 services:
   zookeeper-debezium:
-    image: debezium/zookeeper:1.6
+    image: debezium/zookeeper:1.7
     container_name: zookeeper-debezium
     hostname: zookeeper-debezium
     ports:
@@ -22,57 +22,69 @@ services:
     networks:
       - sample
   kafka-debezium:
-    image: debezium/kafka:1.6
+    image: debezium/kafka:1.7
     container_name: kafka-debezium
     hostname: kafka-debezium
+    depends_on:
+      - zookeeper-debezium
     ports:
-      - "4092:9092"
+      - "9092:9092"
     links:
       - zookeeper-debezium
     environment:
       - ZOOKEEPER_CONNECT=zookeeper-debezium:2181
-      - KAFKA_AUTO_CREATE_TOPICS_ENABLE=true
+      - KAFKA_LISTENERS=LISTENER_INTERNAL://kafka-debezium:29092,LISTENER_EXTERNAL://0.0.0.0:9092
+      - KAFKA_ADVERTISED_LISTENERS=LISTENER_INTERNAL://kafka-debezium:29092,LISTENER_EXTERNAL://localhost:9092
+      - KAFKA_LISTENER_SECURITY_PROTOCOL_MAP=LISTENER_INTERNAL:PLAINTEXT,LISTENER_EXTERNAL:PLAINTEXT
+      - KAFKA_INTER_BROKER_LISTENER_NAME=LISTENER_INTERNAL
     networks:
       - sample
-  kafka-ui-debezium:
-    image: provectuslabs/kafka-ui
-    container_name: kafka-ui-debezium
-    ports:
-      - "4093:8080"
-    links:
-      - zookeeper-debezium
-      - kafka-debezium
-    networks:
-      - sample
-    environment:
-      - KAFKA_CLUSTERS_0_NAME=local
-      - KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS=kafka-debezium:9092
-      - KAFKA_CLUSTERS_0_ZOOKEEPER=zookeeper-debezium:2181
   connect-debezium:
-    image: debezium/connect:1.6
+    image: debezium/connect:1.7
     container_name: connect-debezium
+    hostname: connect-debezium
+    depends_on:
+      - kafka-debezium
     ports:
-      - "4094:8083"
+      - "8083:8083"
+    links:
+      - kafka-debezium
     environment:
-      - BOOTSTRAP_SERVERS=kafka-debezium:9092
+      - BOOTSTRAP_SERVERS=kafka-debezium:29092
       - GROUP_ID=1
       - CONFIG_STORAGE_TOPIC=my_connect_configs
       - OFFSET_STORAGE_TOPIC=my_connect_offsets
       - STATUS_STORAGE_TOPIC=my_connect_statuses
       - CONNECT_TOPIC_CREATION_ENABLE=true
+    networks:
+      - sample  
+  kafka-ui-debezium:
+    image: provectuslabs/kafka-ui
+    container_name: kafka-ui-debezium
+    ports:
+      - "4093:8080"
     depends_on:
+      - kafka-debezium
+      - zookeeper-debezium
+    links:
       - zookeeper-debezium
       - kafka-debezium
     networks:
       - sample
+    environment:
+      - KAFKA_CLUSTERS_0_NAME=itl-local
+      - KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS=kafka-debezium:29092
+      - KAFKA_CLUSTERS_0_ZOOKEEPER=zookeeper-debezium:2181
   debezium-ui:
-    image: debezium/debezium-ui:1.6
+    image: debezium/debezium-ui:1.7
     container_name: debezium-ui
+    links:
+      - connect-debezium
+    depends_on:
+      - connect-debezium
     ports:
       - "4095:8080"
     environment:
-      - KAFKA_CONNECT_URI=http://connect-debezium:8083
-    depends_on:
-      - connect-debezium
+      - KAFKA_CONNECT_URIS=http://connect-debezium:8083
     networks:
       - sample
