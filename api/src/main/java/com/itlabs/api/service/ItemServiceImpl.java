@@ -111,7 +111,9 @@ public class ItemServiceImpl implements ItemsService {
     return getModel(itemRepository.save(item));
   }
 
-  /** @param uuid */
+  /**
+   * @param uuid
+   */
   @Override
   @Transactional
   public void delete(UUID uuid) {

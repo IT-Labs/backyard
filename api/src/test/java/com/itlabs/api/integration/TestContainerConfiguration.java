@@ -10,7 +10,6 @@ import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Primary;
-import org.testcontainers.containers.Container.ExecResult;
 import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.containers.wait.strategy.Wait;
 import org.testcontainers.utility.MountableFile;
@@ -25,7 +24,9 @@ public class TestContainerConfiguration {
   static {
     POSTGRE_SQL_CONTAINER = new PostgreSQLContainer("postgres:12.5-alpine");
     POSTGRE_SQL_CONTAINER.start();
+    log.info("postgres Url {}", POSTGRE_SQL_CONTAINER.getJdbcUrl());
     POSTGRE_SQL_CONTAINER.waitingFor(Wait.forHealthcheck()).waitingFor(Wait.forHttp("/"));
+    log.info("keycloak container start");
     KEYCLOAK_CONTAINER =
         new KeycloakContainer("jboss/keycloak:12.0.4")
             .withRealmImportFile("sample-realm.json")
@@ -36,7 +37,7 @@ public class TestContainerConfiguration {
     KEYCLOAK_CONTAINER.start();
     KEYCLOAK_CONTAINER.waitingFor(Wait.forHealthcheck()).waitingFor(Wait.forHttp("/"));
     try {
-      ExecResult result = KEYCLOAK_CONTAINER.execInContainer("sh", "create-keycloak-user.sh");
+      var result = KEYCLOAK_CONTAINER.execInContainer("sh", "create-keycloak-user.sh");
       log.info(result.toString());
     } catch (Exception e) {
       log.error("error during executing script", e);
@@ -53,14 +54,16 @@ public class TestContainerConfiguration {
   @Primary
   @Bean
   public DataSource dataSource() {
-    final String url = POSTGRE_SQL_CONTAINER.getJdbcUrl();
-    DataSource bean =
+    final var url = POSTGRE_SQL_CONTAINER.getJdbcUrl();
+    log.info("postgres datasource setup started");
+    var dataSource =
         DataSourceBuilder.create()
             .driverClassName(POSTGRE_SQL_CONTAINER.getDriverClassName())
             .url(url)
             .username(POSTGRE_SQL_CONTAINER.getUsername())
             .password(POSTGRE_SQL_CONTAINER.getPassword())
             .build();
-    return bean;
+    log.info("postgres datasource setup finished {}", dataSource);
+    return dataSource;
   }
 }
