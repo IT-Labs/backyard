@@ -50,7 +50,7 @@ public class HomeControllerTests extends BaseIntegration {
     resultActions
         .andExpect(content().contentType("application/json"))
         .andExpect(jsonPath("$").isArray())
-        .andExpect(jsonPath("$.length()", equalTo(5)));
+        .andExpect(jsonPath("$.length()", equalTo(1)));
     for (int i = 0; i < 5; i++) {
       String id = "$[" + i + "].";
       resultActions

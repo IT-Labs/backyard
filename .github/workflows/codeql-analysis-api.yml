@@ -69,7 +69,7 @@ jobs:
 
     - run: |
         cd ./api
-        ./gradlew test build 
+        ./gradlew build 
     #   make bootstrap
     #   make release
 
