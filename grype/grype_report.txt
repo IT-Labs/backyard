@@ -1,0 +1,254 @@
+[0;90m[0517][0m [0;33m WARN[0m unexpectedly empty matches for archive '/usr/src/repo/api-gateway/build/libs/api-gateway-version 1-plain.jar' [0;33mfrom-lib[0m=syft
+[0;90m[0517][0m [0;33m WARN[0m unexpectedly empty matches for archive '/usr/src/repo/api-gateway/build/libs/api-gateway-version 1-plain.jar' [0;33mfrom-lib[0m=syft
+[0;90m[0521][0m [0;33m WARN[0m some package(s) are missing CPEs. This may result in missing vulnerabilities. You may autogenerate these using: --add-cpes-if-none
+NAME                           INSTALLED        FIXED-IN          TYPE          VULNERABILITY        SEVERITY 
+ajv                            5.5.2            6.12.3            npm           GHSA-v88g-cgmw-v5xw  Medium    
+async                          0.9.2                              npm           CVE-2021-43138       High      
+bonjour                        3.5.0                              npm           CVE-2011-0220        Medium    
+commons-io                     2.6              2.7               java-archive  GHSA-gwrp-pvrq-jmwv  Medium    
+commons-io                     2.6                                java-archive  CVE-2021-29425       Medium    
+cookie                         0.4.1                              npm           CVE-2017-18589       High      
+ejs                            3.1.6            3.1.7             npm           GHSA-phwq-j96m-2c2q  Critical  
+ejs                            3.1.6                              npm           CVE-2022-29078       Critical  
+ejs                            2.6.1            3.1.7             npm           GHSA-phwq-j96m-2c2q  Critical  
+extend                         3.0.1                              npm           CVE-2018-16492       Critical  
+extend                         3.0.1            3.0.2             npm           GHSA-qrmc-fj45-qfc2  Medium    
+find                           0.2.9                              npm           CVE-2020-24550       Medium    
+follow-redirects               1.14.6           1.14.8            npm           GHSA-pw2r-vq6v-hr8c  Medium    
+follow-redirects               1.14.6                             npm           CVE-2022-0536        Medium    
+follow-redirects               1.14.6                             npm           CVE-2022-0155        Medium    
+follow-redirects               1.14.6           1.14.7            npm           GHSA-74fj-2j2h-c42q  High      
+fresh                          0.5.2                              npm           CVE-2013-1779        Low       
+ftp                            0.3.10                             npm           CVE-1999-0082        High      
+ftp                            0.3.10                             npm           CVE-1999-0201        Medium    
+google.golang.org/protobuf     v1.28.0                            go-module     CVE-2015-5237        High      
+google.golang.org/protobuf     v1.28.0                            go-module     CVE-2021-22570       High      
+got                            5.6.0            11.8.5            npm           GHSA-pfrx-2q88-qq97  Medium    
+got                            5.6.0                              npm           CVE-2022-33987       Medium    
+gson                           2.8.2            2.8.9             java-archive  GHSA-4jrv-ppp4-jm57  High      
+gson                           2.8.2                              java-archive  CVE-2022-25647       High      
+guava                          16.0                               java-archive  GHSA-5mg8-w23w-74h3  Low       
+guava                          16.0                               java-archive  CVE-2020-8908        Low       
+guava                          23.6-jre                           java-archive  GHSA-5mg8-w23w-74h3  Low       
+guava                          23.6-jre                           java-archive  CVE-2020-8908        Low       
+guava                          23.6-jre                           java-archive  CVE-2018-10237       Medium    
+guava                          23.6-jre         24.1.1            java-archive  GHSA-mvr2-9pj6-7w5j  Medium    
+guava                          16.0                               java-archive  CVE-2018-10237       Medium    
+guava                          16.0             24.1.1            java-archive  GHSA-mvr2-9pj6-7w5j  Medium    
+httpclient                     4.5.3                              java-archive  CVE-2020-13956       Medium    
+httpclient                     4.5.3            4.5.13            java-archive  GHSA-7r82-7xv7-xcpj  Medium    
+https-proxy-agent              2.2.1            2.2.3             npm           GHSA-pc5p-h8pf-mvwp  Medium    
+jackson-databind               2.12.5           2.12.6.1          java-archive  GHSA-57j2-w4cx-62h2  High      
+jackson-databind               2.12.5                             java-archive  CVE-2020-36518       High      
+jetty-client                   9.4.7.v20170914                    java-archive  CVE-2017-7658        Critical  
+jetty-client                   9.4.7.v20170914                    java-archive  CVE-2021-28165       High      
+jetty-client                   9.4.7.v20170914                    java-archive  CVE-2021-34428       Low       
+jetty-client                   9.4.7.v20170914                    java-archive  CVE-2017-7656        High      
+jetty-client                   9.4.7.v20170914                    java-archive  CVE-2020-27218       Medium    
+jetty-client                   9.4.7.v20170914                    java-archive  CVE-2021-28169       Medium    
+jetty-client                   9.4.7.v20170914                    java-archive  CVE-2020-27223       Medium    
+jetty-client                   9.4.7.v20170914                    java-archive  CVE-2018-12538       High      
+jetty-client                   9.4.7.v20170914                    java-archive  CVE-2017-7657        Critical  
+jetty-client                   9.4.7.v20170914                    java-archive  CVE-2018-12536       Medium    
+jetty-client                   9.4.7.v20170914                    java-archive  CVE-2020-27216       High      
+jetty-http                     9.4.8.v20171121                    java-archive  CVE-2017-7657        Critical  
+jetty-http                     9.4.8.v20171121                    java-archive  CVE-2020-27216       High      
+jetty-http                     9.4.8.v20171121                    java-archive  CVE-2018-12536       Medium    
+jetty-http                     9.4.8.v20171121                    java-archive  CVE-2021-34428       Low       
+jetty-http                     9.4.8.v20171121                    java-archive  CVE-2021-28169       Medium    
+jetty-http                     9.4.8.v20171121                    java-archive  CVE-2017-7656        High      
+jetty-http                     9.4.8.v20171121                    java-archive  CVE-2021-28165       High      
+jetty-http                     9.4.8.v20171121                    java-archive  CVE-2020-27223       Medium    
+jetty-http                     9.4.8.v20171121                    java-archive  CVE-2017-7658        Critical  
+jetty-http                     9.4.8.v20171121                    java-archive  CVE-2020-27218       Medium    
+jetty-io                       9.4.8.v20171121                    java-archive  CVE-2020-27216       High      
+jetty-io                       9.4.8.v20171121  9.4.39            java-archive  GHSA-26vr-8j45-3r4w  High      
+jetty-io                       9.4.8.v20171121                    java-archive  CVE-2021-28169       Medium    
+jetty-io                       9.4.8.v20171121                    java-archive  CVE-2017-7656        High      
+jetty-io                       9.4.8.v20171121                    java-archive  CVE-2020-27218       Medium    
+jetty-io                       9.4.8.v20171121                    java-archive  CVE-2017-7657        Critical  
+jetty-io                       9.4.8.v20171121                    java-archive  CVE-2021-28165       High      
+jetty-io                       9.4.8.v20171121                    java-archive  CVE-2021-34428       Low       
+jetty-io                       9.4.8.v20171121                    java-archive  CVE-2017-7658        Critical  
+jetty-io                       9.4.8.v20171121                    java-archive  CVE-2018-12536       Medium    
+jetty-io                       9.4.8.v20171121                    java-archive  CVE-2020-27223       Medium    
+jetty-jmx                      9.4.8.v20171121                    java-archive  CVE-2020-27223       Medium    
+jetty-jmx                      9.4.8.v20171121                    java-archive  CVE-2020-27218       Medium    
+jetty-jmx                      9.4.8.v20171121                    java-archive  CVE-2021-28165       High      
+jetty-jmx                      9.4.8.v20171121                    java-archive  CVE-2018-12536       Medium    
+jetty-jmx                      9.4.8.v20171121                    java-archive  CVE-2021-34428       Low       
+jetty-jmx                      9.4.8.v20171121                    java-archive  CVE-2017-7656        High      
+jetty-jmx                      9.4.8.v20171121                    java-archive  CVE-2017-7657        Critical  
+jetty-jmx                      9.4.8.v20171121                    java-archive  CVE-2020-27216       High      
+jetty-jmx                      9.4.8.v20171121                    java-archive  CVE-2021-28169       Medium    
+jetty-jmx                      9.4.8.v20171121                    java-archive  CVE-2017-7658        Critical  
+jetty-security                 9.4.8.v20171121                    java-archive  CVE-2020-27216       High      
+jetty-security                 9.4.8.v20171121                    java-archive  CVE-2021-34428       Low       
+jetty-security                 9.4.8.v20171121                    java-archive  CVE-2021-28169       Medium    
+jetty-security                 9.4.8.v20171121                    java-archive  CVE-2020-27223       Medium    
+jetty-security                 9.4.8.v20171121                    java-archive  CVE-2020-27218       Medium    
+jetty-security                 9.4.8.v20171121                    java-archive  CVE-2017-7656        High      
+jetty-security                 9.4.8.v20171121                    java-archive  CVE-2021-28165       High      
+jetty-security                 9.4.8.v20171121                    java-archive  CVE-2018-12536       Medium    
+jetty-security                 9.4.8.v20171121                    java-archive  CVE-2017-7658        Critical  
+jetty-security                 9.4.8.v20171121                    java-archive  CVE-2017-7657        Critical  
+jetty-server                   9.4.8.v20171121  9.4.11.v20180605  java-archive  GHSA-mwcx-532g-8pq3  High      
+jetty-server                   9.4.8.v20171121  9.4.11.v20180605  java-archive  GHSA-6x9x-8qw9-9pp6  Critical  
+jetty-server                   9.4.8.v20171121  9.4.41            java-archive  GHSA-m6cp-vxjx-65j6  Low       
+jetty-server                   9.4.8.v20171121                    java-archive  CVE-2020-27218       Medium    
+jetty-server                   9.4.8.v20171121  9.4.37            java-archive  GHSA-m394-8rww-3jr7  Medium    
+jetty-server                   9.4.8.v20171121                    java-archive  CVE-2017-7657        Critical  
+jetty-server                   9.4.8.v20171121  9.4.35.v20201120  java-archive  GHSA-86wm-rrjm-8wh8  Medium    
+jetty-server                   9.4.8.v20171121  9.4.11.v20180605  java-archive  GHSA-9rgv-h7x4-qw8g  Medium    
+jetty-server                   9.4.8.v20171121  9.4.17.v20190418  java-archive  GHSA-r28m-g6j9-r2h5  Medium    
+jetty-server                   9.4.8.v20171121                    java-archive  CVE-2021-28169       Medium    
+jetty-server                   9.4.8.v20171121  9.4.11.v20180605  java-archive  GHSA-84q7-p226-4x5w  High      
+jetty-server                   9.4.8.v20171121                    java-archive  CVE-2020-27216       High      
+jetty-server                   9.4.8.v20171121  9.4.17.v20190418  java-archive  GHSA-xc67-hjx6-cgg6  Medium    
+jetty-server                   9.4.8.v20171121  9.4.16.v20190411  java-archive  GHSA-7vx9-xjhr-rw6h  Medium    
+jetty-server                   9.4.8.v20171121                    java-archive  CVE-2018-12536       Medium    
+jetty-server                   9.4.8.v20171121                    java-archive  CVE-2021-34428       Low       
+jetty-server                   9.4.8.v20171121                    java-archive  CVE-2021-28165       High      
+jetty-server                   9.4.8.v20171121                    java-archive  CVE-2020-27223       Medium    
+jetty-server                   9.4.8.v20171121  9.4.12.v20180830  java-archive  GHSA-h2f4-v4c4-6wx4  High      
+jetty-server                   9.4.8.v20171121                    java-archive  CVE-2017-7656        High      
+jetty-server                   9.4.8.v20171121                    java-archive  CVE-2017-7658        Critical  
+jetty-servlet                  9.4.8.v20171121                    java-archive  CVE-2020-27216       High      
+jetty-servlet                  9.4.8.v20171121                    java-archive  CVE-2021-28169       Medium    
+jetty-servlet                  9.4.8.v20171121                    java-archive  CVE-2017-7658        Critical  
+jetty-servlet                  9.4.8.v20171121                    java-archive  CVE-2017-7657        Critical  
+jetty-servlet                  9.4.8.v20171121                    java-archive  CVE-2020-27223       Medium    
+jetty-servlet                  9.4.8.v20171121                    java-archive  CVE-2020-27218       Medium    
+jetty-servlet                  9.4.8.v20171121                    java-archive  CVE-2017-7656        High      
+jetty-servlet                  9.4.8.v20171121                    java-archive  CVE-2021-28165       High      
+jetty-servlet                  9.4.8.v20171121                    java-archive  CVE-2018-12536       Medium    
+jetty-servlet                  9.4.8.v20171121                    java-archive  CVE-2021-34428       Low       
+jetty-util                     9.4.8.v20171121                    java-archive  CVE-2020-27223       Medium    
+jetty-util                     9.4.8.v20171121                    java-archive  CVE-2020-27218       Medium    
+jetty-util                     9.4.8.v20171121                    java-archive  CVE-2017-7658        Critical  
+jetty-util                     9.4.8.v20171121                    java-archive  CVE-2017-7656        High      
+jetty-util                     9.4.8.v20171121                    java-archive  CVE-2018-12536       Medium    
+jetty-util                     9.4.8.v20171121                    java-archive  CVE-2020-27216       High      
+jetty-util                     9.4.8.v20171121                    java-archive  CVE-2021-28165       High      
+jetty-util                     9.4.8.v20171121                    java-archive  CVE-2021-28169       Medium    
+jetty-util                     9.4.8.v20171121                    java-archive  CVE-2021-34428       Low       
+jetty-util                     9.4.8.v20171121                    java-archive  CVE-2017-7657        Critical  
+jetty-xml                      9.4.7.v20170914                    java-archive  CVE-2017-7657        Critical  
+jetty-xml                      9.4.7.v20170914                    java-archive  CVE-2020-27216       High      
+jetty-xml                      9.4.7.v20170914                    java-archive  CVE-2017-7656        High      
+jetty-xml                      9.4.7.v20170914                    java-archive  CVE-2021-28165       High      
+jetty-xml                      9.4.7.v20170914                    java-archive  CVE-2018-12536       Medium    
+jetty-xml                      9.4.7.v20170914                    java-archive  CVE-2020-27218       Medium    
+jetty-xml                      9.4.7.v20170914                    java-archive  CVE-2017-7658        Critical  
+jetty-xml                      9.4.7.v20170914                    java-archive  CVE-2020-27223       Medium    
+jetty-xml                      9.4.7.v20170914                    java-archive  CVE-2021-34428       Low       
+jetty-xml                      9.4.7.v20170914                    java-archive  CVE-2018-12538       High      
+jetty-xml                      9.4.7.v20170914                    java-archive  CVE-2021-28169       Medium    
+jsdom                          16.7.0                             npm           CVE-2021-20066       Medium    
+json-schema                    0.2.3                              npm           CVE-2021-3918        Critical  
+json-schema                    0.2.3            0.4.0             npm           GHSA-896r-f27r-55mw  Critical  
+jsonpointer                    5.0.0                              npm           CVE-2021-23820       Critical  
+lodash.defaultsdeep            4.6.0            4.6.1             npm           GHSA-h5mp-5q4p-ggf5  High      
+lodash.defaultsdeep            4.6.0            4.6.1             npm           GHSA-46fh-8fc5-xcwx  High      
+lodash.defaultsdeep            4.6.0            4.6.1             npm           GHSA-jf85-cpcp-j695  Critical  
+lodash.merge                   4.6.1            4.6.2             npm           GHSA-h726-x36v-rx45  High      
+lodash.merge                   4.6.1            4.6.2             npm           GHSA-jf85-cpcp-j695  Critical  
+log4j-api                      2.14.1                             java-archive  CVE-2021-45105       Medium    
+log4j-api                      2.14.1                             java-archive  CVE-2021-44832       Medium    
+log4j-to-slf4j                 2.14.1                             java-archive  CVE-2021-45105       Medium    
+log4j-to-slf4j                 2.14.1                             java-archive  CVE-2021-44832       Medium    
+logback-core                   1.2.6            1.2.9             java-archive  GHSA-668q-qrv7-99fm  Medium    
+mem                            1.1.0            4.0.0             npm           GHSA-4xcv-9jjx-gfj3  Medium    
+minimist                       1.2.5                              npm           CVE-2021-44906       Critical  
+minimist                       0.0.8            1.2.6             npm           GHSA-xvch-5gv4-984h  Critical  
+minimist                       0.0.8                              npm           CVE-2021-44906       Critical  
+minimist                       1.2.5            1.2.6             npm           GHSA-xvch-5gv4-984h  Critical  
+minimist                       0.0.8                              npm           CVE-2020-7598        Medium    
+minimist                       0.0.8            0.2.1             npm           GHSA-vh95-rmgr-6w4m  Medium    
+moment                         2.22.2                             npm           CVE-2022-24785       High      
+moment                         2.22.2           2.29.2            npm           GHSA-8hfj-j24r-96c4  High      
+nanoid                         3.1.30                             npm           CVE-2021-23566       Medium    
+nanoid                         3.1.30           3.1.31            npm           GHSA-qrpm-p2h7-hrv2  Medium    
+netmask                        1.0.6            2.0.1             npm           GHSA-pch5-whg9-qr2r  Medium    
+netmask                        1.0.6                              npm           CVE-2021-29418       Medium    
+netmask                        1.0.6            1.1.0             npm           GHSA-4c7m-wxvm-r7gc  Critical  
+netmask                        1.0.6                              npm           CVE-2021-28918       Critical  
+netty-codec-http               4.1.69.Final     4.1.77.Final      java-archive  GHSA-269q-hmxg-m83q  Medium    
+netty-codec-http               4.1.69.Final     4.1.71.Final      java-archive  GHSA-wx5j-54mm-rqqq  Medium    
+node-forge                     0.10.0           1.0.0             npm           GHSA-gf8q-jrpm-jvxq  Low       
+node-forge                     0.7.5            1.3.0             npm           GHSA-cfm4-qjh2-4765  High      
+node-forge                     0.7.5            1.0.0             npm           GHSA-gf8q-jrpm-jvxq  Low       
+node-forge                     0.10.0           1.3.0             npm           GHSA-x4jg-mjrx-434g  High      
+node-forge                     0.10.0           1.3.0             npm           GHSA-cfm4-qjh2-4765  High      
+node-forge                     0.10.0           1.0.0             npm           GHSA-5rrq-pxf6-6jx5  Low       
+node-forge                     0.7.5            0.10.0            npm           GHSA-92xj-mqp7-vmcj  High      
+node-forge                     0.10.0           1.3.0             npm           GHSA-2r2c-g63r-vccr  Medium    
+node-forge                     0.7.5            1.3.0             npm           GHSA-x4jg-mjrx-434g  High      
+node-forge                     0.7.5            1.0.0             npm           GHSA-5rrq-pxf6-6jx5  Low       
+node-forge                     0.7.5            0.10.0            npm           GHSA-wxgw-qj99-44c2  Low       
+node-forge                     0.7.5            1.3.0             npm           GHSA-2r2c-g63r-vccr  Medium    
+node-forge                     0.10.0           1.0.0             npm           GHSA-8fr3-hfg3-gpgp  Medium    
+node-forge                     0.7.5            1.0.0             npm           GHSA-8fr3-hfg3-gpgp  Medium    
+nth-check                      1.0.2                              npm           CVE-2021-3803        High      
+nth-check                      1.0.1            2.0.1             npm           GHSA-rp65-9cf3-cjxr  High      
+nth-check                      1.0.2            2.0.1             npm           GHSA-rp65-9cf3-cjxr  High      
+nth-check                      1.0.1                              npm           CVE-2021-3803        High      
+okhttp                         3.9.1                              java-archive  CVE-2018-20200       Medium    
+open                           0.0.5            6.0.0             npm           GHSA-28xh-wpgr-7fm8  Critical  
+pac-resolver                   3.0.0                              npm           CVE-2021-23406       Critical  
+pac-resolver                   3.0.0            5.0.0             npm           GHSA-9j49-mfvp-vmhm  High      
+path-parse                     1.0.5            1.0.7             npm           GHSA-hj48-42vr-x3v9  Medium    
+path-parse                     1.0.5                              npm           CVE-2021-23343       High      
+ramda                          0.25.0                             npm           CVE-2021-42581       Critical  
+reactor-netty-core             1.0.12                             java-archive  CVE-2014-3488        Medium    
+reactor-netty-core             1.0.12                             java-archive  CVE-2021-21409       Medium    
+reactor-netty-core             1.0.12                             java-archive  CVE-2021-37136       High      
+reactor-netty-core             1.0.12                             java-archive  CVE-2022-24823       Medium    
+reactor-netty-core             1.0.12                             java-archive  CVE-2021-21295       Medium    
+reactor-netty-core             1.0.12                             java-archive  CVE-2021-37137       High      
+reactor-netty-core             1.0.12                             java-archive  CVE-2021-21290       Medium    
+reactor-netty-core             1.0.12                             java-archive  CVE-2021-43797       Medium    
+reactor-netty-core             1.0.12                             java-archive  CVE-2019-16869       High      
+reactor-netty-core             1.0.12                             java-archive  CVE-2019-20445       Critical  
+reactor-netty-core             1.0.12                             java-archive  CVE-2019-20444       Critical  
+reactor-netty-core             1.0.12                             java-archive  CVE-2015-2156        High      
+reactor-netty-http             1.0.12                             java-archive  CVE-2015-2156        High      
+reactor-netty-http             1.0.12                             java-archive  CVE-2014-3488        Medium    
+reactor-netty-http             1.0.12                             java-archive  CVE-2021-21295       Medium    
+reactor-netty-http             1.0.12                             java-archive  CVE-2021-21409       Medium    
+reactor-netty-http             1.0.12                             java-archive  CVE-2019-16869       High      
+reactor-netty-http             1.0.12                             java-archive  CVE-2019-20444       Critical  
+reactor-netty-http             1.0.12                             java-archive  CVE-2021-37136       High      
+reactor-netty-http             1.0.12                             java-archive  CVE-2021-43797       Medium    
+reactor-netty-http             1.0.12                             java-archive  CVE-2019-20445       Critical  
+reactor-netty-http             1.0.12                             java-archive  CVE-2021-21290       Medium    
+reactor-netty-http             1.0.12                             java-archive  CVE-2021-37137       High      
+reactor-netty-http             1.0.12                             java-archive  CVE-2022-24823       Medium    
+shell-quote                    1.6.1                              npm           CVE-2021-42740       Critical  
+shell-quote                    1.6.1            1.7.3             npm           GHSA-g4rg-993r-mgx7  Critical  
+slash                          3.0.0                              npm           CVE-2002-1647        Medium    
+snakeyaml                      1.19             1.26              java-archive  GHSA-rvwf-54qp-4r6v  High      
+spring-cloud-function-context  3.1.4            3.1.7             java-archive  GHSA-6v73-fgf6-w5j7  Critical  
+spring-core                    5.3.12                             java-archive  CVE-2022-22965       Critical  
+spring-core                    5.3.12                             java-archive  CVE-2016-1000027     Critical  
+spring-core                    5.3.12                             java-archive  CVE-2022-22968       Medium    
+spring-core                    5.3.12                             java-archive  CVE-2022-22971       Medium    
+spring-core                    5.3.12                             java-archive  CVE-2022-22970       Medium    
+spring-core                    5.3.12                             java-archive  CVE-2021-22060       Medium    
+spring-core                    5.3.12                             java-archive  CVE-2022-22950       Medium    
+tar                            4.0.2                              npm           CVE-2021-37712       High      
+tar                            4.0.2            4.4.2             npm           GHSA-j44m-qm6p-hp7m  High      
+tar                            4.0.2            4.4.14            npm           GHSA-3jfq-g458-7qm9  High      
+tar                            4.0.2            4.4.15            npm           GHSA-r628-mhmh-qjhw  High      
+tar                            4.0.2                              npm           CVE-2021-32804       High      
+tar                            4.0.2                              npm           CVE-2021-32803       High      
+tar                            4.0.2                              npm           CVE-2021-37701       High      
+tar                            4.0.2            4.4.18            npm           GHSA-qq89-hq3f-393p  High      
+tar                            4.0.2                              npm           CVE-2021-37713       High      
+tar                            4.0.2            4.4.16            npm           GHSA-9r2w-394v-53qc  High      
+tar                            4.0.2            4.4.18            npm           GHSA-5955-9wpr-37jh  High      
+through                        2.3.8                              npm           CVE-2021-29940       Critical  
+websocket-extensions           0.1.4                              npm           CVE-2020-7663        High      
+yargs-parser                   3.2.0                              npm           CVE-2020-7608        Medium    
+yargs-parser                   3.2.0            5.0.1             npm           GHSA-p9pc-299p-vxgp  Medium    
+grype-sample exited with code 0

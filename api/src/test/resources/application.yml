@@ -1,0 +1,46 @@
+info:
+  app:
+    description: playground application
+    name: Spring Backyard API Application
+  java-vendor: ${java.specification.vendor}
+logging:
+  level:
+    root: INFO
+management:
+  endpoint:
+    health:
+      cache:
+        time-to-live: 30s
+      show-details: always
+  endpoints:
+    web:
+      base-path: /actuator
+      exposure:
+        include: "*"
+server:
+  error:
+    path: /error.html
+    whitelabel:
+      enabled: false
+  port: 5001
+spring:
+  application:
+    name: api
+  datasource:
+    password: dev123
+    url: jdbc:postgresql://localhost:5444/sample?stringtype=unspecified
+    username: dev
+  flyway:
+    locations: classpath:/db/migration/
+  cloud:
+    config:
+      enabled: false
+keycloak:
+  auth-server-url: http://${KEYCLOAK_HOST:localhost}:${KEYCLOAK_PORT:6180}/auth
+  realm: realm-sample
+  resource: sample-client
+  public-client: true
+  ssl-required: external
+  confidential-port: 0
+  principal-attribute: preferred_username
+
