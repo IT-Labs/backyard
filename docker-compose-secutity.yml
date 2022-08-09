@@ -1,0 +1,18 @@
+#docker-compose.yml (Base)
+version: "3.8"
+networks:
+  sample:
+    name: sample-network
+    driver: bridge
+services:
+  grype-sample:
+    image: anchore/grype:latest
+    container_name: grype-sample
+    volumes:
+      - //var/run/docker.sock:/var/run/docker.sock
+      - ./:/usr/src/repo
+    working_dir: /usr/src/repo
+    networks:
+      - sample
+    command: dir:/ 
+    # command: fe-sample:latest -o json
