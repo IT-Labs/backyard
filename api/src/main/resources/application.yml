@@ -59,6 +59,8 @@ keycloak:
   ssl-required: external
   confidential-port: 0
   principal-attribute: preferred_username
+kafka:
+  bootstrapAddress: localhost:9092
 ---
 spring:
   config:
@@ -75,3 +77,6 @@ spring:
     enabled: false
 keycloak:
   auth-server-url: http://keycloak-sample:6180/auth
+kafka:
+  bootstrapAddress: kafka-sample:9092
+
