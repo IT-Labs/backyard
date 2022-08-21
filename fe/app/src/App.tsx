@@ -74,7 +74,7 @@ function App() {
             path="/item/"
             element={<PrivateRoute component={ItemForm} />}
           />
-          <Route element={Notfound} />
+          <Route element={<Notfound/>} />
         </Routes>
       </BrowserRouter>
       <Footer />
