@@ -52,7 +52,7 @@ services:
     networks:
       - sample
   keycloak-sample:
-    image: jboss/keycloak:16.1.0
+    image: jboss/keycloak:16.1.1
     container_name: keycloak-sample
     environment:
       - KEYCLOAK_USER=admin

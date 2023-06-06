@@ -87,7 +87,7 @@ const Items: React.FunctionComponent = () => {
         setLoading(false);
         setTotalPages(response.data.totalPages);
       });
-    } catch (error:any) {
+    } catch (error: any) {
       setData([]);
       setLoading(false);
       setMessage(error.message);
@@ -280,7 +280,7 @@ const Items: React.FunctionComponent = () => {
           activePage={activePage}
           onPageChange={onPaginationChange}
           totalPages={totalPage}
-          showEllipsis={true}
+          // showEllipsis={true}
         />
         <div style={addStyle}>
           <span> Items per page</span>
